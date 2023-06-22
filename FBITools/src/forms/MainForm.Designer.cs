@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.pnlContentR = new FBITools.FlatPanelA();
-            this.btnSaveMemoryCard = new FBITools.FlatButtonA();
-            this.btnCopyState = new FBITools.FlatButtonA();
+            this.btnMemoryCardTab = new FBITools.FlatButtonA();
+            this.btnSaveStateTab = new FBITools.FlatButtonA();
             this.pnlContentL = new FBITools.FlatPanelA();
             this.pnlContentInside.SuspendLayout();
             this.pnlContent.SuspendLayout();
@@ -58,8 +58,8 @@
             this.pnlContentR.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
             this.pnlContentR.BorderRound = false;
             this.pnlContentR.BorderSize = 0;
-            this.pnlContentR.Controls.Add(this.btnSaveMemoryCard);
-            this.pnlContentR.Controls.Add(this.btnCopyState);
+            this.pnlContentR.Controls.Add(this.btnMemoryCardTab);
+            this.pnlContentR.Controls.Add(this.btnSaveStateTab);
             this.pnlContentR.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlContentR.ForeColor = System.Drawing.SystemColors.ControlText;
             this.pnlContentR.Location = new System.Drawing.Point(3, 3);
@@ -67,34 +67,33 @@
             this.pnlContentR.Size = new System.Drawing.Size(123, 262);
             this.pnlContentR.TabIndex = 1;
             // 
-            // btnSaveMemoryCard
+            // btnMemoryCardTab
             // 
-            this.btnSaveMemoryCard.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnSaveMemoryCard.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(223)))), ((int)(((byte)(229)))));
-            this.btnSaveMemoryCard.FlatAppearance.BorderSize = 0;
-            this.btnSaveMemoryCard.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
-            this.btnSaveMemoryCard.Location = new System.Drawing.Point(1, 36);
-            this.btnSaveMemoryCard.Margin = new System.Windows.Forms.Padding(0, 2, 0, 0);
-            this.btnSaveMemoryCard.MinimumSize = new System.Drawing.Size(24, 24);
-            this.btnSaveMemoryCard.Name = "btnSaveMemoryCard";
-            this.btnSaveMemoryCard.Size = new System.Drawing.Size(121, 34);
-            this.btnSaveMemoryCard.TabIndex = 1;
-            this.btnSaveMemoryCard.Text = "SaveMemoryCard";
+            this.btnMemoryCardTab.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnMemoryCardTab.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(223)))), ((int)(((byte)(229)))));
+            this.btnMemoryCardTab.FlatAppearance.BorderSize = 0;
+            this.btnMemoryCardTab.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
+            this.btnMemoryCardTab.Location = new System.Drawing.Point(1, 36);
+            this.btnMemoryCardTab.Margin = new System.Windows.Forms.Padding(0, 2, 0, 0);
+            this.btnMemoryCardTab.MinimumSize = new System.Drawing.Size(24, 24);
+            this.btnMemoryCardTab.Name = "btnMemoryCardTab";
+            this.btnMemoryCardTab.Size = new System.Drawing.Size(121, 34);
+            this.btnMemoryCardTab.TabIndex = 1;
+            this.btnMemoryCardTab.Text = "MemoryCard";
             // 
-            // btnCopyState
+            // btnSaveStateTab
             // 
-            this.btnCopyState.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnCopyState.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(223)))), ((int)(((byte)(229)))));
-            this.btnCopyState.FlatAppearance.BorderSize = 0;
-            this.btnCopyState.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
-            this.btnCopyState.Location = new System.Drawing.Point(1, 1);
-            this.btnCopyState.Margin = new System.Windows.Forms.Padding(0);
-            this.btnCopyState.MinimumSize = new System.Drawing.Size(24, 24);
-            this.btnCopyState.Name = "btnCopyState";
-            this.btnCopyState.Size = new System.Drawing.Size(121, 34);
-            this.btnCopyState.TabIndex = 0;
-            this.btnCopyState.Text = "CopyState";
-            this.btnCopyState.Click += new System.EventHandler(this.flatButtonA1_Click);
+            this.btnSaveStateTab.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnSaveStateTab.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(223)))), ((int)(((byte)(229)))));
+            this.btnSaveStateTab.FlatAppearance.BorderSize = 0;
+            this.btnSaveStateTab.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
+            this.btnSaveStateTab.Location = new System.Drawing.Point(1, 1);
+            this.btnSaveStateTab.Margin = new System.Windows.Forms.Padding(0);
+            this.btnSaveStateTab.MinimumSize = new System.Drawing.Size(24, 24);
+            this.btnSaveStateTab.Name = "btnSaveStateTab";
+            this.btnSaveStateTab.Size = new System.Drawing.Size(121, 34);
+            this.btnSaveStateTab.TabIndex = 0;
+            this.btnSaveStateTab.Text = "SaveState";
             // 
             // pnlContentL
             // 
@@ -114,8 +113,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(431, 308);
+            this.MinimumSize = new System.Drawing.Size(420, 260);
             this.Name = "MainForm";
-            this.Text = "MainForm";
+            this.Text = "FBI Tools";
             this.pnlContentInside.ResumeLayout(false);
             this.pnlContent.ResumeLayout(false);
             this.pnlContentR.ResumeLayout(false);
@@ -125,10 +125,10 @@
 
         #endregion
 
-        private FlatButtonA btnCopyState;
-        private FlatButtonA btnSaveMemoryCard;
-        private FlatPanelA pnlContentL;
-        private FlatPanelA pnlContentR;
+        internal FlatButtonA btnSaveStateTab;
+        internal FlatPanelA pnlContentL;
+        internal FlatPanelA pnlContentR;
+        internal FlatButtonA btnMemoryCardTab;
 
 
     }

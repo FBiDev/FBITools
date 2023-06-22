@@ -2,14 +2,8 @@
 
 namespace FBITools
 {
-    public partial class FlatTextBoxA : GNX.FlatTextBox
+    public class FlatTextBoxA : GNX.FlatTextBox
     {
-        public FlatTextBoxA()
-        {
-            //InitializeComponent();
-            //BackgroundColorFocus = BackgroundColor;
-        }
-
         public void DarkMode()
         {
             BackgroundColor = ColorTranslator.FromHtml("#191919");

@@ -1,10 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
@@ -13,57 +7,93 @@ namespace FBITools
 {
     public partial class CopyStateForm : Form
     {
-        public string SaveStateOrigin { get; set; }
-        public string SaveStateDestination { get; set; }
-
         public CopyStateForm()
         {
             InitializeComponent();
             TopLevel = false;
 
-            openFileSaveState.ValidateNames = true;
-            openFileSaveState.CheckFileExists = true;
-            openFileSaveState.CheckPathExists = true;
+            lblSaveStateCopy.TextChanged += lblCopySaveState_TextChanged;
 
-            // Always default to Folder Selection.
-            openFileSaveState.FileName = "";
-            //openFileStateOrigin.FileName = "Folder Selection.";
-            //string filePath = Path.GetDirectoryName(openFileStateOrigin.FileName);
+            dlgSaveStateGet.ValidateNames = true;
+            dlgSaveStateGet.CheckFileExists = true;
+            dlgSaveStateGet.CheckPathExists = true;
+            dlgSaveStateGet.FileName = "";
 
-            saveFileSaveState.Filter = "All Files (*.*)|*.*";
-        }
+            dlgSaveStateSave.Filter = "All Files (*.*)|*.*";
 
-        private void btnCopyStateFile_Click(object sender, EventArgs e)
-        {
-            if (openFileSaveState.ShowDialog() == DialogResult.OK)
+            if (MainCommon.LoadConfigFile())
             {
-                SaveStateOrigin = openFileSaveState.FileName;
-                txtGetSaveState.Text = SaveStateOrigin;
-                saveFileSaveState.FileName = new FileInfo(SaveStateOrigin).Name;
+                UpdateSaveStateOrigin();
+                UpdateSaveStateDestination();
             }
         }
 
-        private void btnSaveSaveState_Click(object sender, EventArgs e)
+        async void lblCopySaveState_TextChanged(object sender, EventArgs e)
         {
-            if (saveFileSaveState.ShowDialog() == DialogResult.OK)
+            await Task.Delay(2000);
+            lblSaveStateCopy.Text = "";
+        }
+
+        void btnCopyStateFile_Click(object sender, EventArgs e)
+        {
+            if (dlgSaveStateGet.ShowDialog() == DialogResult.OK)
             {
-                SaveStateDestination = saveFileSaveState.FileName;
-                txtSaveStateDestination.Text = SaveStateDestination;
+                BIND.cfg.SaveState_Origin = dlgSaveStateGet.FileName;
+                UpdateSaveStateOrigin();
             }
         }
 
-        private void btnCopySaveState_Click(object sender, EventArgs e)
+        void btnSaveSaveState_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(SaveStateOrigin)
-                || string.IsNullOrWhiteSpace(SaveStateDestination)
-                || SaveStateOrigin == SaveStateDestination)
+            if (dlgSaveStateSave.ShowDialog() == DialogResult.OK)
             {
-                lblCopySaveState.Text = "Save State Failed!";
+                BIND.cfg.SaveState_Destination = dlgSaveStateSave.FileName;
+                UpdateSaveStateDestination();
+            }
+        }
+
+        void btnCopySaveState_Click(object sender, EventArgs e)
+        {
+            if (IsSaveStateCopyInvalid())
+            {
+                lblSaveStateCopy.Text = "Save State Failed!";
                 return;
             }
 
-            File.Copy(SaveStateOrigin, SaveStateDestination, true);
-            lblCopySaveState.Text = "Save State Copied!";
+            CopySaveState();
+            lblSaveStateCopy.Text = "Save State Copied!";
+            MainCommon.UpdateConfigFile();
+        }
+
+        void UpdateSaveStateOrigin()
+        {
+            txtSaveStateOrigin.Text = BIND.cfg.SaveState_Origin;
+
+            dlgSaveStateGet.InitialDirectory = Path.GetDirectoryName(BIND.cfg.SaveState_Origin);
+            dlgSaveStateGet.FileName = Path.GetFileName(BIND.cfg.SaveState_Origin);
+
+            if (string.IsNullOrWhiteSpace(dlgSaveStateSave.FileName))
+                dlgSaveStateSave.FileName = BIND.cfg.SaveState_Origin;
+        }
+
+        void UpdateSaveStateDestination()
+        {
+            txtSaveStateDestination.Text = BIND.cfg.SaveState_Destination;
+
+            dlgSaveStateSave.InitialDirectory = Path.GetDirectoryName(BIND.cfg.SaveState_Destination);
+            dlgSaveStateSave.FileName = Path.GetFileName(BIND.cfg.SaveState_Destination);
+        }
+
+        bool IsSaveStateCopyInvalid()
+        {
+            return string.IsNullOrWhiteSpace(BIND.cfg.SaveState_Origin)
+            || string.IsNullOrWhiteSpace(BIND.cfg.SaveState_Destination)
+            || BIND.cfg.SaveState_Origin == BIND.cfg.SaveState_Destination;
+        }
+
+        void CopySaveState()
+        {
+            File.Copy(BIND.cfg.SaveState_Origin, BIND.cfg.SaveState_Destination, true);
         }
     }
 }

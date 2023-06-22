@@ -5,6 +5,7 @@ namespace FBITools
 {
     public static class BIND
     {
+        public static Config cfg = new Config();
         public static Form form;
 
         public static void SetIcon()

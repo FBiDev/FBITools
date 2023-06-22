@@ -28,127 +28,205 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.openFileSaveState = new System.Windows.Forms.OpenFileDialog();
-            this.saveFileSaveState = new System.Windows.Forms.SaveFileDialog();
-            this.lblCopySaveState = new FBITools.src.custom_controls.FlatLabelA();
-            this.btnCopySaveState = new FBITools.FlatButtonA();
+            this.dlgSaveStateGet = new System.Windows.Forms.OpenFileDialog();
+            this.dlgSaveStateSave = new System.Windows.Forms.SaveFileDialog();
+            this.pnlSaveStateOrigin = new FBITools.FlatPanelA();
+            this.btnSaveStateOrigin = new FBITools.FlatButtonA();
+            this.txtSaveStateOrigin = new FBITools.FlatTextBoxA();
+            this.lblSaveStateCopy = new FBITools.src.custom_controls.FlatLabelA();
+            this.btnSaveStateCopy = new FBITools.FlatButtonA();
             this.txtSaveStateDestination = new FBITools.FlatTextBoxA();
             this.btnSaveSaveDestination = new FBITools.FlatButtonA();
-            this.txtGetSaveState = new FBITools.FlatTextBoxA();
-            this.btnGetSaveState = new FBITools.FlatButtonA();
+            this.lblSaveStateTitle = new FBITools.src.custom_controls.FlatLabelA();
+            this.pnlSaveStateDestination = new FBITools.FlatPanelA();
+            this.pnlSaveStateCopy = new FBITools.FlatPanelA();
+            this.pnlSaveStateTitle = new FBITools.FlatPanelA();
+            this.pnlSaveStateOrigin.SuspendLayout();
+            this.pnlSaveStateDestination.SuspendLayout();
+            this.pnlSaveStateCopy.SuspendLayout();
+            this.pnlSaveStateTitle.SuspendLayout();
             this.SuspendLayout();
             // 
-            // openFileSaveState
+            // dlgSaveStateGet
             // 
-            this.openFileSaveState.FileName = "StateOrigin";
+            this.dlgSaveStateGet.FileName = "StateOrigin";
             // 
-            // lblCopySaveState
+            // pnlSaveStateOrigin
             // 
-            this.lblCopySaveState.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblCopySaveState.Location = new System.Drawing.Point(0, 164);
-            this.lblCopySaveState.Name = "lblCopySaveState";
-            this.lblCopySaveState.Padding = new System.Windows.Forms.Padding(4);
-            this.lblCopySaveState.Size = new System.Drawing.Size(284, 98);
-            this.lblCopySaveState.TabIndex = 5;
-            this.lblCopySaveState.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.pnlSaveStateOrigin.BorderRound = false;
+            this.pnlSaveStateOrigin.BorderSize = 0;
+            this.pnlSaveStateOrigin.Controls.Add(this.btnSaveStateOrigin);
+            this.pnlSaveStateOrigin.Controls.Add(this.txtSaveStateOrigin);
+            this.pnlSaveStateOrigin.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlSaveStateOrigin.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.pnlSaveStateOrigin.Location = new System.Drawing.Point(2, 40);
+            this.pnlSaveStateOrigin.Name = "pnlSaveStateOrigin";
+            this.pnlSaveStateOrigin.Padding = new System.Windows.Forms.Padding(2);
+            this.pnlSaveStateOrigin.Size = new System.Drawing.Size(426, 38);
+            this.pnlSaveStateOrigin.TabIndex = 7;
             // 
-            // btnCopySaveState
+            // btnSaveStateOrigin
             // 
-            this.btnCopySaveState.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnCopySaveState.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnCopySaveState.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(223)))), ((int)(((byte)(229)))));
-            this.btnCopySaveState.FlatAppearance.BorderSize = 0;
-            this.btnCopySaveState.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
-            this.btnCopySaveState.Location = new System.Drawing.Point(0, 130);
-            this.btnCopySaveState.MinimumSize = new System.Drawing.Size(24, 24);
-            this.btnCopySaveState.Name = "btnCopySaveState";
-            this.btnCopySaveState.Size = new System.Drawing.Size(284, 34);
-            this.btnCopySaveState.TabIndex = 4;
-            this.btnCopySaveState.Text = "Copy SaveState";
-            this.btnCopySaveState.Click += new System.EventHandler(this.btnCopySaveState_Click);
+            this.btnSaveStateOrigin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnSaveStateOrigin.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnSaveStateOrigin.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(223)))), ((int)(((byte)(229)))));
+            this.btnSaveStateOrigin.FlatAppearance.BorderSize = 0;
+            this.btnSaveStateOrigin.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
+            this.btnSaveStateOrigin.Location = new System.Drawing.Point(2, 2);
+            this.btnSaveStateOrigin.MinimumSize = new System.Drawing.Size(24, 24);
+            this.btnSaveStateOrigin.Name = "btnSaveStateOrigin";
+            this.btnSaveStateOrigin.Size = new System.Drawing.Size(80, 34);
+            this.btnSaveStateOrigin.TabIndex = 1;
+            this.btnSaveStateOrigin.Text = "Origin";
+            this.btnSaveStateOrigin.Click += new System.EventHandler(this.btnCopyStateFile_Click);
+            // 
+            // txtSaveStateOrigin
+            // 
+            this.txtSaveStateOrigin.LabelText = "File";
+            this.txtSaveStateOrigin.Location = new System.Drawing.Point(86, 2);
+            this.txtSaveStateOrigin.MaximumSize = new System.Drawing.Size(0, 34);
+            this.txtSaveStateOrigin.Name = "txtSaveStateOrigin";
+            this.txtSaveStateOrigin.previousText = "";
+            this.txtSaveStateOrigin.ReadOnly = true;
+            this.txtSaveStateOrigin.SelectionLength = 0;
+            this.txtSaveStateOrigin.SelectionStart = 0;
+            this.txtSaveStateOrigin.Size = new System.Drawing.Size(338, 34);
+            this.txtSaveStateOrigin.TabIndex = 2;
+            // 
+            // lblSaveStateCopy
+            // 
+            this.lblSaveStateCopy.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblSaveStateCopy.Location = new System.Drawing.Point(2, 154);
+            this.lblSaveStateCopy.Name = "lblSaveStateCopy";
+            this.lblSaveStateCopy.Padding = new System.Windows.Forms.Padding(4);
+            this.lblSaveStateCopy.Size = new System.Drawing.Size(426, 106);
+            this.lblSaveStateCopy.TabIndex = 5;
+            this.lblSaveStateCopy.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // btnSaveStateCopy
+            // 
+            this.btnSaveStateCopy.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnSaveStateCopy.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnSaveStateCopy.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(223)))), ((int)(((byte)(229)))));
+            this.btnSaveStateCopy.FlatAppearance.BorderSize = 0;
+            this.btnSaveStateCopy.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
+            this.btnSaveStateCopy.Location = new System.Drawing.Point(2, 2);
+            this.btnSaveStateCopy.MinimumSize = new System.Drawing.Size(24, 24);
+            this.btnSaveStateCopy.Name = "btnSaveStateCopy";
+            this.btnSaveStateCopy.Size = new System.Drawing.Size(422, 34);
+            this.btnSaveStateCopy.TabIndex = 4;
+            this.btnSaveStateCopy.Text = "Copy";
+            this.btnSaveStateCopy.Click += new System.EventHandler(this.btnCopySaveState_Click);
             // 
             // txtSaveStateDestination
             // 
-            this.txtSaveStateDestination.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtSaveStateDestination.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtSaveStateDestination.LabelText = "Destination";
-            this.txtSaveStateDestination.Location = new System.Drawing.Point(0, 96);
+            this.txtSaveStateDestination.LabelText = "File";
+            this.txtSaveStateDestination.Location = new System.Drawing.Point(86, 2);
             this.txtSaveStateDestination.MaximumSize = new System.Drawing.Size(0, 34);
             this.txtSaveStateDestination.Name = "txtSaveStateDestination";
             this.txtSaveStateDestination.previousText = "";
+            this.txtSaveStateDestination.ReadOnly = true;
             this.txtSaveStateDestination.SelectionLength = 0;
             this.txtSaveStateDestination.SelectionStart = 0;
-            this.txtSaveStateDestination.Size = new System.Drawing.Size(284, 34);
+            this.txtSaveStateDestination.Size = new System.Drawing.Size(338, 34);
             this.txtSaveStateDestination.TabIndex = 3;
             // 
             // btnSaveSaveDestination
             // 
             this.btnSaveSaveDestination.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnSaveSaveDestination.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnSaveSaveDestination.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnSaveSaveDestination.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(223)))), ((int)(((byte)(229)))));
             this.btnSaveSaveDestination.FlatAppearance.BorderSize = 0;
             this.btnSaveSaveDestination.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
-            this.btnSaveSaveDestination.Location = new System.Drawing.Point(0, 68);
+            this.btnSaveSaveDestination.Location = new System.Drawing.Point(2, 2);
             this.btnSaveSaveDestination.Margin = new System.Windows.Forms.Padding(1);
             this.btnSaveSaveDestination.MinimumSize = new System.Drawing.Size(24, 24);
             this.btnSaveSaveDestination.Name = "btnSaveSaveDestination";
-            this.btnSaveSaveDestination.Size = new System.Drawing.Size(284, 28);
+            this.btnSaveSaveDestination.Size = new System.Drawing.Size(80, 34);
             this.btnSaveSaveDestination.TabIndex = 0;
-            this.btnSaveSaveDestination.Text = "SaveState Destination";
+            this.btnSaveSaveDestination.Text = "Destination";
             this.btnSaveSaveDestination.Click += new System.EventHandler(this.btnSaveSaveState_Click);
             // 
-            // txtGetSaveState
+            // lblSaveStateTitle
             // 
-            this.txtGetSaveState.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtGetSaveState.Dock = System.Windows.Forms.DockStyle.Top;
-            this.txtGetSaveState.LabelText = "Origin";
-            this.txtGetSaveState.Location = new System.Drawing.Point(0, 34);
-            this.txtGetSaveState.MaximumSize = new System.Drawing.Size(0, 34);
-            this.txtGetSaveState.Name = "txtGetSaveState";
-            this.txtGetSaveState.previousText = "";
-            this.txtGetSaveState.SelectionLength = 0;
-            this.txtGetSaveState.SelectionStart = 0;
-            this.txtGetSaveState.Size = new System.Drawing.Size(284, 34);
-            this.txtGetSaveState.TabIndex = 2;
+            this.lblSaveStateTitle.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.lblSaveStateTitle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblSaveStateTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblSaveStateTitle.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.lblSaveStateTitle.Location = new System.Drawing.Point(2, 2);
+            this.lblSaveStateTitle.Name = "lblSaveStateTitle";
+            this.lblSaveStateTitle.Size = new System.Drawing.Size(422, 34);
+            this.lblSaveStateTitle.TabIndex = 6;
+            this.lblSaveStateTitle.Text = "SaveState";
+            this.lblSaveStateTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // btnGetSaveState
+            // pnlSaveStateDestination
             // 
-            this.btnGetSaveState.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
-            this.btnGetSaveState.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnGetSaveState.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(223)))), ((int)(((byte)(229)))));
-            this.btnGetSaveState.FlatAppearance.BorderSize = 0;
-            this.btnGetSaveState.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
-            this.btnGetSaveState.Location = new System.Drawing.Point(0, 0);
-            this.btnGetSaveState.MinimumSize = new System.Drawing.Size(24, 24);
-            this.btnGetSaveState.Name = "btnGetSaveState";
-            this.btnGetSaveState.Size = new System.Drawing.Size(284, 34);
-            this.btnGetSaveState.TabIndex = 1;
-            this.btnGetSaveState.Text = "Get SaveState";
-            this.btnGetSaveState.Click += new System.EventHandler(this.btnCopyStateFile_Click);
+            this.pnlSaveStateDestination.BorderRound = false;
+            this.pnlSaveStateDestination.BorderSize = 0;
+            this.pnlSaveStateDestination.Controls.Add(this.btnSaveSaveDestination);
+            this.pnlSaveStateDestination.Controls.Add(this.txtSaveStateDestination);
+            this.pnlSaveStateDestination.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlSaveStateDestination.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.pnlSaveStateDestination.Location = new System.Drawing.Point(2, 78);
+            this.pnlSaveStateDestination.Name = "pnlSaveStateDestination";
+            this.pnlSaveStateDestination.Padding = new System.Windows.Forms.Padding(2);
+            this.pnlSaveStateDestination.Size = new System.Drawing.Size(426, 38);
+            this.pnlSaveStateDestination.TabIndex = 8;
+            // 
+            // pnlSaveStateCopy
+            // 
+            this.pnlSaveStateCopy.BorderRound = false;
+            this.pnlSaveStateCopy.BorderSize = 0;
+            this.pnlSaveStateCopy.Controls.Add(this.btnSaveStateCopy);
+            this.pnlSaveStateCopy.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlSaveStateCopy.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.pnlSaveStateCopy.Location = new System.Drawing.Point(2, 116);
+            this.pnlSaveStateCopy.Name = "pnlSaveStateCopy";
+            this.pnlSaveStateCopy.Padding = new System.Windows.Forms.Padding(2);
+            this.pnlSaveStateCopy.Size = new System.Drawing.Size(426, 38);
+            this.pnlSaveStateCopy.TabIndex = 9;
+            // 
+            // pnlSaveStateTitle
+            // 
+            this.pnlSaveStateTitle.BorderRound = false;
+            this.pnlSaveStateTitle.BorderSize = 0;
+            this.pnlSaveStateTitle.Controls.Add(this.lblSaveStateTitle);
+            this.pnlSaveStateTitle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlSaveStateTitle.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.pnlSaveStateTitle.Location = new System.Drawing.Point(2, 2);
+            this.pnlSaveStateTitle.Name = "pnlSaveStateTitle";
+            this.pnlSaveStateTitle.Padding = new System.Windows.Forms.Padding(2);
+            this.pnlSaveStateTitle.Size = new System.Drawing.Size(426, 38);
+            this.pnlSaveStateTitle.TabIndex = 10;
             // 
             // CopyStateForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
-            this.ClientSize = new System.Drawing.Size(284, 262);
+            this.ClientSize = new System.Drawing.Size(430, 262);
             this.ControlBox = false;
-            this.Controls.Add(this.lblCopySaveState);
-            this.Controls.Add(this.btnCopySaveState);
-            this.Controls.Add(this.txtSaveStateDestination);
-            this.Controls.Add(this.btnSaveSaveDestination);
-            this.Controls.Add(this.txtGetSaveState);
-            this.Controls.Add(this.btnGetSaveState);
+            this.Controls.Add(this.lblSaveStateCopy);
+            this.Controls.Add(this.pnlSaveStateCopy);
+            this.Controls.Add(this.pnlSaveStateDestination);
+            this.Controls.Add(this.pnlSaveStateOrigin);
+            this.Controls.Add(this.pnlSaveStateTitle);
             this.DoubleBuffered = true;
             this.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "CopyStateForm";
+            this.Padding = new System.Windows.Forms.Padding(2);
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "CopyStateForm";
+            this.pnlSaveStateOrigin.ResumeLayout(false);
+            this.pnlSaveStateDestination.ResumeLayout(false);
+            this.pnlSaveStateCopy.ResumeLayout(false);
+            this.pnlSaveStateTitle.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -156,12 +234,17 @@
         #endregion
 
         private FlatButtonA btnSaveSaveDestination;
-        private System.Windows.Forms.OpenFileDialog openFileSaveState;
-        private FlatButtonA btnGetSaveState;
-        private FlatTextBoxA txtGetSaveState;
-        private System.Windows.Forms.SaveFileDialog saveFileSaveState;
+        private System.Windows.Forms.OpenFileDialog dlgSaveStateGet;
+        private FlatButtonA btnSaveStateOrigin;
+        private FlatTextBoxA txtSaveStateOrigin;
+        private System.Windows.Forms.SaveFileDialog dlgSaveStateSave;
         private FlatTextBoxA txtSaveStateDestination;
-        private FlatButtonA btnCopySaveState;
-        private src.custom_controls.FlatLabelA lblCopySaveState;
+        private FlatButtonA btnSaveStateCopy;
+        private src.custom_controls.FlatLabelA lblSaveStateCopy;
+        private src.custom_controls.FlatLabelA lblSaveStateTitle;
+        private FlatPanelA pnlSaveStateOrigin;
+        private FlatPanelA pnlSaveStateDestination;
+        private FlatPanelA pnlSaveStateCopy;
+        private FlatPanelA pnlSaveStateTitle;
     }
 }
