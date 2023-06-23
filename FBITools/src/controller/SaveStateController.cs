@@ -1,18 +1,23 @@
 ﻿using System;
+using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using System.IO;
 
 namespace FBITools
 {
-    public partial class CopyStateForm : Form
+    public partial class SaveStateController
     {
-        public CopyStateForm()
+        public static void Init(Form formDesign)
         {
-            InitializeComponent();
-            TopLevel = false;
+            BIND.saveStateForm = formDesign;
+            form.TopLevel = false;
+            //form.Init(form);
+            //form.StatusBar = false;
 
-            lblSaveStateCopy.TextChanged += lblCopySaveState_TextChanged;
+            btnSaveStateOrigin.Click += btnSaveStateOrigin_Click;
+            btnSaveSaveDestination.Click += btnSaveSaveState_Click;
+            btnSaveStateCopy.Click += btnSaveStateCopy_Click;
+            lblSaveStateCopy.TextChanged += lblSaveStateCopy_TextChanged;
 
             dlgSaveStateGet.ValidateNames = true;
             dlgSaveStateGet.CheckFileExists = true;
@@ -21,20 +26,14 @@ namespace FBITools
 
             dlgSaveStateSave.Filter = "All Files (*.*)|*.*";
 
-            if (MainCommon.LoadConfigFile())
+            if (MainController.LoadConfigFile())
             {
                 UpdateSaveStateOrigin();
                 UpdateSaveStateDestination();
             }
         }
 
-        async void lblCopySaveState_TextChanged(object sender, EventArgs e)
-        {
-            await Task.Delay(2000);
-            lblSaveStateCopy.Text = "";
-        }
-
-        void btnCopyStateFile_Click(object sender, EventArgs e)
+        static void btnSaveStateOrigin_Click(object sender, EventArgs e)
         {
             if (dlgSaveStateGet.ShowDialog() == DialogResult.OK)
             {
@@ -43,7 +42,7 @@ namespace FBITools
             }
         }
 
-        void btnSaveSaveState_Click(object sender, EventArgs e)
+        static void btnSaveSaveState_Click(object sender, EventArgs e)
         {
             if (dlgSaveStateSave.ShowDialog() == DialogResult.OK)
             {
@@ -52,7 +51,7 @@ namespace FBITools
             }
         }
 
-        void btnCopySaveState_Click(object sender, EventArgs e)
+        static void btnSaveStateCopy_Click(object sender, EventArgs e)
         {
             if (IsSaveStateCopyInvalid())
             {
@@ -62,10 +61,16 @@ namespace FBITools
 
             CopySaveState();
             lblSaveStateCopy.Text = "Save State Copied!";
-            MainCommon.UpdateConfigFile();
+            MainController.UpdateConfigFile();
         }
 
-        void UpdateSaveStateOrigin()
+        static async void lblSaveStateCopy_TextChanged(object sender, EventArgs e)
+        {
+            await Task.Delay(2000);
+            lblSaveStateCopy.Text = "";
+        }
+
+        static void UpdateSaveStateOrigin()
         {
             txtSaveStateOrigin.Text = BIND.cfg.SaveState_Origin;
 
@@ -76,7 +81,7 @@ namespace FBITools
                 dlgSaveStateSave.FileName = BIND.cfg.SaveState_Origin;
         }
 
-        void UpdateSaveStateDestination()
+        static void UpdateSaveStateDestination()
         {
             txtSaveStateDestination.Text = BIND.cfg.SaveState_Destination;
 
@@ -84,14 +89,14 @@ namespace FBITools
             dlgSaveStateSave.FileName = Path.GetFileName(BIND.cfg.SaveState_Destination);
         }
 
-        bool IsSaveStateCopyInvalid()
+        static bool IsSaveStateCopyInvalid()
         {
             return string.IsNullOrWhiteSpace(BIND.cfg.SaveState_Origin)
             || string.IsNullOrWhiteSpace(BIND.cfg.SaveState_Destination)
             || BIND.cfg.SaveState_Origin == BIND.cfg.SaveState_Destination;
         }
 
-        void CopySaveState()
+        static void CopySaveState()
         {
             File.Copy(BIND.cfg.SaveState_Origin, BIND.cfg.SaveState_Destination, true);
         }

@@ -1,14 +1,11 @@
 namespace FBITools
 {
-    public partial class MainCommon
+    public partial class MainController
     {
-        static MainForm form { get { return (MainForm)BIND.form; } }
+        static MainForm form { get { return (MainForm)BIND.mainForm; } }
 
-        //Main
         static FlatPanelA pnlContentL { get { return form.pnlContentL; } }
-        static FlatButtonA btnCopyState { get { return form.btnSaveStateTab; } }
-        static FlatButtonA btnSaveMemoryCard { get { return form.btnMemoryCardTab; } }
-
-
+        static FlatButtonA btnSaveStateTab { get { return form.btnSaveStateTab; } }
+        static FlatButtonA btnMemoryCardTab { get { return form.btnMemoryCardTab; } }
     }
 }

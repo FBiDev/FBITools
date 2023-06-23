@@ -7,37 +7,37 @@ using Newtonsoft.Json;
 
 namespace FBITools
 {
-    public partial class MainCommon
+    public partial class MainController
     {
         #region MAIN
-        public static CopyStateForm tabCopyState;
+        public static SaveStateForm tabCopyState;
         public static Size tabCopyStateSize;
 
         public static MemoryCardForm tabMemoryCard;
         public static Size tabMemoryCardSize;
 
-        public static void Main_Init(MainForm formDesign)
+        public static void Init(Form formDesign)
         {
-            BIND.form = formDesign;
+            BIND.mainForm = formDesign;
             form.Init(form);
             form.StatusBar = false;
 
-            tabCopyState = new CopyStateForm();
+            tabCopyState = new SaveStateForm();
             tabCopyStateSize = tabCopyState.Size;
 
             tabMemoryCard = new MemoryCardForm();
             tabMemoryCardSize = tabMemoryCard.Size;
 
-            btnCopyState.Click += btnCopyState_Click;
-            btnSaveMemoryCard.Click += btnSaveMemoryCard_Click;
+            btnSaveStateTab.Click += btnSaveStateTab_Click;
+            btnMemoryCardTab.Click += btnMemoryCardTab_Click;
 
-            btnCopyState_Click(null, null);
+            btnSaveStateTab_Click(null, null);
         }
 
-        static void Main_Load(object sender, EventArgs e) { }
-        static void Main_Shown(object sender, EventArgs e) { }
+        static void Load(object sender, EventArgs e) { }
+        static void Shown(object sender, EventArgs e) { }
 
-        static void btnCopyState_Click(object sender, EventArgs e)
+        static void btnSaveStateTab_Click(object sender, EventArgs e)
         {
             form.Height = tabCopyStateSize.Height + 84;
             form.Width = tabCopyStateSize.Width + 163;
@@ -48,7 +48,7 @@ namespace FBITools
             tabCopyState.Dock = DockStyle.Fill;
         }
 
-        static void btnSaveMemoryCard_Click(object sender, EventArgs e)
+        static void btnMemoryCardTab_Click(object sender, EventArgs e)
         {
             form.Height = tabMemoryCardSize.Height + 84;
             form.Width = tabMemoryCardSize.Width + 163;

@@ -1,6 +1,6 @@
 ﻿namespace FBITools
 {
-    partial class CopyStateForm
+    partial class SaveStateForm
     {
         /// <summary>
         /// Required designer variable.
@@ -33,11 +33,11 @@
             this.pnlSaveStateOrigin = new FBITools.FlatPanelA();
             this.btnSaveStateOrigin = new FBITools.FlatButtonA();
             this.txtSaveStateOrigin = new FBITools.FlatTextBoxA();
-            this.lblSaveStateCopy = new FBITools.src.custom_controls.FlatLabelA();
+            this.lblSaveStateCopy = new FBITools.FlatLabelA();
             this.btnSaveStateCopy = new FBITools.FlatButtonA();
             this.txtSaveStateDestination = new FBITools.FlatTextBoxA();
             this.btnSaveSaveDestination = new FBITools.FlatButtonA();
-            this.lblSaveStateTitle = new FBITools.src.custom_controls.FlatLabelA();
+            this.lblSaveStateTitle = new FBITools.FlatLabelA();
             this.pnlSaveStateDestination = new FBITools.FlatPanelA();
             this.pnlSaveStateCopy = new FBITools.FlatPanelA();
             this.pnlSaveStateTitle = new FBITools.FlatPanelA();
@@ -78,7 +78,6 @@
             this.btnSaveStateOrigin.Size = new System.Drawing.Size(80, 34);
             this.btnSaveStateOrigin.TabIndex = 1;
             this.btnSaveStateOrigin.Text = "Origin";
-            this.btnSaveStateOrigin.Click += new System.EventHandler(this.btnCopyStateFile_Click);
             // 
             // txtSaveStateOrigin
             // 
@@ -116,7 +115,6 @@
             this.btnSaveStateCopy.Size = new System.Drawing.Size(422, 34);
             this.btnSaveStateCopy.TabIndex = 4;
             this.btnSaveStateCopy.Text = "Copy";
-            this.btnSaveStateCopy.Click += new System.EventHandler(this.btnCopySaveState_Click);
             // 
             // txtSaveStateDestination
             // 
@@ -145,7 +143,6 @@
             this.btnSaveSaveDestination.Size = new System.Drawing.Size(80, 34);
             this.btnSaveSaveDestination.TabIndex = 0;
             this.btnSaveSaveDestination.Text = "Destination";
-            this.btnSaveSaveDestination.Click += new System.EventHandler(this.btnSaveSaveState_Click);
             // 
             // lblSaveStateTitle
             // 
@@ -200,7 +197,7 @@
             this.pnlSaveStateTitle.Size = new System.Drawing.Size(426, 38);
             this.pnlSaveStateTitle.TabIndex = 10;
             // 
-            // CopyStateForm
+            // SaveStateForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
@@ -216,7 +213,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "CopyStateForm";
+            this.Name = "SaveStateForm";
             this.Padding = new System.Windows.Forms.Padding(2);
             this.ShowIcon = false;
             this.ShowInTaskbar = false;
@@ -233,18 +230,18 @@
 
         #endregion
 
-        private FlatButtonA btnSaveSaveDestination;
-        private System.Windows.Forms.OpenFileDialog dlgSaveStateGet;
-        private FlatButtonA btnSaveStateOrigin;
-        private FlatTextBoxA txtSaveStateOrigin;
-        private System.Windows.Forms.SaveFileDialog dlgSaveStateSave;
-        private FlatTextBoxA txtSaveStateDestination;
-        private FlatButtonA btnSaveStateCopy;
-        private src.custom_controls.FlatLabelA lblSaveStateCopy;
-        private src.custom_controls.FlatLabelA lblSaveStateTitle;
+        private FlatLabelA lblSaveStateTitle;
         private FlatPanelA pnlSaveStateOrigin;
         private FlatPanelA pnlSaveStateDestination;
         private FlatPanelA pnlSaveStateCopy;
         private FlatPanelA pnlSaveStateTitle;
+        internal FlatButtonA btnSaveSaveDestination;
+        internal FlatButtonA btnSaveStateOrigin;
+        internal FlatTextBoxA txtSaveStateOrigin;
+        internal FlatTextBoxA txtSaveStateDestination;
+        internal FlatButtonA btnSaveStateCopy;
+        internal FlatLabelA lblSaveStateCopy;
+        internal System.Windows.Forms.OpenFileDialog dlgSaveStateGet;
+        internal System.Windows.Forms.SaveFileDialog dlgSaveStateSave;
     }
 }

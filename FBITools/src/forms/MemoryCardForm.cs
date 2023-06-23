@@ -7,7 +7,7 @@ namespace FBITools
         public MemoryCardForm()
         {
             InitializeComponent();
-            TopLevel = false;
+            MemoryCardController.Init(this);
         }
     }
 }

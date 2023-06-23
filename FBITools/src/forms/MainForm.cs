@@ -1,4 +1,4 @@
-﻿using GNX;
+using GNX;
 
 namespace FBITools
 {
@@ -7,7 +7,7 @@ namespace FBITools
         public MainForm()
         {
             InitializeComponent();
-            MainCommon.Main_Init(this);
+            MainController.Init(this);
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿namespace FBITools.src.custom_controls
+﻿namespace FBITools
 {
     public class FlatLabelA : GNX.FlatLabel
     {
