@@ -38,6 +38,7 @@
             // 
             // pnlContent
             // 
+            this.pnlContent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.pnlContent.Controls.Add(this.pnlContentL);
             this.pnlContent.Controls.Add(this.pnlContentR);
             this.pnlContent.Location = new System.Drawing.Point(2, 2);
@@ -92,12 +93,14 @@
             this.pnlContentR.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.pnlContentR.BackColor = System.Drawing.SystemColors.Control;
             this.pnlContentR.BorderRound = false;
             this.pnlContentR.BorderSize = 0;
             this.pnlContentR.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.pnlContentR.Location = new System.Drawing.Point(123, 0);
+            this.pnlContentR.Location = new System.Drawing.Point(127, 0);
+            this.pnlContentR.Margin = new System.Windows.Forms.Padding(1, 3, 3, 3);
             this.pnlContentR.Name = "pnlContentR";
-            this.pnlContentR.Size = new System.Drawing.Size(303, 258);
+            this.pnlContentR.Size = new System.Drawing.Size(299, 258);
             this.pnlContentR.TabIndex = 3;
             // 
             // MainContentForm

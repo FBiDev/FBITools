@@ -44,11 +44,10 @@ namespace FBITools
 
         static void SetSelectedTab(FlatButtonA btnClicked)
         {
-            btnClicked.BackColor = btnClicked._SelectedColor;
-
-            if (selectedTab != null)
+            if (selectedTab != null && selectedTab != btnClicked)
                 selectedTab.BackColor = selectedTabBackColor;
 
+            btnClicked.BackColor = btnClicked._SelectedColor;
             selectedTab = btnClicked;
         }
 

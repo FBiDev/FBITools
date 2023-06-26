@@ -2,7 +2,6 @@
 {
     public static class MainController
     {
-        #region MAIN
         public static MainContentForm content;
 
         public static void Init(MainForm formDesign)
@@ -17,6 +16,5 @@
             content = new MainContentForm();
             BIND.mainForm.SetContentForm(content);
         }
-        #endregion
     }
 }
