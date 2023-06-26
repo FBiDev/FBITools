@@ -14,7 +14,7 @@ namespace FBITools
         public static void Init(Form formDesign)
         {
             BIND.memoryCardForm = formDesign;
-            form.TopLevel = false;
+            form.Init(form);
 
             btnMcOrigin.Click += btnMcOrigin_Click;
             btnMcDestination.Click += btnMcDestination_Click;
@@ -29,11 +29,11 @@ namespace FBITools
 
             dlgMcDestination.Filter = "All Files (*.*)|*.*";
 
-            var timerItems = new List<int> { 1, 5, 10, 15, 30, 60, 120, 180 };
+            var timerItems = new List<int> { 0, 1, 5, 10, 15, 30, 60, 120, 180 };
 
             cboMcTimer.DataSource = timerItems;
 
-            if (MainController.LoadConfigFile())
+            if (MainContentController.LoadConfigFile())
             {
                 UpdateMcOrigin();
                 UpdateMcDestination();
@@ -83,7 +83,7 @@ namespace FBITools
                 btnMcBackup.Text = "Backup Stop";
                 lblMcBackup.Text = "MemoryCard Backup Started!";
 
-                MainController.UpdateConfigFile();
+                MainContentController.UpdateConfigFile();
                 await BackupMemoryCard();
             }
             else

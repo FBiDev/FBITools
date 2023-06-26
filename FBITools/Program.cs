@@ -8,8 +8,6 @@ namespace FBITools
         [STAThread]
         static void Main()
         {
-            BIND.SetIcon();
-
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(new MainForm());

@@ -1,8 +1,6 @@
-﻿using System.Windows.Forms;
-
-namespace FBITools
+﻿namespace FBITools
 {
-    public partial class SaveStateForm : Form
+    public partial class SaveStateForm : GNX.ContentBaseForm
     {
         public SaveStateForm()
         {

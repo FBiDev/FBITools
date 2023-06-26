@@ -10,9 +10,7 @@ namespace FBITools
         public static void Init(Form formDesign)
         {
             BIND.saveStateForm = formDesign;
-            form.TopLevel = false;
-            //form.Init(form);
-            //form.StatusBar = false;
+            form.Init(form);
 
             btnSaveStateOrigin.Click += btnSaveStateOrigin_Click;
             btnSaveSaveDestination.Click += btnSaveSaveState_Click;
@@ -26,7 +24,7 @@ namespace FBITools
 
             dlgSaveStateSave.Filter = "All Files (*.*)|*.*";
 
-            if (MainController.LoadConfigFile())
+            if (MainContentController.LoadConfigFile())
             {
                 UpdateSaveStateOrigin();
                 UpdateSaveStateDestination();
@@ -61,7 +59,7 @@ namespace FBITools
 
             CopySaveState();
             lblSaveStateCopy.Text = "Save State Copied!";
-            MainController.UpdateConfigFile();
+            MainContentController.UpdateConfigFile();
         }
 
         static async void lblSaveStateCopy_TextChanged(object sender, EventArgs e)

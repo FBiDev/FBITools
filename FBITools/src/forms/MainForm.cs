@@ -1,8 +1,6 @@
-using GNX;
-
 namespace FBITools
 {
-    public partial class MainForm : FormBase
+    public partial class MainForm : GNX.MainBaseForm
     {
         public MainForm()
         {

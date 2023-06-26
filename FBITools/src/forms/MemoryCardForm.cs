@@ -1,8 +1,6 @@
-﻿using System.Windows.Forms;
-
-namespace FBITools
+﻿namespace FBITools
 {
-    public partial class MemoryCardForm : Form
+    public partial class MemoryCardForm : GNX.ContentBaseForm
     {
         public MemoryCardForm()
         {
