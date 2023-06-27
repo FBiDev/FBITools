@@ -38,7 +38,6 @@
             // 
             // pnlContent
             // 
-            this.pnlContent.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.pnlContent.Controls.Add(this.pnlContentL);
             this.pnlContent.Controls.Add(this.pnlContentR);
             this.pnlContent.Location = new System.Drawing.Point(2, 2);
@@ -47,8 +46,6 @@
             // pnlContentL
             // 
             this.pnlContentL.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(80)))), ((int)(((byte)(80)))), ((int)(((byte)(80)))));
-            this.pnlContentL.BorderRound = false;
-            this.pnlContentL.BorderSize = 0;
             this.pnlContentL.Controls.Add(this.btnSaveStateTab);
             this.pnlContentL.Controls.Add(this.btnMemoryCardTab);
             this.pnlContentL.Dock = System.Windows.Forms.DockStyle.Left;
@@ -69,6 +66,7 @@
             this.btnSaveStateTab.Margin = new System.Windows.Forms.Padding(0);
             this.btnSaveStateTab.MinimumSize = new System.Drawing.Size(24, 24);
             this.btnSaveStateTab.Name = "btnSaveStateTab";
+            this.btnSaveStateTab.Selected = false;
             this.btnSaveStateTab.Size = new System.Drawing.Size(121, 34);
             this.btnSaveStateTab.TabIndex = 0;
             this.btnSaveStateTab.Text = "SaveState";
@@ -84,6 +82,7 @@
             this.btnMemoryCardTab.Margin = new System.Windows.Forms.Padding(0, 2, 0, 0);
             this.btnMemoryCardTab.MinimumSize = new System.Drawing.Size(24, 24);
             this.btnMemoryCardTab.Name = "btnMemoryCardTab";
+            this.btnMemoryCardTab.Selected = false;
             this.btnMemoryCardTab.Size = new System.Drawing.Size(121, 34);
             this.btnMemoryCardTab.TabIndex = 1;
             this.btnMemoryCardTab.Text = "MemoryCard";
@@ -94,8 +93,6 @@
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.pnlContentR.BackColor = System.Drawing.SystemColors.Control;
-            this.pnlContentR.BorderRound = false;
-            this.pnlContentR.BorderSize = 0;
             this.pnlContentR.ForeColor = System.Drawing.SystemColors.ControlText;
             this.pnlContentR.Location = new System.Drawing.Point(127, 0);
             this.pnlContentR.Margin = new System.Windows.Forms.Padding(1, 3, 3, 3);

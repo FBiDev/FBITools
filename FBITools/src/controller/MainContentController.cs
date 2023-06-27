@@ -17,7 +17,6 @@ namespace FBITools
         public static Size tabMemoryCardSize;
 
         public static FlatButtonA selectedTab;
-        public static Color selectedTabBackColor;
 
         public static void Init(Form formDesign)
         {
@@ -38,16 +37,15 @@ namespace FBITools
         static void Form_Load(object sender, EventArgs e) { }
         static void Form_Shown(object sender, EventArgs e)
         {
-            selectedTabBackColor = btnSaveStateTab.BackColor;
             btnSaveStateTab_Click(btnSaveStateTab, null);
         }
 
         static void SetSelectedTab(FlatButtonA btnClicked)
         {
             if (selectedTab != null && selectedTab != btnClicked)
-                selectedTab.BackColor = selectedTabBackColor;
+                selectedTab.Selected = false;
 
-            btnClicked.BackColor = btnClicked._SelectedColor;
+            btnClicked.Selected = true;
             selectedTab = btnClicked;
         }
 

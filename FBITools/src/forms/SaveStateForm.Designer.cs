@@ -75,8 +75,6 @@
             // 
             // pnlSaveStateCopy
             // 
-            this.pnlSaveStateCopy.BorderRound = false;
-            this.pnlSaveStateCopy.BorderSize = 0;
             this.pnlSaveStateCopy.Controls.Add(this.btnSaveStateCopy);
             this.pnlSaveStateCopy.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlSaveStateCopy.ForeColor = System.Drawing.SystemColors.ControlText;
@@ -96,14 +94,13 @@
             this.btnSaveStateCopy.Location = new System.Drawing.Point(2, 2);
             this.btnSaveStateCopy.MinimumSize = new System.Drawing.Size(24, 24);
             this.btnSaveStateCopy.Name = "btnSaveStateCopy";
+            this.btnSaveStateCopy.Selected = false;
             this.btnSaveStateCopy.Size = new System.Drawing.Size(426, 34);
             this.btnSaveStateCopy.TabIndex = 3;
             this.btnSaveStateCopy.Text = "Copy";
             // 
             // pnlSaveStateDestination
             // 
-            this.pnlSaveStateDestination.BorderRound = false;
-            this.pnlSaveStateDestination.BorderSize = 0;
             this.pnlSaveStateDestination.Controls.Add(this.btnSaveSaveDestination);
             this.pnlSaveStateDestination.Controls.Add(this.txtSaveStateDestination);
             this.pnlSaveStateDestination.Dock = System.Windows.Forms.DockStyle.Top;
@@ -125,6 +122,7 @@
             this.btnSaveSaveDestination.Margin = new System.Windows.Forms.Padding(1);
             this.btnSaveSaveDestination.MinimumSize = new System.Drawing.Size(24, 24);
             this.btnSaveSaveDestination.Name = "btnSaveSaveDestination";
+            this.btnSaveSaveDestination.Selected = false;
             this.btnSaveSaveDestination.Size = new System.Drawing.Size(80, 34);
             this.btnSaveSaveDestination.TabIndex = 2;
             this.btnSaveSaveDestination.Text = "Destination";
@@ -145,8 +143,6 @@
             // 
             // pnlSaveStateOrigin
             // 
-            this.pnlSaveStateOrigin.BorderRound = false;
-            this.pnlSaveStateOrigin.BorderSize = 0;
             this.pnlSaveStateOrigin.Controls.Add(this.btnSaveStateOrigin);
             this.pnlSaveStateOrigin.Controls.Add(this.txtSaveStateOrigin);
             this.pnlSaveStateOrigin.Dock = System.Windows.Forms.DockStyle.Top;
@@ -167,6 +163,7 @@
             this.btnSaveStateOrigin.Location = new System.Drawing.Point(2, 2);
             this.btnSaveStateOrigin.MinimumSize = new System.Drawing.Size(24, 24);
             this.btnSaveStateOrigin.Name = "btnSaveStateOrigin";
+            this.btnSaveStateOrigin.Selected = false;
             this.btnSaveStateOrigin.Size = new System.Drawing.Size(80, 34);
             this.btnSaveStateOrigin.TabIndex = 1;
             this.btnSaveStateOrigin.Text = "Origin";
@@ -187,8 +184,6 @@
             // 
             // pnlSaveStateTitle
             // 
-            this.pnlSaveStateTitle.BorderRound = false;
-            this.pnlSaveStateTitle.BorderSize = 0;
             this.pnlSaveStateTitle.Controls.Add(this.lblSaveStateTitle);
             this.pnlSaveStateTitle.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlSaveStateTitle.ForeColor = System.Drawing.SystemColors.ControlText;
