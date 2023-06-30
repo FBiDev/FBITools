@@ -2,7 +2,7 @@
 
 namespace FBITools
 {
-    public class Config
+    public class Options
     {
         public string SaveState_Origin { get; set; }
         public string SaveState_Destination { get; set; }
@@ -12,6 +12,6 @@ namespace FBITools
         public int MemoryCard_Timer { get; set; }
 
         [JsonIgnore]
-        public string File = "Config.json";
+        public string File = "Options.json";
     }
 }

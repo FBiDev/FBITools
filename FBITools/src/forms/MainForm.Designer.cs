@@ -32,7 +32,7 @@
             // 
             // pnlContent
             // 
-            this.pnlContent.Size = new System.Drawing.Size(411, 264);
+            this.pnlContent.Size = new System.Drawing.Size(405, 258);
             // 
             // staStatus
             // 

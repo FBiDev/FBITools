@@ -57,8 +57,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="src\cmodel\BIND.cs" />
-    <Compile Include="src\cmodel\Config.cs" />
+    <Compile Include="src\cmodel\Session.cs" />
+    <Compile Include="src\cmodel\Options.cs" />
+    <Compile Include="src\cmodel\Theme.cs" />
     <Compile Include="src\controller\MainController.cs" />
     <Compile Include="src\controller\MainContentController.cs" />
     <Compile Include="src\controller\controls\MainContentControls.cs" />

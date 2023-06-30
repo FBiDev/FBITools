@@ -13,7 +13,7 @@ namespace FBITools
 
         public static void Init(Form formDesign)
         {
-            BIND.memoryCardForm = formDesign;
+            Session.memoryCardForm = formDesign;
             form.Init(form);
 
             btnMcOrigin.Click += btnMcOrigin_Click;
@@ -30,7 +30,6 @@ namespace FBITools
             dlgMcDestination.Filter = "All Files (*.*)|*.*";
 
             var timerItems = new List<int> { 0, 1, 5, 10, 15, 30, 60, 120, 180 };
-
             cboMcTimer.DataSource = timerItems;
 
             if (MainContentController.LoadConfigFile())
@@ -39,18 +38,20 @@ namespace FBITools
                 UpdateMcDestination();
                 UpdateMcTimer();
             }
+
+            if (cboMcTimer.SelectedIndex < 0) cboMcTimer.SelectedIndex = 0;
         }
 
         static void cboMcTimer_SelectedIndexChanged(object sender, EventArgs e)
         {
-            BIND.cfg.MemoryCard_Timer = cboMcTimer.SelectedValueInt;
+            Session.options.MemoryCard_Timer = cboMcTimer.SelectedValueInt;
         }
 
         static void btnMcOrigin_Click(object sender, EventArgs e)
         {
             if (dlgMcOrigin.ShowDialog() == DialogResult.OK)
             {
-                BIND.cfg.MemoryCard_Origin = dlgMcOrigin.FileName;
+                Session.options.MemoryCard_Origin = dlgMcOrigin.FileName;
                 UpdateMcOrigin();
             }
         }
@@ -59,7 +60,7 @@ namespace FBITools
         {
             if (dlgMcDestination.ShowDialog() == DialogResult.OK)
             {
-                BIND.cfg.MemoryCard_Destination = dlgMcDestination.FileName;
+                Session.options.MemoryCard_Destination = dlgMcDestination.FileName;
                 UpdateMcDestination();
             }
         }
@@ -101,34 +102,34 @@ namespace FBITools
 
         static void UpdateMcOrigin()
         {
-            txtMcOrigin.Text = BIND.cfg.MemoryCard_Origin;
+            txtMcOrigin.Text = Session.options.MemoryCard_Origin;
 
-            dlgMcOrigin.InitialDirectory = Path.GetDirectoryName(BIND.cfg.MemoryCard_Origin);
-            dlgMcOrigin.FileName = Path.GetFileName(BIND.cfg.MemoryCard_Origin);
+            dlgMcOrigin.InitialDirectory = Path.GetDirectoryName(Session.options.MemoryCard_Origin);
+            dlgMcOrigin.FileName = Path.GetFileName(Session.options.MemoryCard_Origin);
 
             if (string.IsNullOrWhiteSpace(dlgMcDestination.FileName))
-                dlgMcDestination.FileName = BIND.cfg.MemoryCard_Origin;
+                dlgMcDestination.FileName = Session.options.MemoryCard_Origin;
         }
 
         static void UpdateMcDestination()
         {
-            txtMcDestination.Text = BIND.cfg.MemoryCard_Destination;
+            txtMcDestination.Text = Session.options.MemoryCard_Destination;
 
-            dlgMcDestination.InitialDirectory = Path.GetDirectoryName(BIND.cfg.MemoryCard_Destination);
-            dlgMcDestination.FileName = Path.GetFileName(BIND.cfg.MemoryCard_Destination);
+            dlgMcDestination.InitialDirectory = Path.GetDirectoryName(Session.options.MemoryCard_Destination);
+            dlgMcDestination.FileName = Path.GetFileName(Session.options.MemoryCard_Destination);
         }
 
         static void UpdateMcTimer()
         {
-            cboMcTimer.SelectedItem = BIND.cfg.MemoryCard_Timer;
+            cboMcTimer.SelectedItem = Session.options.MemoryCard_Timer;
         }
 
         static bool IsMcBackupInvalid()
         {
-            return string.IsNullOrWhiteSpace(BIND.cfg.MemoryCard_Origin)
-            || string.IsNullOrWhiteSpace(BIND.cfg.MemoryCard_Destination)
-            || BIND.cfg.MemoryCard_Origin == BIND.cfg.MemoryCard_Destination
-            || BIND.cfg.MemoryCard_Timer <= 0;
+            return string.IsNullOrWhiteSpace(Session.options.MemoryCard_Origin)
+            || string.IsNullOrWhiteSpace(Session.options.MemoryCard_Destination)
+            || Session.options.MemoryCard_Origin == Session.options.MemoryCard_Destination
+            || Session.options.MemoryCard_Timer <= 0;
         }
 
         static async Task BackupMemoryCard()
@@ -141,11 +142,11 @@ namespace FBITools
                 var NOWString = NOW.ToDB();
                 NOWString = NOWString.Substring(0, NOWString.Length - 4);
 
-                var fileSource = BIND.cfg.MemoryCard_Origin;
+                var fileSource = Session.options.MemoryCard_Origin;
 
-                var fileDestFolder = Path.GetDirectoryName(BIND.cfg.MemoryCard_Destination);
-                var fileDestName = Path.GetFileNameWithoutExtension(BIND.cfg.MemoryCard_Destination);
-                var fileDestExt = Path.GetExtension(BIND.cfg.MemoryCard_Destination);
+                var fileDestFolder = Path.GetDirectoryName(Session.options.MemoryCard_Destination);
+                var fileDestName = Path.GetFileNameWithoutExtension(Session.options.MemoryCard_Destination);
+                var fileDestExt = Path.GetExtension(Session.options.MemoryCard_Destination);
 
                 var fileDestination = fileDestName + "(" + NOWString + ")" + fileDestExt;
                 fileDestination = fileDestination.Replace("/", "-").Replace(":", "-").Replace("'", "");
@@ -154,7 +155,7 @@ namespace FBITools
                 File.Copy(fileSource, fileDestination, true);
                 lblMcBackup.Text = "MemoryCard Backup Saved!";
 
-                await Task.Delay((BIND.cfg.MemoryCard_Timer * 1000) * 60);
+                await Task.Delay((Session.options.MemoryCard_Timer * 1000) * 60);
             } while (backupStarted);
         }
     }

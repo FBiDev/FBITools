@@ -4,7 +4,7 @@ namespace FBITools
 {
     public partial class MemoryCardController
     {
-        static MemoryCardForm form { get { return (MemoryCardForm)BIND.memoryCardForm; } }
+        static MemoryCardForm form { get { return (MemoryCardForm)Session.memoryCardForm; } }
 
         static FlatPanelA pnlMcOrigin { get { return form.pnlMcOrigin; } }
         static FlatPanelA pnlMcDestination { get { return form.pnlMcDestination; } }

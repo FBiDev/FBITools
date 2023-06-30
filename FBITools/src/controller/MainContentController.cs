@@ -10,8 +10,8 @@ namespace FBITools
     public partial class MainContentController
     {
         #region MAIN
-        public static SaveStateForm tabCopyState;
-        public static Size tabCopyStateSize;
+        public static SaveStateForm tabSaveState;
+        public static Size tabSaveStateSize;
 
         public static MemoryCardForm tabMemoryCard;
         public static Size tabMemoryCardSize;
@@ -20,12 +20,14 @@ namespace FBITools
 
         public static void Init(Form formDesign)
         {
-            BIND.mainContentForm = formDesign;
+            Session.mainContentForm = formDesign;
             form.Init(form);
-            form.Shown += Form_Shown;
 
-            tabCopyState = new SaveStateForm();
-            tabCopyStateSize = tabCopyState.Size;
+            form.Load += Load;
+            form.Shown += Shown;
+
+            tabSaveState = new SaveStateForm();
+            tabSaveStateSize = tabSaveState.Size;
 
             tabMemoryCard = new MemoryCardForm();
             tabMemoryCardSize = tabMemoryCard.Size;
@@ -34,8 +36,8 @@ namespace FBITools
             btnMemoryCardTab.Click += btnMemoryCardTab_Click;
         }
 
-        static void Form_Load(object sender, EventArgs e) { }
-        static void Form_Shown(object sender, EventArgs e)
+        static void Load(object sender, EventArgs e) { }
+        static void Shown(object sender, EventArgs e)
         {
             btnSaveStateTab_Click(btnSaveStateTab, null);
         }
@@ -51,38 +53,44 @@ namespace FBITools
 
         static void btnSaveStateTab_Click(object sender, EventArgs e)
         {
-            BIND.mainForm.Height = tabCopyStateSize.Height + 84;
-            BIND.mainForm.Width = tabCopyStateSize.Width + 163;
-            tabCopyState.Show();
-
-            pnlContentL.Controls.Clear();
-            pnlContentL.Controls.Add(tabCopyState);
-            tabCopyState.Dock = DockStyle.Fill;
-
             SetSelectedTab(btnSaveStateTab);
+
+            pnlContentR.Controls.Clear();
+            pnlContentR.Controls.Add(tabSaveState);
+
+            tabSaveState.Dock = DockStyle.Fill;
+            tabSaveState.Show();
+
+            ResizeContent(tabSaveStateSize);
         }
 
         static void btnMemoryCardTab_Click(object sender, EventArgs e)
         {
-            BIND.mainForm.Height = tabMemoryCardSize.Height + 84;
-            BIND.mainForm.Width = tabMemoryCardSize.Width + 163;
+            SetSelectedTab(btnMemoryCardTab);
+
+            pnlContentR.Controls.Clear();
+            pnlContentR.Controls.Add(tabMemoryCard);
+
+            tabMemoryCard.Dock = DockStyle.Fill;
             tabMemoryCard.Show();
 
-            pnlContentL.Controls.Clear();
-            pnlContentL.Controls.Add(tabMemoryCard);
-            tabMemoryCard.Dock = DockStyle.Fill;
+            ResizeContent(tabMemoryCardSize);
+        }
 
-            SetSelectedTab(btnMemoryCardTab);
+        static void ResizeContent(Size content)
+        {
+            Session.mainForm.Height = content.Height + 84;
+            Session.mainForm.Width = content.Width + pnlContentL.Width;
         }
         #endregion
 
         #region Common
         public static bool LoadConfigFile()
         {
-            if (File.Exists(BIND.cfg.File))
+            if (File.Exists(Session.options.File))
             {
-                var json_data = File.ReadAllText(BIND.cfg.File);
-                BIND.cfg = JsonConvert.DeserializeObject<Config>(json_data);
+                var json_data = File.ReadAllText(Session.options.File);
+                Session.options = JsonConvert.DeserializeObject<Options>(json_data);
                 return true;
             }
             return false;
@@ -90,8 +98,8 @@ namespace FBITools
 
         public static void UpdateConfigFile()
         {
-            var json_data = JsonConvert.SerializeObject(BIND.cfg, Formatting.Indented);
-            File.WriteAllText(BIND.cfg.File, json_data, Encoding.UTF8);
+            var json_data = JsonConvert.SerializeObject(Session.options, Formatting.Indented);
+            File.WriteAllText(Session.options.File, json_data, Encoding.UTF8);
         }
         #endregion
     }

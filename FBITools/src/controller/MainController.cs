@@ -6,15 +6,15 @@
 
         public static void Init(MainForm formDesign)
         {
-            BIND.SetIcon();
-            GNX.Theme.DarkMode = false;
+            Session.SetIcon();
+            Theme.SetTheme(Theme.eTheme.Dark);
 
-            BIND.mainForm = formDesign;
-            BIND.mainForm.Init(BIND.mainForm);
-            BIND.mainForm.StatusBar = false;
+            Session.mainForm = formDesign;
+            Session.mainForm.StatusBar = true;
+            Session.mainForm.Init(Session.mainForm);
 
             content = new MainContentForm();
-            BIND.mainForm.SetContentForm(content);
+            Session.mainForm.SetContentForm(content);
         }
     }
 }

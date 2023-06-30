@@ -3,9 +3,9 @@ using System.Windows.Forms;
 
 namespace FBITools
 {
-    public static class BIND
+    public static class Session
     {
-        public static Config cfg = new Config();
+        public static Options options = new Options();
 
         public static MainForm mainForm;
         public static Form mainContentForm;

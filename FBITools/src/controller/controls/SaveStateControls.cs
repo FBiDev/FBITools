@@ -4,7 +4,7 @@ namespace FBITools
 {
     public partial class SaveStateController
     {
-        static SaveStateForm form { get { return (SaveStateForm)BIND.saveStateForm; } }
+        static SaveStateForm form { get { return (SaveStateForm)Session.saveStateForm; } }
 
         static FlatButtonA btnSaveStateOrigin { get { return form.btnSaveStateOrigin; } }
         static FlatTextBoxA txtSaveStateOrigin { get { return form.txtSaveStateOrigin; } }
