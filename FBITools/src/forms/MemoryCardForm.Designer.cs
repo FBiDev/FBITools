@@ -34,21 +34,21 @@ namespace FBITools
             this.lblMcBackup = new FBITools.FlatLabelA();
             this.pnlMcBackup = new FBITools.FlatPanelA();
             this.btnMcBackup = new FBITools.FlatButtonA();
-            this.pnlMcDestination = new FBITools.FlatPanelA();
-            this.btnMcDestination = new FBITools.FlatButtonA();
-            this.txtMcDestination = new FBITools.FlatTextBoxA();
-            this.pnlMcOrigin = new FBITools.FlatPanelA();
-            this.btnMcOrigin = new FBITools.FlatButtonA();
-            this.txtMcOrigin = new FBITools.FlatTextBoxA();
             this.pnlMcTimer = new FBITools.FlatPanelA();
             this.cboMcTimer = new FBITools.FlatComboBoxA();
+            this.pnlMcDestination = new FBITools.FlatPanelA();
+            this.txtMcDestination = new FBITools.FlatTextBoxA();
+            this.btnMcDestination = new FBITools.FlatButtonA();
+            this.pnlMcOrigin = new FBITools.FlatPanelA();
+            this.txtMcOrigin = new FBITools.FlatTextBoxA();
+            this.btnMcOrigin = new FBITools.FlatButtonA();
             this.pnlMcTitle = new FBITools.FlatPanelA();
             this.lblMcTitle = new FBITools.FlatLabelA();
             this.pnlResult.SuspendLayout();
             this.pnlMcBackup.SuspendLayout();
+            this.pnlMcTimer.SuspendLayout();
             this.pnlMcDestination.SuspendLayout();
             this.pnlMcOrigin.SuspendLayout();
-            this.pnlMcTimer.SuspendLayout();
             this.pnlMcTitle.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -94,16 +94,53 @@ namespace FBITools
             this.btnMcBackup.TabIndex = 5;
             this.btnMcBackup.Text = "Backup Start";
             // 
+            // pnlMcTimer
+            // 
+            this.pnlMcTimer.Controls.Add(this.cboMcTimer);
+            this.pnlMcTimer.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlMcTimer.Location = new System.Drawing.Point(0, 114);
+            this.pnlMcTimer.Name = "pnlMcTimer";
+            this.pnlMcTimer.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
+            this.pnlMcTimer.Size = new System.Drawing.Size(430, 38);
+            this.pnlMcTimer.TabIndex = 12;
+            // 
+            // cboMcTimer
+            // 
+            this.cboMcTimer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
+            this.cboMcTimer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cboMcTimer.LabelText = "Timer (Minutes)";
+            this.cboMcTimer.Location = new System.Drawing.Point(0, 2);
+            this.cboMcTimer.MaximumSize = new System.Drawing.Size(0, 34);
+            this.cboMcTimer.Name = "cboMcTimer";
+            this.cboMcTimer.Padding = new System.Windows.Forms.Padding(84, 0, 0, 0);
+            this.cboMcTimer.Size = new System.Drawing.Size(430, 34);
+            this.cboMcTimer.TabIndex = 3;
+            // 
             // pnlMcDestination
             // 
-            this.pnlMcDestination.Controls.Add(this.btnMcDestination);
             this.pnlMcDestination.Controls.Add(this.txtMcDestination);
+            this.pnlMcDestination.Controls.Add(this.btnMcDestination);
             this.pnlMcDestination.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlMcDestination.Location = new System.Drawing.Point(0, 76);
             this.pnlMcDestination.Name = "pnlMcDestination";
             this.pnlMcDestination.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.pnlMcDestination.Size = new System.Drawing.Size(430, 38);
             this.pnlMcDestination.TabIndex = 8;
+            // 
+            // txtMcDestination
+            // 
+            this.txtMcDestination.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtMcDestination.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtMcDestination.LabelText = "File";
+            this.txtMcDestination.Location = new System.Drawing.Point(80, 2);
+            this.txtMcDestination.MaximumSize = new System.Drawing.Size(0, 34);
+            this.txtMcDestination.Name = "txtMcDestination";
+            this.txtMcDestination.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            this.txtMcDestination.previousText = "";
+            this.txtMcDestination.ReadOnly = true;
+            this.txtMcDestination.Size = new System.Drawing.Size(350, 34);
+            this.txtMcDestination.TabIndex = 3;
+            this.txtMcDestination.TabStop = false;
             // 
             // btnMcDestination
             // 
@@ -118,30 +155,31 @@ namespace FBITools
             this.btnMcDestination.TabIndex = 2;
             this.btnMcDestination.Text = "Destination";
             // 
-            // txtMcDestination
-            // 
-            this.txtMcDestination.LabelText = "File";
-            this.txtMcDestination.Location = new System.Drawing.Point(84, 2);
-            this.txtMcDestination.MaximumSize = new System.Drawing.Size(0, 34);
-            this.txtMcDestination.Name = "txtMcDestination";
-            this.txtMcDestination.previousText = "";
-            this.txtMcDestination.ReadOnly = true;
-            this.txtMcDestination.SelectionLength = 0;
-            this.txtMcDestination.SelectionStart = 0;
-            this.txtMcDestination.Size = new System.Drawing.Size(346, 34);
-            this.txtMcDestination.TabIndex = 3;
-            this.txtMcDestination.TabStop = false;
-            // 
             // pnlMcOrigin
             // 
-            this.pnlMcOrigin.Controls.Add(this.btnMcOrigin);
             this.pnlMcOrigin.Controls.Add(this.txtMcOrigin);
+            this.pnlMcOrigin.Controls.Add(this.btnMcOrigin);
             this.pnlMcOrigin.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlMcOrigin.Location = new System.Drawing.Point(0, 38);
             this.pnlMcOrigin.Name = "pnlMcOrigin";
             this.pnlMcOrigin.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.pnlMcOrigin.Size = new System.Drawing.Size(430, 38);
             this.pnlMcOrigin.TabIndex = 7;
+            // 
+            // txtMcOrigin
+            // 
+            this.txtMcOrigin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtMcOrigin.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtMcOrigin.LabelText = "File";
+            this.txtMcOrigin.Location = new System.Drawing.Point(80, 2);
+            this.txtMcOrigin.MaximumSize = new System.Drawing.Size(0, 34);
+            this.txtMcOrigin.Name = "txtMcOrigin";
+            this.txtMcOrigin.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            this.txtMcOrigin.previousText = "";
+            this.txtMcOrigin.ReadOnly = true;
+            this.txtMcOrigin.Size = new System.Drawing.Size(350, 34);
+            this.txtMcOrigin.TabIndex = 2;
+            this.txtMcOrigin.TabStop = false;
             // 
             // btnMcOrigin
             // 
@@ -154,39 +192,6 @@ namespace FBITools
             this.btnMcOrigin.Size = new System.Drawing.Size(80, 34);
             this.btnMcOrigin.TabIndex = 1;
             this.btnMcOrigin.Text = "Origin";
-            // 
-            // txtMcOrigin
-            // 
-            this.txtMcOrigin.LabelText = "File";
-            this.txtMcOrigin.Location = new System.Drawing.Point(84, 2);
-            this.txtMcOrigin.MaximumSize = new System.Drawing.Size(0, 34);
-            this.txtMcOrigin.Name = "txtMcOrigin";
-            this.txtMcOrigin.previousText = "";
-            this.txtMcOrigin.ReadOnly = true;
-            this.txtMcOrigin.SelectionLength = 0;
-            this.txtMcOrigin.SelectionStart = 0;
-            this.txtMcOrigin.Size = new System.Drawing.Size(346, 34);
-            this.txtMcOrigin.TabIndex = 2;
-            this.txtMcOrigin.TabStop = false;
-            // 
-            // pnlMcTimer
-            // 
-            this.pnlMcTimer.Controls.Add(this.cboMcTimer);
-            this.pnlMcTimer.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlMcTimer.Location = new System.Drawing.Point(0, 114);
-            this.pnlMcTimer.Name = "pnlMcTimer";
-            this.pnlMcTimer.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
-            this.pnlMcTimer.Size = new System.Drawing.Size(430, 38);
-            this.pnlMcTimer.TabIndex = 12;
-            // 
-            // cboMcTimer
-            // 
-            this.cboMcTimer.LabelText = "Timer (Minutes)";
-            this.cboMcTimer.Location = new System.Drawing.Point(84, 2);
-            this.cboMcTimer.MaximumSize = new System.Drawing.Size(0, 34);
-            this.cboMcTimer.Name = "cboMcTimer";
-            this.cboMcTimer.Size = new System.Drawing.Size(346, 34);
-            this.cboMcTimer.TabIndex = 3;
             // 
             // pnlMcTitle
             // 
@@ -223,9 +228,9 @@ namespace FBITools
             this.Text = "CopyStateForm";
             this.pnlResult.ResumeLayout(false);
             this.pnlMcBackup.ResumeLayout(false);
+            this.pnlMcTimer.ResumeLayout(false);
             this.pnlMcDestination.ResumeLayout(false);
             this.pnlMcOrigin.ResumeLayout(false);
-            this.pnlMcTimer.ResumeLayout(false);
             this.pnlMcTitle.ResumeLayout(false);
             this.ResumeLayout(false);
 

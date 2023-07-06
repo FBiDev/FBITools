@@ -35,11 +35,11 @@
             this.pnlSaveStateCopy = new FBITools.FlatPanelA();
             this.btnSaveStateCopy = new FBITools.FlatButtonA();
             this.pnlSaveStateDestination = new FBITools.FlatPanelA();
-            this.btnSaveSaveDestination = new FBITools.FlatButtonA();
             this.txtSaveStateDestination = new FBITools.FlatTextBoxA();
+            this.btnSaveSaveDestination = new FBITools.FlatButtonA();
             this.pnlSaveStateOrigin = new FBITools.FlatPanelA();
-            this.btnSaveStateOrigin = new FBITools.FlatButtonA();
             this.txtSaveStateOrigin = new FBITools.FlatTextBoxA();
+            this.btnSaveStateOrigin = new FBITools.FlatButtonA();
             this.pnlSaveStateTitle = new FBITools.FlatPanelA();
             this.lblSaveStateTitle = new FBITools.FlatLabelA();
             this.pnlResult.SuspendLayout();
@@ -92,8 +92,8 @@
             // 
             // pnlSaveStateDestination
             // 
-            this.pnlSaveStateDestination.Controls.Add(this.btnSaveSaveDestination);
             this.pnlSaveStateDestination.Controls.Add(this.txtSaveStateDestination);
+            this.pnlSaveStateDestination.Controls.Add(this.btnSaveSaveDestination);
             this.pnlSaveStateDestination.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlSaveStateDestination.Location = new System.Drawing.Point(0, 76);
             this.pnlSaveStateDestination.Name = "pnlSaveStateDestination";
@@ -101,39 +101,39 @@
             this.pnlSaveStateDestination.Size = new System.Drawing.Size(430, 38);
             this.pnlSaveStateDestination.TabIndex = 8;
             // 
+            // txtSaveStateDestination
+            // 
+            this.txtSaveStateDestination.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtSaveStateDestination.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.txtSaveStateDestination.BackgroundColorFocus = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.txtSaveStateDestination.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtSaveStateDestination.LabelText = "File";
+            this.txtSaveStateDestination.Location = new System.Drawing.Point(80, 2);
+            this.txtSaveStateDestination.MaximumSize = new System.Drawing.Size(0, 34);
+            this.txtSaveStateDestination.Name = "txtSaveStateDestination";
+            this.txtSaveStateDestination.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            this.txtSaveStateDestination.previousText = "";
+            this.txtSaveStateDestination.ReadOnly = true;
+            this.txtSaveStateDestination.Size = new System.Drawing.Size(350, 34);
+            this.txtSaveStateDestination.TabIndex = 0;
+            this.txtSaveStateDestination.TabStop = false;
+            // 
             // btnSaveSaveDestination
             // 
-            this.btnSaveSaveDestination._BackgroundColor = System.Drawing.SystemColors.Control;
-            this.btnSaveSaveDestination.BackColor = System.Drawing.SystemColors.Control;
             this.btnSaveSaveDestination.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnSaveSaveDestination.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(223)))), ((int)(((byte)(229)))));
             this.btnSaveSaveDestination.FlatAppearance.BorderSize = 0;
             this.btnSaveSaveDestination.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
             this.btnSaveSaveDestination.Location = new System.Drawing.Point(0, 2);
-            this.btnSaveSaveDestination.Margin = new System.Windows.Forms.Padding(1);
             this.btnSaveSaveDestination.Name = "btnSaveSaveDestination";
             this.btnSaveSaveDestination.Size = new System.Drawing.Size(80, 34);
             this.btnSaveSaveDestination.TabIndex = 2;
             this.btnSaveSaveDestination.Text = "Destination";
             // 
-            // txtSaveStateDestination
-            // 
-            this.txtSaveStateDestination.LabelText = "File";
-            this.txtSaveStateDestination.Location = new System.Drawing.Point(84, 2);
-            this.txtSaveStateDestination.MaximumSize = new System.Drawing.Size(0, 34);
-            this.txtSaveStateDestination.Name = "txtSaveStateDestination";
-            this.txtSaveStateDestination.previousText = "";
-            this.txtSaveStateDestination.ReadOnly = true;
-            this.txtSaveStateDestination.SelectionLength = 0;
-            this.txtSaveStateDestination.SelectionStart = 0;
-            this.txtSaveStateDestination.Size = new System.Drawing.Size(346, 34);
-            this.txtSaveStateDestination.TabIndex = 0;
-            this.txtSaveStateDestination.TabStop = false;
-            // 
             // pnlSaveStateOrigin
             // 
-            this.pnlSaveStateOrigin.Controls.Add(this.btnSaveStateOrigin);
             this.pnlSaveStateOrigin.Controls.Add(this.txtSaveStateOrigin);
+            this.pnlSaveStateOrigin.Controls.Add(this.btnSaveStateOrigin);
             this.pnlSaveStateOrigin.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlSaveStateOrigin.Location = new System.Drawing.Point(0, 38);
             this.pnlSaveStateOrigin.Name = "pnlSaveStateOrigin";
@@ -141,10 +141,25 @@
             this.pnlSaveStateOrigin.Size = new System.Drawing.Size(430, 38);
             this.pnlSaveStateOrigin.TabIndex = 7;
             // 
+            // txtSaveStateOrigin
+            // 
+            this.txtSaveStateOrigin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtSaveStateOrigin.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.txtSaveStateOrigin.BackgroundColorFocus = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.txtSaveStateOrigin.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtSaveStateOrigin.LabelText = "File";
+            this.txtSaveStateOrigin.Location = new System.Drawing.Point(80, 2);
+            this.txtSaveStateOrigin.MaximumSize = new System.Drawing.Size(0, 34);
+            this.txtSaveStateOrigin.Name = "txtSaveStateOrigin";
+            this.txtSaveStateOrigin.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            this.txtSaveStateOrigin.previousText = "";
+            this.txtSaveStateOrigin.ReadOnly = true;
+            this.txtSaveStateOrigin.Size = new System.Drawing.Size(350, 34);
+            this.txtSaveStateOrigin.TabIndex = 0;
+            this.txtSaveStateOrigin.TabStop = false;
+            // 
             // btnSaveStateOrigin
             // 
-            this.btnSaveStateOrigin._BackgroundColor = System.Drawing.SystemColors.Control;
-            this.btnSaveStateOrigin.BackColor = System.Drawing.SystemColors.Control;
             this.btnSaveStateOrigin.Dock = System.Windows.Forms.DockStyle.Left;
             this.btnSaveStateOrigin.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(223)))), ((int)(((byte)(229)))));
             this.btnSaveStateOrigin.FlatAppearance.BorderSize = 0;
@@ -154,20 +169,6 @@
             this.btnSaveStateOrigin.Size = new System.Drawing.Size(80, 34);
             this.btnSaveStateOrigin.TabIndex = 1;
             this.btnSaveStateOrigin.Text = "Origin";
-            // 
-            // txtSaveStateOrigin
-            // 
-            this.txtSaveStateOrigin.LabelText = "File";
-            this.txtSaveStateOrigin.Location = new System.Drawing.Point(84, 2);
-            this.txtSaveStateOrigin.MaximumSize = new System.Drawing.Size(0, 34);
-            this.txtSaveStateOrigin.Name = "txtSaveStateOrigin";
-            this.txtSaveStateOrigin.previousText = "";
-            this.txtSaveStateOrigin.ReadOnly = true;
-            this.txtSaveStateOrigin.SelectionLength = 0;
-            this.txtSaveStateOrigin.SelectionStart = 0;
-            this.txtSaveStateOrigin.Size = new System.Drawing.Size(346, 34);
-            this.txtSaveStateOrigin.TabIndex = 0;
-            this.txtSaveStateOrigin.TabStop = false;
             // 
             // pnlSaveStateTitle
             // 
@@ -185,7 +186,6 @@
             this.lblSaveStateTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSaveStateTitle.ForeColor = System.Drawing.Color.CornflowerBlue;
             this.lblSaveStateTitle.Location = new System.Drawing.Point(0, 0);
-            this.lblSaveStateTitle.Margin = new System.Windows.Forms.Padding(0);
             this.lblSaveStateTitle.Name = "lblSaveStateTitle";
             this.lblSaveStateTitle.Size = new System.Drawing.Size(430, 34);
             this.lblSaveStateTitle.TabIndex = 6;

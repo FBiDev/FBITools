@@ -7,11 +7,11 @@
         public static void Init(MainForm formDesign)
         {
             Session.SetIcon();
-            Theme.SetTheme(Theme.eTheme.Dark);
+            Theme.SetTheme(Theme.eTheme.Blue);
 
             Session.mainForm = formDesign;
             Session.mainForm.StatusBar = true;
-            Session.mainForm.Init(Session.mainForm);
+            Session.mainForm.Init();
 
             content = new MainContentForm();
             Session.mainForm.SetContentForm(content);

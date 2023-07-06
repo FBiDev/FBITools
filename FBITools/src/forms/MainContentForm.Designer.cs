@@ -30,13 +30,14 @@
         {
             this.pnlContentR = new FBITools.FlatPanelA();
             this.pnlContentL = new FBITools.FlatPanelA();
-            this.btnMemoryCardTab = new FBITools.FlatButtonA();
             this.btnSaveStateTab = new FBITools.FlatButtonA();
+            this.btnMemoryCardTab = new FBITools.FlatButtonA();
             this.pnlContentL.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlContentR
             // 
+            this.pnlContentR.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.pnlContentR.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlContentR.Location = new System.Drawing.Point(124, 0);
             this.pnlContentR.Name = "pnlContentR";
@@ -53,19 +54,7 @@
             this.pnlContentL.Location = new System.Drawing.Point(0, 0);
             this.pnlContentL.Name = "pnlContentL";
             this.pnlContentL.Size = new System.Drawing.Size(124, 262);
-            this.pnlContentL.TabIndex = 2;
-            // 
-            // btnMemoryCardTab
-            // 
-            this.btnMemoryCardTab.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnMemoryCardTab.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(223)))), ((int)(((byte)(229)))));
-            this.btnMemoryCardTab.FlatAppearance.BorderSize = 0;
-            this.btnMemoryCardTab.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
-            this.btnMemoryCardTab.Location = new System.Drawing.Point(0, 34);
-            this.btnMemoryCardTab.Name = "btnMemoryCardTab";
-            this.btnMemoryCardTab.Size = new System.Drawing.Size(124, 34);
-            this.btnMemoryCardTab.TabIndex = 1;
-            this.btnMemoryCardTab.Text = "MemoryCard";
+             this.pnlContentL.TabIndex = 2;
             // 
             // btnSaveStateTab
             // 
@@ -79,9 +68,20 @@
             this.btnSaveStateTab.TabIndex = 0;
             this.btnSaveStateTab.Text = "SaveState";
             // 
+            // btnMemoryCardTab
+            // 
+            this.btnMemoryCardTab.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnMemoryCardTab.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(223)))), ((int)(((byte)(229)))));
+            this.btnMemoryCardTab.FlatAppearance.BorderSize = 0;
+            this.btnMemoryCardTab.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
+            this.btnMemoryCardTab.Location = new System.Drawing.Point(0, 34);
+            this.btnMemoryCardTab.Name = "btnMemoryCardTab";
+            this.btnMemoryCardTab.Size = new System.Drawing.Size(124, 34);
+            this.btnMemoryCardTab.TabIndex = 1;
+            this.btnMemoryCardTab.Text = "MemoryCard";
+            // 
             // MainContentForm
             // 
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
             this.ClientSize = new System.Drawing.Size(430, 262);
             this.Controls.Add(this.pnlContentR);
             this.Controls.Add(this.pnlContentL);

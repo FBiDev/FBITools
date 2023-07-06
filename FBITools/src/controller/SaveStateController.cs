@@ -10,10 +10,7 @@ namespace FBITools
         public static void Init(Form formDesign)
         {
             Session.saveStateForm = formDesign;
-            form.Init(form);
-
-            form.Load += Load;
-            form.Shown += Shown;
+            form.Init();
 
             btnSaveStateOrigin.Click += btnSaveStateOrigin_Click;
             btnSaveSaveDestination.Click += btnSaveSaveState_Click;
@@ -32,11 +29,6 @@ namespace FBITools
                 UpdateSaveStateOrigin();
                 UpdateSaveStateDestination();
             }
-        }
-
-        static void Load(object sender, EventArgs e) { }
-        static void Shown(object sender, EventArgs e)
-        {
         }
 
         static void btnSaveStateOrigin_Click(object sender, EventArgs e)

@@ -11,14 +11,14 @@ namespace FBITools
             SelectedTheme = newTheme;
         }
 
+        protected override void LightTheme(Form f)
+        {
+            base.LightTheme(f);
+        }
+
         protected override void DarkTheme(Form f)
         {
             base.DarkTheme(f);
-
-            //if (f is ContentBaseForm)
-            //    ((ContentBaseForm)f).BackColor = Color.WhiteSmoke;
-            //if (f is MainBaseForm)
-            //    ((MainBaseForm)f).BackColor = Color.Red;
         }
     }
 }

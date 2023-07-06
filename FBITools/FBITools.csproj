@@ -67,6 +67,9 @@
     <Compile Include="src\custom_controls\FlatButtonA.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="src\custom_controls\FlatButtonB.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="src\custom_controls\FlatLabelA.cs">
       <SubType>Component</SubType>
     </Compile>

@@ -21,10 +21,12 @@ namespace FBITools
         public static void Init(Form formDesign)
         {
             Session.mainContentForm = formDesign;
-            form.Init(form);
+            form.Init();
 
             form.Load += Load;
             form.Shown += Shown;
+            form.KeyPreview = true;
+            form.KeyDown += form_KeyDown;
 
             tabSaveState = new SaveStateForm();
             tabSaveStateSize = tabSaveState.Size;
@@ -34,6 +36,17 @@ namespace FBITools
 
             btnSaveStateTab.Click += btnSaveStateTab_Click;
             btnMemoryCardTab.Click += btnMemoryCardTab_Click;
+        }
+
+        static void form_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData == Keys.A)
+            {
+                if (Theme.SelectedTheme == Theme.eTheme.Dark)
+                    Theme.SetTheme(Theme.eTheme.Light);
+                else
+                    Theme.SetTheme(Theme.eTheme.Dark);
+            }
         }
 
         static void Load(object sender, EventArgs e) { }
