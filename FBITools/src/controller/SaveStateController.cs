@@ -10,7 +10,6 @@ namespace FBITools
         public static void Init(Form formDesign)
         {
             Session.saveStateForm = formDesign;
-            form.Init();
 
             btnSaveStateOrigin.Click += btnSaveStateOrigin_Click;
             btnSaveSaveDestination.Click += btnSaveSaveState_Click;

@@ -14,7 +14,6 @@ namespace FBITools
         public static void Init(Form formDesign)
         {
             Session.memoryCardForm = formDesign;
-            form.Init();
 
             btnMcOrigin.Click += btnMcOrigin_Click;
             btnMcDestination.Click += btnMcDestination_Click;

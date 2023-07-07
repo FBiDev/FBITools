@@ -1,24 +1,19 @@
 ﻿using GNX;
-using System.Drawing;
-using System.Windows.Forms;
+
 namespace FBITools
 {
     public class Theme : GNX.Theme
     {
         public static new void SetTheme(eTheme newTheme)
         {
-            _inst = new Theme();
-            SelectedTheme = newTheme;
+            Instance = new Theme();
+            GNX.Theme.SetTheme(newTheme);
         }
 
-        protected override void LightTheme(Form f)
+        protected override void DarkFlatButton(FlatButton c)
         {
-            base.LightTheme(f);
-        }
-
-        protected override void DarkTheme(Form f)
-        {
-            base.DarkTheme(f);
+            base.DarkFlatButton(c);
+            //c.BackgroundColor = Color.Red;
         }
     }
 }

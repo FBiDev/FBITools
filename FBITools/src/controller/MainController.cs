@@ -7,7 +7,7 @@
         public static void Init(MainForm formDesign)
         {
             Session.SetIcon();
-            Theme.SetTheme(Theme.eTheme.Blue);
+            Theme.SetTheme(GNX.Theme.eTheme.Light);
 
             Session.mainForm = formDesign;
             Session.mainForm.StatusBar = true;
