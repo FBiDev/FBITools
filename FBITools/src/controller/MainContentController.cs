@@ -10,13 +10,10 @@ namespace FBITools
     public partial class MainContentController
     {
         #region MAIN
-        public static SaveStateForm tabSaveState;
-        public static Size tabSaveStateSize;
-
-        public static MemoryCardForm tabMemoryCard;
-        public static Size tabMemoryCardSize;
-
         public static FlatButtonA selectedTab;
+
+        public static SaveStateForm tabSaveState = new SaveStateForm();
+        public static MemoryCardForm tabMemoryCard = new MemoryCardForm();
 
         public static void Init(Form formDesign)
         {
@@ -27,25 +24,15 @@ namespace FBITools
             form.KeyPreview = true;
             form.KeyDown += form_KeyDown;
 
-            tabSaveState = new SaveStateForm();
-            tabSaveStateSize = tabSaveState.Size;
-
-            tabMemoryCard = new MemoryCardForm();
-            tabMemoryCardSize = tabMemoryCard.Size;
-
             btnSaveStateTab.Click += btnSaveStateTab_Click;
             btnMemoryCardTab.Click += btnMemoryCardTab_Click;
         }
 
         static void form_KeyDown(object sender, KeyEventArgs e)
         {
-            if (e.KeyData == Keys.A)
-            {
-                if (GNX.Theme.SelectedTheme == GNX.Theme.eTheme.Dark)
-                    Theme.SetTheme(GNX.Theme.eTheme.Light);
-                else
-                    Theme.SetTheme(GNX.Theme.eTheme.Dark);
-            }
+            if (e.KeyData != Keys.A) return;
+
+            GNX.Theme.DarkMode();
         }
 
         static void Load(object sender, EventArgs e) { }
@@ -73,7 +60,7 @@ namespace FBITools
             tabSaveState.Dock = DockStyle.Fill;
             tabSaveState.Show();
 
-            ResizeContent(tabSaveStateSize);
+            ResizeContent(tabSaveState.OriginalSize);
         }
 
         static void btnMemoryCardTab_Click(object sender, EventArgs e)
@@ -86,7 +73,7 @@ namespace FBITools
             tabMemoryCard.Dock = DockStyle.Fill;
             tabMemoryCard.Show();
 
-            ResizeContent(tabMemoryCardSize);
+            ResizeContent(tabMemoryCard.OriginalSize);
         }
 
         static void ResizeContent(Size content)
