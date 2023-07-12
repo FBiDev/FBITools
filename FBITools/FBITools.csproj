@@ -153,6 +153,10 @@
     <PostBuildEvent>ROBOCOPY "$(TargetDir) " "$(TargetDir)x64\referenced\ " /XF *.exe *.config *.json *.manifest $(SolutionName).pdb /XD x64 /IS /MOV 
 if %25errorlevel%25 leq 4 exit 0 else exit %25errorlevel%25</PostBuildEvent>
   </PropertyGroup>
+  <PropertyGroup>
+    <PreBuildEvent>ROBOCOPY "$(SolutionDir)..\_DLL\ " "$(ProjectDir)x64\referenced\ " "GNX.dll" /XO
+if %25errorlevel%25 leq 4 exit 0 else exit %25errorlevel%25</PreBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
