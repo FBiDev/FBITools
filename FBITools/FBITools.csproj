@@ -57,6 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="src\cmodel\Json.cs" />
     <Compile Include="src\cmodel\Session.cs" />
     <Compile Include="src\cmodel\Options.cs" />
     <Compile Include="src\cmodel\Theme.cs" />

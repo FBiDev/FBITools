@@ -2,6 +2,7 @@
 using System.IO;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using GNX;
 
 namespace FBITools
 {
@@ -34,7 +35,7 @@ namespace FBITools
         {
             if (dlgSaveStateGet.ShowDialog() == DialogResult.OK)
             {
-                Session.options.SaveState_Origin = dlgSaveStateGet.FileName;
+                Session.options.SaveState_Origin = dlgSaveStateGet.FileName.NormalizePath();
                 UpdateSaveStateOrigin();
             }
         }
@@ -43,7 +44,7 @@ namespace FBITools
         {
             if (dlgSaveStateSave.ShowDialog() == DialogResult.OK)
             {
-                Session.options.SaveState_Destination = dlgSaveStateSave.FileName;
+                Session.options.SaveState_Destination = dlgSaveStateSave.FileName.NormalizePath();
                 UpdateSaveStateDestination();
             }
         }

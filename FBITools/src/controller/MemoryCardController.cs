@@ -50,7 +50,7 @@ namespace FBITools
         {
             if (dlgMcOrigin.ShowDialog() == DialogResult.OK)
             {
-                Session.options.MemoryCard_Origin = dlgMcOrigin.FileName;
+                Session.options.MemoryCard_Origin = dlgMcOrigin.FileName.NormalizePath();
                 UpdateMcOrigin();
             }
         }
@@ -59,7 +59,7 @@ namespace FBITools
         {
             if (dlgMcDestination.ShowDialog() == DialogResult.OK)
             {
-                Session.options.MemoryCard_Destination = dlgMcDestination.FileName;
+                Session.options.MemoryCard_Destination = dlgMcDestination.FileName.NormalizePath();
                 UpdateMcDestination();
             }
         }

@@ -1,19 +1,15 @@
-﻿using GNX;
-
-namespace FBITools
+﻿namespace FBITools
 {
-    public class Theme : GNX.Theme
+    public static class Theme
     {
-        public static new void SetTheme(eTheme newTheme)
+        public static void SetTheme(GNX.Theme.eTheme newTheme)
         {
-            Instance = new Theme();
             GNX.Theme.SetTheme(newTheme);
         }
 
-        protected override void DarkFlatButton(FlatButton c)
+        public static void DarkMode()
         {
-            base.DarkFlatButton(c);
-            //c.BackgroundColor = Color.Red;
+            GNX.Theme.DarkMode();
         }
     }
 }

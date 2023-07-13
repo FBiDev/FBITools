@@ -1,9 +1,6 @@
 ﻿using System;
 using System.Drawing;
-using System.IO;
-using System.Text;
 using System.Windows.Forms;
-using Newtonsoft.Json;
 
 namespace FBITools
 {
@@ -32,7 +29,7 @@ namespace FBITools
         {
             if (e.KeyData != Keys.A) return;
 
-            GNX.Theme.DarkMode();
+            Theme.DarkMode();
         }
 
         static void Load(object sender, EventArgs e) { }
@@ -86,19 +83,12 @@ namespace FBITools
         #region Common
         public static bool LoadConfigFile()
         {
-            if (File.Exists(Session.options.File))
-            {
-                var json_data = File.ReadAllText(Session.options.File);
-                Session.options = JsonConvert.DeserializeObject<Options>(json_data);
-                return true;
-            }
-            return false;
+            return Json.Load(ref Session.options, Session.options.File);
         }
 
         public static void UpdateConfigFile()
         {
-            var json_data = JsonConvert.SerializeObject(Session.options, Formatting.Indented);
-            File.WriteAllText(Session.options.File, json_data, Encoding.UTF8);
+            Json.Write(Session.options, Session.options.File);
         }
         #endregion
     }
