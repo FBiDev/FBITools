@@ -18,7 +18,7 @@
 
         static void mainForm_Shown(object sender, System.EventArgs e)
         {
-            Theme.SetTheme(GNX.Theme.eTheme.Empty);
+            Theme.SetTheme(GNX.Theme.eTheme.Dark);
         }
     }
 }

@@ -86,9 +86,9 @@ namespace FBITools
             return Json.Load(ref Session.options, Session.options.File);
         }
 
-        public static void UpdateConfigFile()
+        public static bool UpdateConfigFile()
         {
-            Json.Write(Session.options, Session.options.File);
+            return Json.Save(Session.options, Session.options.File);
         }
         #endregion
     }

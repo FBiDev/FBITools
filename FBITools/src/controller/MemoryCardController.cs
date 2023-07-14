@@ -10,6 +10,7 @@ namespace FBITools
     public partial class MemoryCardController
     {
         static bool backupStarted;
+        static TaskController BackupTask = new TaskController();
 
         public static void Init(Form formDesign)
         {
@@ -80,6 +81,7 @@ namespace FBITools
 
             if (backupStarted)
             {
+                BackupTask.Reset();
                 btnMcBackup.Text = "Backup Stop";
                 lblMcBackup.Text = "MemoryCard Backup Started!";
 
@@ -88,6 +90,7 @@ namespace FBITools
             }
             else
             {
+                BackupTask.Cancel();
                 btnMcBackup.Text = "Backup Start";
                 lblMcBackup.Text = "MemoryCard Backup Stoped!";
             }
@@ -95,7 +98,7 @@ namespace FBITools
 
         static async void lblMcBackup_TextChanged(object sender, EventArgs e)
         {
-            await Task.Delay(2000);
+            await TaskController.Delay(4);
             lblMcBackup.Text = "";
         }
 
@@ -133,28 +136,16 @@ namespace FBITools
 
         static async Task BackupMemoryCard()
         {
-            await Task.Delay(2000);
-
             do
             {
-                DateTime? NOW = DateTime.Now;
-                var NOWString = NOW.ToDB();
-                NOWString = NOWString.Substring(0, NOWString.Length - 4);
+                await BackupTask.DelayStart(Session.options.MemoryCard_Timer * 60);
+                if (BackupTask.IsCanceled) return;
 
                 var fileSource = Session.options.MemoryCard_Origin;
-
-                var fileDestFolder = Path.GetDirectoryName(Session.options.MemoryCard_Destination);
-                var fileDestName = Path.GetFileNameWithoutExtension(Session.options.MemoryCard_Destination);
-                var fileDestExt = Path.GetExtension(Session.options.MemoryCard_Destination);
-
-                var fileDestination = fileDestName + "(" + NOWString + ")" + fileDestExt;
-                fileDestination = fileDestination.Replace("/", "-").Replace(":", "-").Replace("'", "");
-                fileDestination = Path.Combine(fileDestFolder, fileDestination);
+                var fileDestination = Session.options.MemoryCard_Destination.PathAddDateTime();
 
                 File.Copy(fileSource, fileDestination, true);
                 lblMcBackup.Text = "MemoryCard Backup Saved!";
-
-                await Task.Delay((Session.options.MemoryCard_Timer * 1000) * 60);
             } while (backupStarted);
         }
     }

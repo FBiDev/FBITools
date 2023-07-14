@@ -1,6 +1,5 @@
 ﻿using System;
 using System.IO;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using GNX;
 
@@ -64,7 +63,7 @@ namespace FBITools
 
         static async void lblSaveStateCopy_TextChanged(object sender, EventArgs e)
         {
-            await Task.Delay(2000);
+            await TaskController.Delay(4);
             lblSaveStateCopy.Text = "";
         }
 

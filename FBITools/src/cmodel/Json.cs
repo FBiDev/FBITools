@@ -7,7 +7,7 @@ namespace FBITools
 {
     public static class Json
     {
-        public static bool Write(object obj, string filePath, Formatting format = Formatting.Indented)
+        public static bool Save(object obj, string filePath, Formatting format = Formatting.Indented)
         {
             try
             {
