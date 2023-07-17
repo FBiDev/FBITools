@@ -11,82 +11,86 @@ namespace FBITools
         {
             Session.saveStateForm = formDesign;
 
-            btnSaveStateOrigin.Click += btnSaveStateOrigin_Click;
-            btnSaveSaveDestination.Click += btnSaveSaveState_Click;
-            btnSaveStateCopy.Click += btnSaveStateCopy_Click;
-            lblSaveStateCopy.TextChanged += lblSaveStateCopy_TextChanged;
+            btnOrigin.Click += btnOrigin_Click;
+            btnDestination.Click += btnDestination_Click;
+            btnCopy.Click += btnCopy_Click;
+            lblCopy.TextChanged += lblCopy_TextChanged;
 
-            dlgSaveStateGet.ValidateNames = true;
-            dlgSaveStateGet.CheckFileExists = true;
-            dlgSaveStateGet.CheckPathExists = true;
-            dlgSaveStateGet.FileName = "";
+            dlgOrigin.ValidateNames = true;
+            dlgOrigin.CheckFileExists = true;
+            dlgOrigin.CheckPathExists = true;
+            dlgOrigin.FileName = "";
 
-            dlgSaveStateSave.Filter = "All Files (*.*)|*.*";
+            dlgDestination.Filter = "All Files (*.*)|*.*";
 
             if (MainContentController.LoadConfigFile())
             {
-                UpdateSaveStateOrigin();
-                UpdateSaveStateDestination();
+                UpdateOrigin();
+                UpdateDestination();
             }
         }
 
-        static void btnSaveStateOrigin_Click(object sender, EventArgs e)
+        static void btnOrigin_Click(object sender, EventArgs e)
         {
-            if (dlgSaveStateGet.ShowDialog() == DialogResult.OK)
+            if (dlgOrigin.ShowDialog() == DialogResult.OK)
             {
-                Session.options.SaveState_Origin = dlgSaveStateGet.FileName.NormalizePath();
-                UpdateSaveStateOrigin();
+                Session.options.SaveState_Origin = dlgOrigin.FileName.NormalizePath();
+                UpdateOrigin();
+
+                Session.options.SaveState_Destination = (Path.Combine(Path.GetDirectoryName(txtDestination.Text),
+                                                                      dlgOrigin.FileName)).NormalizePath();
+                UpdateDestination();
             }
         }
 
-        static void btnSaveSaveState_Click(object sender, EventArgs e)
+        static void btnDestination_Click(object sender, EventArgs e)
         {
-            if (dlgSaveStateSave.ShowDialog() == DialogResult.OK)
+            if (dlgDestination.ShowDialog() == DialogResult.OK)
             {
-                Session.options.SaveState_Destination = dlgSaveStateSave.FileName.NormalizePath();
-                UpdateSaveStateDestination();
+                Session.options.SaveState_Destination = dlgDestination.FileName.NormalizePath();
+                UpdateDestination();
             }
         }
 
-        static void btnSaveStateCopy_Click(object sender, EventArgs e)
+        static void btnCopy_Click(object sender, EventArgs e)
         {
-            if (IsSaveStateCopyInvalid())
+            if (IsCopyInvalid())
             {
-                lblSaveStateCopy.Text = "Save State Failed!";
+                lblCopy.Text = "Save State Copy Failed!";
                 return;
             }
 
             CopySaveState();
-            lblSaveStateCopy.Text = "Save State Copied!";
+            lblCopy.Text = "Save State Copied!";
             MainContentController.UpdateConfigFile();
         }
 
-        static async void lblSaveStateCopy_TextChanged(object sender, EventArgs e)
+        static async void lblCopy_TextChanged(object sender, EventArgs e)
         {
             await TaskController.Delay(4);
-            lblSaveStateCopy.Text = "";
+            lblCopy.Text = "";
         }
 
-        static void UpdateSaveStateOrigin()
+        static void UpdateOrigin()
         {
-            txtSaveStateOrigin.Text = Session.options.SaveState_Origin;
+            txtOrigin.Text = Session.options.SaveState_Origin;
 
-            dlgSaveStateGet.InitialDirectory = Path.GetDirectoryName(Session.options.SaveState_Origin);
-            dlgSaveStateGet.FileName = Path.GetFileName(Session.options.SaveState_Origin);
+            dlgOrigin.InitialDirectory = Path.GetDirectoryName(Session.options.SaveState_Origin);
+            dlgOrigin.FileName = Path.GetFileName(Session.options.SaveState_Origin);
 
-            if (string.IsNullOrWhiteSpace(dlgSaveStateSave.FileName))
-                dlgSaveStateSave.FileName = Session.options.SaveState_Origin;
+            if (string.IsNullOrWhiteSpace(dlgDestination.FileName))
+                dlgDestination.FileName = Session.options.SaveState_Origin;
         }
 
-        static void UpdateSaveStateDestination()
+        static void UpdateDestination()
         {
-            txtSaveStateDestination.Text = Session.options.SaveState_Destination;
+            txtDestination.Text = Session.options.SaveState_Destination;
 
-            dlgSaveStateSave.InitialDirectory = Path.GetDirectoryName(Session.options.SaveState_Destination);
-            dlgSaveStateSave.FileName = Path.GetFileName(Session.options.SaveState_Destination);
+            dlgDestination.InitialDirectory = Path.GetDirectoryName(Session.options.SaveState_Destination);
+            dlgDestination.FileName = Path.GetFileName(Session.options.SaveState_Destination);
         }
 
-        static bool IsSaveStateCopyInvalid()
+        static bool IsCopyInvalid()
         {
             return string.IsNullOrWhiteSpace(Session.options.SaveState_Origin)
             || string.IsNullOrWhiteSpace(Session.options.SaveState_Destination)

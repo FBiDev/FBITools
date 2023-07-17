@@ -11,7 +11,7 @@
             Session.mainForm.StatusBar = true;
 
             content = new MainContentForm();
-            Session.mainForm.SetContentForm(content);
+            Session.mainForm.SetMainFormContent(content);
 
             Session.mainForm.Shown += mainForm_Shown;
         }

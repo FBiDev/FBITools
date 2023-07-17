@@ -50,26 +50,14 @@ namespace FBITools
         static void btnSaveStateTab_Click(object sender, EventArgs e)
         {
             SetSelectedTab(btnSaveStateTab);
-
-            pnlContentR.Controls.Clear();
-            pnlContentR.Controls.Add(tabSaveState);
-
-            tabSaveState.Dock = DockStyle.Fill;
-            tabSaveState.Show();
-
+            SetContentForm(tabSaveState);
             ResizeContent(tabSaveState.OriginalSize);
         }
 
         static void btnMemoryCardTab_Click(object sender, EventArgs e)
         {
             SetSelectedTab(btnMemoryCardTab);
-
-            pnlContentR.Controls.Clear();
-            pnlContentR.Controls.Add(tabMemoryCard);
-
-            tabMemoryCard.Dock = DockStyle.Fill;
-            tabMemoryCard.Show();
-
+            SetContentForm(tabMemoryCard);
             ResizeContent(tabMemoryCard.OriginalSize);
         }
 
@@ -81,6 +69,15 @@ namespace FBITools
         #endregion
 
         #region Common
+        public static void SetContentForm(Form frm)
+        {
+            pnlContentR.Controls.Clear();
+            pnlContentR.Controls.Add(frm);
+
+            frm.Dock = DockStyle.Fill;
+            frm.Show();
+        }
+
         public static bool LoadConfigFile()
         {
             return Json.Load(ref Session.options, Session.options.File);

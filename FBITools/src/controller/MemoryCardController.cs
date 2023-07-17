@@ -16,74 +16,78 @@ namespace FBITools
         {
             Session.memoryCardForm = formDesign;
 
-            btnMcOrigin.Click += btnMcOrigin_Click;
-            btnMcDestination.Click += btnMcDestination_Click;
-            btnMcBackup.Click += btnMcBackup_Click;
-            lblMcBackup.TextChanged += lblMcBackup_TextChanged;
-            cboMcTimer.SelectedIndexChanged += cboMcTimer_SelectedIndexChanged;
+            btnOrigin.Click += btnOrigin_Click;
+            btnDestination.Click += btnDestination_Click;
+            btnBackup.Click += btnBackup_Click;
+            lblResult.TextChanged += lblBackup_TextChanged;
+            cboTimer.SelectedIndexChanged += cboTimer_SelectedIndexChanged;
 
-            dlgMcOrigin.ValidateNames = true;
-            dlgMcOrigin.CheckFileExists = true;
-            dlgMcOrigin.CheckPathExists = true;
-            dlgMcOrigin.FileName = "";
+            dlgOrigin.ValidateNames = true;
+            dlgOrigin.CheckFileExists = true;
+            dlgOrigin.CheckPathExists = true;
+            dlgOrigin.FileName = "";
 
-            dlgMcDestination.Filter = "All Files (*.*)|*.*";
+            dlgDestination.Filter = "All Files (*.*)|*.*";
 
             var timerItems = new List<int> { 0, 1, 5, 10, 15, 30, 60, 120, 180 };
-            cboMcTimer.DataSource = timerItems;
+            cboTimer.DataSource = timerItems;
 
             if (MainContentController.LoadConfigFile())
             {
-                UpdateMcOrigin();
-                UpdateMcDestination();
-                UpdateMcTimer();
+                UpdateOrigin();
+                UpdateDestination();
+                UpdateTimer();
             }
 
-            if (cboMcTimer.SelectedIndex < 0) cboMcTimer.SelectedIndex = 0;
+            if (cboTimer.SelectedIndex < 0) cboTimer.SelectedIndex = 0;
         }
 
-        static void cboMcTimer_SelectedIndexChanged(object sender, EventArgs e)
+        static void btnOrigin_Click(object sender, EventArgs e)
         {
-            Session.options.MemoryCard_Timer = cboMcTimer.SelectedValueInt;
-        }
-
-        static void btnMcOrigin_Click(object sender, EventArgs e)
-        {
-            if (dlgMcOrigin.ShowDialog() == DialogResult.OK)
+            if (dlgOrigin.ShowDialog() == DialogResult.OK)
             {
-                Session.options.MemoryCard_Origin = dlgMcOrigin.FileName.NormalizePath();
-                UpdateMcOrigin();
-            }
-        }
+                Session.options.MemoryCard_Origin = dlgOrigin.FileName.NormalizePath();
+                UpdateOrigin();
 
-        static void btnMcDestination_Click(object sender, EventArgs e)
-        {
-            if (dlgMcDestination.ShowDialog() == DialogResult.OK)
-            {
-                Session.options.MemoryCard_Destination = dlgMcDestination.FileName.NormalizePath();
-                UpdateMcDestination();
+                Session.options.MemoryCard_Destination = (Path.Combine(Path.GetDirectoryName(txtDestination.Text),
+                                                                       dlgOrigin.FileName)).NormalizePath();
+                UpdateDestination();
             }
         }
 
-        static async void btnMcBackup_Click(object sender, EventArgs e)
+        static void btnDestination_Click(object sender, EventArgs e)
         {
-            if (IsMcBackupInvalid())
+            if (dlgDestination.ShowDialog() == DialogResult.OK)
             {
-                lblMcBackup.Text = "MemoryCard Backup Failed!";
+                Session.options.MemoryCard_Destination = dlgDestination.FileName.NormalizePath();
+                UpdateDestination();
+            }
+        }
+
+        static void cboTimer_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            Session.options.MemoryCard_Timer = cboTimer.SelectedValueInt;
+        }
+
+        static async void btnBackup_Click(object sender, EventArgs e)
+        {
+            if (IsBackupInvalid())
+            {
+                lblResult.Text = "MemoryCard Backup Failed!";
                 return;
             }
 
             backupStarted = !backupStarted;
 
-            pnlMcOrigin.Enabled = !backupStarted;
-            pnlMcDestination.Enabled = !backupStarted;
-            pnlMcTimer.Enabled = !backupStarted;
+            pnlOrigin.Enabled = !backupStarted;
+            pnlDestination.Enabled = !backupStarted;
+            pnlTimer.Enabled = !backupStarted;
 
             if (backupStarted)
             {
                 BackupTask.Reset();
-                btnMcBackup.Text = "Backup Stop";
-                lblMcBackup.Text = "MemoryCard Backup Started!";
+                btnBackup.Text = "Backup Stop";
+                lblResult.Text = "MemoryCard Backup Started!";
 
                 MainContentController.UpdateConfigFile();
                 await BackupMemoryCard();
@@ -91,42 +95,42 @@ namespace FBITools
             else
             {
                 BackupTask.Cancel();
-                btnMcBackup.Text = "Backup Start";
-                lblMcBackup.Text = "MemoryCard Backup Stoped!";
+                btnBackup.Text = "Backup Start";
+                lblResult.Text = "MemoryCard Backup Stoped!";
             }
         }
 
-        static async void lblMcBackup_TextChanged(object sender, EventArgs e)
+        static async void lblBackup_TextChanged(object sender, EventArgs e)
         {
             await TaskController.Delay(4);
-            lblMcBackup.Text = "";
+            lblResult.Text = "";
         }
 
-        static void UpdateMcOrigin()
+        static void UpdateOrigin()
         {
-            txtMcOrigin.Text = Session.options.MemoryCard_Origin;
+            txtOrigin.Text = Session.options.MemoryCard_Origin;
 
-            dlgMcOrigin.InitialDirectory = Path.GetDirectoryName(Session.options.MemoryCard_Origin);
-            dlgMcOrigin.FileName = Path.GetFileName(Session.options.MemoryCard_Origin);
+            dlgOrigin.InitialDirectory = Path.GetDirectoryName(Session.options.MemoryCard_Origin);
+            dlgOrigin.FileName = Path.GetFileName(Session.options.MemoryCard_Origin);
 
-            if (string.IsNullOrWhiteSpace(dlgMcDestination.FileName))
-                dlgMcDestination.FileName = Session.options.MemoryCard_Origin;
+            if (string.IsNullOrWhiteSpace(dlgDestination.FileName))
+                dlgDestination.FileName = Session.options.MemoryCard_Origin;
         }
 
-        static void UpdateMcDestination()
+        static void UpdateDestination()
         {
-            txtMcDestination.Text = Session.options.MemoryCard_Destination;
+            txtDestination.Text = Session.options.MemoryCard_Destination;
 
-            dlgMcDestination.InitialDirectory = Path.GetDirectoryName(Session.options.MemoryCard_Destination);
-            dlgMcDestination.FileName = Path.GetFileName(Session.options.MemoryCard_Destination);
+            dlgDestination.InitialDirectory = Path.GetDirectoryName(Session.options.MemoryCard_Destination);
+            dlgDestination.FileName = Path.GetFileName(Session.options.MemoryCard_Destination);
         }
 
-        static void UpdateMcTimer()
+        static void UpdateTimer()
         {
-            cboMcTimer.SelectedItem = Session.options.MemoryCard_Timer;
+            cboTimer.SelectedItem = Session.options.MemoryCard_Timer;
         }
 
-        static bool IsMcBackupInvalid()
+        static bool IsBackupInvalid()
         {
             return string.IsNullOrWhiteSpace(Session.options.MemoryCard_Origin)
             || string.IsNullOrWhiteSpace(Session.options.MemoryCard_Destination)
@@ -145,7 +149,7 @@ namespace FBITools
                 var fileDestination = Session.options.MemoryCard_Destination.PathAddDateTime();
 
                 File.Copy(fileSource, fileDestination, true);
-                lblMcBackup.Text = "MemoryCard Backup Saved!";
+                lblResult.Text = "MemoryCard Backup Saved!";
             } while (backupStarted);
         }
     }

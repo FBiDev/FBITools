@@ -6,14 +6,16 @@ namespace FBITools
     {
         static SaveStateForm form { get { return (SaveStateForm)Session.saveStateForm; } }
 
-        static FlatButtonA btnSaveStateOrigin { get { return form.btnSaveStateOrigin; } }
-        static FlatTextBoxA txtSaveStateOrigin { get { return form.txtSaveStateOrigin; } }
-        static FlatButtonA btnSaveSaveDestination { get { return form.btnSaveSaveDestination; } }
-        static FlatTextBoxA txtSaveStateDestination { get { return form.txtSaveStateDestination; } }
-        static FlatButtonA btnSaveStateCopy { get { return form.btnSaveStateCopy; } }
-        static FlatLabelA lblSaveStateCopy { get { return form.lblSaveStateCopy; } }
+        static FlatButtonA btnOrigin { get { return form.btnOrigin; } }
+        static FlatTextBoxA txtOrigin { get { return form.txtOrigin; } }
 
-        static OpenFileDialog dlgSaveStateGet { get { return form.dlgSaveStateGet; } }
-        static SaveFileDialog dlgSaveStateSave { get { return form.dlgSaveStateSave; } }
+        static FlatButtonA btnDestination { get { return form.btnDestination; } }
+        static FlatTextBoxA txtDestination { get { return form.txtDestination; } }
+
+        static FlatButtonA btnCopy { get { return form.btnCopy; } }
+        static FlatLabelA lblCopy { get { return form.lblResult; } }
+
+        static OpenFileDialog dlgOrigin { get { return form.dlgOrigin; } }
+        static SaveFileDialog dlgDestination { get { return form.dlgDestination; } }
     }
 }

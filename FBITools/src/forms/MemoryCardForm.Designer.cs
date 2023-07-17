@@ -28,231 +28,240 @@ namespace FBITools
         /// </summary>
         private void InitializeComponent()
         {
-            this.dlgMcOrigin = new System.Windows.Forms.OpenFileDialog();
-            this.dlgMcDestination = new System.Windows.Forms.SaveFileDialog();
+            this.dlgOrigin = new System.Windows.Forms.OpenFileDialog();
+            this.dlgDestination = new System.Windows.Forms.SaveFileDialog();
             this.pnlResult = new FBITools.FlatPanelA();
-            this.lblMcBackup = new FBITools.FlatLabelA();
-            this.pnlMcBackup = new FBITools.FlatPanelA();
-            this.btnMcBackup = new FBITools.FlatButtonA();
-            this.pnlMcTimer = new FBITools.FlatPanelA();
-            this.cboMcTimer = new FBITools.FlatComboBoxA();
-            this.pnlMcDestination = new FBITools.FlatPanelA();
-            this.txtMcDestination = new FBITools.FlatTextBoxA();
-            this.btnMcDestination = new FBITools.FlatButtonA();
-            this.pnlMcOrigin = new FBITools.FlatPanelA();
-            this.txtMcOrigin = new FBITools.FlatTextBoxA();
-            this.btnMcOrigin = new FBITools.FlatButtonA();
-            this.pnlMcTitle = new FBITools.FlatPanelA();
-            this.lblMcTitle = new FBITools.FlatLabelA();
+            this.lblResult = new FBITools.FlatLabelA();
+            this.pnlBackup = new FBITools.FlatPanelA();
+            this.btnBackup = new FBITools.FlatButtonA();
+            this.pnlTimer = new FBITools.FlatPanelA();
+            this.cboTimer = new FBITools.FlatComboBoxA();
+            this.pnlDestination = new FBITools.FlatPanelA();
+            this.txtDestination = new FBITools.FlatTextBoxA();
+            this.btnDestination = new FBITools.FlatButtonA();
+            this.pnlOrigin = new FBITools.FlatPanelA();
+            this.txtOrigin = new FBITools.FlatTextBoxA();
+            this.btnOrigin = new FBITools.FlatButtonA();
+            this.pnlTitle = new FBITools.FlatPanelA();
+            this.lblTitle = new FBITools.FlatLabelA();
             this.pnlResult.SuspendLayout();
-            this.pnlMcBackup.SuspendLayout();
-            this.pnlMcTimer.SuspendLayout();
-            this.pnlMcDestination.SuspendLayout();
-            this.pnlMcOrigin.SuspendLayout();
-            this.pnlMcTitle.SuspendLayout();
+            this.pnlBackup.SuspendLayout();
+            this.pnlTimer.SuspendLayout();
+            this.pnlDestination.SuspendLayout();
+            this.pnlOrigin.SuspendLayout();
+            this.pnlTitle.SuspendLayout();
             this.SuspendLayout();
             // 
             // pnlResult
             // 
-            this.pnlResult.Controls.Add(this.lblMcBackup);
+            this.pnlResult.Controls.Add(this.lblResult);
             this.pnlResult.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlResult.Location = new System.Drawing.Point(0, 190);
             this.pnlResult.Name = "pnlResult";
+            this.pnlResult.OriginalBackColor = System.Drawing.Color.Empty;
             this.pnlResult.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
             this.pnlResult.Size = new System.Drawing.Size(430, 72);
             this.pnlResult.TabIndex = 0;
             // 
-            // lblMcBackup
+            // lblResult
             // 
-            this.lblMcBackup.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblMcBackup.Location = new System.Drawing.Point(0, 2);
-            this.lblMcBackup.Name = "lblMcBackup";
-            this.lblMcBackup.Size = new System.Drawing.Size(430, 70);
-            this.lblMcBackup.TabIndex = 5;
-            this.lblMcBackup.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblResult.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblResult.Location = new System.Drawing.Point(0, 2);
+            this.lblResult.Name = "lblResult";
+            this.lblResult.OriginalForeColor = System.Drawing.Color.Empty;
+            this.lblResult.Size = new System.Drawing.Size(430, 70);
+            this.lblResult.TabIndex = 5;
+            this.lblResult.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // pnlMcBackup
+            // pnlBackup
             // 
-            this.pnlMcBackup.Controls.Add(this.btnMcBackup);
-            this.pnlMcBackup.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlMcBackup.Location = new System.Drawing.Point(0, 152);
-            this.pnlMcBackup.Name = "pnlMcBackup";
-            this.pnlMcBackup.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
-            this.pnlMcBackup.Size = new System.Drawing.Size(430, 38);
-            this.pnlMcBackup.TabIndex = 9;
+            this.pnlBackup.Controls.Add(this.btnBackup);
+            this.pnlBackup.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlBackup.Location = new System.Drawing.Point(0, 152);
+            this.pnlBackup.Name = "pnlBackup";
+            this.pnlBackup.OriginalBackColor = System.Drawing.Color.Empty;
+            this.pnlBackup.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
+            this.pnlBackup.Size = new System.Drawing.Size(430, 38);
+            this.pnlBackup.TabIndex = 9;
             // 
-            // btnMcBackup
+            // btnBackup
             // 
-            this.btnMcBackup.Dock = System.Windows.Forms.DockStyle.Top;
-            this.btnMcBackup.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(223)))), ((int)(((byte)(229)))));
-            this.btnMcBackup.FlatAppearance.BorderSize = 0;
-            this.btnMcBackup.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
-            this.btnMcBackup.Location = new System.Drawing.Point(0, 2);
-            this.btnMcBackup.Name = "btnMcBackup";
-            this.btnMcBackup.Padding = new System.Windows.Forms.Padding(2);
-            this.btnMcBackup.Size = new System.Drawing.Size(430, 34);
-            this.btnMcBackup.TabIndex = 5;
-            this.btnMcBackup.Text = "Backup Start";
+            this.btnBackup.Dock = System.Windows.Forms.DockStyle.Top;
+            this.btnBackup.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(223)))), ((int)(((byte)(229)))));
+            this.btnBackup.FlatAppearance.BorderSize = 0;
+            this.btnBackup.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
+            this.btnBackup.Location = new System.Drawing.Point(0, 2);
+            this.btnBackup.Name = "btnBackup";
+            this.btnBackup.Padding = new System.Windows.Forms.Padding(2);
+            this.btnBackup.Size = new System.Drawing.Size(430, 34);
+            this.btnBackup.TabIndex = 5;
+            this.btnBackup.Text = "Backup Start";
             // 
-            // pnlMcTimer
+            // pnlTimer
             // 
-            this.pnlMcTimer.Controls.Add(this.cboMcTimer);
-            this.pnlMcTimer.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlMcTimer.Location = new System.Drawing.Point(0, 114);
-            this.pnlMcTimer.Name = "pnlMcTimer";
-            this.pnlMcTimer.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
-            this.pnlMcTimer.Size = new System.Drawing.Size(430, 38);
-            this.pnlMcTimer.TabIndex = 12;
+            this.pnlTimer.Controls.Add(this.cboTimer);
+            this.pnlTimer.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTimer.Location = new System.Drawing.Point(0, 114);
+            this.pnlTimer.Name = "pnlTimer";
+            this.pnlTimer.OriginalBackColor = System.Drawing.Color.Empty;
+            this.pnlTimer.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
+            this.pnlTimer.Size = new System.Drawing.Size(430, 38);
+            this.pnlTimer.TabIndex = 12;
             // 
-            // cboMcTimer
+            // cboTimer
             // 
-            this.cboMcTimer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
-            this.cboMcTimer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cboMcTimer.LabelText = "Timer (Minutes)";
-            this.cboMcTimer.Location = new System.Drawing.Point(0, 2);
-            this.cboMcTimer.MaximumSize = new System.Drawing.Size(0, 34);
-            this.cboMcTimer.Name = "cboMcTimer";
-            this.cboMcTimer.Padding = new System.Windows.Forms.Padding(84, 0, 0, 0);
-            this.cboMcTimer.Size = new System.Drawing.Size(430, 34);
-            this.cboMcTimer.TabIndex = 3;
+            this.cboTimer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
+            this.cboTimer.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cboTimer.LabelText = "Timer (Minutes)";
+            this.cboTimer.Location = new System.Drawing.Point(0, 2);
+            this.cboTimer.MaximumSize = new System.Drawing.Size(0, 34);
+            this.cboTimer.Name = "cboTimer";
+            this.cboTimer.Padding = new System.Windows.Forms.Padding(84, 0, 0, 0);
+            this.cboTimer.Size = new System.Drawing.Size(430, 34);
+            this.cboTimer.TabIndex = 3;
             // 
-            // pnlMcDestination
+            // pnlDestination
             // 
-            this.pnlMcDestination.Controls.Add(this.txtMcDestination);
-            this.pnlMcDestination.Controls.Add(this.btnMcDestination);
-            this.pnlMcDestination.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlMcDestination.Location = new System.Drawing.Point(0, 76);
-            this.pnlMcDestination.Name = "pnlMcDestination";
-            this.pnlMcDestination.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
-            this.pnlMcDestination.Size = new System.Drawing.Size(430, 38);
-            this.pnlMcDestination.TabIndex = 8;
+            this.pnlDestination.Controls.Add(this.txtDestination);
+            this.pnlDestination.Controls.Add(this.btnDestination);
+            this.pnlDestination.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlDestination.Location = new System.Drawing.Point(0, 76);
+            this.pnlDestination.Name = "pnlDestination";
+            this.pnlDestination.OriginalBackColor = System.Drawing.Color.Empty;
+            this.pnlDestination.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
+            this.pnlDestination.Size = new System.Drawing.Size(430, 38);
+            this.pnlDestination.TabIndex = 8;
             // 
-            // txtMcDestination
+            // txtDestination
             // 
-            this.txtMcDestination.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtMcDestination.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtMcDestination.LabelText = "File";
-            this.txtMcDestination.Location = new System.Drawing.Point(80, 2);
-            this.txtMcDestination.MaximumSize = new System.Drawing.Size(0, 34);
-            this.txtMcDestination.Name = "txtMcDestination";
-            this.txtMcDestination.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
-            this.txtMcDestination.previousText = "";
-            this.txtMcDestination.ReadOnly = true;
-            this.txtMcDestination.Size = new System.Drawing.Size(350, 34);
-            this.txtMcDestination.TabIndex = 3;
-            this.txtMcDestination.TabStop = false;
+            this.txtDestination.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtDestination.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtDestination.LabelText = "File";
+            this.txtDestination.Location = new System.Drawing.Point(80, 2);
+            this.txtDestination.MaximumSize = new System.Drawing.Size(0, 34);
+            this.txtDestination.Name = "txtDestination";
+            this.txtDestination.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            this.txtDestination.previousText = "";
+            this.txtDestination.ReadOnly = true;
+            this.txtDestination.Size = new System.Drawing.Size(350, 34);
+            this.txtDestination.TabIndex = 3;
+            this.txtDestination.TabStop = false;
             // 
-            // btnMcDestination
+            // btnDestination
             // 
-            this.btnMcDestination.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnMcDestination.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(223)))), ((int)(((byte)(229)))));
-            this.btnMcDestination.FlatAppearance.BorderSize = 0;
-            this.btnMcDestination.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
-            this.btnMcDestination.Location = new System.Drawing.Point(0, 2);
-            this.btnMcDestination.Margin = new System.Windows.Forms.Padding(1);
-            this.btnMcDestination.Name = "btnMcDestination";
-            this.btnMcDestination.Size = new System.Drawing.Size(80, 34);
-            this.btnMcDestination.TabIndex = 2;
-            this.btnMcDestination.Text = "Destination";
+            this.btnDestination.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnDestination.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(223)))), ((int)(((byte)(229)))));
+            this.btnDestination.FlatAppearance.BorderSize = 0;
+            this.btnDestination.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
+            this.btnDestination.Location = new System.Drawing.Point(0, 2);
+            this.btnDestination.Margin = new System.Windows.Forms.Padding(1);
+            this.btnDestination.Name = "btnDestination";
+            this.btnDestination.Size = new System.Drawing.Size(80, 34);
+            this.btnDestination.TabIndex = 2;
+            this.btnDestination.Text = "Destination";
             // 
-            // pnlMcOrigin
+            // pnlOrigin
             // 
-            this.pnlMcOrigin.Controls.Add(this.txtMcOrigin);
-            this.pnlMcOrigin.Controls.Add(this.btnMcOrigin);
-            this.pnlMcOrigin.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlMcOrigin.Location = new System.Drawing.Point(0, 38);
-            this.pnlMcOrigin.Name = "pnlMcOrigin";
-            this.pnlMcOrigin.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
-            this.pnlMcOrigin.Size = new System.Drawing.Size(430, 38);
-            this.pnlMcOrigin.TabIndex = 7;
+            this.pnlOrigin.Controls.Add(this.txtOrigin);
+            this.pnlOrigin.Controls.Add(this.btnOrigin);
+            this.pnlOrigin.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlOrigin.Location = new System.Drawing.Point(0, 38);
+            this.pnlOrigin.Name = "pnlOrigin";
+            this.pnlOrigin.OriginalBackColor = System.Drawing.Color.Empty;
+            this.pnlOrigin.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
+            this.pnlOrigin.Size = new System.Drawing.Size(430, 38);
+            this.pnlOrigin.TabIndex = 7;
             // 
-            // txtMcOrigin
+            // txtOrigin
             // 
-            this.txtMcOrigin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtMcOrigin.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtMcOrigin.LabelText = "File";
-            this.txtMcOrigin.Location = new System.Drawing.Point(80, 2);
-            this.txtMcOrigin.MaximumSize = new System.Drawing.Size(0, 34);
-            this.txtMcOrigin.Name = "txtMcOrigin";
-            this.txtMcOrigin.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
-            this.txtMcOrigin.previousText = "";
-            this.txtMcOrigin.ReadOnly = true;
-            this.txtMcOrigin.Size = new System.Drawing.Size(350, 34);
-            this.txtMcOrigin.TabIndex = 2;
-            this.txtMcOrigin.TabStop = false;
+            this.txtOrigin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
+            this.txtOrigin.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.txtOrigin.LabelText = "File";
+            this.txtOrigin.Location = new System.Drawing.Point(80, 2);
+            this.txtOrigin.MaximumSize = new System.Drawing.Size(0, 34);
+            this.txtOrigin.Name = "txtOrigin";
+            this.txtOrigin.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
+            this.txtOrigin.previousText = "";
+            this.txtOrigin.ReadOnly = true;
+            this.txtOrigin.Size = new System.Drawing.Size(350, 34);
+            this.txtOrigin.TabIndex = 2;
+            this.txtOrigin.TabStop = false;
             // 
-            // btnMcOrigin
+            // btnOrigin
             // 
-            this.btnMcOrigin.Dock = System.Windows.Forms.DockStyle.Left;
-            this.btnMcOrigin.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(223)))), ((int)(((byte)(229)))));
-            this.btnMcOrigin.FlatAppearance.BorderSize = 0;
-            this.btnMcOrigin.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
-            this.btnMcOrigin.Location = new System.Drawing.Point(0, 2);
-            this.btnMcOrigin.Name = "btnMcOrigin";
-            this.btnMcOrigin.Size = new System.Drawing.Size(80, 34);
-            this.btnMcOrigin.TabIndex = 1;
-            this.btnMcOrigin.Text = "Origin";
+            this.btnOrigin.Dock = System.Windows.Forms.DockStyle.Left;
+            this.btnOrigin.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(223)))), ((int)(((byte)(229)))));
+            this.btnOrigin.FlatAppearance.BorderSize = 0;
+            this.btnOrigin.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
+            this.btnOrigin.Location = new System.Drawing.Point(0, 2);
+            this.btnOrigin.Name = "btnOrigin";
+            this.btnOrigin.Size = new System.Drawing.Size(80, 34);
+            this.btnOrigin.TabIndex = 1;
+            this.btnOrigin.Text = "Origin";
             // 
-            // pnlMcTitle
+            // pnlTitle
             // 
-            this.pnlMcTitle.Controls.Add(this.lblMcTitle);
-            this.pnlMcTitle.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlMcTitle.Location = new System.Drawing.Point(0, 0);
-            this.pnlMcTitle.Name = "pnlMcTitle";
-            this.pnlMcTitle.Padding = new System.Windows.Forms.Padding(0, 0, 0, 2);
-            this.pnlMcTitle.Size = new System.Drawing.Size(430, 38);
-            this.pnlMcTitle.TabIndex = 10;
+            this.pnlTitle.Controls.Add(this.lblTitle);
+            this.pnlTitle.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlTitle.Location = new System.Drawing.Point(0, 0);
+            this.pnlTitle.Name = "pnlTitle";
+            this.pnlTitle.OriginalBackColor = System.Drawing.Color.Empty;
+            this.pnlTitle.Padding = new System.Windows.Forms.Padding(0, 0, 0, 2);
+            this.pnlTitle.Size = new System.Drawing.Size(430, 38);
+            this.pnlTitle.TabIndex = 10;
             // 
-            // lblMcTitle
+            // lblTitle
             // 
-            this.lblMcTitle.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblMcTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblMcTitle.ForeColor = System.Drawing.Color.CornflowerBlue;
-            this.lblMcTitle.Location = new System.Drawing.Point(0, 0);
-            this.lblMcTitle.Name = "lblMcTitle";
-            this.lblMcTitle.Size = new System.Drawing.Size(430, 36);
-            this.lblMcTitle.TabIndex = 6;
-            this.lblMcTitle.Text = "MemoryCard";
-            this.lblMcTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.lblTitle.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.ForeColor = System.Drawing.Color.CornflowerBlue;
+            this.lblTitle.Location = new System.Drawing.Point(0, 0);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.OriginalForeColor = System.Drawing.Color.Empty;
+            this.lblTitle.Size = new System.Drawing.Size(430, 36);
+            this.lblTitle.TabIndex = 6;
+            this.lblTitle.Text = "MemoryCard";
+            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // MemoryCardForm
             // 
             this.ClientSize = new System.Drawing.Size(430, 262);
             this.Controls.Add(this.pnlResult);
-            this.Controls.Add(this.pnlMcBackup);
-            this.Controls.Add(this.pnlMcTimer);
-            this.Controls.Add(this.pnlMcDestination);
-            this.Controls.Add(this.pnlMcOrigin);
-            this.Controls.Add(this.pnlMcTitle);
+            this.Controls.Add(this.pnlBackup);
+            this.Controls.Add(this.pnlTimer);
+            this.Controls.Add(this.pnlDestination);
+            this.Controls.Add(this.pnlOrigin);
+            this.Controls.Add(this.pnlTitle);
             this.Name = "MemoryCardForm";
+            this.OriginalSize = new System.Drawing.Size(430, 262);
             this.Text = "CopyStateForm";
             this.pnlResult.ResumeLayout(false);
-            this.pnlMcBackup.ResumeLayout(false);
-            this.pnlMcTimer.ResumeLayout(false);
-            this.pnlMcDestination.ResumeLayout(false);
-            this.pnlMcOrigin.ResumeLayout(false);
-            this.pnlMcTitle.ResumeLayout(false);
+            this.pnlBackup.ResumeLayout(false);
+            this.pnlTimer.ResumeLayout(false);
+            this.pnlDestination.ResumeLayout(false);
+            this.pnlOrigin.ResumeLayout(false);
+            this.pnlTitle.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private FlatLabelA lblMcTitle;
-        private FlatPanelA pnlMcBackup;
-        private FlatPanelA pnlMcTitle;
-        internal FlatButtonA btnMcDestination;
-        internal FlatButtonA btnMcOrigin;
-        internal FlatTextBoxA txtMcOrigin;
-        internal FlatTextBoxA txtMcDestination;
-        internal FlatButtonA btnMcBackup;
-        internal FlatLabelA lblMcBackup;
-        internal System.Windows.Forms.OpenFileDialog dlgMcOrigin;
-        internal System.Windows.Forms.SaveFileDialog dlgMcDestination;
-        internal FlatComboBoxA cboMcTimer;
-        internal FlatPanelA pnlMcOrigin;
-        internal FlatPanelA pnlMcDestination;
-        internal FlatPanelA pnlMcTimer;
+        private FlatLabelA lblTitle;
+        private FlatPanelA pnlBackup;
+        private FlatPanelA pnlTitle;
+        internal FlatButtonA btnDestination;
+        internal FlatButtonA btnOrigin;
+        internal FlatTextBoxA txtOrigin;
+        internal FlatTextBoxA txtDestination;
+        internal FlatButtonA btnBackup;
+        internal FlatLabelA lblResult;
+        internal System.Windows.Forms.OpenFileDialog dlgOrigin;
+        internal System.Windows.Forms.SaveFileDialog dlgDestination;
+        internal FlatComboBoxA cboTimer;
+        internal FlatPanelA pnlOrigin;
+        internal FlatPanelA pnlDestination;
+        internal FlatPanelA pnlTimer;
         private FlatPanelA pnlResult;
     }
 }
