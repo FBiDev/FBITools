@@ -86,8 +86,8 @@ namespace FBITools
             if (backupStarted)
             {
                 BackupTask.Reset();
-                btnBackup.Text = "Backup Stop";
                 lblResult.Text = "MemoryCard Backup Started!";
+                btnBackup.Text = "Backup Stop";
 
                 MainContentController.UpdateConfigFile();
                 await BackupMemoryCard();
@@ -95,8 +95,8 @@ namespace FBITools
             else
             {
                 BackupTask.Cancel();
-                btnBackup.Text = "Backup Start";
                 lblResult.Text = "MemoryCard Backup Stoped!";
+                btnBackup.Text = "Backup Start";
             }
         }
 

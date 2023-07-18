@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
+using GNX;
 
 namespace FBITools
 {
@@ -21,8 +22,8 @@ namespace FBITools
             form.KeyPreview = true;
             form.KeyDown += form_KeyDown;
 
-            btnSaveStateTab.Click += btnSaveStateTab_Click;
-            btnMemoryCardTab.Click += btnMemoryCardTab_Click;
+            btnSaveStateTab.Click += (sender, e) => SetContent(tabSaveState, btnSaveStateTab);
+            btnMemoryCardTab.Click += (sender, e) => SetContent(tabMemoryCard, btnMemoryCardTab);
         }
 
         static void form_KeyDown(object sender, KeyEventArgs e)
@@ -35,7 +36,7 @@ namespace FBITools
         static void Load(object sender, EventArgs e) { }
         static void Shown(object sender, EventArgs e)
         {
-            btnSaveStateTab_Click(btnSaveStateTab, null);
+            btnSaveStateTab.PerformClick();
         }
 
         static void SetSelectedTab(FlatButtonA btnClicked)
@@ -47,20 +48,6 @@ namespace FBITools
             selectedTab = btnClicked;
         }
 
-        static void btnSaveStateTab_Click(object sender, EventArgs e)
-        {
-            SetSelectedTab(btnSaveStateTab);
-            SetContentForm(tabSaveState);
-            ResizeContent(tabSaveState.OriginalSize);
-        }
-
-        static void btnMemoryCardTab_Click(object sender, EventArgs e)
-        {
-            SetSelectedTab(btnMemoryCardTab);
-            SetContentForm(tabMemoryCard);
-            ResizeContent(tabMemoryCard.OriginalSize);
-        }
-
         static void ResizeContent(Size content)
         {
             Session.mainForm.Height = content.Height + 84;
@@ -69,24 +56,21 @@ namespace FBITools
         #endregion
 
         #region Common
-        public static void SetContentForm(Form frm)
+        public static void SetContent(ContentBaseForm contentForm, FlatButtonA selectTab)
         {
+            SetSelectedTab(selectTab);
+
             pnlContentR.Controls.Clear();
-            pnlContentR.Controls.Add(frm);
+            pnlContentR.Controls.Add(contentForm);
 
-            frm.Dock = DockStyle.Fill;
-            frm.Show();
+            contentForm.Dock = DockStyle.Fill;
+            contentForm.Show();
+
+            ResizeContent(contentForm.OriginalSize);
         }
 
-        public static bool LoadConfigFile()
-        {
-            return Json.Load(ref Session.options, Session.options.File);
-        }
-
-        public static bool UpdateConfigFile()
-        {
-            return Json.Save(Session.options, Session.options.File);
-        }
+        public static bool LoadConfigFile() { return Json.Load(ref Session.options, Session.options.File); }
+        public static bool UpdateConfigFile() { return Json.Save(Session.options, Session.options.File); }
         #endregion
     }
 }
