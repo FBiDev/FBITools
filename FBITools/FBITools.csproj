@@ -37,13 +37,12 @@
     <StartupObject />
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="GNX, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\GNX\GNX\bin\Debug\GNX.dll</HintPath>
+    <Reference Include="GNX">
+      <HintPath>Libs\Managed\GNX.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>x64\referenced\Newtonsoft.Json.dll</HintPath>
+      <HintPath>Libs\Managed\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -57,7 +56,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="src\cmodel\Json.cs" />
     <Compile Include="src\cmodel\Session.cs" />
     <Compile Include="src\cmodel\Options.cs" />
     <Compile Include="src\cmodel\Theme.cs" />
@@ -145,17 +143,17 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="rsc\image\FormIcon.png" />
-    <Content Include="x64\referenced\Newtonsoft.Json.dll" />
+    <Content Include="Resources\image\FormIcon.png" />
+    <Content Include="Libs\Managed\Newtonsoft.Json.dll" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>ROBOCOPY "$(TargetDir) " "$(TargetDir)x64\referenced\ " /XF *.exe *.config *.json *.manifest $(SolutionName).pdb /XD x64 /IS /MOV 
+    <PostBuildEvent>ROBOCOPY "$(TargetDir) " "$(TargetDir)Libs\Managed\ " /XF *.exe *.config *.json *.manifest $(SolutionName).pdb /XD x64 /IS /MOV 
 if %25errorlevel%25 leq 4 exit 0 else exit %25errorlevel%25</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PreBuildEvent>ROBOCOPY "$(SolutionDir)..\_DLL\ " "$(ProjectDir)x64\referenced\ " "GNX.dll" /XO
+    <PreBuildEvent>ROBOCOPY "$(SolutionDir)..\_DLL\ " "$(ProjectDir)Libs\Managed\ " "GNX.dll" /XO
 if %25errorlevel%25 leq 4 exit 0 else exit %25errorlevel%25</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

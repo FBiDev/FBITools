@@ -32,7 +32,7 @@ namespace FBITools
             var timerItems = new List<int> { 0, 1, 5, 10, 15, 30, 60, 120, 180 };
             cboTimer.DataSource = timerItems;
 
-            if (MainContentController.LoadConfigFile())
+            if (MainContentController.ConfigLoaded)
             {
                 UpdateOrigin();
                 UpdateDestination();

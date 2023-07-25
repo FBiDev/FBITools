@@ -23,7 +23,7 @@ namespace FBITools
 
             dlgDestination.Filter = "All Files (*.*)|*.*";
 
-            if (MainContentController.LoadConfigFile())
+            if (MainContentController.ConfigLoaded)
             {
                 UpdateOrigin();
                 UpdateDestination();

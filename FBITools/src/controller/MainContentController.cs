@@ -10,8 +10,10 @@ namespace FBITools
         #region MAIN
         public static FlatButtonA selectedTab;
 
-        public static SaveStateForm tabSaveState = new SaveStateForm();
-        public static MemoryCardForm tabMemoryCard = new MemoryCardForm();
+        public static SaveStateForm tabSaveState;
+        public static MemoryCardForm tabMemoryCard;
+
+        public static bool ConfigLoaded;
 
         public static void Init(Form formDesign)
         {
@@ -22,8 +24,10 @@ namespace FBITools
             form.KeyPreview = true;
             form.KeyDown += form_KeyDown;
 
-            btnSaveStateTab.Click += (sender, e) => SetContent(tabSaveState, btnSaveStateTab);
-            btnMemoryCardTab.Click += (sender, e) => SetContent(tabMemoryCard, btnMemoryCardTab);
+            btnSaveStateTab.Click += (sender, e) => SetContent(ref tabSaveState, btnSaveStateTab);
+            btnMemoryCardTab.Click += (sender, e) => SetContent(ref tabMemoryCard, btnMemoryCardTab);
+
+            ConfigLoaded = LoadConfigFile();
         }
 
         static void form_KeyDown(object sender, KeyEventArgs e)
@@ -56,9 +60,12 @@ namespace FBITools
         #endregion
 
         #region Common
-        public static void SetContent(ContentBaseForm contentForm, FlatButtonA selectTab)
+        public static void SetContent<T>(ref T contentForm, FlatButtonA selectTab) where T : ContentBaseForm, new()
         {
             SetSelectedTab(selectTab);
+
+            if (contentForm == null) contentForm = new T();
+            if (pnlContentR.Controls.Contains(contentForm)) return;
 
             pnlContentR.Controls.Clear();
             pnlContentR.Controls.Add(contentForm);
@@ -69,8 +76,14 @@ namespace FBITools
             ResizeContent(contentForm.OriginalSize);
         }
 
-        public static bool LoadConfigFile() { return Json.Load(ref Session.options, Session.options.File); }
-        public static bool UpdateConfigFile() { return Json.Save(Session.options, Session.options.File); }
+        public static bool LoadConfigFile()
+        {
+            return GNX.Json.Load(ref Session.options, Session.options.File);
+        }
+        public static bool UpdateConfigFile()
+        {
+            return GNX.Json.Save(Session.options, Session.options.File);
+        }
         #endregion
     }
 }
