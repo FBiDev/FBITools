@@ -38,11 +38,11 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="GNX">
-      <HintPath>Libs\Managed\GNX.dll</HintPath>
+      <HintPath>Plugins\GNX.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>Libs\Managed\Newtonsoft.Json.dll</HintPath>
+      <HintPath>Plugins\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -56,47 +56,47 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="src\cmodel\Session.cs" />
-    <Compile Include="src\cmodel\Options.cs" />
-    <Compile Include="src\cmodel\Theme.cs" />
-    <Compile Include="src\controller\MainController.cs" />
-    <Compile Include="src\controller\MainContentController.cs" />
-    <Compile Include="src\controller\controls\MainContentControls.cs" />
-    <Compile Include="src\controller\controls\MemoryCardControls.cs" />
-    <Compile Include="src\custom_controls\FlatButtonA.cs">
+    <Compile Include="Source\Models\Session.cs" />
+    <Compile Include="Source\Models\Options.cs" />
+    <Compile Include="Source\Models\Theme.cs" />
+    <Compile Include="Source\Controllers\MainController.cs" />
+    <Compile Include="Source\Controllers\MainContentController.cs" />
+    <Compile Include="Source\Controllers\FormControls\MainContentControls.cs" />
+    <Compile Include="Source\Controllers\FormControls\MemoryCardControls.cs" />
+    <Compile Include="Source\Views\CustomControls\FlatButtonA.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="src\custom_controls\FlatLabelA.cs">
+    <Compile Include="Source\Views\CustomControls\FlatLabelA.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="src\custom_controls\FlatPanelA.cs">
+    <Compile Include="Source\Views\CustomControls\FlatPanelA.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="src\custom_controls\FlatTextBoxA.cs">
+    <Compile Include="Source\Views\CustomControls\FlatTextBoxA.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\forms\MainContentForm.cs">
+    <Compile Include="Source\Views\Forms\MainContentForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\forms\MainContentForm.Designer.cs">
+    <Compile Include="Source\Views\Forms\MainContentForm.Designer.cs">
       <DependentUpon>MainContentForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\forms\MemoryCardForm.cs">
+    <Compile Include="Source\Views\Forms\MemoryCardForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\forms\MemoryCardForm.Designer.cs">
+    <Compile Include="Source\Views\Forms\MemoryCardForm.Designer.cs">
       <DependentUpon>MemoryCardForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\forms\SaveStateForm.cs">
+    <Compile Include="Source\Views\Forms\SaveStateForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\forms\SaveStateForm.Designer.cs">
+    <Compile Include="Source\Views\Forms\SaveStateForm.Designer.cs">
       <DependentUpon>SaveStateForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\forms\MainForm.cs">
+    <Compile Include="Source\Views\Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\forms\MainForm.Designer.cs">
+    <Compile Include="Source\Views\Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -111,16 +111,16 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="src\forms\MainContentForm.resx">
+    <EmbeddedResource Include="Source\Views\Forms\MainContentForm.resx">
       <DependentUpon>MainContentForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\forms\MemoryCardForm.resx">
+    <EmbeddedResource Include="Source\Views\Forms\MemoryCardForm.resx">
       <DependentUpon>MemoryCardForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\forms\SaveStateForm.resx">
+    <EmbeddedResource Include="Source\Views\Forms\SaveStateForm.resx">
       <DependentUpon>SaveStateForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\forms\MainForm.resx">
+    <EmbeddedResource Include="Source\Views\Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
@@ -132,28 +132,29 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="src\controller\controls\SaveStateControls.cs" />
-    <Compile Include="src\controller\SaveStateController.cs" />
-    <Compile Include="src\controller\MemoryCardController.cs" />
-    <Compile Include="src\custom_controls\FlatComboBoxA.cs">
+    <Compile Include="Source\Controllers\FormControls\SaveStateControls.cs" />
+    <Compile Include="Source\Controllers\SaveStateController.cs" />
+    <Compile Include="Source\Controllers\MemoryCardController.cs" />
+    <Compile Include="Source\Views\CustomControls\FlatComboBoxA.cs">
       <SubType>UserControl</SubType>
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <Content Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Resources\image\FormIcon.png" />
-    <Content Include="Libs\Managed\Newtonsoft.Json.dll" />
+    <Content Include="Plugins\GNX.dll" />
+    <Content Include="Plugins\Newtonsoft.Json.dll" />
+    <Content Include="Resources\Icons\FormIcon.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>ROBOCOPY "$(TargetDir) " "$(TargetDir)Libs\Managed\ " /XF *.exe *.config *.json *.manifest $(SolutionName).pdb /XD x64 /IS /MOV 
+    <PostBuildEvent>ROBOCOPY "$(TargetDir) " "$(TargetDir)Plugins\ " /XF *.exe *.config *.json *.manifest $(SolutionName).pdb /XD Plugins /IS /MOV 
 if %25errorlevel%25 leq 4 exit 0 else exit %25errorlevel%25</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PreBuildEvent>ROBOCOPY "$(SolutionDir)..\_DLL\ " "$(ProjectDir)Libs\Managed\ " "GNX.dll" /XO
+    <PreBuildEvent>ROBOCOPY "$(SolutionDir)..\_DLL\ " "$(ProjectDir)Plugins\ " "GNX.dll" /XO
 if %25errorlevel%25 leq 4 exit 0 else exit %25errorlevel%25</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

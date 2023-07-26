@@ -2,6 +2,7 @@
 using System.Drawing;
 using System.Windows.Forms;
 using GNX;
+using System.Reflection;
 
 namespace FBITools
 {
@@ -78,11 +79,11 @@ namespace FBITools
 
         public static bool LoadConfigFile()
         {
-            return GNX.Json.Load(ref Session.options, Session.options.File);
+            return Json.Load(ref Session.options, Session.options.File);
         }
         public static bool UpdateConfigFile()
         {
-            return GNX.Json.Save(Session.options, Session.options.File);
+            return Json.Save(Session.options, Session.options.File);
         }
         #endregion
     }

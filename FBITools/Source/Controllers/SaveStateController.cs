@@ -37,6 +37,8 @@ namespace FBITools
                 Session.options.SaveState_Origin = dlgOrigin.FileName.NormalizePath();
                 UpdateOrigin();
 
+                if (Session.options.SaveState_Destination == null) return;
+
                 Session.options.SaveState_Destination = (Path.Combine(Path.GetDirectoryName(txtDestination.Text),
                                                                       dlgOrigin.FileName)).NormalizePath();
                 UpdateDestination();
