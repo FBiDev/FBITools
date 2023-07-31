@@ -2,7 +2,6 @@
 using System.Drawing;
 using System.Windows.Forms;
 using GNX;
-using System.Reflection;
 
 namespace FBITools
 {
@@ -11,35 +10,20 @@ namespace FBITools
         #region MAIN
         public static FlatButtonA selectedTab;
 
-        public static SaveStateForm tabSaveState;
-        public static MemoryCardForm tabMemoryCard;
-
-        public static bool ConfigLoaded;
-
-        public static void Init(Form formDesign)
+        public static void Init(MainContentForm formView)
         {
-            Session.mainContentForm = formDesign;
+            form = formView;
 
-            form.Load += Load;
-            form.Shown += Shown;
-            form.KeyPreview = true;
-            form.KeyDown += form_KeyDown;
+            form.Load += form_Load;
+            form.Shown += form_Shown;
 
-            btnSaveStateTab.Click += (sender, e) => SetContent(ref tabSaveState, btnSaveStateTab);
-            btnMemoryCardTab.Click += (sender, e) => SetContent(ref tabMemoryCard, btnMemoryCardTab);
-
-            ConfigLoaded = LoadConfigFile();
+            btnSaveStateTab.Click += (sender, e) => SetContent(ref Session.saveStateForm, btnSaveStateTab);
+            btnMemoryCardTab.Click += (sender, e) => SetContent(ref Session.memoryCardForm, btnMemoryCardTab);
         }
 
-        static void form_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyData != Keys.A) return;
+        static void form_Load(object sender, EventArgs e) { }
 
-            Theme.DarkMode();
-        }
-
-        static void Load(object sender, EventArgs e) { }
-        static void Shown(object sender, EventArgs e)
+        static void form_Shown(object sender, EventArgs e)
         {
             btnSaveStateTab.PerformClick();
         }
@@ -75,15 +59,6 @@ namespace FBITools
             contentForm.Show();
 
             ResizeContent(contentForm.OriginalSize);
-        }
-
-        public static bool LoadConfigFile()
-        {
-            return Json.Load(ref Session.options, Session.options.File);
-        }
-        public static bool UpdateConfigFile()
-        {
-            return Json.Save(Session.options, Session.options.File);
         }
         #endregion
     }

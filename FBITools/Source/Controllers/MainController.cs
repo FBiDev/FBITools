@@ -1,23 +1,49 @@
-﻿namespace FBITools
+﻿using System.Windows.Forms;
+using GNX;
+
+namespace FBITools
 {
     public static class MainController
     {
-        public static MainContentForm content;
+        public static bool ConfigLoaded;
 
         public static void Init(MainForm formDesign)
         {
             Session.SetIcon();
             Session.mainForm = formDesign;
             Session.mainForm.StatusBar = true;
-            Session.mainForm.Shown += mainForm_Shown;
+            Session.mainForm.Shown += form_Shown;
 
-            content = new MainContentForm();
-            Session.mainForm.SetMainFormContent(content);
+            Session.mainForm.KeyPreview = true;
+            Session.mainForm.KeyDown += form_KeyDown;
+
+            Session.mainForm.SetMainFormContent(new MainContentForm());
+
+            ConfigLoaded = LoadConfigFile();
         }
 
-        static void mainForm_Shown(object sender, System.EventArgs e)
+        static void form_Shown(object sender, System.EventArgs e)
         {
             Theme.SetTheme(GNX.Theme.eTheme.Dark);
         }
+
+        static void form_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyData != Keys.A) return;
+
+            Theme.DarkMode();
+        }
+
+        #region Common
+        public static bool LoadConfigFile()
+        {
+            return Json.Load(ref Session.options, Session.options.File);
+        }
+
+        public static bool UpdateConfigFile()
+        {
+            return Json.Save(Session.options, Session.options.File);
+        }
+        #endregion
     }
 }

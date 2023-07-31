@@ -2,7 +2,11 @@ namespace FBITools
 {
     public partial class MainContentController
     {
-        static MainContentForm form { get { return (MainContentForm)Session.mainContentForm; } }
+        static MainContentForm form
+        {
+            get { return Session.mainContentForm; }
+            set { Session.mainContentForm = value; }
+        }
 
         static FlatPanelA pnlContentL { get { return form.pnlContentL; } }
         static FlatPanelA pnlContentR { get { return form.pnlContentR; } }

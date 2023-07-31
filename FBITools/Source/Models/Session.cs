@@ -1,5 +1,5 @@
 ﻿using System.Drawing;
-using System.Windows.Forms;
+using GNX;
 
 namespace FBITools
 {
@@ -8,14 +8,14 @@ namespace FBITools
         public static Options options = new Options();
 
         public static MainForm mainForm;
-        public static Form mainContentForm;
+        public static MainContentForm mainContentForm;
 
-        public static Form saveStateForm;
-        public static Form memoryCardForm;
+        public static SaveStateForm saveStateForm;
+        public static MemoryCardForm memoryCardForm;
 
         public static void SetIcon()
         {
-            GNX.MainBaseForm.ico = GNX.cConvert.ToIco(Properties.Resources.FormIcon, new Size(250, 250));
+            MainBaseForm.ico = cConvert.ToIco(Properties.Resources.FormIcon, new Size(250, 250));
         }
     }
 }

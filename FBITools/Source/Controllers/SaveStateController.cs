@@ -7,14 +7,14 @@ namespace FBITools
 {
     public partial class SaveStateController
     {
-        public static void Init(Form formDesign)
+        public static void Init(SaveStateForm formView)
         {
-            Session.saveStateForm = formDesign;
+            form = formView;
 
             btnOrigin.Click += btnOrigin_Click;
             btnDestination.Click += btnDestination_Click;
             btnCopy.Click += btnCopy_Click;
-            lblCopy.TextChanged += lblCopy_TextChanged;
+            lblResult.TextChanged += lblResult_TextChanged;
 
             dlgOrigin.ValidateNames = true;
             dlgOrigin.CheckFileExists = true;
@@ -23,7 +23,7 @@ namespace FBITools
 
             dlgDestination.Filter = "All Files (*.*)|*.*";
 
-            if (MainContentController.ConfigLoaded)
+            if (MainController.ConfigLoaded)
             {
                 UpdateOrigin();
                 UpdateDestination();
@@ -45,34 +45,6 @@ namespace FBITools
             }
         }
 
-        static void btnDestination_Click(object sender, EventArgs e)
-        {
-            if (dlgDestination.ShowDialog() == DialogResult.OK)
-            {
-                Session.options.SaveState_Destination = dlgDestination.FileName.NormalizePath();
-                UpdateDestination();
-            }
-        }
-
-        static void btnCopy_Click(object sender, EventArgs e)
-        {
-            if (IsCopyInvalid())
-            {
-                lblCopy.Text = "Save State Copy Failed!";
-                return;
-            }
-
-            CopySaveState();
-            lblCopy.Text = "Save State Copied!";
-            MainContentController.UpdateConfigFile();
-        }
-
-        static async void lblCopy_TextChanged(object sender, EventArgs e)
-        {
-            await TaskController.Delay(4);
-            lblCopy.Text = "";
-        }
-
         static void UpdateOrigin()
         {
             txtOrigin.Text = Session.options.SaveState_Origin;
@@ -84,12 +56,34 @@ namespace FBITools
                 dlgDestination.FileName = Session.options.SaveState_Origin;
         }
 
+        static void btnDestination_Click(object sender, EventArgs e)
+        {
+            if (dlgDestination.ShowDialog() == DialogResult.OK)
+            {
+                Session.options.SaveState_Destination = dlgDestination.FileName.NormalizePath();
+                UpdateDestination();
+            }
+        }
+
         static void UpdateDestination()
         {
             txtDestination.Text = Session.options.SaveState_Destination;
 
             dlgDestination.InitialDirectory = Path.GetDirectoryName(Session.options.SaveState_Destination);
             dlgDestination.FileName = Path.GetFileName(Session.options.SaveState_Destination);
+        }
+
+        static void btnCopy_Click(object sender, EventArgs e)
+        {
+            if (IsCopyInvalid())
+            {
+                lblResult.Text = "Save State Copy Failed!";
+                return;
+            }
+
+            CopySaveState();
+            lblResult.Text = "Save State Copied!";
+            MainController.UpdateConfigFile();
         }
 
         static bool IsCopyInvalid()
@@ -102,6 +96,12 @@ namespace FBITools
         static void CopySaveState()
         {
             File.Copy(Session.options.SaveState_Origin, Session.options.SaveState_Destination, true);
+        }
+
+        static async void lblResult_TextChanged(object sender, EventArgs e)
+        {
+            await TaskController.Delay(4);
+            lblResult.Text = "";
         }
     }
 }
