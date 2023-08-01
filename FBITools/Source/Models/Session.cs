@@ -1,5 +1,4 @@
-﻿using System.Drawing;
-using GNX;
+﻿using GNX;
 
 namespace FBITools
 {
@@ -15,7 +14,7 @@ namespace FBITools
 
         public static void SetIcon()
         {
-            MainBaseForm.ico = cConvert.ToIco(Properties.Resources.FormIcon, new Size(250, 250));
+            MainBaseForm.ico = Properties.Resources.FormIcon;
         }
     }
 }

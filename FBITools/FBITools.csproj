@@ -36,6 +36,9 @@
   <PropertyGroup>
     <StartupObject />
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>FormIcon.ico</ApplicationIcon>
+  </PropertyGroup>
   <ItemGroup>
     <Reference Include="GNX">
       <HintPath>Plugins\GNX.dll</HintPath>
@@ -143,8 +146,10 @@
     <Content Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="FormIcon.ico" />
     <Content Include="Plugins\GNX.dll" />
     <Content Include="Plugins\Newtonsoft.Json.dll" />
+    <Content Include="Resources\Icons\FormIcon.ico" />
     <Content Include="Resources\Icons\FormIcon.png" />
   </ItemGroup>
   <ItemGroup />

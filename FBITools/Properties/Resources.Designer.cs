@@ -61,12 +61,12 @@ namespace FBITools.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static System.Drawing.Bitmap FormIcon {
+        internal static System.Drawing.Icon FormIcon {
             get {
                 object obj = ResourceManager.GetObject("FormIcon", resourceCulture);
-                return ((System.Drawing.Bitmap)(obj));
+                return ((System.Drawing.Icon)(obj));
             }
         }
     }
