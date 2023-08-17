@@ -56,17 +56,18 @@
             this.pnlResult.Location = new System.Drawing.Point(0, 152);
             this.pnlResult.Name = "pnlResult";
             this.pnlResult.OriginalBackColor = System.Drawing.Color.Empty;
-            this.pnlResult.Padding = new System.Windows.Forms.Padding(0, 2, 0, 0);
+            this.pnlResult.Padding = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.pnlResult.Size = new System.Drawing.Size(430, 110);
             this.pnlResult.TabIndex = 1;
             // 
             // lblResult
             // 
             this.lblResult.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lblResult.ForeColor = System.Drawing.Color.Firebrick;
             this.lblResult.Location = new System.Drawing.Point(0, 2);
             this.lblResult.Name = "lblResult";
             this.lblResult.OriginalForeColor = System.Drawing.Color.Empty;
-            this.lblResult.Size = new System.Drawing.Size(430, 108);
+            this.lblResult.Size = new System.Drawing.Size(430, 106);
             this.lblResult.TabIndex = 5;
             this.lblResult.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
@@ -119,7 +120,6 @@
             this.txtDestination.previousText = "";
             this.txtDestination.ReadOnly = true;
             this.txtDestination.Size = new System.Drawing.Size(350, 34);
-            this.txtDestination.TabIndex = 0;
             this.txtDestination.TabStop = false;
             // 
             // btnDestination
@@ -160,7 +160,6 @@
             this.txtOrigin.previousText = "";
             this.txtOrigin.ReadOnly = true;
             this.txtOrigin.Size = new System.Drawing.Size(350, 34);
-            this.txtOrigin.TabIndex = 0;
             this.txtOrigin.TabStop = false;
             // 
             // btnOrigin
@@ -208,8 +207,7 @@
             this.Controls.Add(this.pnlOrigin);
             this.Controls.Add(this.pnlTitle);
             this.Name = "SaveStateForm";
-            this.OriginalSize = new System.Drawing.Size(430, 262);
-            this.Text = "CopyStateForm";
+            this.Text = "SaveStateForm";
             this.pnlResult.ResumeLayout(false);
             this.pnlCopy.ResumeLayout(false);
             this.pnlDestination.ResumeLayout(false);

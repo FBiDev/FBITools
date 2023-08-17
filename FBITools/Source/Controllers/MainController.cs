@@ -1,5 +1,4 @@
-﻿using System.Windows.Forms;
-using GNX;
+﻿using GNX;
 
 namespace FBITools
 {
@@ -11,30 +10,30 @@ namespace FBITools
         {
             Session.SetIcon();
             Session.mainForm = formDesign;
-            Session.mainForm.StatusBar = true;
+            Session.mainForm.StatusBar = false;
             Session.mainForm.Shown += form_Shown;
-
-            Session.mainForm.KeyPreview = true;
-            Session.mainForm.KeyDown += form_KeyDown;
-
-            Session.mainForm.SetMainFormContent(new MainContentForm());
+            //Session.mainForm.KeyPreview = true;
 
             ConfigLoaded = LoadConfigFile();
+
+            Session.mainForm.SetMainFormContent(new MainContentForm());
         }
 
         static void form_Shown(object sender, System.EventArgs e)
         {
-            Theme.SetTheme(GNX.Theme.eTheme.Dark);
-        }
+            if (Session.options.DarkMode)
+                DarkMode();
 
-        static void form_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyData != Keys.A) return;
-
-            Theme.DarkMode();
+            Session.mainForm.CenterWindow();
         }
 
         #region Common
+        public static void DarkMode()
+        {
+            Session.options.DarkMode = Theme.DarkMode();
+            UpdateConfigFile();
+        }
+
         public static bool LoadConfigFile()
         {
             return Json.Load(ref Session.options, Session.options.File);

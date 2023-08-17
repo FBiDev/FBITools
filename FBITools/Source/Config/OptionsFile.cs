@@ -2,8 +2,10 @@
 
 namespace FBITools
 {
-    public class Options
+    public class OptionsFile
     {
+        public bool DarkMode;
+
         public string SaveState_Origin { get; set; }
         public string SaveState_Destination { get; set; }
 

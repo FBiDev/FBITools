@@ -10,6 +10,9 @@ namespace FBITools
 
         static FlatPanelA pnlContentL { get { return form.pnlContentL; } }
         static FlatPanelA pnlContentR { get { return form.pnlContentR; } }
+        static FlatPanelA pnlContentRInside { get { return form.pnlContentRInside; } }
+
+        static FlatCheckBoxA chkDarkMode { get { return form.chkDarkMode; } }
         static FlatButtonA btnSaveStateTab { get { return form.btnSaveStateTab; } }
         static FlatButtonA btnMemoryCardTab { get { return form.btnMemoryCardTab; } }
     }

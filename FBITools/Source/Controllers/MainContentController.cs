@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Drawing;
 using System.Windows.Forms;
-using GNX;
+using GNX.Desktop;
 
 namespace FBITools
 {
@@ -16,6 +16,10 @@ namespace FBITools
 
             form.Load += form_Load;
             form.Shown += form_Shown;
+
+            //Initial Value
+            chkDarkMode.Checked = Session.options.DarkMode;
+            chkDarkMode.CheckedChanged += (sender, e) => MainController.DarkMode();
 
             btnSaveStateTab.Click += (sender, e) => SetContent(ref Session.saveStateForm, btnSaveStateTab);
             btnMemoryCardTab.Click += (sender, e) => SetContent(ref Session.memoryCardForm, btnMemoryCardTab);
@@ -39,8 +43,13 @@ namespace FBITools
 
         static void ResizeContent(Size content)
         {
-            Session.mainForm.Height = content.Height + 84;
-            Session.mainForm.Width = content.Width + pnlContentL.Width;
+            var newW = content.Width + pnlContentL.Width + 30;
+            var newH = content.Height + 26;
+
+            if (Session.mainForm.StatusBar)
+                newH += 24;
+
+            Session.mainForm.ClientSize = new Size(newW, newH);
         }
         #endregion
 
@@ -50,13 +59,14 @@ namespace FBITools
             SetSelectedTab(selectTab);
 
             if (contentForm == null) contentForm = new T();
-            if (pnlContentR.Controls.Contains(contentForm)) return;
+            if (pnlContentRInside.Controls.Contains(contentForm)) return;
 
-            pnlContentR.Controls.Clear();
-            pnlContentR.Controls.Add(contentForm);
+            pnlContentRInside.Controls.Clear();
+            pnlContentRInside.Controls.Add(contentForm);
 
-            contentForm.Dock = DockStyle.Fill;
             contentForm.Show();
+            contentForm.Dock = DockStyle.Fill;
+            contentForm.Focus();
 
             ResizeContent(contentForm.OriginalSize);
         }

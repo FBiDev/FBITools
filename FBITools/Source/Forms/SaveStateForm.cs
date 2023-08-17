@@ -1,6 +1,6 @@
 ﻿namespace FBITools
 {
-    public partial class SaveStateForm : GNX.ContentBaseForm
+    public partial class SaveStateForm : GNX.Desktop.ContentBaseForm
     {
         public SaveStateForm()
         {

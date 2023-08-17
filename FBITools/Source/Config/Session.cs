@@ -1,10 +1,10 @@
-﻿using GNX;
+﻿using GNX.Desktop;
 
 namespace FBITools
 {
     public static class Session
     {
-        public static Options options = new Options();
+        public static OptionsFile options = new OptionsFile();
 
         public static MainForm mainForm;
         public static MainContentForm mainContentForm;

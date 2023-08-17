@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace FBITools
@@ -10,6 +11,10 @@ namespace FBITools
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
+
+            GNX.Desktop.AppManager.SingleProcess(Config.Singleton, new Mutex(true, Config.SystemName), Config.SystemName);
+            Config.Start();
+
             Application.Run(new MainForm());
         }
     }

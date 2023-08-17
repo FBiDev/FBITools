@@ -1,6 +1,6 @@
 namespace FBITools
 {
-    public partial class MainForm : GNX.MainBaseForm
+    public partial class MainForm : GNX.Desktop.MainBaseForm
     {
         public MainForm()
         {

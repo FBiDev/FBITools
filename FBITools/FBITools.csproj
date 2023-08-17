@@ -59,47 +59,51 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Source\Models\Session.cs" />
-    <Compile Include="Source\Models\Options.cs" />
-    <Compile Include="Source\Models\Theme.cs" />
+    <Compile Include="Resources\CustomControls\FlatCheckBoxA.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Source\Config\Config.cs" />
+    <Compile Include="Source\Config\Session.cs" />
+    <Compile Include="Source\Config\OptionsFile.cs" />
+    <Compile Include="Source\Config\Theme.cs" />
     <Compile Include="Source\Controllers\MainController.cs" />
     <Compile Include="Source\Controllers\MainContentController.cs" />
     <Compile Include="Source\Controllers\FormControls\MainContentControls.cs" />
     <Compile Include="Source\Controllers\FormControls\MemoryCardControls.cs" />
-    <Compile Include="Source\Views\CustomControls\FlatButtonA.cs">
+    <Compile Include="Resources\CustomControls\FlatButtonA.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Source\Views\CustomControls\FlatLabelA.cs">
+    <Compile Include="Resources\CustomControls\FlatLabelA.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Source\Views\CustomControls\FlatPanelA.cs">
+    <Compile Include="Resources\CustomControls\FlatPanelA.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Source\Views\CustomControls\FlatTextBoxA.cs">
+    <Compile Include="Resources\CustomControls\FlatTextBoxA.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Source\Views\Forms\MainContentForm.cs">
+    <Compile Include="Source\Forms\MainContentForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Source\Views\Forms\MainContentForm.Designer.cs">
+    <Compile Include="Source\Forms\MainContentForm.Designer.cs">
       <DependentUpon>MainContentForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\Views\Forms\MemoryCardForm.cs">
+    <Compile Include="Source\Forms\MemoryCardForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Source\Views\Forms\MemoryCardForm.Designer.cs">
+    <Compile Include="Source\Forms\MemoryCardForm.Designer.cs">
       <DependentUpon>MemoryCardForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\Views\Forms\SaveStateForm.cs">
+    <Compile Include="Source\Forms\SaveStateForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Source\Views\Forms\SaveStateForm.Designer.cs">
+    <Compile Include="Source\Forms\SaveStateForm.Designer.cs">
       <DependentUpon>SaveStateForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\Views\Forms\MainForm.cs">
+    <Compile Include="Source\Forms\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Source\Views\Forms\MainForm.Designer.cs">
+    <Compile Include="Source\Forms\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -114,16 +118,16 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
-    <EmbeddedResource Include="Source\Views\Forms\MainContentForm.resx">
+    <EmbeddedResource Include="Source\Forms\MainContentForm.resx">
       <DependentUpon>MainContentForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\Views\Forms\MemoryCardForm.resx">
+    <EmbeddedResource Include="Source\Forms\MemoryCardForm.resx">
       <DependentUpon>MemoryCardForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\Views\Forms\SaveStateForm.resx">
+    <EmbeddedResource Include="Source\Forms\SaveStateForm.resx">
       <DependentUpon>SaveStateForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\Views\Forms\MainForm.resx">
+    <EmbeddedResource Include="Source\Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
@@ -138,7 +142,7 @@
     <Compile Include="Source\Controllers\FormControls\SaveStateControls.cs" />
     <Compile Include="Source\Controllers\SaveStateController.cs" />
     <Compile Include="Source\Controllers\MemoryCardController.cs" />
-    <Compile Include="Source\Views\CustomControls\FlatComboBoxA.cs">
+    <Compile Include="Resources\CustomControls\FlatComboBoxA.cs">
       <SubType>UserControl</SubType>
     </Compile>
   </ItemGroup>
