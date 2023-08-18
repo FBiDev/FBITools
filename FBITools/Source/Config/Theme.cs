@@ -9,9 +9,9 @@ namespace FBITools
             BASE.Theme.SetTheme(newTheme);
         }
 
-        public static bool DarkMode()
+        public static bool ToggleDarkMode()
         {
-            return BASE.Theme.DarkMode();
+            return BASE.Theme.ToggleDarkMode();
         }
     }
 }

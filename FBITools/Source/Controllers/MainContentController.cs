@@ -19,7 +19,7 @@ namespace FBITools
 
             //Initial Value
             chkDarkMode.Checked = Session.options.DarkMode;
-            chkDarkMode.CheckedChanged += (sender, e) => MainController.DarkMode();
+            chkDarkMode.CheckedChanged += (sender, e) => MainController.ToggleDarkMode();
 
             btnSaveStateTab.Click += (sender, e) => SetContent(ref Session.saveStateForm, btnSaveStateTab);
             btnMemoryCardTab.Click += (sender, e) => SetContent(ref Session.memoryCardForm, btnMemoryCardTab);

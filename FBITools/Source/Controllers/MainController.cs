@@ -22,15 +22,15 @@ namespace FBITools
         static void form_Shown(object sender, System.EventArgs e)
         {
             if (Session.options.DarkMode)
-                DarkMode();
+                ToggleDarkMode();
 
             Session.mainForm.CenterWindow();
         }
 
         #region Common
-        public static void DarkMode()
+        public static void ToggleDarkMode()
         {
-            Session.options.DarkMode = Theme.DarkMode();
+            Session.options.DarkMode = Theme.ToggleDarkMode();
             UpdateConfigFile();
         }
 
