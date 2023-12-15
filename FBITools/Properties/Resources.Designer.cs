@@ -63,9 +63,9 @@ namespace FBITools.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Icon similar to (Icon).
         /// </summary>
-        internal static System.Drawing.Icon FormIcon {
+        internal static System.Drawing.Icon ico_app {
             get {
-                object obj = ResourceManager.GetObject("FormIcon", resourceCulture);
+                object obj = ResourceManager.GetObject("ico_app", resourceCulture);
                 return ((System.Drawing.Icon)(obj));
             }
         }

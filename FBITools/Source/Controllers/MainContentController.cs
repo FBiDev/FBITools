@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using GNX.Desktop;
 
@@ -7,7 +8,7 @@ namespace FBITools
 {
     public partial class MainContentController
     {
-        #region MAIN
+        #region Entrada
         public static FlatButtonA selectedTab;
 
         public static void Init(MainContentForm formView)
@@ -17,19 +18,17 @@ namespace FBITools
             form.Load += form_Load;
             form.Shown += form_Shown;
 
-            //Initial Value
-            chkDarkMode.Checked = Session.options.DarkMode;
-            chkDarkMode.CheckedChanged += (sender, e) => MainController.ToggleDarkMode();
+            btnTabSaveState.Click += (s, e) => SetContent(Session.SaveStateForm, btnTabSaveState);
+            btnTabMemoryCard.Click += (s, e) => SetContent(Session.MemoryCardForm, btnTabMemoryCard);
 
-            btnSaveStateTab.Click += (sender, e) => SetContent(ref Session.saveStateForm, btnSaveStateTab);
-            btnMemoryCardTab.Click += (sender, e) => SetContent(ref Session.memoryCardForm, btnMemoryCardTab);
+            btnTabConfig.Click += (s, e) => SetContent(Session.ConfigForm, btnTabConfig);
         }
 
         static void form_Load(object sender, EventArgs e) { }
 
         static void form_Shown(object sender, EventArgs e)
         {
-            btnSaveStateTab.PerformClick();
+            btnTabSaveState.PerformClick();
         }
 
         static void SetSelectedTab(FlatButtonA btnClicked)
@@ -43,32 +42,53 @@ namespace FBITools
 
         static void ResizeContent(Size content)
         {
+            if (MainBaseForm.AutoResizeWindow == false) return;
+
             var newW = content.Width + pnlContentL.Width + 30;
             var newH = content.Height + 26;
 
-            if (Session.mainForm.StatusBar)
+            if (Session.MainForm.StatusBarEnable)
                 newH += 24;
 
-            Session.mainForm.ClientSize = new Size(newW, newH);
+            Session.MainForm.ClientSize = new Size(newW, newH);
         }
         #endregion
 
         #region Common
-        public static void SetContent<T>(ref T contentForm, FlatButtonA selectTab) where T : ContentBaseForm, new()
+        static void SetContent<T>(T contentForm, FlatButtonA selectTab) where T : ContentBaseForm, new()
         {
-            SetSelectedTab(selectTab);
-
             if (contentForm == null) contentForm = new T();
             if (pnlContentRInside.Controls.Contains(contentForm)) return;
 
+            contentForm.AutoScroll = false;
+            SetSelectedTab(selectTab);
+
             pnlContentRInside.Controls.Clear();
             pnlContentRInside.Controls.Add(contentForm);
+            ThemeBase.CheckTheme(contentForm);
 
             contentForm.Show();
             contentForm.Dock = DockStyle.Fill;
             contentForm.Focus();
 
-            ResizeContent(contentForm.OriginalSize);
+            ResizeContent(contentForm.SizeOriginal);
+            contentForm.AutoScroll = true;
+
+            //Fix Resize Selection End
+            foreach (var item in contentForm.GetControls<FlatMaskedTextBox>())
+                item.SelectionStart = 0;
+            foreach (var item in contentForm.GetControls<FlatTextBox>())
+                item.SelectionStart = 0;
+
+            CenterMainWindow(contentForm).TryAwait();
+        }
+
+        static async Task CenterMainWindow<T>(T contentForm) where T : ContentBaseForm, new()
+        {
+            //Session.MainForm.CenterWindow();
+            await Task.Delay(50);
+
+            contentForm.FinalLoadOnShow();
         }
         #endregion
     }

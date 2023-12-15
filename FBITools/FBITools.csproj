@@ -37,7 +37,7 @@
     <StartupObject />
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>FormIcon.ico</ApplicationIcon>
+    <ApplicationIcon>ResourcesLocal\Icons\ico_app.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="GNX">
@@ -59,28 +59,36 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Resources\CustomControls\FlatCheckBoxA.cs">
+    <Compile Include="ResourcesLocal\CustomControls\FlatCheckBoxA.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Source\Config\Config.cs" />
+    <Compile Include="ResourcesLocal\CustomControls\FlatTableLayoutPanelA.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Source\Config\Session.cs" />
-    <Compile Include="Source\Config\OptionsFile.cs" />
+    <Compile Include="Source\Config\Options.cs" />
     <Compile Include="Source\Config\Theme.cs" />
+    <Compile Include="Source\Controllers\ConfigController.cs" />
     <Compile Include="Source\Controllers\MainController.cs" />
     <Compile Include="Source\Controllers\MainContentController.cs" />
-    <Compile Include="Source\Controllers\FormControls\MainContentControls.cs" />
-    <Compile Include="Source\Controllers\FormControls\MemoryCardControls.cs" />
-    <Compile Include="Resources\CustomControls\FlatButtonA.cs">
+    <Compile Include="ResourcesLocal\CustomControls\FlatButtonA.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Resources\CustomControls\FlatLabelA.cs">
+    <Compile Include="ResourcesLocal\CustomControls\FlatLabelA.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Resources\CustomControls\FlatPanelA.cs">
+    <Compile Include="ResourcesLocal\CustomControls\FlatPanelA.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Resources\CustomControls\FlatTextBoxA.cs">
+    <Compile Include="ResourcesLocal\CustomControls\FlatTextBoxA.cs">
       <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Source\Controllers\MainControls.cs" />
+    <Compile Include="Source\Forms\ConfigForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\Forms\ConfigForm.Designer.cs">
+      <DependentUpon>ConfigForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Source\Forms\MainContentForm.cs">
       <SubType>Form</SubType>
@@ -108,6 +116,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Source\Utils\JsonExtension.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -118,6 +127,9 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="Source\Forms\ConfigForm.resx">
+      <DependentUpon>ConfigForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Source\Forms\MainContentForm.resx">
       <DependentUpon>MainContentForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -139,10 +151,9 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Source\Controllers\FormControls\SaveStateControls.cs" />
     <Compile Include="Source\Controllers\SaveStateController.cs" />
     <Compile Include="Source\Controllers\MemoryCardController.cs" />
-    <Compile Include="Resources\CustomControls\FlatComboBoxA.cs">
+    <Compile Include="ResourcesLocal\CustomControls\FlatComboBoxA.cs">
       <SubType>UserControl</SubType>
     </Compile>
   </ItemGroup>
@@ -150,11 +161,10 @@
     <Content Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="FormIcon.ico" />
     <Content Include="Plugins\GNX.dll" />
     <Content Include="Plugins\Newtonsoft.Json.dll" />
-    <Content Include="Resources\Icons\FormIcon.ico" />
-    <Content Include="Resources\Icons\FormIcon.png" />
+    <Content Include="ResourcesLocal\Icons\ico_app.ico" />
+    <Content Include="ResourcesLocal\Icons\ico_app.png" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
