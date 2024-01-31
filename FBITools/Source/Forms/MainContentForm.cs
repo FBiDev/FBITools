@@ -5,7 +5,7 @@
         public MainContentForm()
         {
             InitializeComponent();
-            MainContentController.Init(this);
+            var _ = new MainContentController(this);
         }
     }
 }

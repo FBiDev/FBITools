@@ -5,7 +5,7 @@
         public ConfigForm()
         {
             InitializeComponent();
-            ConfigController.Init(this);
+            var _ = new ConfigController(this);
         }
     }
 }

@@ -5,7 +5,7 @@ namespace FBITools
         public MainForm()
         {
             InitializeComponent();
-            MainController.Init(this);
+            var _ = new MainController(this);
         }
     }
 }

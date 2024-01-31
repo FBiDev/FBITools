@@ -9,10 +9,10 @@ namespace FBITools
 {
     public partial class MemoryCardController
     {
-        static bool backupStarted;
-        static TaskController BackupTask = new TaskController();
+        bool backupStarted;
+        TaskController BackupTask = new TaskController();
 
-        public static void Init(MemoryCardForm formView)
+        public MemoryCardController(MemoryCardForm formView)
         {
             form = formView;
 
@@ -42,7 +42,7 @@ namespace FBITools
             if (cboTimer.SelectedIndex < 0) cboTimer.SelectedIndex = 0;
         }
 
-        static void btnOrigin_Click(object sender, EventArgs e)
+        void btnOrigin_Click(object sender, EventArgs e)
         {
             if (dlgOrigin.ShowDialog() == DialogResult.OK)
             {
@@ -57,7 +57,7 @@ namespace FBITools
             }
         }
 
-        static void UpdateOrigin()
+        void UpdateOrigin()
         {
             txtOrigin.Text = Session.Options.MemoryCard_Origin;
 
@@ -68,7 +68,7 @@ namespace FBITools
                 dlgDestination.FileName = dlgOrigin.FileName;
         }
 
-        static void btnDestination_Click(object sender, EventArgs e)
+        void btnDestination_Click(object sender, EventArgs e)
         {
             if (dlgDestination.ShowDialog() == DialogResult.OK)
             {
@@ -77,7 +77,7 @@ namespace FBITools
             }
         }
 
-        static void UpdateDestination()
+        void UpdateDestination()
         {
             txtDestination.Text = Session.Options.MemoryCard_Destination;
 
@@ -85,17 +85,17 @@ namespace FBITools
             dlgDestination.FileName = Path.GetFileName(Session.Options.MemoryCard_Destination);
         }
 
-        static void cboTimer_SelectedIndexChanged(object sender, EventArgs e)
+        void cboTimer_SelectedIndexChanged(object sender, EventArgs e)
         {
             Session.Options.MemoryCard_Timer = cboTimer.SelectedValueInt;
         }
 
-        static void UpdateTimer()
+        void UpdateTimer()
         {
             cboTimer.SelectedItem = Session.Options.MemoryCard_Timer;
         }
 
-        static async void btnBackup_Click(object sender, EventArgs e)
+        async void btnBackup_Click(object sender, EventArgs e)
         {
             if (IsBackupInvalid())
             {
@@ -124,7 +124,7 @@ namespace FBITools
             }
         }
 
-        static bool IsBackupInvalid()
+        bool IsBackupInvalid()
         {
             return string.IsNullOrWhiteSpace(Session.Options.MemoryCard_Origin)
             || string.IsNullOrWhiteSpace(Session.Options.MemoryCard_Destination)
@@ -132,7 +132,7 @@ namespace FBITools
             || Session.Options.MemoryCard_Timer <= 0;
         }
 
-        static async Task BackupMemoryCard()
+        async Task BackupMemoryCard()
         {
             do
             {
@@ -147,7 +147,7 @@ namespace FBITools
             } while (backupStarted);
         }
 
-        static async void lblResult_TextChanged(object sender, EventArgs e)
+        async void lblResult_TextChanged(object sender, EventArgs e)
         {
             await TaskController.Delay(4);
             lblWarning.Text = "";

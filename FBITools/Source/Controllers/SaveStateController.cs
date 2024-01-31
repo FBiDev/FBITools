@@ -1,107 +1,84 @@
-﻿using System;
-using System.IO;
-using System.Windows.Forms;
-using GNX;
+﻿using GNX;
+using GNX.Desktop;
+using System;
 
 namespace FBITools
 {
     public partial class SaveStateController
     {
-        public static void Init(SaveStateForm formView)
+        FileCopy state;
+
+        public SaveStateController(SaveStateForm formView)
         {
             form = formView;
+            lblWarning.TextChanged += lblWarning_TextChanged;
 
-            btnOrigin.Click += btnOrigin_Click;
-            btnDestination.Click += btnDestination_Click;
-            btnCopy.Click += btnCopy_Click;
-            lblWarning.TextChanged += lblResult_TextChanged;
+            btnOrigin.Click += (s, e) =>
+            {
+                if (state.PickOrigin()) PreencherCampos();
+            };
 
-            dlgOrigin.ValidateNames = true;
-            dlgOrigin.CheckFileExists = true;
-            dlgOrigin.CheckPathExists = true;
-            dlgOrigin.FileName = "";
+            btnDestination.Click += (s, e) =>
+            {
+                if (state.PickDestination()) PreencherCampos();
+            };
 
-            dlgDestination.Filter = "All Files (*.*)|*.*";
+            chkOverwrite.CheckedChanged += (s, e) =>
+            {
+                state.Overwrite = chkOverwrite.Checked;
+            };
+
+            chkBackup.CheckedChanged += (s, e) =>
+            {
+                state.MakeBackup = chkBackup.Checked;
+            };
+
+            btnCopy.Click += (s, e) =>
+            {
+                if (state.Copy())
+                {
+                    lblWarning.ForeColorType = LabelType.success;
+                    lblWarning.Text = "Save State Copied!";
+                    Session.UpdateOptions();
+                }
+                else
+                {
+                    lblWarning.ForeColorType = LabelType.danger;
+                    lblWarning.Text = "Save State Copy Failed!";
+                }
+            };
+
+            state = new FileCopy
+            {
+                CustomName = true,
+                Filter = (FileCopy.Filters.AllFiles),
+            };
 
             if (Options.Loaded)
             {
-                UpdateOrigin();
-                UpdateDestination();
+                state.OriginPath = Session.Options.SaveState_Origin;
+                state.DestinationPath = Session.Options.SaveState_Destination;
+                PreencherCampos();
             }
         }
 
-        static void btnOrigin_Click(object sender, EventArgs e)
+        void chkOverwrite_CheckedChanged(object sender, System.EventArgs e)
         {
-            if (dlgOrigin.ShowDialog() == DialogResult.OK)
-            {
-                Session.Options.SaveState_Origin = dlgOrigin.FileName.NormalizePath();
-                UpdateOrigin();
-
-                if (Session.Options.SaveState_Destination == null) return;
-
-                Session.Options.SaveState_Destination = (Path.Combine(Path.GetDirectoryName(txtDestination.Text),
-                                                                      dlgOrigin.FileName)).NormalizePath();
-                UpdateDestination();
-            }
+            throw new System.NotImplementedException();
         }
 
-        static void UpdateOrigin()
-        {
-            txtOrigin.Text = Session.Options.SaveState_Origin;
-
-            dlgOrigin.InitialDirectory = Path.GetDirectoryName(Session.Options.SaveState_Origin);
-            dlgOrigin.FileName = Path.GetFileName(Session.Options.SaveState_Origin);
-
-            if (string.IsNullOrWhiteSpace(dlgDestination.FileName))
-                dlgDestination.FileName = dlgOrigin.FileName;
-        }
-
-        static void btnDestination_Click(object sender, EventArgs e)
-        {
-            if (dlgDestination.ShowDialog() == DialogResult.OK)
-            {
-                Session.Options.SaveState_Destination = dlgDestination.FileName.NormalizePath();
-                UpdateDestination();
-            }
-        }
-
-        static void UpdateDestination()
-        {
-            txtDestination.Text = Session.Options.SaveState_Destination;
-
-            dlgDestination.InitialDirectory = Path.GetDirectoryName(Session.Options.SaveState_Destination);
-            dlgDestination.FileName = Path.GetFileName(Session.Options.SaveState_Destination);
-        }
-
-        static void btnCopy_Click(object sender, EventArgs e)
-        {
-            if (IsCopyInvalid())
-            {
-                lblWarning.Text = "Save State Copy Failed!";
-                return;
-            }
-
-            CopySaveState();
-            lblWarning.Text = "Save State Copied!";
-            Session.UpdateOptions();
-        }
-
-        static bool IsCopyInvalid()
-        {
-            return string.IsNullOrWhiteSpace(Session.Options.SaveState_Origin)
-            || string.IsNullOrWhiteSpace(Session.Options.SaveState_Destination)
-            || Session.Options.SaveState_Origin == Session.Options.SaveState_Destination;
-        }
-
-        static void CopySaveState()
-        {
-            File.Copy(Session.Options.SaveState_Origin, Session.Options.SaveState_Destination, true);
-        }
-
-        static async void lblResult_TextChanged(object sender, EventArgs e)
+        async void lblWarning_TextChanged(object sender, System.EventArgs e)
         {
             await TaskController.Delay(4);
             lblWarning.Text = "";
+        }
+
+        void PreencherCampos()
+        {
+            txtOrigin.Text = state.OriginPath;
+            Session.Options.SaveState_Origin = state.OriginPath;
+            txtDestination.Text = state.DestinationPath;
+            Session.Options.SaveState_Destination = state.DestinationPath;
         }
     }
 }

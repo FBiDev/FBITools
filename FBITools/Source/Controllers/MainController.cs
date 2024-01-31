@@ -1,9 +1,9 @@
 ﻿namespace FBITools
 {
-    public static class MainController
+    public class MainController
     {
         #region Entrada
-        public static void Init(MainForm formDesign)
+        public MainController(MainForm formDesign)
         {
             Session.SetFormIcon();
             Session.MainForm = formDesign;
@@ -15,7 +15,7 @@
             Session.MainForm.SetMainFormContent(new MainContentForm());
         }
 
-        static void form_Shown(object sender, System.EventArgs e)
+        void form_Shown(object sender, System.EventArgs e)
         {
             Theme.SetTheme();
             Session.MainForm.CenterWindow();

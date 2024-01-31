@@ -5,7 +5,7 @@
         public SaveStateForm()
         {
             InitializeComponent();
-            SaveStateController.Init(this);
+            var _ = new SaveStateController(this);
         }
     }
 }

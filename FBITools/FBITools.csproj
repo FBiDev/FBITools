@@ -65,6 +65,7 @@
     <Compile Include="ResourcesLocal\CustomControls\FlatTableLayoutPanelA.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Source\Classes\FileCopy.cs" />
     <Compile Include="Source\Config\Session.cs" />
     <Compile Include="Source\Config\Options.cs" />
     <Compile Include="Source\Config\Theme.cs" />
@@ -173,7 +174,7 @@
 if %25errorlevel%25 leq 4 exit 0 else exit %25errorlevel%25</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PreBuildEvent>ROBOCOPY "$(SolutionDir)..\_DLL\ " "$(ProjectDir)Plugins\ " "GNX.dll" /XO
+    <PreBuildEvent>ROBOCOPY "$(SolutionDir)..\_DLL\_DLL\Plugins" "$(ProjectDir)Plugins\ " "GNX.*" /XO
 if %25errorlevel%25 leq 4 exit 0 else exit %25errorlevel%25</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

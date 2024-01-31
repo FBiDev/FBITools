@@ -5,7 +5,7 @@
         public MemoryCardForm()
         {
             InitializeComponent();
-            MemoryCardController.Init(this);
+            var _ = new MemoryCardController(this);
         }
     }
 }

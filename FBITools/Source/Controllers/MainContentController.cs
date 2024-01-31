@@ -9,9 +9,9 @@ namespace FBITools
     public partial class MainContentController
     {
         #region Entrada
-        public static FlatButtonA selectedTab;
+        public FlatButtonA selectedTab;
 
-        public static void Init(MainContentForm formView)
+        public MainContentController(MainContentForm formView)
         {
             form = formView;
 
@@ -24,14 +24,14 @@ namespace FBITools
             btnTabConfig.Click += (s, e) => SetContent(Session.ConfigForm, btnTabConfig);
         }
 
-        static void form_Load(object sender, EventArgs e) { }
+        void form_Load(object sender, EventArgs e) { }
 
-        static void form_Shown(object sender, EventArgs e)
+        void form_Shown(object sender, EventArgs e)
         {
             btnTabSaveState.PerformClick();
         }
 
-        static void SetSelectedTab(FlatButtonA btnClicked)
+        void SetSelectedTab(FlatButtonA btnClicked)
         {
             if (selectedTab != null && selectedTab != btnClicked)
                 selectedTab.Selected = false;
@@ -40,7 +40,7 @@ namespace FBITools
             selectedTab = btnClicked;
         }
 
-        static void ResizeContent(Size content)
+        void ResizeContent(Size content)
         {
             if (MainBaseForm.AutoResizeWindow == false) return;
 
@@ -55,7 +55,7 @@ namespace FBITools
         #endregion
 
         #region Common
-        static void SetContent<T>(T contentForm, FlatButtonA selectTab) where T : ContentBaseForm, new()
+        void SetContent<T>(T contentForm, FlatButtonA selectTab) where T : ContentBaseForm, new()
         {
             if (contentForm == null) contentForm = new T();
             if (pnlContentRInside.Controls.Contains(contentForm)) return;
@@ -83,9 +83,9 @@ namespace FBITools
             CenterMainWindow(contentForm).TryAwait();
         }
 
-        static async Task CenterMainWindow<T>(T contentForm) where T : ContentBaseForm, new()
+        async Task CenterMainWindow<T>(T contentForm) where T : ContentBaseForm, new()
         {
-            //Session.MainForm.CenterWindow();
+            Session.MainForm.CenterWindow();
             await Task.Delay(50);
 
             contentForm.FinalLoadOnShow();

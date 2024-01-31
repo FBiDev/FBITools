@@ -33,6 +33,8 @@
             this.lblTitle = new FBITools.FlatLabelA();
             this.chkDarkMode = new FBITools.FlatCheckBoxA();
             this.chkDebugMode = new FBITools.FlatCheckBoxA();
+            this.chkAutoCenterWindow = new FBITools.FlatCheckBoxA();
+            this.chkAutoResizeWindow = new FBITools.FlatCheckBoxA();
             this.tblMainContent.SuspendLayout();
             this.tblInput.SuspendLayout();
             this.SuspendLayout();
@@ -59,20 +61,21 @@
             this.tblInput.ColumnCount = 2;
             this.tblInput.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tblInput.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tblInput.Controls.Add(this.chkAutoResizeWindow, 0, 3);
+            this.tblInput.Controls.Add(this.chkAutoCenterWindow, 0, 2);
             this.tblInput.Controls.Add(this.lblTitle, 0, 0);
             this.tblInput.Controls.Add(this.chkDarkMode, 0, 1);
-            this.tblInput.Controls.Add(this.chkDebugMode, 0, 2);
+            this.tblInput.Controls.Add(this.chkDebugMode, 0, 4);
             this.tblInput.Location = new System.Drawing.Point(1, 1);
             this.tblInput.Name = "tblInput";
-            this.tblInput.RowCount = 3;
+            this.tblInput.RowCount = 5;
             this.tblInput.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tblInput.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tblInput.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tblInput.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tblInput.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tblInput.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tblInput.Size = new System.Drawing.Size(298, 110);
-            this.tblInput.SizeOriginal = new System.Drawing.Size(298, 112);
+            this.tblInput.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tblInput.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tblInput.Size = new System.Drawing.Size(298, 186);
+            this.tblInput.SizeOriginal = new System.Drawing.Size(298, 110);
             this.tblInput.TabIndex = 0;
             // 
             // lblTitle
@@ -105,12 +108,34 @@
             // 
             this.tblInput.SetColumnSpan(this.chkDebugMode, 2);
             this.chkDebugMode.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chkDebugMode.Location = new System.Drawing.Point(0, 76);
+            this.chkDebugMode.Location = new System.Drawing.Point(0, 152);
             this.chkDebugMode.Margin = new System.Windows.Forms.Padding(0, 2, 0, 0);
             this.chkDebugMode.Name = "chkDebugMode";
             this.chkDebugMode.Size = new System.Drawing.Size(298, 34);
             this.chkDebugMode.TabIndex = 2;
             this.chkDebugMode.TextLegend = "Debug Mode";
+            // 
+            // chkAutoCenterWindow
+            // 
+            this.tblInput.SetColumnSpan(this.chkAutoCenterWindow, 2);
+            this.chkAutoCenterWindow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chkAutoCenterWindow.Location = new System.Drawing.Point(0, 76);
+            this.chkAutoCenterWindow.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
+            this.chkAutoCenterWindow.Name = "chkAutoCenterWindow";
+            this.chkAutoCenterWindow.Size = new System.Drawing.Size(298, 34);
+            this.chkAutoCenterWindow.TabIndex = 3;
+            this.chkAutoCenterWindow.TextLegend = "AutoCenter Window";
+            // 
+            // chkAutoResizeWindow
+            // 
+            this.tblInput.SetColumnSpan(this.chkAutoResizeWindow, 2);
+            this.chkAutoResizeWindow.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chkAutoResizeWindow.Location = new System.Drawing.Point(0, 114);
+            this.chkAutoResizeWindow.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
+            this.chkAutoResizeWindow.Name = "chkAutoResizeWindow";
+            this.chkAutoResizeWindow.Size = new System.Drawing.Size(298, 34);
+            this.chkAutoResizeWindow.TabIndex = 4;
+            this.chkAutoResizeWindow.TextLegend = "AutoResize Window";
             // 
             // ConfigForm
             // 
@@ -134,6 +159,8 @@
         private FlatTableLayoutPanelA tblMainContent;
         internal FlatCheckBoxA chkDarkMode;
         internal FlatCheckBoxA chkDebugMode;
+        internal FlatCheckBoxA chkAutoResizeWindow;
+        internal FlatCheckBoxA chkAutoCenterWindow;
 
     }
 }

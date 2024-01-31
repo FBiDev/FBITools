@@ -33,6 +33,8 @@ namespace FBITools
             //Banco.Load();
 
             MainBaseForm.DebugMode = Options.DebugMode;
+            MainBaseForm.AutoCenterWindow = Options.AutoCenterWindow;
+            MainBaseForm.AutoResizeWindow = Options.AutoResizeWindow;
 
             DebugManager.Enable = Options.DebugMode;
         }

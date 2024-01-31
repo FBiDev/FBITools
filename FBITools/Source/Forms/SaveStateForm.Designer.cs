@@ -28,8 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dlgOrigin = new System.Windows.Forms.OpenFileDialog();
-            this.dlgDestination = new System.Windows.Forms.SaveFileDialog();
             this.tblMainContent = new FBITools.FlatTableLayoutPanelA();
             this.tblInput = new FBITools.FlatTableLayoutPanelA();
             this.lblTitle = new FBITools.FlatLabelA();
@@ -37,6 +35,8 @@
             this.txtOrigin = new FBITools.FlatTextBoxA();
             this.btnDestination = new FBITools.FlatButtonA();
             this.txtDestination = new FBITools.FlatTextBoxA();
+            this.chkOverwrite = new FBITools.FlatCheckBoxA();
+            this.chkBackup = new FBITools.FlatCheckBoxA();
             this.btnCopy = new FBITools.FlatButtonA();
             this.lblWarning = new FBITools.FlatLabelA();
             this.tblMainContent.SuspendLayout();
@@ -62,31 +62,35 @@
             // 
             // tblInput
             // 
-            this.tblInput.ColumnCount = 2;
+            this.tblInput.ColumnCount = 3;
+            this.tblInput.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 102F));
             this.tblInput.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tblInput.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tblInput.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tblInput.Controls.Add(this.lblTitle, 0, 0);
             this.tblInput.Controls.Add(this.btnOrigin, 0, 1);
             this.tblInput.Controls.Add(this.txtOrigin, 1, 1);
             this.tblInput.Controls.Add(this.btnDestination, 0, 2);
             this.tblInput.Controls.Add(this.txtDestination, 1, 2);
-            this.tblInput.Controls.Add(this.btnCopy, 0, 3);
-            this.tblInput.Controls.Add(this.lblWarning, 0, 4);
+            this.tblInput.Controls.Add(this.chkOverwrite, 1, 3);
+            this.tblInput.Controls.Add(this.chkBackup, 2, 3);
+            this.tblInput.Controls.Add(this.btnCopy, 0, 4);
+            this.tblInput.Controls.Add(this.lblWarning, 0, 5);
             this.tblInput.Location = new System.Drawing.Point(1, 1);
             this.tblInput.Name = "tblInput";
-            this.tblInput.RowCount = 4;
+            this.tblInput.RowCount = 6;
             this.tblInput.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tblInput.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tblInput.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tblInput.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tblInput.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tblInput.Size = new System.Drawing.Size(428, 176);
-            this.tblInput.SizeOriginal = new System.Drawing.Size(428, 176);
+            this.tblInput.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tblInput.Size = new System.Drawing.Size(428, 214);
+            this.tblInput.SizeOriginal = new System.Drawing.Size(428, 214);
             this.tblInput.TabIndex = 0;
             // 
             // lblTitle
             // 
-            this.tblInput.SetColumnSpan(this.lblTitle, 2);
+            this.tblInput.SetColumnSpan(this.lblTitle, 3);
             this.lblTitle.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(149)))), ((int)(((byte)(237)))));
@@ -108,7 +112,7 @@
             this.btnOrigin.Location = new System.Drawing.Point(0, 38);
             this.btnOrigin.Margin = new System.Windows.Forms.Padding(0, 2, 2, 2);
             this.btnOrigin.Name = "btnOrigin";
-            this.btnOrigin.Size = new System.Drawing.Size(80, 34);
+            this.btnOrigin.Size = new System.Drawing.Size(100, 34);
             this.btnOrigin.TabIndex = 1;
             this.btnOrigin.Text = "Origin";
             // 
@@ -118,18 +122,19 @@
             this.txtOrigin.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(223)))), ((int)(((byte)(229)))));
             this.txtOrigin.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.txtOrigin.BackgroundColorFocus = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.tblInput.SetColumnSpan(this.txtOrigin, 2);
             this.txtOrigin.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtOrigin.Enabled = false;
             this.txtOrigin.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtOrigin.LabelText = "File";
-            this.txtOrigin.Location = new System.Drawing.Point(84, 38);
+            this.txtOrigin.Location = new System.Drawing.Point(104, 38);
             this.txtOrigin.Margin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.txtOrigin.MaximumSize = new System.Drawing.Size(0, 34);
             this.txtOrigin.Name = "txtOrigin";
             this.txtOrigin.Padding = new System.Windows.Forms.Padding(1);
             this.txtOrigin.PreviousText = "";
             this.txtOrigin.ReadOnly = true;
-            this.txtOrigin.Size = new System.Drawing.Size(344, 34);
+            this.txtOrigin.Size = new System.Drawing.Size(324, 34);
             this.txtOrigin.TabIndex = 2;
             // 
             // btnDestination
@@ -141,7 +146,7 @@
             this.btnDestination.Location = new System.Drawing.Point(0, 76);
             this.btnDestination.Margin = new System.Windows.Forms.Padding(0, 2, 2, 2);
             this.btnDestination.Name = "btnDestination";
-            this.btnDestination.Size = new System.Drawing.Size(80, 34);
+            this.btnDestination.Size = new System.Drawing.Size(100, 34);
             this.btnDestination.TabIndex = 3;
             this.btnDestination.Text = "Destination";
             // 
@@ -151,45 +156,65 @@
             this.txtDestination.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(223)))), ((int)(((byte)(229)))));
             this.txtDestination.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.txtDestination.BackgroundColorFocus = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
+            this.tblInput.SetColumnSpan(this.txtDestination, 2);
             this.txtDestination.Dock = System.Windows.Forms.DockStyle.Fill;
             this.txtDestination.Enabled = false;
             this.txtDestination.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDestination.LabelText = "File";
-            this.txtDestination.Location = new System.Drawing.Point(84, 76);
+            this.txtDestination.Location = new System.Drawing.Point(104, 76);
             this.txtDestination.Margin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.txtDestination.MaximumSize = new System.Drawing.Size(0, 34);
             this.txtDestination.Name = "txtDestination";
             this.txtDestination.Padding = new System.Windows.Forms.Padding(1);
             this.txtDestination.PreviousText = "";
             this.txtDestination.ReadOnly = true;
-            this.txtDestination.Size = new System.Drawing.Size(344, 34);
+            this.txtDestination.Size = new System.Drawing.Size(324, 34);
             this.txtDestination.TabIndex = 4;
+            // 
+            // chkOverwrite
+            // 
+            this.chkOverwrite.Checked = true;
+            this.chkOverwrite.Location = new System.Drawing.Point(104, 114);
+            this.chkOverwrite.Margin = new System.Windows.Forms.Padding(2);
+            this.chkOverwrite.Name = "chkOverwrite";
+            this.chkOverwrite.Size = new System.Drawing.Size(100, 34);
+            this.chkOverwrite.TabIndex = 5;
+            this.chkOverwrite.TextLegend = "Overwrite";
+            // 
+            // chkBackup
+            // 
+            this.chkBackup.Location = new System.Drawing.Point(208, 114);
+            this.chkBackup.Margin = new System.Windows.Forms.Padding(2, 2, 0, 2);
+            this.chkBackup.Name = "chkBackup";
+            this.chkBackup.Size = new System.Drawing.Size(100, 34);
+            this.chkBackup.TabIndex = 6;
+            this.chkBackup.TextLegend = "Backup";
             // 
             // btnCopy
             // 
-            this.tblInput.SetColumnSpan(this.btnCopy, 2);
+            this.tblInput.SetColumnSpan(this.btnCopy, 3);
             this.btnCopy.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnCopy.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(223)))), ((int)(((byte)(229)))));
             this.btnCopy.FlatAppearance.BorderSize = 0;
             this.btnCopy.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
-            this.btnCopy.Location = new System.Drawing.Point(0, 114);
+            this.btnCopy.Location = new System.Drawing.Point(0, 152);
             this.btnCopy.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.btnCopy.Name = "btnCopy";
             this.btnCopy.Size = new System.Drawing.Size(428, 34);
-            this.btnCopy.TabIndex = 5;
+            this.btnCopy.TabIndex = 7;
             this.btnCopy.Text = "Copy";
             // 
             // lblWarning
             // 
-            this.tblInput.SetColumnSpan(this.lblWarning, 2);
+            this.tblInput.SetColumnSpan(this.lblWarning, 3);
             this.lblWarning.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblWarning.ForeColor = System.Drawing.Color.Firebrick;
             this.lblWarning.ForeColorType = GNX.Desktop.LabelType.danger;
-            this.lblWarning.Location = new System.Drawing.Point(0, 152);
+            this.lblWarning.Location = new System.Drawing.Point(0, 190);
             this.lblWarning.Margin = new System.Windows.Forms.Padding(0, 2, 0, 0);
             this.lblWarning.Name = "lblWarning";
             this.lblWarning.Size = new System.Drawing.Size(428, 24);
-            this.lblWarning.TabIndex = 6;
+            this.lblWarning.TabIndex = 8;
             this.lblWarning.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // SaveStateForm
@@ -215,9 +240,9 @@
         internal FlatTextBoxA txtDestination;
         internal FlatButtonA btnCopy;
         internal FlatLabelA lblWarning;
-        internal System.Windows.Forms.OpenFileDialog dlgOrigin;
-        internal System.Windows.Forms.SaveFileDialog dlgDestination;
         private FlatTableLayoutPanelA tblInput;
         private FlatTableLayoutPanelA tblMainContent;
+        internal FlatCheckBoxA chkOverwrite;
+        internal FlatCheckBoxA chkBackup;
     }
 }
