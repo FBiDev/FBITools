@@ -161,7 +161,7 @@ namespace FBITools
             this.tblInput.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tblInput.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tblInput.Size = new System.Drawing.Size(428, 148);
-            this.tblInput.SizeOriginal = new System.Drawing.Size(428, 150);
+            this.tblInput.SizeOriginal = new System.Drawing.Size(428, 148);
             this.tblInput.TabIndex = 0;
             // 
             // cboTimer
@@ -170,7 +170,7 @@ namespace FBITools
             this.cboTimer.BackColor = System.Drawing.Color.White;
             this.tblInput.SetColumnSpan(this.cboTimer, 2);
             this.cboTimer.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.cboTimer.LabelText = "Timer (Minutes)";
+            this.cboTimer.LabelText = "Timer";
             this.cboTimer.Location = new System.Drawing.Point(84, 114);
             this.cboTimer.Margin = new System.Windows.Forms.Padding(84, 2, 0, 0);
             this.cboTimer.MaximumSize = new System.Drawing.Size(0, 34);
@@ -191,7 +191,7 @@ namespace FBITools
             this.tblResult.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tblResult.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tblResult.Size = new System.Drawing.Size(428, 66);
-            this.tblResult.SizeOriginal = new System.Drawing.Size(428, 64);
+            this.tblResult.SizeOriginal = new System.Drawing.Size(428, 66);
             this.tblResult.TabIndex = 1;
             // 
             // btnBackup

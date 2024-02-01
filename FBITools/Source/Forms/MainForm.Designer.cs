@@ -41,7 +41,7 @@
             // MainForm
             // 
             this.ClientSize = new System.Drawing.Size(431, 308);
-            this.MinimumSize = new System.Drawing.Size(420, 260);
+            this.MinimumSize = new System.Drawing.Size(420, 290);
             this.Name = "MainForm";
             this.Text = "FBI Tools";
             this.ResumeLayout(false);

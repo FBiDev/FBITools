@@ -1,153 +1,101 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 using GNX;
+using GNX.Desktop;
 
 namespace FBITools
 {
     public partial class MemoryCardController
     {
-        bool backupStarted;
-        TaskController BackupTask = new TaskController();
+        FileCopy memoryCard;
 
         public MemoryCardController(MemoryCardForm formView)
         {
             form = formView;
+            lblWarning.TextChanged += lblWarning_TextChanged;
 
-            btnOrigin.Click += btnOrigin_Click;
-            btnDestination.Click += btnDestination_Click;
-            btnBackup.Click += btnBackup_Click;
+            btnOrigin.Click += (s, e) =>
+            {
+                if (memoryCard.PickOrigin()) PreencherCampos();
+            };
+
+            btnDestination.Click += (s, e) =>
+            {
+                if (memoryCard.PickDestination()) PreencherCampos();
+            };
+
+            btnBackup.Click += async (s, e) =>
+            {
+                if (memoryCard.Copy() && memoryCard.TimerIsRunning)
+                {
+                    Session.UpdateOptions();
+                    await memoryCard.StartTimer();
+                }
+            };
+
+            memoryCard = new FileCopy
+            {
+                CustomName = true,
+                Timer = true
+            };
+
+            memoryCard.Copied += () => lblWarning.Text = "MemoryCard Backup Saved!";
+
+            memoryCard.InvalidFile += () =>
+            {
+                lblWarning.ForeColorType = LabelType.danger;
+                lblWarning.Text = "MemoryCard Backup Failed!";
+            };
+
+            memoryCard.TimerRunningChanged += () =>
+            {
+                tblInput.Enabled = !memoryCard.TimerIsRunning;
+
+                if (memoryCard.TimerIsRunning)
+                {
+                    lblWarning.Text = "MemoryCard Backup Started!";
+                    btnBackup.Text = "Backup Stop";
+                }
+                else
+                {
+                    lblWarning.Text = "MemoryCard Backup Stoped!";
+                    btnBackup.Text = "Backup Start";
+                }
+            };
+
+            CarregarCampos();
+
             cboTimer.SelectedIndexChanged += cboTimer_SelectedIndexChanged;
-            lblWarning.TextChanged += lblResult_TextChanged;
-
-            dlgOrigin.ValidateNames = true;
-            dlgOrigin.CheckFileExists = true;
-            dlgOrigin.CheckPathExists = true;
-            dlgOrigin.FileName = "";
-
-            dlgDestination.Filter = "All Files (*.*)|*.*";
-
-            var timerItems = new List<int> { 0, 1, 5, 10, 15, 30, 60, 120, 180 };
-            cboTimer.DataSource = timerItems;
 
             if (Options.Loaded)
             {
-                UpdateOrigin();
-                UpdateDestination();
-                UpdateTimer();
+                memoryCard.OriginPath = Session.Options.MemoryCard_Origin;
+                memoryCard.DestinationPath = Session.Options.MemoryCard_Destination;
+                memoryCard.TimerValue = Session.Options.MemoryCard_Timer;
+                PreencherCampos();
             }
-
-            if (cboTimer.SelectedIndex < 0) cboTimer.SelectedIndex = 0;
-        }
-
-        void btnOrigin_Click(object sender, EventArgs e)
-        {
-            if (dlgOrigin.ShowDialog() == DialogResult.OK)
-            {
-                Session.Options.MemoryCard_Origin = dlgOrigin.FileName.NormalizePath();
-                UpdateOrigin();
-
-                if (Session.Options.MemoryCard_Destination == null) return;
-
-                Session.Options.MemoryCard_Destination = (Path.Combine(Path.GetDirectoryName(txtDestination.Text),
-                                                                       dlgOrigin.FileName)).NormalizePath();
-                UpdateDestination();
-            }
-        }
-
-        void UpdateOrigin()
-        {
-            txtOrigin.Text = Session.Options.MemoryCard_Origin;
-
-            dlgOrigin.InitialDirectory = Path.GetDirectoryName(Session.Options.MemoryCard_Origin);
-            dlgOrigin.FileName = Path.GetFileName(Session.Options.MemoryCard_Origin);
-
-            if (string.IsNullOrWhiteSpace(dlgDestination.FileName))
-                dlgDestination.FileName = dlgOrigin.FileName;
-        }
-
-        void btnDestination_Click(object sender, EventArgs e)
-        {
-            if (dlgDestination.ShowDialog() == DialogResult.OK)
-            {
-                Session.Options.MemoryCard_Destination = dlgDestination.FileName.NormalizePath();
-                UpdateDestination();
-            }
-        }
-
-        void UpdateDestination()
-        {
-            txtDestination.Text = Session.Options.MemoryCard_Destination;
-
-            dlgDestination.InitialDirectory = Path.GetDirectoryName(Session.Options.MemoryCard_Destination);
-            dlgDestination.FileName = Path.GetFileName(Session.Options.MemoryCard_Destination);
         }
 
         void cboTimer_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Session.Options.MemoryCard_Timer = cboTimer.SelectedValueInt;
+            memoryCard.TimerValue = cboTimer.SelectedValueInt;
+            Session.Options.MemoryCard_Timer = memoryCard.TimerValue;
         }
 
-        void UpdateTimer()
+        void CarregarCampos()
         {
-            cboTimer.SelectedItem = Session.Options.MemoryCard_Timer;
+            memoryCard.FillTimerCombo(cboTimer);
         }
 
-        async void btnBackup_Click(object sender, EventArgs e)
+        void PreencherCampos()
         {
-            if (IsBackupInvalid())
-            {
-                lblWarning.Text = "MemoryCard Backup Failed!";
-                return;
-            }
-
-            backupStarted = !backupStarted;
-
-            tblInput.Enabled = !backupStarted;
-
-            if (backupStarted)
-            {
-                BackupTask.Reset();
-                lblWarning.Text = "MemoryCard Backup Started!";
-                btnBackup.Text = "Backup Stop";
-
-                Session.UpdateOptions();
-                await BackupMemoryCard();
-            }
-            else
-            {
-                BackupTask.Cancel();
-                lblWarning.Text = "MemoryCard Backup Stoped!";
-                btnBackup.Text = "Backup Start";
-            }
+            txtOrigin.Text = memoryCard.OriginPath;
+            Session.Options.MemoryCard_Origin = memoryCard.OriginPath;
+            txtDestination.Text = memoryCard.DestinationPath;
+            Session.Options.MemoryCard_Destination = memoryCard.DestinationPath;
+            cboTimer.SelectedValue = memoryCard.TimerValue;
         }
 
-        bool IsBackupInvalid()
-        {
-            return string.IsNullOrWhiteSpace(Session.Options.MemoryCard_Origin)
-            || string.IsNullOrWhiteSpace(Session.Options.MemoryCard_Destination)
-            || Session.Options.MemoryCard_Origin == Session.Options.MemoryCard_Destination
-            || Session.Options.MemoryCard_Timer <= 0;
-        }
-
-        async Task BackupMemoryCard()
-        {
-            do
-            {
-                var fileSource = Session.Options.MemoryCard_Origin;
-                var fileDestination = Session.Options.MemoryCard_Destination.PathAddDateTime();
-
-                File.Copy(fileSource, fileDestination, true);
-                lblWarning.Text = "MemoryCard Backup Saved!";
-
-                await BackupTask.DelayStart(Session.Options.MemoryCard_Timer * 60);
-                if (BackupTask.IsCanceled) return;
-            } while (backupStarted);
-        }
-
-        async void lblResult_TextChanged(object sender, EventArgs e)
+        async void lblWarning_TextChanged(object sender, EventArgs e)
         {
             await TaskController.Delay(4);
             lblWarning.Text = "";

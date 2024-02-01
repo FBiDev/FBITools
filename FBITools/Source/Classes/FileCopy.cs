@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using GNX;
 using GNX.Desktop;
@@ -81,6 +82,27 @@ namespace FBITools
         public bool Overwrite { get; set; }
         public bool CustomName { get; set; }
         public bool MakeBackup { get; set; }
+        public bool Timer { get; set; }
+
+        bool _TimerIsRunning { get; set; }
+        public bool TimerIsRunning
+        {
+            get
+            {
+                return _TimerIsRunning;
+            }
+            set
+            {
+                _TimerIsRunning = value;
+                TimerRunningChanged();
+            }
+        }
+        public int TimerValue { get; set; }
+        TaskController TimerTask = new TaskController();
+
+        public event Action Copied = delegate { };
+        public event Action InvalidFile = delegate { };
+        public event Action TimerRunningChanged = delegate { };
 
         public FileCopy()
         {
@@ -165,56 +187,101 @@ namespace FBITools
             return false;
         }
 
-        public bool Copy()
+        public bool IsInvalidInputs()
         {
             if (string.IsNullOrWhiteSpace(OriginPath) || string.IsNullOrWhiteSpace(DestinationPath)
-            || OriginPath == DestinationPath)
+            || OriginPath == DestinationPath
+            || Timer && TimerValue <= 0)
             {
-                return false;
+                InvalidFile();
+                return true;
             }
+            return false;
+        }
+
+        bool SecureCopy()
+        {
+            if (File.Exists(OriginPath))
+            {
+                var attr = File.GetAttributes(OriginPath);
+                attr = attr & ~FileAttributes.ReadOnly;
+                File.SetAttributes(OriginPath, attr);
+            }
+
+            if (Timer || MakeBackup)
+            {
+                var backupNumber = 1;
+                var fileToSave = DestinationPath;
+
+                var folder = Path.GetDirectoryName(fileToSave);
+                var name = Path.GetFileNameWithoutExtension(fileToSave);
+                var ext = Path.GetExtension(fileToSave);
+
+                var exist = File.Exists(fileToSave);
+
+                while (exist)
+                {
+                    var backupString = "-back-" + backupNumber.ToString().PadLeft(0, '0') + "";
+                    var fullName = name + backupString + ext;
+                    var fullPath = Path.Combine(folder, fullName).NormalizePath();
+
+                    exist = File.Exists(fullPath);
+                    if (exist)
+                        backupNumber++;
+                    else
+                        File.Move(DestinationPath, fullPath);
+                }
+
+                File.Copy(OriginPath, DestinationPath, Overwrite);
+            }
+            else
+            {
+                File.Copy(OriginPath, DestinationPath, Overwrite);
+            }
+
+            Copied();
+            return true;
+        }
+
+        public async Task StartTimer()
+        {
+            do
+            {
+                SecureCopy();
+
+                await TimerTask.DelayStart(TimerValue);
+                if (TimerTask.IsCanceled)
+                {
+                    TimerIsRunning = false;
+                    return;
+                }
+            } while (TimerIsRunning);
+        }
+
+        public bool Copy()
+        {
+            if (IsInvalidInputs())
+                return false;
 
             var exist = File.Exists(DestinationPath);
             var canCopy = !exist || Overwrite;
 
-            if (MakeBackup)
+            if (Timer)
             {
-                return BackupFile(OriginPath, DestinationPath);
-            }
-            else if (canCopy)
-            {
-                File.Copy(OriginPath, DestinationPath, Overwrite);
+                TimerIsRunning = !TimerIsRunning;
+
+                if (TimerIsRunning)
+                    TimerTask.Reset();
+                else
+                    TimerTask.Cancel();
                 return true;
+            }
+            else if (MakeBackup || canCopy)
+            {
+                return SecureCopy();
             }
 
             return false;
-        }
-
-        bool BackupFile(string origin, string destination)
-        {
-            var backupNumber = 1;
-            var s = DestinationPath;
-
-            var folder = Path.GetDirectoryName(s);
-            var name = Path.GetFileNameWithoutExtension(s);
-            var ext = Path.GetExtension(s);
-
-            var exist = File.Exists(destination);
-
-            while (exist)
-            {
-                var backupString = "-back-" + backupNumber.ToString().PadLeft(0, '0') + "";
-                var fullName = name + backupString + ext;
-                var fullPath = Path.Combine(folder, fullName).NormalizePath();
-
-                exist = File.Exists(fullPath);
-                if (exist)
-                    backupNumber++;
-                else
-                    File.Move(DestinationPath, fullPath);
-            }
-
-            File.Copy(OriginPath, DestinationPath);
-            return true;
         }
 
         void UpdateOrigin()
@@ -252,6 +319,59 @@ namespace FBITools
 
             DestinationFolder = Path.GetDirectoryName(DestinationPath);
             DestinationFile = Path.GetFileName(DestinationPath);
+        }
+
+        public void FillTypesCombo(FlatComboBox cbo)
+        {
+            var types = new ListBind<ListItem>
+            {
+                new ListItem{ Text="Overwrite", Value=1},
+                new ListItem{ Text="Backup", Value=2},
+                new ListItem{ Text="Backup Timer", Value=3}
+            };
+
+            cbo.DisplayMember = "Text";
+            cbo.ValueMember = "Value";
+            cbo.DataSource = types;
+            cbo.SelectedIndex = 0;
+
+            cbo.SelectedIndexChanged += cbo_SelectedIndexChanged;
+        }
+
+        public void FillTimerCombo(FlatComboBox cbo)
+        {
+            var timerItems = new List<ListItem> { 
+                new ListItem(0,    "None"),
+                new ListItem(10,   "10 secs"),
+                new ListItem(30,   "30 secs"),
+                new ListItem(60,   "1 min"),
+                new ListItem(300,  "5 mins"),
+                new ListItem(600,  "10 mins"),
+                new ListItem(900,  "15 mins"),
+                new ListItem(1800, "30 mins"),
+                new ListItem(3600, "1 hour"),
+                new ListItem(7200, "2 hours"),
+                new ListItem(10800,"3 hours")
+            };
+
+            cbo.DisplayMember = "Text";
+            cbo.ValueMember = "Value";
+            cbo.DataSource = timerItems;
+            cbo.SelectedIndex = 0;
+        }
+
+        void cbo_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var cbo = sender as FlatComboBoxNew;
+            Overwrite = false;
+            MakeBackup = false;
+
+            switch (cbo.SelectedIndex)
+            {
+                case 0: Overwrite = true; break;
+                case 1: MakeBackup = true; break;
+                case 2: Timer = true; break;
+            }
         }
     }
 }

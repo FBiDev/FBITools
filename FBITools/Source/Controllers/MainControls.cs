@@ -47,8 +47,7 @@ namespace FBITools
         FlatButtonA btnDestination { get { return form.btnDestination; } }
         FlatTextBoxA txtDestination { get { return form.txtDestination; } }
 
-        FlatCheckBoxA chkOverwrite { get { return form.chkOverwrite; } }
-        FlatCheckBoxA chkBackup { get { return form.chkBackup; } }
+        FlatComboBoxA cboCopyType { get { return form.cboCopyType; } }
 
         FlatButtonA btnCopy { get { return form.btnCopy; } }
         FlatLabelA lblWarning { get { return form.lblWarning; } }

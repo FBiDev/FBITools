@@ -35,10 +35,9 @@
             this.txtOrigin = new FBITools.FlatTextBoxA();
             this.btnDestination = new FBITools.FlatButtonA();
             this.txtDestination = new FBITools.FlatTextBoxA();
-            this.chkOverwrite = new FBITools.FlatCheckBoxA();
-            this.chkBackup = new FBITools.FlatCheckBoxA();
             this.btnCopy = new FBITools.FlatButtonA();
             this.lblWarning = new FBITools.FlatLabelA();
+            this.cboCopyType = new FBITools.FlatComboBoxA();
             this.tblMainContent.SuspendLayout();
             this.tblInput.SuspendLayout();
             this.SuspendLayout();
@@ -64,17 +63,16 @@
             // 
             this.tblInput.ColumnCount = 3;
             this.tblInput.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 102F));
-            this.tblInput.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.tblInput.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tblInput.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tblInput.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tblInput.Controls.Add(this.lblTitle, 0, 0);
             this.tblInput.Controls.Add(this.btnOrigin, 0, 1);
             this.tblInput.Controls.Add(this.txtOrigin, 1, 1);
             this.tblInput.Controls.Add(this.btnDestination, 0, 2);
             this.tblInput.Controls.Add(this.txtDestination, 1, 2);
-            this.tblInput.Controls.Add(this.chkOverwrite, 1, 3);
-            this.tblInput.Controls.Add(this.chkBackup, 2, 3);
             this.tblInput.Controls.Add(this.btnCopy, 0, 4);
             this.tblInput.Controls.Add(this.lblWarning, 0, 5);
+            this.tblInput.Controls.Add(this.cboCopyType, 1, 3);
             this.tblInput.Location = new System.Drawing.Point(1, 1);
             this.tblInput.Name = "tblInput";
             this.tblInput.RowCount = 6;
@@ -171,25 +169,6 @@
             this.txtDestination.Size = new System.Drawing.Size(324, 34);
             this.txtDestination.TabIndex = 4;
             // 
-            // chkOverwrite
-            // 
-            this.chkOverwrite.Checked = true;
-            this.chkOverwrite.Location = new System.Drawing.Point(104, 114);
-            this.chkOverwrite.Margin = new System.Windows.Forms.Padding(2);
-            this.chkOverwrite.Name = "chkOverwrite";
-            this.chkOverwrite.Size = new System.Drawing.Size(100, 34);
-            this.chkOverwrite.TabIndex = 5;
-            this.chkOverwrite.TextLegend = "Overwrite";
-            // 
-            // chkBackup
-            // 
-            this.chkBackup.Location = new System.Drawing.Point(208, 114);
-            this.chkBackup.Margin = new System.Windows.Forms.Padding(2, 2, 0, 2);
-            this.chkBackup.Name = "chkBackup";
-            this.chkBackup.Size = new System.Drawing.Size(100, 34);
-            this.chkBackup.TabIndex = 6;
-            this.chkBackup.TextLegend = "Backup";
-            // 
             // btnCopy
             // 
             this.tblInput.SetColumnSpan(this.btnCopy, 3);
@@ -217,6 +196,18 @@
             this.lblWarning.TabIndex = 8;
             this.lblWarning.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
+            // cboCopyType
+            // 
+            this.cboCopyType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
+            this.cboCopyType.BackColor = System.Drawing.Color.White;
+            this.cboCopyType.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cboCopyType.LabelText = "Type";
+            this.cboCopyType.Location = new System.Drawing.Point(102, 114);
+            this.cboCopyType.Margin = new System.Windows.Forms.Padding(0, 2, 2, 2);
+            this.cboCopyType.Name = "cboCopyType";
+            this.cboCopyType.Size = new System.Drawing.Size(161, 34);
+            this.cboCopyType.TabIndex = 9;
+            // 
             // SaveStateForm
             // 
             this.ClientSize = new System.Drawing.Size(430, 262);
@@ -242,7 +233,6 @@
         internal FlatLabelA lblWarning;
         private FlatTableLayoutPanelA tblInput;
         private FlatTableLayoutPanelA tblMainContent;
-        internal FlatCheckBoxA chkOverwrite;
-        internal FlatCheckBoxA chkBackup;
+        internal FlatComboBoxA cboCopyType;
     }
 }

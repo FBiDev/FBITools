@@ -11,6 +11,7 @@ namespace FBITools
         public SaveStateController(SaveStateForm formView)
         {
             form = formView;
+            form.FinalLoadOnce += CarregarCampos;
             lblWarning.TextChanged += lblWarning_TextChanged;
 
             btnOrigin.Click += (s, e) =>
@@ -21,16 +22,6 @@ namespace FBITools
             btnDestination.Click += (s, e) =>
             {
                 if (state.PickDestination()) PreencherCampos();
-            };
-
-            chkOverwrite.CheckedChanged += (s, e) =>
-            {
-                state.Overwrite = chkOverwrite.Checked;
-            };
-
-            chkBackup.CheckedChanged += (s, e) =>
-            {
-                state.MakeBackup = chkBackup.Checked;
             };
 
             btnCopy.Click += (s, e) =>
@@ -62,15 +53,9 @@ namespace FBITools
             }
         }
 
-        void chkOverwrite_CheckedChanged(object sender, System.EventArgs e)
+        void CarregarCampos()
         {
-            throw new System.NotImplementedException();
-        }
-
-        async void lblWarning_TextChanged(object sender, System.EventArgs e)
-        {
-            await TaskController.Delay(4);
-            lblWarning.Text = "";
+            state.FillTypesCombo(cboCopyType);
         }
 
         void PreencherCampos()
@@ -79,6 +64,12 @@ namespace FBITools
             Session.Options.SaveState_Origin = state.OriginPath;
             txtDestination.Text = state.DestinationPath;
             Session.Options.SaveState_Destination = state.DestinationPath;
+        }
+
+        async void lblWarning_TextChanged(object sender, System.EventArgs e)
+        {
+            await TaskController.Delay(4);
+            lblWarning.Text = "";
         }
     }
 }
