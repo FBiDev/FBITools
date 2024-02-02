@@ -11,26 +11,12 @@ namespace FBITools
         public MemoryCardController(MemoryCardForm formView)
         {
             form = formView;
+            form.Shown += form_Shown;
+        }
+
+        void form_Shown(object sender, EventArgs ev)
+        {
             lblWarning.TextChanged += lblWarning_TextChanged;
-
-            btnOrigin.Click += (s, e) =>
-            {
-                if (memoryCard.PickOrigin()) PreencherCampos();
-            };
-
-            btnDestination.Click += (s, e) =>
-            {
-                if (memoryCard.PickDestination()) PreencherCampos();
-            };
-
-            btnBackup.Click += async (s, e) =>
-            {
-                if (memoryCard.Copy() && memoryCard.TimerIsRunning)
-                {
-                    Session.UpdateOptions();
-                    await memoryCard.StartTimer();
-                }
-            };
 
             memoryCard = new FileCopy
             {
@@ -38,17 +24,54 @@ namespace FBITools
                 Timer = true
             };
 
-            memoryCard.Copied += () => lblWarning.Text = "MemoryCard Backup Saved!";
+            CarregarCombos();
+
+            if (Options.Loaded)
+            {
+                memoryCard.OriginPath = Session.Options.MemoryCard_Origin;
+                memoryCard.DestinationPath = Session.Options.MemoryCard_Destination;
+                memoryCard.TimerValue = Session.Options.MemoryCard_Timer;
+
+                cboTimer.SelectedValue = Session.Options.MemoryCard_Timer;
+
+                PreencherCampos();
+            }
+
+            btnOrigin.Click += (s, e) => { if (memoryCard.PickOrigin()) PreencherCampos(); };
+
+            btnDestination.Click += (s, e) => { if (memoryCard.PickDestination()) PreencherCampos(); };
+
+            cboTimer.SelectedIndexChanged += (s, e) => { PreencherCampos(); };
+
+            btnBackup.Click += async (s, e) =>
+            {
+                if (memoryCard.Copy())
+                {
+                    Session.UpdateOptions();
+                    if (memoryCard.TimerIsRunning)
+                    {
+                        await memoryCard.StartTimer();
+                    }
+                }
+            };
+
+            memoryCard.Copied += () =>
+            {
+                lblWarning.ForeColorType = LabelType.success;
+                lblWarning.Text = "MemoryCard Copied!";
+            };
 
             memoryCard.InvalidFile += () =>
             {
                 lblWarning.ForeColorType = LabelType.danger;
-                lblWarning.Text = "MemoryCard Backup Failed!";
+                lblWarning.Text = "MemoryCard Copy Failed!";
             };
 
             memoryCard.TimerRunningChanged += () =>
             {
-                tblInput.Enabled = !memoryCard.TimerIsRunning;
+                FormManager.EnableFormControls(!memoryCard.TimerIsRunning, tblInput);
+
+                lblWarning.ForeColorType = LabelType.primary;
 
                 if (memoryCard.TimerIsRunning)
                 {
@@ -61,27 +84,15 @@ namespace FBITools
                     btnBackup.Text = "Backup Start";
                 }
             };
-
-            CarregarCampos();
-
-            cboTimer.SelectedIndexChanged += cboTimer_SelectedIndexChanged;
-
-            if (Options.Loaded)
-            {
-                memoryCard.OriginPath = Session.Options.MemoryCard_Origin;
-                memoryCard.DestinationPath = Session.Options.MemoryCard_Destination;
-                memoryCard.TimerValue = Session.Options.MemoryCard_Timer;
-                PreencherCampos();
-            }
         }
 
-        void cboTimer_SelectedIndexChanged(object sender, EventArgs e)
+        async void lblWarning_TextChanged(object sender, EventArgs e)
         {
-            memoryCard.TimerValue = cboTimer.SelectedValueInt;
-            Session.Options.MemoryCard_Timer = memoryCard.TimerValue;
+            await TaskController.Delay(4);
+            lblWarning.Text = "";
         }
 
-        void CarregarCampos()
+        void CarregarCombos()
         {
             memoryCard.FillTimerCombo(cboTimer);
         }
@@ -89,16 +100,16 @@ namespace FBITools
         void PreencherCampos()
         {
             txtOrigin.Text = memoryCard.OriginPath;
-            Session.Options.MemoryCard_Origin = memoryCard.OriginPath;
             txtDestination.Text = memoryCard.DestinationPath;
-            Session.Options.MemoryCard_Destination = memoryCard.DestinationPath;
-            cboTimer.SelectedValue = memoryCard.TimerValue;
-        }
 
-        async void lblWarning_TextChanged(object sender, EventArgs e)
-        {
-            await TaskController.Delay(4);
-            lblWarning.Text = "";
+            Session.Options.MemoryCard_Origin = memoryCard.OriginPath;
+            Session.Options.MemoryCard_Destination = memoryCard.DestinationPath;
+            Session.Options.MemoryCard_Timer = memoryCard.TimerValue;
+
+            if (cboTimer.Enabled)
+                btnBackup.Text = "Backup Start";
+            else
+                btnBackup.Text = "Copy";
         }
     }
 }

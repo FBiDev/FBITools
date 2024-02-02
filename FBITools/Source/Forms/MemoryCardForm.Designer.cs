@@ -28,8 +28,6 @@ namespace FBITools
         /// </summary>
         private void InitializeComponent()
         {
-            this.dlgOrigin = new System.Windows.Forms.OpenFileDialog();
-            this.dlgDestination = new System.Windows.Forms.SaveFileDialog();
             this.txtDestination = new FBITools.FlatTextBoxA();
             this.btnDestination = new FBITools.FlatButtonA();
             this.txtOrigin = new FBITools.FlatTextBoxA();
@@ -54,14 +52,14 @@ namespace FBITools
             this.txtDestination.Enabled = false;
             this.txtDestination.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtDestination.LabelText = "File";
-            this.txtDestination.Location = new System.Drawing.Point(84, 76);
+            this.txtDestination.Location = new System.Drawing.Point(104, 76);
             this.txtDestination.Margin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.txtDestination.MaximumSize = new System.Drawing.Size(0, 34);
             this.txtDestination.Name = "txtDestination";
             this.txtDestination.Padding = new System.Windows.Forms.Padding(1);
             this.txtDestination.PreviousText = "";
             this.txtDestination.ReadOnly = true;
-            this.txtDestination.Size = new System.Drawing.Size(344, 34);
+            this.txtDestination.Size = new System.Drawing.Size(324, 34);
             this.txtDestination.TabIndex = 4;
             // 
             // btnDestination
@@ -73,7 +71,7 @@ namespace FBITools
             this.btnDestination.Location = new System.Drawing.Point(0, 76);
             this.btnDestination.Margin = new System.Windows.Forms.Padding(0, 2, 2, 2);
             this.btnDestination.Name = "btnDestination";
-            this.btnDestination.Size = new System.Drawing.Size(80, 34);
+            this.btnDestination.Size = new System.Drawing.Size(100, 34);
             this.btnDestination.TabIndex = 3;
             this.btnDestination.Text = "Destination";
             // 
@@ -85,14 +83,14 @@ namespace FBITools
             this.txtOrigin.Enabled = false;
             this.txtOrigin.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtOrigin.LabelText = "File";
-            this.txtOrigin.Location = new System.Drawing.Point(84, 38);
+            this.txtOrigin.Location = new System.Drawing.Point(104, 38);
             this.txtOrigin.Margin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.txtOrigin.MaximumSize = new System.Drawing.Size(0, 34);
             this.txtOrigin.Name = "txtOrigin";
             this.txtOrigin.Padding = new System.Windows.Forms.Padding(1);
             this.txtOrigin.PreviousText = "";
             this.txtOrigin.ReadOnly = true;
-            this.txtOrigin.Size = new System.Drawing.Size(344, 34);
+            this.txtOrigin.Size = new System.Drawing.Size(324, 34);
             this.txtOrigin.TabIndex = 2;
             // 
             // btnOrigin
@@ -104,7 +102,7 @@ namespace FBITools
             this.btnOrigin.Location = new System.Drawing.Point(0, 38);
             this.btnOrigin.Margin = new System.Windows.Forms.Padding(0, 2, 2, 2);
             this.btnOrigin.Name = "btnOrigin";
-            this.btnOrigin.Size = new System.Drawing.Size(80, 34);
+            this.btnOrigin.Size = new System.Drawing.Size(100, 34);
             this.btnOrigin.TabIndex = 1;
             this.btnOrigin.Text = "Origin";
             // 
@@ -144,18 +142,17 @@ namespace FBITools
             // tblInput
             // 
             this.tblInput.ColumnCount = 2;
-            this.tblInput.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tblInput.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 102F));
             this.tblInput.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tblInput.Controls.Add(this.lblTitle, 0, 0);
             this.tblInput.Controls.Add(this.btnOrigin, 0, 1);
             this.tblInput.Controls.Add(this.txtOrigin, 1, 1);
             this.tblInput.Controls.Add(this.btnDestination, 0, 2);
             this.tblInput.Controls.Add(this.txtDestination, 1, 2);
-            this.tblInput.Controls.Add(this.cboTimer, 0, 3);
+            this.tblInput.Controls.Add(this.cboTimer, 1, 3);
             this.tblInput.Location = new System.Drawing.Point(1, 1);
             this.tblInput.Name = "tblInput";
             this.tblInput.RowCount = 4;
-            this.tblInput.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tblInput.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tblInput.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tblInput.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -168,14 +165,13 @@ namespace FBITools
             // 
             this.cboTimer.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
             this.cboTimer.BackColor = System.Drawing.Color.White;
-            this.tblInput.SetColumnSpan(this.cboTimer, 2);
             this.cboTimer.Dock = System.Windows.Forms.DockStyle.Fill;
             this.cboTimer.LabelText = "Timer";
-            this.cboTimer.Location = new System.Drawing.Point(84, 114);
-            this.cboTimer.Margin = new System.Windows.Forms.Padding(84, 2, 0, 0);
+            this.cboTimer.Location = new System.Drawing.Point(104, 114);
+            this.cboTimer.Margin = new System.Windows.Forms.Padding(2, 2, 0, 0);
             this.cboTimer.MaximumSize = new System.Drawing.Size(0, 34);
             this.cboTimer.Name = "cboTimer";
-            this.cboTimer.Size = new System.Drawing.Size(344, 34);
+            this.cboTimer.Size = new System.Drawing.Size(324, 34);
             this.cboTimer.TabIndex = 5;
             // 
             // tblResult
@@ -196,7 +192,6 @@ namespace FBITools
             // 
             // btnBackup
             // 
-            this.tblResult.SetColumnSpan(this.btnBackup, 2);
             this.btnBackup.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnBackup.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(223)))), ((int)(((byte)(229)))));
             this.btnBackup.FlatAppearance.BorderSize = 0;
@@ -204,14 +199,12 @@ namespace FBITools
             this.btnBackup.Location = new System.Drawing.Point(0, 4);
             this.btnBackup.Margin = new System.Windows.Forms.Padding(0, 4, 0, 2);
             this.btnBackup.Name = "btnBackup";
-            this.btnBackup.Padding = new System.Windows.Forms.Padding(2);
             this.btnBackup.Size = new System.Drawing.Size(428, 34);
             this.btnBackup.TabIndex = 0;
             this.btnBackup.Text = "Backup Start";
             // 
             // lblWarning
             // 
-            this.tblResult.SetColumnSpan(this.lblWarning, 2);
             this.lblWarning.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblWarning.ForeColor = System.Drawing.Color.Firebrick;
             this.lblWarning.ForeColorType = GNX.Desktop.LabelType.danger;
@@ -244,8 +237,6 @@ namespace FBITools
         internal FlatButtonA btnOrigin;
         internal FlatTextBoxA txtOrigin;
         internal FlatTextBoxA txtDestination;
-        internal System.Windows.Forms.OpenFileDialog dlgOrigin;
-        internal System.Windows.Forms.SaveFileDialog dlgDestination;
         private FlatTableLayoutPanelA tblMainContent;
         internal FlatComboBoxA cboTimer;
         internal FlatButtonA btnBackup;

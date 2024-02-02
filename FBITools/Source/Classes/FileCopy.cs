@@ -247,14 +247,15 @@ namespace FBITools
         {
             do
             {
-                SecureCopy();
-
                 await TimerTask.DelayStart(TimerValue);
                 if (TimerTask.IsCanceled)
                 {
                     TimerIsRunning = false;
                     return;
                 }
+
+                SecureCopy();
+
             } while (TimerIsRunning);
         }
 
@@ -325,9 +326,9 @@ namespace FBITools
         {
             var types = new ListBind<ListItem>
             {
-                new ListItem{ Text="Overwrite", Value=1},
-                new ListItem{ Text="Backup", Value=2},
-                new ListItem{ Text="Backup Timer", Value=3}
+                new ListItem{ Text="Overwrite", Value=0},
+                new ListItem{ Text="Backup", Value=1},
+                new ListItem{ Text="Timer", Value=2}
             };
 
             cbo.DisplayMember = "Text";
@@ -335,7 +336,22 @@ namespace FBITools
             cbo.DataSource = types;
             cbo.SelectedIndex = 0;
 
-            cbo.SelectedIndexChanged += cbo_SelectedIndexChanged;
+            cbo.SelectedIndexChanged += cboTypes_SelectedIndexChanged;
+        }
+
+        void cboTypes_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var cbo = sender as FlatComboBoxNew;
+            Overwrite = false;
+            MakeBackup = false;
+            Timer = false;
+
+            switch (cbo.SelectedIndex)
+            {
+                case 0: Overwrite = true; break;
+                case 1: MakeBackup = true; break;
+                case 2: Timer = true; break;
+            }
         }
 
         public void FillTimerCombo(FlatComboBox cbo)
@@ -358,20 +374,14 @@ namespace FBITools
             cbo.ValueMember = "Value";
             cbo.DataSource = timerItems;
             cbo.SelectedIndex = 0;
+
+            cbo.SelectedIndexChanged += cboTimer_SelectedIndexChanged;
         }
 
-        void cbo_SelectedIndexChanged(object sender, EventArgs e)
+        void cboTimer_SelectedIndexChanged(object sender, EventArgs e)
         {
             var cbo = sender as FlatComboBoxNew;
-            Overwrite = false;
-            MakeBackup = false;
-
-            switch (cbo.SelectedIndex)
-            {
-                case 0: Overwrite = true; break;
-                case 1: MakeBackup = true; break;
-                case 2: Timer = true; break;
-            }
+            TimerValue = ((ListItem)cbo.SelectedItem).Value;
         }
     }
 }

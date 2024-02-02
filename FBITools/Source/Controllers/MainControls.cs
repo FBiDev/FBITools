@@ -41,13 +41,16 @@ namespace FBITools
             set { Session.SaveStateForm = value; }
         }
 
+        FlatTableLayoutPanelA tblInput { get { return form.tblInput; } }
+
         FlatButtonA btnOrigin { get { return form.btnOrigin; } }
         FlatTextBoxA txtOrigin { get { return form.txtOrigin; } }
 
         FlatButtonA btnDestination { get { return form.btnDestination; } }
         FlatTextBoxA txtDestination { get { return form.txtDestination; } }
 
-        FlatComboBoxA cboCopyType { get { return form.cboCopyType; } }
+        FlatComboBoxA cboType { get { return form.cboType; } }
+        FlatComboBoxA cboTimer { get { return form.cboTimer; } }
 
         FlatButtonA btnCopy { get { return form.btnCopy; } }
         FlatLabelA lblWarning { get { return form.lblWarning; } }
@@ -70,8 +73,5 @@ namespace FBITools
         FlatTableLayoutPanelA tblInput { get { return form.tblInput; } }
         FlatButtonA btnBackup { get { return form.btnBackup; } }
         FlatLabelA lblWarning { get { return form.lblWarning; } }
-
-        OpenFileDialog dlgOrigin { get { return form.dlgOrigin; } }
-        SaveFileDialog dlgDestination { get { return form.dlgDestination; } }
     }
 }
