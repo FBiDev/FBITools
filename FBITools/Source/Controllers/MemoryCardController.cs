@@ -6,7 +6,7 @@ namespace FBITools
 {
     public partial class MemoryCardController
     {
-        FileCopy memoryCard;
+        FileBackup memoryCard;
 
         public MemoryCardController(MemoryCardForm formView)
         {
@@ -18,7 +18,7 @@ namespace FBITools
         {
             lblWarning.TextChanged += lblWarning_TextChanged;
 
-            memoryCard = new FileCopy
+            memoryCard = new FileBackup
             {
                 CustomName = true,
                 Timer = true
@@ -43,14 +43,14 @@ namespace FBITools
 
             cboTimer.SelectedIndexChanged += (s, e) => { PreencherCampos(); };
 
-            btnBackup.Click += async (s, e) =>
+            btnBackup.Click += (s, e) =>
             {
                 if (memoryCard.Copy())
                 {
                     Session.UpdateOptions();
                     if (memoryCard.TimerIsRunning)
                     {
-                        await memoryCard.StartTimer();
+                        memoryCard.StartBackupTimer().TryAwait();
                     }
                 }
             };
@@ -94,7 +94,7 @@ namespace FBITools
 
         void CarregarCombos()
         {
-            memoryCard.FillTimerCombo(cboTimer);
+            memoryCard.LoadComboTimer(cboTimer);
         }
 
         void PreencherCampos()

@@ -9,29 +9,49 @@ namespace FBITools
     public partial class MainContentController
     {
         #region Entrada
-        public FlatButtonA selectedTab;
+        public FlatButton selectedTab;
 
         public MainContentController(MainContentForm formView)
         {
             form = formView;
-
-            form.Load += form_Load;
             form.Shown += form_Shown;
-
-            btnTabSaveState.Click += (s, e) => SetContent(Session.SaveStateForm, btnTabSaveState);
-            btnTabMemoryCard.Click += (s, e) => SetContent(Session.MemoryCardForm, btnTabMemoryCard);
-
-            btnTabConfig.Click += (s, e) => SetContent(Session.ConfigForm, btnTabConfig);
+            form.KeyDown += form_KeyDown;
+            form.KeyPreview = true;
         }
 
-        void form_Load(object sender, EventArgs e) { }
-
-        void form_Shown(object sender, EventArgs e)
+        void form_Shown(object sender, EventArgs ev)
         {
+            btnTabSaveState.Click += (s, e) => SetContent(s, Session.SaveStateForm);
+            btnTabMemoryCard.Click += (s, e) => SetContent(s, Session.MemoryCardForm);
+            btnTabImageResize.Click += (s, e) => SetContent(s, Session.ImageResizeForm);
+
+            btnTabConfig.Click += (s, e) => SetContent(s, Session.ConfigForm);
+
             btnTabSaveState.PerformClick();
+            Window.SendKey(Keys.Escape);
         }
 
-        void SetSelectedTab(FlatButtonA btnClicked)
+        void form_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (form.ActiveControl is FlatButton)
+            {
+                var ctl = form.ActiveControl as FlatButton;
+
+                if (e.KeyData == Keys.Space)
+                    Window.SendKey(Keys.Enter);
+
+                if (e.KeyData == Keys.Enter)
+                    ctl.PerformClick();
+                return;
+            }
+
+            if (e.KeyData == Keys.Escape)
+            {
+                selectedTab.Focus();
+            }
+        }
+
+        void SetSelectedTab(FlatButton btnClicked)
         {
             if (selectedTab != null && selectedTab != btnClicked)
                 selectedTab.Selected = false;
@@ -55,13 +75,17 @@ namespace FBITools
         #endregion
 
         #region Common
-        void SetContent<T>(T contentForm, FlatButtonA selectTab) where T : ContentBaseForm, new()
+        void SetContent<T>(object sender, T contentForm) where T : ContentBaseForm, new()
         {
             if (contentForm == null) contentForm = new T();
-            if (pnlContentRInside.Controls.Contains(contentForm)) return;
+            if (pnlContentRInside.Controls.Contains(contentForm))
+            {
+                contentForm.Focus();
+                return;
+            }
 
             contentForm.AutoScroll = false;
-            SetSelectedTab(selectTab);
+            SetSelectedTab(sender as FlatButton);
 
             pnlContentRInside.Controls.Clear();
             pnlContentRInside.Controls.Add(contentForm);

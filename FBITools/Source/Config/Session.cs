@@ -50,6 +50,7 @@ namespace FBITools
 
         public static SaveStateForm SaveStateForm;
         public static MemoryCardForm MemoryCardForm;
+        public static ImageResizeForm ImageResizeForm;
         #endregion
     }
 }

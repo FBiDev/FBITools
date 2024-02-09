@@ -35,6 +35,7 @@
             this.btnTabSaveState = new FBITools.FlatButtonA();
             this.btnTabMemoryCard = new FBITools.FlatButtonA();
             this.btnTabConfig = new FBITools.FlatButtonA();
+            this.btnTabImageResize = new FBITools.FlatButtonA();
             this.pnlContentR.SuspendLayout();
             this.pnlContentL.SuspendLayout();
             this.tblMenu.SuspendLayout();
@@ -75,12 +76,14 @@
             this.tblMenu.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
             this.tblMenu.Controls.Add(this.btnTabSaveState, 0, 0);
             this.tblMenu.Controls.Add(this.btnTabMemoryCard, 0, 1);
-            this.tblMenu.Controls.Add(this.btnTabConfig, 0, 2);
+            this.tblMenu.Controls.Add(this.btnTabImageResize, 0, 2);
+            this.tblMenu.Controls.Add(this.btnTabConfig, 0, 3);
             this.tblMenu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tblMenu.Location = new System.Drawing.Point(0, 0);
             this.tblMenu.Name = "tblMenu";
             this.tblMenu.Padding = new System.Windows.Forms.Padding(1);
-            this.tblMenu.RowCount = 3;
+            this.tblMenu.RowCount = 4;
+            this.tblMenu.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tblMenu.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tblMenu.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tblMenu.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -128,6 +131,19 @@
             this.btnTabConfig.TabIndex = 2;
             this.btnTabConfig.Text = "Configurações";
             // 
+            // btnTabImageResize
+            // 
+            this.btnTabImageResize.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnTabImageResize.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(223)))), ((int)(((byte)(229)))));
+            this.btnTabImageResize.FlatAppearance.BorderSize = 0;
+            this.btnTabImageResize.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
+            this.btnTabImageResize.Location = new System.Drawing.Point(1, 77);
+            this.btnTabImageResize.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
+            this.btnTabImageResize.Name = "btnTabImageResize";
+            this.btnTabImageResize.Size = new System.Drawing.Size(122, 34);
+            this.btnTabImageResize.TabIndex = 3;
+            this.btnTabImageResize.Text = "ImageResize";
+            // 
             // MainContentForm
             // 
             this.ClientSize = new System.Drawing.Size(430, 262);
@@ -152,5 +168,6 @@
         internal FlatPanelA pnlContentRInside;
         private FlatTableLayoutPanelA tblMenu;
         internal FlatButtonA btnTabConfig;
+        internal FlatButtonA btnTabImageResize;
     }
 }

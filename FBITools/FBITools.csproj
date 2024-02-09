@@ -44,12 +44,24 @@
     <Reference Include="GNX">
       <HintPath>Plugins\GNX.dll</HintPath>
     </Reference>
+    <Reference Include="IndexRange">
+      <HintPath>..\..\_DLL\_DLL\Plugins\System\IndexRange.dll</HintPath>
+    </Reference>
     <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>Plugins\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="PhotoSauce.MagicScaler">
+      <HintPath>..\..\_DLL\_DLL\Plugins\Image\PhotoSauce.MagicScaler.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Memory">
+      <HintPath>..\..\_DLL\_DLL\Plugins\System\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe">
+      <HintPath>..\..\_DLL\_DLL\Plugins\System\System.Runtime.CompilerServices.Unsafe.4.0.4.1\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -63,14 +75,17 @@
     <Compile Include="ResourcesLocal\CustomControls\FlatCheckBoxA.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="ResourcesLocal\CustomControls\FlatPictureBoxA.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ResourcesLocal\CustomControls\FlatTableLayoutPanelA.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Source\Classes\FileCopy.cs" />
     <Compile Include="Source\Config\Session.cs" />
     <Compile Include="Source\Config\Options.cs" />
     <Compile Include="Source\Config\Theme.cs" />
     <Compile Include="Source\Controllers\ConfigController.cs" />
+    <Compile Include="Source\Controllers\ImageResizeController.cs" />
     <Compile Include="Source\Controllers\MainController.cs" />
     <Compile Include="Source\Controllers\MainContentController.cs" />
     <Compile Include="ResourcesLocal\CustomControls\FlatButtonA.cs">
@@ -91,6 +106,12 @@
     </Compile>
     <Compile Include="Source\Forms\ConfigForm.Designer.cs">
       <DependentUpon>ConfigForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\Forms\ImageResizeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\Forms\ImageResizeForm.Designer.cs">
+      <DependentUpon>ImageResizeForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Source\Forms\MainContentForm.cs">
       <SubType>Form</SubType>
@@ -132,6 +153,9 @@
     <EmbeddedResource Include="Source\Forms\ConfigForm.resx">
       <DependentUpon>ConfigForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Source\Forms\ImageResizeForm.resx">
+      <DependentUpon>ImageResizeForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Source\Forms\MainContentForm.resx">
       <DependentUpon>MainContentForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -168,7 +192,9 @@
     <Content Include="ResourcesLocal\Icons\ico_app.ico" />
     <Content Include="ResourcesLocal\Icons\ico_app.png" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Source\Classes\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>ROBOCOPY "$(TargetDir) " "$(TargetDir)Plugins\ " /XF *.exe *.config *.json *.manifest $(SolutionName).pdb /XD Plugins /IS /MOV 

@@ -3,16 +3,17 @@
     public class MainController
     {
         #region Entrada
-        public MainController(MainForm formDesign)
+        public MainController(MainForm form)
         {
             Session.SetFormIcon();
-            Session.MainForm = formDesign;
+            Session.MainForm = form;
             Session.MainForm.StatusBarEnable = false;
 
             Session.MainForm.Shown += form_Shown;
-            //Session.mainForm.KeyPreview = true;
+            //Session.MainForm.KeyPreview = true;
 
-            Session.MainForm.SetMainFormContent(new MainContentForm());
+            var content = new MainContentForm();
+            Session.MainForm.SetMainFormContent(content);
         }
 
         void form_Shown(object sender, System.EventArgs e)

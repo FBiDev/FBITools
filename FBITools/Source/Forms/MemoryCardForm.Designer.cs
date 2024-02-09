@@ -183,9 +183,10 @@ namespace FBITools
             this.tblResult.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tblResult.Location = new System.Drawing.Point(1, 149);
             this.tblResult.Name = "tblResult";
-            this.tblResult.RowCount = 2;
+            this.tblResult.RowCount = 3;
             this.tblResult.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tblResult.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tblResult.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tblResult.Size = new System.Drawing.Size(428, 66);
             this.tblResult.SizeOriginal = new System.Drawing.Size(428, 66);
             this.tblResult.TabIndex = 1;

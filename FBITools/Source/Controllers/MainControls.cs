@@ -1,6 +1,4 @@
-﻿using System.Windows.Forms;
-
-namespace FBITools
+﻿namespace FBITools
 {
     public partial class MainContentController
     {
@@ -16,6 +14,7 @@ namespace FBITools
 
         FlatButtonA btnTabSaveState { get { return form.btnTabSaveState; } }
         FlatButtonA btnTabMemoryCard { get { return form.btnTabMemoryCard; } }
+        FlatButtonA btnTabImageResize { get { return form.btnTabImageResize; } }
         FlatButtonA btnTabConfig { get { return form.btnTabConfig; } }
     }
 
@@ -42,6 +41,7 @@ namespace FBITools
         }
 
         FlatTableLayoutPanelA tblInput { get { return form.tblInput; } }
+        FlatLabelA lblWarning { get { return form.lblWarning; } }
 
         FlatButtonA btnOrigin { get { return form.btnOrigin; } }
         FlatTextBoxA txtOrigin { get { return form.txtOrigin; } }
@@ -53,7 +53,6 @@ namespace FBITools
         FlatComboBoxA cboTimer { get { return form.cboTimer; } }
 
         FlatButtonA btnCopy { get { return form.btnCopy; } }
-        FlatLabelA lblWarning { get { return form.lblWarning; } }
     }
 
     public partial class MemoryCardController
@@ -64,14 +63,42 @@ namespace FBITools
             set { Session.MemoryCardForm = value; }
         }
 
+        FlatTableLayoutPanelA tblInput { get { return form.tblInput; } }
+        FlatLabelA lblWarning { get { return form.lblWarning; } }
+
         FlatButtonA btnOrigin { get { return form.btnOrigin; } }
         FlatTextBoxA txtOrigin { get { return form.txtOrigin; } }
         FlatButtonA btnDestination { get { return form.btnDestination; } }
         FlatTextBoxA txtDestination { get { return form.txtDestination; } }
         FlatComboBoxA cboTimer { get { return form.cboTimer; } }
 
-        FlatTableLayoutPanelA tblInput { get { return form.tblInput; } }
         FlatButtonA btnBackup { get { return form.btnBackup; } }
+    }
+
+    public partial class ImageResizeController
+    {
+        ImageResizeForm form
+        {
+            get { return Session.ImageResizeForm; }
+            set { Session.ImageResizeForm = value; }
+        }
+
+        FlatTableLayoutPanelA tblInput { get { return form.tblInput; } }
         FlatLabelA lblWarning { get { return form.lblWarning; } }
+
+        FlatButtonA btnOrigin { get { return form.btnOrigin; } }
+        FlatTextBoxA txtOrigin { get { return form.txtOrigin; } }
+        FlatButtonA btnDestination { get { return form.btnDestination; } }
+        FlatTextBoxA txtDestination { get { return form.txtDestination; } }
+
+        FlatComboBoxA cboEncoder { get { return form.cboEncoder; } }
+        FlatComboBoxA cboResizeMode { get { return form.cboResizeMode; } }
+        FlatComboBoxA cboColorProfile { get { return form.cboColorProfile; } }
+
+        
+
+        FlatButtonA btnResize { get { return form.btnResize; } }
+        FlatPictureBoxA picDrop { get { return form.picDrop; } }
+        FlatPictureBoxA picResized { get { return form.picResized; } }
     }
 }

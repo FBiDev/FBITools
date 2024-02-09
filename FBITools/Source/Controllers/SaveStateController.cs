@@ -6,7 +6,7 @@ namespace FBITools
 {
     public partial class SaveStateController
     {
-        FileCopy state;
+        FileBackup state;
 
         public SaveStateController(SaveStateForm formView)
         {
@@ -18,7 +18,7 @@ namespace FBITools
         {
             lblWarning.TextChanged += lblWarning_TextChanged;
 
-            state = new FileCopy
+            state = new FileBackup
             {
                 CustomName = true
             };
@@ -45,14 +45,14 @@ namespace FBITools
 
             cboTimer.SelectedIndexChanged += (s, e) => { PreencherCampos(); };
 
-            btnCopy.Click += async (s, e) =>
+            btnCopy.Click += (s, e) =>
             {
                 if (state.Copy())
                 {
                     Session.UpdateOptions();
                     if (state.TimerIsRunning)
                     {
-                        await state.StartTimer();
+                        state.StartBackupTimer().TryAwait();
                     }
                 }
             };
@@ -88,7 +88,7 @@ namespace FBITools
             };
         }
 
-        async void lblWarning_TextChanged(object sender, System.EventArgs e)
+        async void lblWarning_TextChanged(object sender, EventArgs e)
         {
             await TaskController.Delay(4);
             lblWarning.Text = "";
@@ -96,8 +96,8 @@ namespace FBITools
 
         void CarregarCombos()
         {
-            state.FillTypesCombo(cboType);
-            state.FillTimerCombo(cboTimer);
+            state.LoadComboTypes(cboType);
+            state.LoadComboTimer(cboTimer);
         }
 
         void PreencherCampos()
@@ -111,7 +111,7 @@ namespace FBITools
             Session.Options.SaveState_Timer = state.TimerValue;
 
             cboTimer.Enabled = cboType.SelectedValueInt == 2;
-            if(cboTimer.Enabled)
+            if (cboTimer.Enabled)
                 btnCopy.Text = "Backup Start";
             else
                 btnCopy.Text = "Copy";
