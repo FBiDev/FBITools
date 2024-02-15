@@ -75,12 +75,16 @@
     <Compile Include="ResourcesLocal\CustomControls\FlatCheckBoxA.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="ResourcesLocal\CustomControls\FlatGroupBoxA.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="ResourcesLocal\CustomControls\FlatPictureBoxA.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ResourcesLocal\CustomControls\FlatTableLayoutPanelA.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Source\Classes\MagicScaler.cs" />
     <Compile Include="Source\Config\Session.cs" />
     <Compile Include="Source\Config\Options.cs" />
     <Compile Include="Source\Config\Theme.cs" />
@@ -192,9 +196,7 @@
     <Content Include="ResourcesLocal\Icons\ico_app.ico" />
     <Content Include="ResourcesLocal\Icons\ico_app.png" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Source\Classes\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>ROBOCOPY "$(TargetDir) " "$(TargetDir)Plugins\ " /XF *.exe *.config *.json *.manifest $(SolutionName).pdb /XD Plugins /IS /MOV 

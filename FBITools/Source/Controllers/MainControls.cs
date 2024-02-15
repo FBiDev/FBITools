@@ -93,9 +93,23 @@
 
         FlatComboBoxA cboEncoder { get { return form.cboEncoder; } }
         FlatComboBoxA cboResizeMode { get { return form.cboResizeMode; } }
+        FlatComboBoxA cboSizes { get { return form.cboSizes; } }
+
+        FlatComboBoxA cboAnchor { get { return form.cboAnchor; } }
+        FlatComboBoxA cboInterpolation { get { return form.cboInterpolation; } }
+
+        FlatComboBoxA cboMatteColor { get { return form.cboMatteColor; } }
         FlatComboBoxA cboColorProfile { get { return form.cboColorProfile; } }
 
-        
+        FlatComboBoxA cboSharpen { get { return form.cboSharpen; } }
+        FlatComboBoxA cboBlendingMode { get { return form.cboBlendingMode; } }
+        FlatComboBoxA cboHybridMode { get { return form.cboHybridMode; } }
+
+        FlatComboBoxA cboPngFilter { get { return form.cboPngFilter; } }
+        FlatComboBoxA cboPngInterlace { get { return form.cboPngInterlace; } }
+
+        FlatComboBoxA cboJpgQuality { get { return form.cboJpgQuality; } }
+        FlatComboBoxA cboJpgChromaSubsample { get { return form.cboJpgChromaSubsample; } }
 
         FlatButtonA btnResize { get { return form.btnResize; } }
         FlatPictureBoxA picDrop { get { return form.picDrop; } }

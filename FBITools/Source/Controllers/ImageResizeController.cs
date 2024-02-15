@@ -1,8 +1,5 @@
 ﻿using System;
-using System.IO;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using PhotoSauce.MagicScaler;
 using GNX;
 using GNX.Desktop;
 
@@ -10,8 +7,7 @@ namespace FBITools
 {
     public partial class ImageResizeController
     {
-        FileBackup ImageFile;
-        ProcessImageSettings ImageSettings;
+        MagicScaler Scaler;
 
         public ImageResizeController(ImageResizeForm formView)
         {
@@ -23,71 +19,47 @@ namespace FBITools
         {
             lblWarning.TextChanged += lblWarning_TextChanged;
 
-            ImageFile = new FileBackup
+            Scaler = new MagicScaler { };
+
+            Scaler.EncoderChanged += UpdateDestination;
+
+            Scaler.InvalidFile += () =>
             {
-                CustomName = true,
-                MakeBackup = true
+                lblWarning.ForeColorType = LabelType.danger;
+                lblWarning.Text = "MagicScaler Failed!";
             };
 
-            ImageSettings = new ProcessImageSettings
+            Scaler.Resized += () =>
             {
-                Width = 128,
-                Height = 128,
-                ResizeMode = CropScaleMode.Stretch,
-                EncoderOptions = new PngEncoderOptions(PngFilter.None, false),
-                Interpolation = InterpolationSettings.Average,
+                UpdateResizedImage();
+
+                lblWarning.ForeColorType = LabelType.success;
+                lblWarning.Text = "MagicScaler Executed!";
             };
 
-            CarregarCombos();
-
+            Scaler.EnableAnchor += (enable) => { cboAnchor.Enabled = enable; };
+            
             btnOrigin.Click += (s, e) =>
             {
-                if (ImageFile.PickOrigin())
+                if (Scaler.PickOrigin())
                 {
-                    var imageOrigin = BitmapExtension.SuperFastLoad(ImageFile.OriginPath);
-                    picDrop.Image = imageOrigin;
-
-                    if (imageOrigin.Size.Width <= picDrop.Width && imageOrigin.Size.Height <= picDrop.Height)
-                        picDrop.SizeMode = PictureBoxSizeMode.CenterImage;
-                    else
-                        picDrop.SizeMode = PictureBoxSizeMode.Zoom;
-
-                    PreencherCampos();
+                    UpdateDropImage();
+                    UpdateOrigin();
                 }
             };
 
             btnDestination.Click += (s, e) =>
             {
-                if (ImageFile.PickDestination()) PreencherCampos();
+                if (Scaler.PickDestination())
+                    UpdateDestination();
             };
 
-            btnResize.Click += async (s, e) =>
+            btnResize.Click += (s, e) =>
             {
-                if (ImageFile.Copy())
-                {
-                    await Task.Run(() =>
-                    {
-                        MagicImageProcessor.ProcessImage(ImageFile.OriginPath, ImageFile.DestinationPath, ImageSettings);
-                    });
-
-                    lblWarning.ForeColorType = LabelType.success;
-                    lblWarning.Text = "MagicScaler Executed!";
-
-                    var imageResized = BitmapExtension.SuperFastLoad(ImageFile.DestinationPath);
-                    picResized.Image = imageResized;
-
-                    if (imageResized.Size.Width <= picResized.Width && imageResized.Size.Height <= picResized.Height)
-                        picResized.SizeMode = PictureBoxSizeMode.CenterImage;
-                    else
-                        picResized.SizeMode = PictureBoxSizeMode.Zoom;
-                }
+                Scaler.Resize().TryAwait();
             };
 
-            ImageFile.InvalidFile += () =>
-            {
-                lblWarning.ForeColorType = LabelType.danger;
-                lblWarning.Text = "MagicScaler Failed!";
-            };
+            CarregarCombos();
         }
 
         async void lblWarning_TextChanged(object sender, EventArgs e)
@@ -98,83 +70,59 @@ namespace FBITools
 
         void CarregarCombos()
         {
-            LoadComboEncoder(cboEncoder);
-            LoadComboResizeMode(cboResizeMode);
-            LoadComboColorProfile(cboColorProfile);
+            Scaler.LoadEncoders(cboEncoder);
+            Scaler.LoadResizeModes(cboResizeMode);
+            Scaler.LoadSizes(cboSizes);
+
+            Scaler.LoadAnchors(cboAnchor);
+            Scaler.LoadInterpolations(cboInterpolation);
+
+            Scaler.LoadMatteColors(cboMatteColor);
+            Scaler.LoadColorProfiles(cboColorProfile);
+
+            Scaler.LoadSharpen(cboSharpen);
+            Scaler.LoadBlendingModes(cboBlendingMode);
+            Scaler.LoadHybridModes(cboHybridMode);
+
+            Scaler.LoadJpgQuality(cboJpgQuality);
+            Scaler.LoadJpgChromaSubsample(cboJpgChromaSubsample);
+
+            Scaler.LoadPngFilters(cboPngFilter);
+            Scaler.LoadPngInterlaces(cboPngInterlace);
         }
 
-        void PreencherCampos()
+        void UpdateOrigin()
         {
-            if (string.IsNullOrWhiteSpace(ImageFile.DestinationPath) == false)
-            {
-                string outputFile = Path.GetFileNameWithoutExtension(ImageFile.DestinationPath);
-                switch (cboEncoder.SelectedIndex)
-                {
-                    case 0: outputFile += ".png"; break;
-                    case 1: outputFile += ".jpg"; break;
-                }
-                outputFile = Path.Combine(ImageFile.DestinationFolder, outputFile);
-                ImageFile.DestinationPath = outputFile.NormalizePath();
-            }
-
-            txtOrigin.Text = ImageFile.OriginPath;
-            txtDestination.Text = ImageFile.DestinationPath;
-
+            txtOrigin.Text = Scaler.OriginPath;
             //Session.Options.SaveState_Origin = ImageFile.OriginPath;
+        }
+
+        void UpdateDestination()
+        {
+            txtDestination.Text = Scaler.DestinationPath;
             //Session.Options.SaveState_Destination = ImageFile.DestinationPath;
         }
 
-        public void LoadComboEncoder(FlatComboBox cbo)
+        void UpdateDropImage()
         {
-            var encoders = new ListBind<ListItem>
-            {
-                new ListItem{ Text="Png", Value=0},
-                new ListItem{ Text="Jpg", Value=1}
-            };
+            var imageOrigin = BitmapExtension.SuperFastLoad(Scaler.OriginPath);
+            picDrop.Image = imageOrigin;
 
-            cbo.DisplayMember = "Text";
-            cbo.ValueMember = "Value";
-            cbo.DataSource = encoders;
-            cbo.SelectedIndex = 0;
-
-            cbo.SelectedIndexChanged += cboEncoder_SelectedIndexChanged;
+            if (imageOrigin.Size.Width <= picDrop.Width && imageOrigin.Size.Height <= picDrop.Height)
+                picDrop.SizeMode = PictureBoxSizeMode.CenterImage;
+            else
+                picDrop.SizeMode = PictureBoxSizeMode.Zoom;
         }
 
-        public void LoadComboResizeMode(FlatComboBox cbo)
+        void UpdateResizedImage()
         {
-            cbo.DataSource = Enum.GetValues(typeof(CropScaleMode));
-            cbo.SelectedIndex = 0;
+            var imageResized = BitmapExtension.SuperFastLoad(Scaler.DestinationPath);
+            picResized.Image = imageResized;
 
-            cbo.SelectedIndexChanged += (s, e) =>
-            {
-                ImageSettings.ResizeMode = (CropScaleMode)cbo.SelectedItem;
-            };
-        }
-
-        public void LoadComboColorProfile(FlatComboBox cbo)
-        {
-            cbo.DataSource = Enum.GetValues(typeof(ColorProfileMode));
-            cbo.SelectedIndex = 0;
-
-            cbo.SelectedIndexChanged += (s, e) =>
-            {
-                ImageSettings.ColorProfileMode = (ColorProfileMode)cbo.SelectedItem;
-            };
-        }
-
-        void cboEncoder_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            var cbo = sender as FlatComboBoxNew;
-            switch (cbo.SelectedIndex)
-            {
-                case 0:
-                    ImageSettings.EncoderOptions = new PngEncoderOptions(PngFilter.None, false);
-                    break;
-                case 1:
-                    ImageSettings.EncoderOptions = new JpegEncoderOptions(98, ChromaSubsampleMode.Subsample444, true);
-                    break;
-            }
-            PreencherCampos();
+            if (imageResized.Size.Width <= picResized.Width && imageResized.Size.Height <= picResized.Height)
+                picResized.SizeMode = PictureBoxSizeMode.CenterImage;
+            else
+                picResized.SizeMode = PictureBoxSizeMode.Zoom;
         }
     }
 }
