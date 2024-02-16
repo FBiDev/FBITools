@@ -38,7 +38,7 @@ namespace FBITools
             };
 
             Scaler.EnableAnchor += (enable) => { cboAnchor.Enabled = enable; };
-            
+
             btnOrigin.Click += (s, e) =>
             {
                 if (Scaler.PickOrigin())

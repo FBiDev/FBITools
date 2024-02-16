@@ -16,14 +16,21 @@ namespace FBITools
         public enum EncoderOptions
         {
             Png = 0,
-            Jpg = 1
+            PngIndexed = 1,
+            Jpg = 2,
+            Gif = 3,
+            Tiff = 4
         }
 
         public enum Sizes
         {
+            Auto,
             NESHalf_128x112,
-            PS1Cover_512x512,
-            PS2Cover_360x512
+            Cover_320x320,
+            Cover_360x512,
+            Cover_512x512,
+            Cover_420x600,
+            Cover_600x600
         }
 
         public enum Interpolation
@@ -42,6 +49,7 @@ namespace FBITools
         }
 
         EncoderOptions EncoderSelected;
+        Sizes SizeSelected;
         public ProcessImageSettings Settings;
         public event Action Resized = delegate { };
 
@@ -51,7 +59,7 @@ namespace FBITools
         int JpgQuality = 98;
         ChromaSubsampleMode JpgChromaSubsample = ChromaSubsampleMode.Subsample444;
 
-        string ImageFormats = "Image Formats (*.jpg, *.jpeg, *.png, *.bmp, *.gif)|*.jpg;*.jpeg;*.png;*.bmp;*.gif;";
+        string ImageFormats = "Image Formats (*.jpg;*.jpeg;*.png;*.bmp;*.gif;*.tiff)|*.jpg;*.jpeg;*.png;*.bmp;*.gif;*.tiff";
 
         public MagicScaler()
         {
@@ -68,7 +76,7 @@ namespace FBITools
                 //HybridMode = HybridScaleMode.FavorQuality,
             };
 
-            SetEncoderPNG();
+            SetEncoderOptions();
 
             dlgOrigin = new OpenFileDialog
             {
@@ -93,6 +101,13 @@ namespace FBITools
             if (IsInvalidInputs())
                 return false;
 
+            if (SizeSelected == Sizes.Auto)
+            {
+                var imageOrigin = BitmapExtension.SuperFastLoad(OriginPath);
+                Settings.Width = imageOrigin.Width;
+                Settings.Height = imageOrigin.Height;
+            }
+
             await Task.Run(() =>
             {
                 MagicImageProcessor.ProcessImage(OriginPath, DestinationPath, Settings);
@@ -115,23 +130,15 @@ namespace FBITools
             cbo.SelectedIndexChanged += (s, e) =>
             {
                 var innerCombo = s as FlatComboBoxNew;
-                var cboItem = (EncoderOptions)innerCombo.SelectedItem;
+                EncoderSelected = (EncoderOptions)innerCombo.SelectedItem;
 
-                switch (cboItem)
-                {
-                    case EncoderOptions.Png:
-                        EncoderSelected = EncoderOptions.Png;
-                        SetEncoderPNG();
-                        break;
-                    case EncoderOptions.Jpg:
-                        EncoderSelected = EncoderOptions.Jpg;
-                        SetEncoderJPG();
-                        break;
-                }
+                SetEncoderOptions();
+
+                dlgDestinationCustom.FileName = SetExtension("", dlgOrigin.FileName);
 
                 if (string.IsNullOrWhiteSpace(DestinationPath)) return;
 
-                SetExtension();
+                DestinationPath = SetExtension(DestinationFolder, DestinationPath);
 
                 EncoderChanged();
             };
@@ -161,21 +168,33 @@ namespace FBITools
             cbo.SelectedIndexChanged += (s, e) =>
             {
                 var innerCombo = s as FlatComboBoxNew;
-                var cboItem = (Sizes)innerCombo.SelectedItem;
+                SizeSelected = (Sizes)innerCombo.SelectedItem;
 
-                switch (cboItem)
+                switch (SizeSelected)
                 {
                     case Sizes.NESHalf_128x112:
                         Settings.Width = 128;
                         Settings.Height = 112;
                         break;
-                    case Sizes.PS1Cover_512x512:
+                    case Sizes.Cover_320x320:
+                        Settings.Width = 320;
+                        Settings.Height = 320;
+                        break;
+                    case Sizes.Cover_360x512:
+                        Settings.Width = 360;
+                        Settings.Height = 512;
+                        break;
+                    case Sizes.Cover_420x600:
+                        Settings.Width = 420;
+                        Settings.Height = 600;
+                        break;
+                    case Sizes.Cover_512x512:
                         Settings.Width = 512;
                         Settings.Height = 512;
                         break;
-                    case Sizes.PS2Cover_360x512:
-                        Settings.Width = 360;
-                        Settings.Height = 512;
+                    case Sizes.Cover_600x600:
+                        Settings.Width = 600;
+                        Settings.Height = 600;
                         break;
                 }
             };
@@ -292,7 +311,7 @@ namespace FBITools
             cbo.SelectedIndexChanged += (s, e) =>
             {
                 PngFilter = (PngFilter)cbo.SelectedItem;
-                SetEncoderPNG();
+                SetEncoderOptions();
             };
 
             cbo.SelectedIndex = 0;
@@ -313,38 +332,43 @@ namespace FBITools
 
         public void LoadJpgQuality(FlatComboBox cbo)
         {
-            cbo.DataSource = Enumerable.Range(1, 100).ToList();
+            cbo.DataSource = Enumerable.Range(0, 101).ToList();
 
             cbo.SelectedIndexChanged += (s, e) =>
             {
                 JpgQuality = (int)cbo.SelectedItem;
-                SetEncoderJPG();
+                SetEncoderOptions();
             };
 
-            cbo.SelectedIndex = 97;
+            cbo.SelectedIndex = 98;
         }
 
         public void LoadJpgChromaSubsample(FlatComboBox cbo)
         {
-            cbo.DataSource = Enum.GetValues(typeof(ChromaSubsampleMode));
+            var list = Enum.GetValues(typeof(ChromaSubsampleMode)).Cast<ChromaSubsampleMode>().ToList();
+            list.RemoveAt(list.Count - 1);
+
+            cbo.DataSource = list;
 
             cbo.SelectedIndexChanged += (s, e) =>
             {
                 JpgChromaSubsample = (ChromaSubsampleMode)cbo.SelectedItem;
-                SetEncoderJPG();
+                SetEncoderOptions();
             };
 
             cbo.SelectedIndex = 0;
         }
 
-        public void SetEncoderJPG()
+        public void SetEncoderOptions()
         {
-            Settings.EncoderOptions = new JpegEncoderOptions(JpgQuality, JpgChromaSubsample);
-        }
-
-        public void SetEncoderPNG()
-        {
-            Settings.EncoderOptions = new PngEncoderOptions(PngFilter, PngInterlace);
+            switch (EncoderSelected)
+            {
+                case EncoderOptions.Png: Settings.EncoderOptions = new PngEncoderOptions(PngFilter, PngInterlace); break;
+                case EncoderOptions.PngIndexed: Settings.EncoderOptions = new PngIndexedEncoderOptions(256, null, DitherMode.Auto, PngFilter, PngInterlace); break;
+                case EncoderOptions.Jpg: Settings.EncoderOptions = new JpegEncoderOptions(JpgQuality, JpgChromaSubsample); break;
+                case EncoderOptions.Gif: Settings.EncoderOptions = new GifEncoderOptions(16, null, DitherMode.Auto); break;
+                case EncoderOptions.Tiff: Settings.EncoderOptions = new TiffEncoderOptions(TiffCompression.Deflate); break;
+            }
         }
         #endregion
 
@@ -427,9 +451,11 @@ namespace FBITools
         void UpdateDestinationFile()
         {
             if (string.IsNullOrWhiteSpace(DestinationPath) == false)
-                DestinationPath = (Path.Combine(Path.GetDirectoryName(DestinationPath), OriginFile)).NormalizePath();
+                DestinationPath = SetExtension(Path.GetDirectoryName(DestinationPath), OriginFile);
             else if (CustomName)
-                dlgDestinationCustom.FileName = dlgOrigin.FileName;
+            {
+                dlgDestinationCustom.FileName = SetExtension("", dlgOrigin.FileName);
+            }
         }
 
         public bool PickDestination()
@@ -444,7 +470,7 @@ namespace FBITools
                 {
                     DestinationPath = dlgDestinationCustom.FileName.NormalizePath();
 
-                    SetExtension();
+                    DestinationPath = SetExtension(DestinationFolder, DestinationPath);
 
                     return true;
                 }
@@ -453,13 +479,17 @@ namespace FBITools
             return false;
         }
 
-        void SetExtension()
+        string SetExtension(string folderBase, string baseFile)
         {
-            var newDestination = Path.GetFileNameWithoutExtension(DestinationPath);
-            newDestination += "." + EncoderSelected.ToString().ToLower();
-            newDestination = Path.Combine(DestinationFolder, newDestination);
+            var newDestination = Path.GetFileNameWithoutExtension(baseFile);
+            if (EncoderSelected == EncoderOptions.PngIndexed)
+                newDestination += "." + "Png".ToLower();
+            else
+                newDestination += "." + EncoderSelected.ToString().ToLower();
 
-            DestinationPath = newDestination.NormalizePath();
+            newDestination = Path.Combine(folderBase, newDestination);
+
+            return newDestination.NormalizePath();
         }
 
         bool IsInvalidInputs()
