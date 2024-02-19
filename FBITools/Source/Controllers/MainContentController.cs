@@ -28,7 +28,7 @@ namespace FBITools
             btnTabConfig.Click += (s, e) => SetContent(s, Session.ConfigForm);
 
             btnTabSaveState.PerformClick();
-            Window.SendKey(Keys.Escape);
+            selectedTab.Focus();
         }
 
         void form_KeyDown(object sender, KeyEventArgs e)
