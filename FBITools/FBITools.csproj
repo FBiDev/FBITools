@@ -46,7 +46,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="GNX">
-      <HintPath>..\..\_DLL\_DLL\Plugins\GNX.dll</HintPath>
+      <HintPath>..\..\_DLL\_DLL\Plugins\Core\GNX.dll</HintPath>
     </Reference>
     <Reference Include="IndexRange">
       <HintPath>..\..\_DLL\_DLL\Plugins\System\IndexRange.dll</HintPath>
