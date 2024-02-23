@@ -112,7 +112,7 @@ namespace FBITools
             this.lblTitle.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(149)))), ((int)(((byte)(237)))));
-            this.lblTitle.ForeColorType = GNX.Desktop.LabelType.primary;
+            this.lblTitle.ForeColorType = App.Core.Desktop.LabelType.primary;
             this.lblTitle.Location = new System.Drawing.Point(0, 0);
             this.lblTitle.Margin = new System.Windows.Forms.Padding(0, 0, 0, 2);
             this.lblTitle.Name = "lblTitle";
@@ -208,7 +208,7 @@ namespace FBITools
             // 
             this.lblWarning.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblWarning.ForeColor = System.Drawing.Color.Firebrick;
-            this.lblWarning.ForeColorType = GNX.Desktop.LabelType.danger;
+            this.lblWarning.ForeColorType = App.Core.Desktop.LabelType.danger;
             this.lblWarning.Location = new System.Drawing.Point(0, 42);
             this.lblWarning.Margin = new System.Windows.Forms.Padding(0, 2, 0, 0);
             this.lblWarning.Name = "lblWarning";

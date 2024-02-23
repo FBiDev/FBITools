@@ -12,7 +12,7 @@ namespace FBITools
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            GNX.Desktop.AppManager.SingleProcess(Session.Singleton, new Mutex(true, Session.SystemName), Session.SystemName);
+            App.Core.Desktop.AppManager.SingleProcess(Session.Singleton, new Mutex(true, Session.SystemName), Session.SystemName);
             Session.Start();
 
             Application.Run(new MainForm());

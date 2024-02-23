@@ -1,6 +1,6 @@
 ﻿namespace FBITools
 {
-    public partial class MainContentForm : GNX.Desktop.ContentBaseForm
+    public partial class MainContentForm : App.Core.Desktop.ContentBaseForm
     {
         public MainContentForm()
         {

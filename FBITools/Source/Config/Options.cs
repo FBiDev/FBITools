@@ -1,5 +1,5 @@
 ﻿using Newtonsoft.Json;
-using GNX.Desktop;
+using App.Core.Desktop;
 
 namespace FBITools
 {

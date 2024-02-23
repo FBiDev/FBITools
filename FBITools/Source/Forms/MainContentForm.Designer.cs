@@ -44,7 +44,7 @@
             // pnlContentR
             // 
             this.pnlContentR.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(252)))), ((int)(((byte)(252)))), ((int)(((byte)(252)))));
-            this.pnlContentR.BackColorType = GNX.Desktop.PanelType.white;
+            this.pnlContentR.BackColorType = App.Core.Desktop.PanelType.white;
             this.pnlContentR.Controls.Add(this.pnlContentRInside);
             this.pnlContentR.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlContentR.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));

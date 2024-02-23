@@ -1,6 +1,6 @@
 ﻿namespace FBITools
 {
-    public partial class ImageResizeForm : GNX.Desktop.ContentBaseForm
+    public partial class ImageResizeForm : App.Core.Desktop.ContentBaseForm
     {
         public ImageResizeForm()
         {

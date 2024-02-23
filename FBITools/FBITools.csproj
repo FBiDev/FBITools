@@ -42,52 +42,41 @@
     <StartupObject />
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>ResourcesLocal\Icons\ico_app.ico</ApplicationIcon>
+    <ApplicationIcon>Source\ResourcesLocal\Icons\ico_app.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="GNX">
-      <HintPath>..\..\_DLL\_DLL\Plugins\Core\GNX.dll</HintPath>
+    <Reference Include="App.Core">
+      <HintPath>..\..\App\Bin\App.Core.dll</HintPath>
     </Reference>
-    <Reference Include="IndexRange">
-      <HintPath>..\..\_DLL\_DLL\Plugins\System\IndexRange.dll</HintPath>
+    <Reference Include="App.Image.MagicScaler">
+      <HintPath>..\..\App\Bin\App.Image.MagicScaler.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\..\_DLL\_DLL\Plugins\Json\Newtonsoft.Json.dll</HintPath>
     </Reference>
-    <Reference Include="PhotoSauce.MagicScaler">
-      <HintPath>..\..\_DLL\_DLL\Plugins\Image\PhotoSauce.MagicScaler.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Memory">
-      <HintPath>..\..\_DLL\_DLL\Plugins\System\System.Memory.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Runtime.CompilerServices.Unsafe">
-      <HintPath>..\..\_DLL\_DLL\Plugins\System\System.Runtime.CompilerServices.Unsafe.4.0.4.1\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Deployment" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ResourcesLocal\CustomControls\FlatCheckBoxA.cs">
+    <Compile Include="Source\ResourcesLocal\CustomControls\FlatCheckBoxA.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="ResourcesLocal\CustomControls\FlatGroupBoxA.cs">
+    <Compile Include="Source\ResourcesLocal\CustomControls\FlatGroupBoxA.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ResourcesLocal\CustomControls\FlatPictureBoxA.cs">
+    <Compile Include="Source\ResourcesLocal\CustomControls\FlatPictureBoxA.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ResourcesLocal\CustomControls\FlatTableLayoutPanelA.cs">
+    <Compile Include="Source\ResourcesLocal\CustomControls\FlatTableLayoutPanelA.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Source\Classes\MagicScaler.cs" />
     <Compile Include="Source\Config\Session.cs" />
     <Compile Include="Source\Config\Options.cs" />
     <Compile Include="Source\Config\Theme.cs" />
@@ -95,16 +84,16 @@
     <Compile Include="Source\Controllers\ImageResizeController.cs" />
     <Compile Include="Source\Controllers\MainController.cs" />
     <Compile Include="Source\Controllers\MainContentController.cs" />
-    <Compile Include="ResourcesLocal\CustomControls\FlatButtonA.cs">
+    <Compile Include="Source\ResourcesLocal\CustomControls\FlatButtonA.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ResourcesLocal\CustomControls\FlatLabelA.cs">
+    <Compile Include="Source\ResourcesLocal\CustomControls\FlatLabelA.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ResourcesLocal\CustomControls\FlatPanelA.cs">
+    <Compile Include="Source\ResourcesLocal\CustomControls\FlatPanelA.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="ResourcesLocal\CustomControls\FlatTextBoxA.cs">
+    <Compile Include="Source\ResourcesLocal\CustomControls\FlatTextBoxA.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Source\Controllers\MainControls.cs" />
@@ -186,7 +175,7 @@
     </Compile>
     <Compile Include="Source\Controllers\SaveStateController.cs" />
     <Compile Include="Source\Controllers\MemoryCardController.cs" />
-    <Compile Include="ResourcesLocal\CustomControls\FlatComboBoxA.cs">
+    <Compile Include="Source\ResourcesLocal\CustomControls\FlatComboBoxA.cs">
       <SubType>UserControl</SubType>
     </Compile>
   </ItemGroup>
@@ -194,19 +183,21 @@
     <Content Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ResourcesLocal\Icons\ico_app.ico" />
-    <Content Include="ResourcesLocal\Icons\ico_app.png" />
+    <Content Include="Source\ResourcesLocal\Icons\ico_app.ico" />
+    <Content Include="Source\ResourcesLocal\Icons\ico_app.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Plugins\" />
+    <Folder Include="Source\Classes\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>ROBOCOPY "$(TargetDir) " "$(TargetDir)Plugins\ " /XF *.exe *.config *.json *.manifest $(SolutionName).pdb /XD Plugins /IS /MOV 
+    <PostBuildEvent>:: Move to Plugins
+ROBOCOPY "$(TargetDir) " "$(TargetDir)Plugins\ " /XF *.exe *.config *.json *.manifest $(SolutionName).pdb /XD Plugins /IS /MOV 
 if %25errorlevel%25 leq 4 exit 0 else exit %25errorlevel%25</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PreBuildEvent>:: Clean Plugins Dir
+    <PreBuildEvent>:: Clean Plugins
 robocopy "$(ProjectDir)Plugins\ " "$(TargetDir)Plugins\ " /PURGE
 if %25errorlevel%25 leq 4 exit 0 else exit %25errorlevel%25</PreBuildEvent>
   </PropertyGroup>

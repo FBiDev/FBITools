@@ -1,6 +1,6 @@
 ﻿namespace FBITools
 {
-    public partial class ConfigForm : GNX.Desktop.ContentBaseForm
+    public partial class ConfigForm : App.Core.Desktop.ContentBaseForm
     {
         public ConfigForm()
         {

@@ -1,6 +1,6 @@
 ﻿using System;
-using GNX;
-using GNX.Desktop;
+using App.Core;
+using App.Core.Desktop;
 
 namespace FBITools
 {

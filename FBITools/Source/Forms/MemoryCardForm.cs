@@ -1,6 +1,6 @@
 ﻿namespace FBITools
 {
-    public partial class MemoryCardForm : GNX.Desktop.ContentBaseForm
+    public partial class MemoryCardForm : App.Core.Desktop.ContentBaseForm
     {
         public MemoryCardForm()
         {

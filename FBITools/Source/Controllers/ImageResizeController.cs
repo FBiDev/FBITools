@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Windows.Forms;
-using GNX;
-using GNX.Desktop;
+using App.Core;
+using App.Core.Desktop;
+using App.Image.MagicScaler;
 
 namespace FBITools
 {

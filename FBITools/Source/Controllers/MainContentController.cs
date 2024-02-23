@@ -2,7 +2,7 @@
 using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using GNX.Desktop;
+using App.Core.Desktop;
 
 namespace FBITools
 {

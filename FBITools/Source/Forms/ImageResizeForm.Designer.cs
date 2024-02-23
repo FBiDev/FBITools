@@ -132,7 +132,7 @@
             this.lblTitle.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(149)))), ((int)(((byte)(237)))));
-            this.lblTitle.ForeColorType = GNX.Desktop.LabelType.primary;
+            this.lblTitle.ForeColorType = App.Core.Desktop.LabelType.primary;
             this.lblTitle.Location = new System.Drawing.Point(0, 0);
             this.lblTitle.Margin = new System.Windows.Forms.Padding(0, 0, 0, 2);
             this.lblTitle.Name = "lblTitle";
@@ -470,7 +470,7 @@
             this.tblResult.SetColumnSpan(this.lblWarning, 2);
             this.lblWarning.Dock = System.Windows.Forms.DockStyle.Fill;
             this.lblWarning.ForeColor = System.Drawing.Color.Firebrick;
-            this.lblWarning.ForeColorType = GNX.Desktop.LabelType.danger;
+            this.lblWarning.ForeColorType = App.Core.Desktop.LabelType.danger;
             this.lblWarning.Location = new System.Drawing.Point(0, 42);
             this.lblWarning.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.lblWarning.Name = "lblWarning";
@@ -483,8 +483,8 @@
             this.picDrop.AllowDrop = true;
             this.picDrop.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.picDrop.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.picDrop.Filter = ((GNX.ImageFormats)(((GNX.ImageFormats.Jpg | GNX.ImageFormats.Jpeg)
-            | GNX.ImageFormats.Png)));
+            this.picDrop.Filter = ((App.Core.ImageFormats)(((App.Core.ImageFormats.Jpg | App.Core.ImageFormats.Jpeg)
+            | App.Core.ImageFormats.Png)));
             this.picDrop.Image = null;
             this.picDrop.Location = new System.Drawing.Point(0, 70);
             this.picDrop.Margin = new System.Windows.Forms.Padding(0, 2, 2, 2);
@@ -498,8 +498,8 @@
             // 
             this.picResized.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.picResized.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.picResized.Filter = ((GNX.ImageFormats)(((GNX.ImageFormats.Jpg | GNX.ImageFormats.Jpeg)
-            | GNX.ImageFormats.Png)));
+            this.picResized.Filter = ((App.Core.ImageFormats)(((App.Core.ImageFormats.Jpg | App.Core.ImageFormats.Jpeg)
+            | App.Core.ImageFormats.Png)));
             this.picResized.Location = new System.Drawing.Point(233, 70);
             this.picResized.Margin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.picResized.Name = "picResized";
