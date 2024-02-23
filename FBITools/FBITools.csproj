@@ -198,7 +198,7 @@ if %25errorlevel%25 leq 4 exit 0 else exit %25errorlevel%25</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PreBuildEvent>:: Clean Plugins
-robocopy "$(ProjectDir)Plugins\ " "$(TargetDir)Plugins\ " /PURGE
+robocopy "$(ProjectDir)Plugins\ " "$(TargetDir)Plugins\ " /PURGE /XF .gitkeep
 if %25errorlevel%25 leq 4 exit 0 else exit %25errorlevel%25</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
