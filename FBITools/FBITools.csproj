@@ -42,7 +42,7 @@
     <StartupObject />
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Source\ResourcesLocal\Icons\ico_app.ico</ApplicationIcon>
+    <ApplicationIcon>Source\Assets\Icons\ico_app.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="App.Core">
@@ -65,16 +65,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Source\ResourcesLocal\CustomControls\FlatCheckBoxA.cs">
+    <Compile Include="Source\Assets\CustomControls\FlatCheckBoxA.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Source\ResourcesLocal\CustomControls\FlatGroupBoxA.cs">
+    <Compile Include="Source\Assets\CustomControls\FlatGroupBoxA.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Source\ResourcesLocal\CustomControls\FlatPictureBoxA.cs">
+    <Compile Include="Source\Assets\CustomControls\FlatPictureBoxA.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Source\ResourcesLocal\CustomControls\FlatTableLayoutPanelA.cs">
+    <Compile Include="Source\Assets\CustomControls\FlatTableLayoutPanelA.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Source\Config\Session.cs" />
@@ -84,16 +84,16 @@
     <Compile Include="Source\Controllers\ImageResizeController.cs" />
     <Compile Include="Source\Controllers\MainController.cs" />
     <Compile Include="Source\Controllers\MainContentController.cs" />
-    <Compile Include="Source\ResourcesLocal\CustomControls\FlatButtonA.cs">
+    <Compile Include="Source\Assets\CustomControls\FlatButtonA.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Source\ResourcesLocal\CustomControls\FlatLabelA.cs">
+    <Compile Include="Source\Assets\CustomControls\FlatLabelA.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Source\ResourcesLocal\CustomControls\FlatPanelA.cs">
+    <Compile Include="Source\Assets\CustomControls\FlatPanelA.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Source\ResourcesLocal\CustomControls\FlatTextBoxA.cs">
+    <Compile Include="Source\Assets\CustomControls\FlatTextBoxA.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Source\Controllers\MainControls.cs" />
@@ -175,7 +175,7 @@
     </Compile>
     <Compile Include="Source\Controllers\SaveStateController.cs" />
     <Compile Include="Source\Controllers\MemoryCardController.cs" />
-    <Compile Include="Source\ResourcesLocal\CustomControls\FlatComboBoxA.cs">
+    <Compile Include="Source\Assets\CustomControls\FlatComboBoxA.cs">
       <SubType>UserControl</SubType>
     </Compile>
   </ItemGroup>
@@ -183,8 +183,8 @@
     <Content Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Source\ResourcesLocal\Icons\ico_app.ico" />
-    <Content Include="Source\ResourcesLocal\Icons\ico_app.png" />
+    <Content Include="Source\Assets\Icons\ico_app.ico" />
+    <Content Include="Source\Assets\Icons\ico_app.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Plugins\" />
