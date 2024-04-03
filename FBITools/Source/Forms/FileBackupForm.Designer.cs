@@ -1,6 +1,6 @@
 namespace FBITools
 {
-    partial class MemoryCardForm
+    partial class FileBackupForm
     {
         /// <summary>
         /// Required designer variable.
@@ -118,7 +118,7 @@ namespace FBITools
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(428, 34);
             this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "MemoryCard";
+            this.lblTitle.Text = "File Backup";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // tblMainContent
@@ -216,12 +216,12 @@ namespace FBITools
             this.lblWarning.TabIndex = 1;
             this.lblWarning.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // MemoryCardForm
+            // FileBackupForm
             // 
             this.ClientSize = new System.Drawing.Size(430, 262);
             this.Controls.Add(this.tblMainContent);
-            this.Name = "MemoryCardForm";
-            this.Text = "MemoryCardForm";
+            this.Name = "FileBackupForm";
+            this.Text = "FileBackupForm";
             this.tblMainContent.ResumeLayout(false);
             this.tblMainContent.PerformLayout();
             this.tblInput.ResumeLayout(false);

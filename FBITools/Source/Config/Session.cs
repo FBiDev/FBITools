@@ -48,9 +48,10 @@ namespace FBITools
 
         public static ConfigForm ConfigForm;
 
-        public static SaveStateForm SaveStateForm;
-        public static MemoryCardForm MemoryCardForm;
+        public static FileCopyForm FileCopyForm;
+        public static FileBackupForm FileBackupForm;
         public static ImageResizeForm ImageResizeForm;
+        public static VbToCsharpForm VbToCsharpForm;
         #endregion
     }
 }

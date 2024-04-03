@@ -95,13 +95,11 @@ namespace FBITools
         void UpdateOrigin()
         {
             txtOrigin.Text = Scaler.OriginPath;
-            //Session.Options.SaveState_Origin = ImageFile.OriginPath;
         }
 
         void UpdateDestination()
         {
             txtDestination.Text = Scaler.DestinationPath;
-            //Session.Options.SaveState_Destination = ImageFile.DestinationPath;
         }
 
         void UpdateDropImage()

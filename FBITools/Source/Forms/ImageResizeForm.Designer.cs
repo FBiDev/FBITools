@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.tblMainContent = new FBITools.FlatTableLayoutPanelA();
             this.tblInput = new FBITools.FlatTableLayoutPanelA();
             this.lblTitle = new FBITools.FlatLabelA();
@@ -138,7 +137,7 @@
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(463, 34);
             this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "ImageResize";
+            this.lblTitle.Text = "Image Resize";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnOrigin
@@ -483,7 +482,7 @@
             this.picDrop.AllowDrop = true;
             this.picDrop.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.picDrop.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.picDrop.Filter = ((App.Core.ImageFormats)(((App.Core.ImageFormats.Jpg | App.Core.ImageFormats.Jpeg)
+            this.picDrop.Filter = ((App.Core.ImageFormats)(((App.Core.ImageFormats.Jpg | App.Core.ImageFormats.Jpeg) 
             | App.Core.ImageFormats.Png)));
             this.picDrop.Image = null;
             this.picDrop.Location = new System.Drawing.Point(0, 70);
@@ -498,8 +497,9 @@
             // 
             this.picResized.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.picResized.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.picResized.Filter = ((App.Core.ImageFormats)(((App.Core.ImageFormats.Jpg | App.Core.ImageFormats.Jpeg)
+            this.picResized.Filter = ((App.Core.ImageFormats)(((App.Core.ImageFormats.Jpg | App.Core.ImageFormats.Jpeg) 
             | App.Core.ImageFormats.Png)));
+            this.picResized.Image = null;
             this.picResized.Location = new System.Drawing.Point(233, 70);
             this.picResized.Margin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.picResized.Name = "picResized";

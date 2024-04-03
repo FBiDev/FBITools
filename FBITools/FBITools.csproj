@@ -77,10 +77,13 @@
     <Compile Include="Source\Assets\CustomControls\FlatTableLayoutPanelA.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Source\Classes\Tests.cs" />
+    <Compile Include="Source\Classes\VbToCsharp.cs" />
     <Compile Include="Source\Config\Session.cs" />
     <Compile Include="Source\Config\Options.cs" />
     <Compile Include="Source\Config\Theme.cs" />
     <Compile Include="Source\Controllers\ConfigController.cs" />
+    <Compile Include="Source\Controllers\VbToCsharpController.cs" />
     <Compile Include="Source\Controllers\ImageResizeController.cs" />
     <Compile Include="Source\Controllers\MainController.cs" />
     <Compile Include="Source\Controllers\MainContentController.cs" />
@@ -103,6 +106,12 @@
     <Compile Include="Source\Forms\ConfigForm.Designer.cs">
       <DependentUpon>ConfigForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Source\Forms\VbToCsharpForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\Forms\VbToCsharpForm.Designer.cs">
+      <DependentUpon>VbToCsharpForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Source\Forms\ImageResizeForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -115,17 +124,17 @@
     <Compile Include="Source\Forms\MainContentForm.Designer.cs">
       <DependentUpon>MainContentForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\Forms\MemoryCardForm.cs">
+    <Compile Include="Source\Forms\FileBackupForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Source\Forms\MemoryCardForm.Designer.cs">
-      <DependentUpon>MemoryCardForm.cs</DependentUpon>
+    <Compile Include="Source\Forms\FileBackupForm.Designer.cs">
+      <DependentUpon>FileBackupForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\Forms\SaveStateForm.cs">
+    <Compile Include="Source\Forms\FileCopyForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Source\Forms\SaveStateForm.Designer.cs">
-      <DependentUpon>SaveStateForm.cs</DependentUpon>
+    <Compile Include="Source\Forms\FileCopyForm.Designer.cs">
+      <DependentUpon>FileCopyForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Source\Forms\MainForm.cs">
       <SubType>Form</SubType>
@@ -149,17 +158,20 @@
     <EmbeddedResource Include="Source\Forms\ConfigForm.resx">
       <DependentUpon>ConfigForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Source\Forms\VbToCsharpForm.resx">
+      <DependentUpon>VbToCsharpForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Source\Forms\ImageResizeForm.resx">
       <DependentUpon>ImageResizeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Source\Forms\MainContentForm.resx">
       <DependentUpon>MainContentForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\Forms\MemoryCardForm.resx">
-      <DependentUpon>MemoryCardForm.cs</DependentUpon>
+    <EmbeddedResource Include="Source\Forms\FileBackupForm.resx">
+      <DependentUpon>FileBackupForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\Forms\SaveStateForm.resx">
-      <DependentUpon>SaveStateForm.cs</DependentUpon>
+    <EmbeddedResource Include="Source\Forms\FileCopyForm.resx">
+      <DependentUpon>FileCopyForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Source\Forms\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -173,8 +185,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Source\Controllers\SaveStateController.cs" />
-    <Compile Include="Source\Controllers\MemoryCardController.cs" />
+    <Compile Include="Source\Controllers\FileCopyController.cs" />
+    <Compile Include="Source\Controllers\FileBackupController.cs" />
     <Compile Include="Source\Assets\CustomControls\FlatComboBoxA.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -188,7 +200,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Plugins\" />
-    <Folder Include="Source\Classes\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

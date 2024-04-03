@@ -21,13 +21,14 @@ namespace FBITools
 
         void form_Shown(object sender, EventArgs ev)
         {
-            btnTabSaveState.Click += (s, e) => SetContent(s, Session.SaveStateForm);
-            btnTabMemoryCard.Click += (s, e) => SetContent(s, Session.MemoryCardForm);
+            btnTabFileCopy.Click += (s, e) => SetContent(s, Session.FileCopyForm);
+            btnTabFileBackup.Click += (s, e) => SetContent(s, Session.FileBackupForm);
             btnTabImageResize.Click += (s, e) => SetContent(s, Session.ImageResizeForm);
+            btnVbCsharp.Click += (s, e) => SetContent(s, Session.VbToCsharpForm);
 
             btnTabConfig.Click += (s, e) => SetContent(s, Session.ConfigForm);
 
-            btnTabSaveState.PerformClick();
+            btnTabFileCopy.PerformClick();
             selectedTab.Focus();
         }
 
@@ -109,6 +110,7 @@ namespace FBITools
 
         async Task CenterMainWindow<T>(T contentForm) where T : ContentBaseForm, new()
         {
+            await Task.Delay(50);
             Session.MainForm.CenterWindow();
             await Task.Delay(50);
 

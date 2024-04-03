@@ -12,9 +12,10 @@
         FlatPanelA pnlContentR { get { return form.pnlContentR; } }
         FlatPanelA pnlContentRInside { get { return form.pnlContentRInside; } }
 
-        FlatButtonA btnTabSaveState { get { return form.btnTabSaveState; } }
-        FlatButtonA btnTabMemoryCard { get { return form.btnTabMemoryCard; } }
+        FlatButtonA btnTabFileCopy { get { return form.btnTabFileCopy; } }
+        FlatButtonA btnTabFileBackup { get { return form.btnTabFileBackup; } }
         FlatButtonA btnTabImageResize { get { return form.btnTabImageResize; } }
+        FlatButtonA btnVbCsharp { get { return form.btnVbCsharp; } }
         FlatButtonA btnTabConfig { get { return form.btnTabConfig; } }
     }
 
@@ -32,12 +33,12 @@
         FlatCheckBoxA chkDebugMode { get { return form.chkDebugMode; } }
     }
 
-    public partial class SaveStateController
+    public partial class FileCopyController
     {
-        SaveStateForm form
+        FileCopyForm form
         {
-            get { return Session.SaveStateForm; }
-            set { Session.SaveStateForm = value; }
+            get { return Session.FileCopyForm; }
+            set { Session.FileCopyForm = value; }
         }
 
         FlatTableLayoutPanelA tblInput { get { return form.tblInput; } }
@@ -55,12 +56,12 @@
         FlatButtonA btnCopy { get { return form.btnCopy; } }
     }
 
-    public partial class MemoryCardController
+    public partial class FileBackupController
     {
-        MemoryCardForm form
+        FileBackupForm form
         {
-            get { return Session.MemoryCardForm; }
-            set { Session.MemoryCardForm = value; }
+            get { return Session.FileBackupForm; }
+            set { Session.FileBackupForm = value; }
         }
 
         FlatTableLayoutPanelA tblInput { get { return form.tblInput; } }
@@ -114,5 +115,24 @@
         FlatButtonA btnResize { get { return form.btnResize; } }
         FlatPictureBoxA picDrop { get { return form.picDrop; } }
         FlatPictureBoxA picResized { get { return form.picResized; } }
+    }
+
+    public partial class VbToCsharpController
+    {
+        VbToCsharpForm form
+        {
+            get { return Session.VbToCsharpForm; }
+            set { Session.VbToCsharpForm = value; }
+        }
+
+        FlatLabelA lblWarning { get { return form.lblWarning; } }
+
+        FlatTextBoxA txtInput { get { return form.txtInput; } }
+        
+        FlatButtonA btnConvert { get { return form.btnConvert; } }
+        FlatButtonA btnCopyResult { get { return form.btnCopyResult; } }
+        FlatButtonA btnClear { get { return form.btnClear; } }
+
+        FlatTextBoxA txtOutput { get { return form.txtOutput; } }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace FBITools
 {
-    partial class SaveStateForm
+    partial class FileCopyForm
     {
         /// <summary>
         /// Required designer variable.
@@ -100,7 +100,7 @@
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(428, 34);
             this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "SaveState";
+            this.lblTitle.Text = "File Copy";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // btnOrigin
@@ -235,12 +235,12 @@
             this.lblWarning.TabIndex = 1;
             this.lblWarning.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
-            // SaveStateForm
+            // FileCopyForm
             // 
             this.ClientSize = new System.Drawing.Size(430, 262);
             this.Controls.Add(this.tblMainContent);
-            this.Name = "SaveStateForm";
-            this.Text = "SaveStateForm";
+            this.Name = "FileCopyForm";
+            this.Text = "FileCopyForm";
             this.tblMainContent.ResumeLayout(false);
             this.tblMainContent.PerformLayout();
             this.tblInput.ResumeLayout(false);

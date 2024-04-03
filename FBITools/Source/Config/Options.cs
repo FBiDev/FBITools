@@ -59,15 +59,15 @@ namespace FBITools
         #endregion
 
         #region System
-        public string SaveState_Origin { get; set; }
-        public string SaveState_Destination { get; set; }
-        public int SaveState_Type { get; set; }
-        public int SaveState_Timer { get; set; }
+        public string FileCopy_Origin { get; set; }
+        public string FileCopy_Destination { get; set; }
+        public int FileCopy_Type { get; set; }
+        public int FileCopy_Timer { get; set; }
 
-        public string MemoryCard_Origin { get; set; }
-        public string MemoryCard_Destination { get; set; }
-        public int MemoryCard_Type { get; set; }
-        public int MemoryCard_Timer { get; set; }
+        public string FileBackup_Origin { get; set; }
+        public string FileBackup_Destination { get; set; }
+        public int FileBackup_Type { get; set; }
+        public int FileBackup_Timer { get; set; }
         #endregion
     }
 }
