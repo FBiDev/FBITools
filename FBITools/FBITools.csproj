@@ -48,11 +48,15 @@
     <Reference Include="App.Core">
       <HintPath>..\..\App\Bin\App.Core.dll</HintPath>
     </Reference>
+    <Reference Include="App.Data.SQLite">
+      <HintPath>..\..\App\Bin\App.Data.SQLite.dll</HintPath>
+      <EmbedInteropTypes>False</EmbedInteropTypes>
+    </Reference>
     <Reference Include="App.Image.MagicScaler">
       <HintPath>..\..\App\Bin\App.Image.MagicScaler.dll</HintPath>
     </Reference>
     <Reference Include="Newtonsoft.Json">
-      <HintPath>..\..\_DLL\_DLL\Plugins\Json\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\App\Assembly\json\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -68,8 +72,14 @@
     <Compile Include="Source\Assets\CustomControls\FlatCheckBoxA.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Source\Assets\CustomControls\FlatDataGridA.cs">
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Source\Assets\CustomControls\FlatGroupBoxA.cs">
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Source\Assets\CustomControls\FlatMaskedTextBoxA.cs">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Source\Assets\CustomControls\FlatPictureBoxA.cs">
       <SubType>Component</SubType>
@@ -77,12 +87,21 @@
     <Compile Include="Source\Assets\CustomControls\FlatTableLayoutPanelA.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Source\ClassesDao\WiiU\TitleDao.cs" />
+    <Compile Include="Source\ClassesDao\WiiU\TypeDao.cs" />
+    <Compile Include="Source\ClassesDao\WiiU\RegionDao.cs" />
+    <Compile Include="Source\Classes\HexFile.cs" />
     <Compile Include="Source\Classes\Tests.cs" />
     <Compile Include="Source\Classes\VbToCsharp.cs" />
+    <Compile Include="Source\Classes\WiiU\Region.cs" />
+    <Compile Include="Source\Classes\WiiU\Title.cs" />
+    <Compile Include="Source\Classes\WiiU\Type.cs" />
+    <Compile Include="Source\Config\BancoWiiU.cs" />
     <Compile Include="Source\Config\Session.cs" />
     <Compile Include="Source\Config\Options.cs" />
     <Compile Include="Source\Config\Theme.cs" />
     <Compile Include="Source\Controllers\ConfigController.cs" />
+    <Compile Include="Source\Controllers\WiiUcetkController.cs" />
     <Compile Include="Source\Controllers\VbToCsharpController.cs" />
     <Compile Include="Source\Controllers\ImageResizeController.cs" />
     <Compile Include="Source\Controllers\MainController.cs" />
@@ -105,6 +124,12 @@
     </Compile>
     <Compile Include="Source\Forms\ConfigForm.Designer.cs">
       <DependentUpon>ConfigForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\Forms\WiiUcetkForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\Forms\WiiUcetkForm.Designer.cs">
+      <DependentUpon>WiiUcetkForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Source\Forms\VbToCsharpForm.cs">
       <SubType>Form</SubType>
@@ -158,6 +183,9 @@
     <EmbeddedResource Include="Source\Forms\ConfigForm.resx">
       <DependentUpon>ConfigForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Source\Forms\WiiUcetkForm.resx">
+      <DependentUpon>WiiUcetkForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Source\Forms\VbToCsharpForm.resx">
       <DependentUpon>VbToCsharpForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -190,9 +218,17 @@
     <Compile Include="Source\Assets\CustomControls\FlatComboBoxA.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <ContentWithTargetPath Include="Source\Assets\Data\WiiUDatabase.db">
+      <TargetPath>Data\WiiUDatabase.db</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </ContentWithTargetPath>
+    <None Include="Source\Assets\Data\WiiUcetk" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />
+    <Content Include="Source\Assets\Sql\sql_WiiUTitle_List.sql" />
+    <Content Include="Source\Assets\Sql\sql_WiiUType_List.sql" />
+    <Content Include="Source\Assets\Sql\sql_WiiURegion_List.sql" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Source\Assets\Icons\ico_app.ico" />
@@ -204,6 +240,7 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>:: Move to Plugins
+ROBOCOPY "$(SolutionDir)..\App\Assembly\data " "$(TargetDir) " SQLite.Interop.dll /XO
 ROBOCOPY "$(TargetDir) " "$(TargetDir)Plugins\ " /XF *.exe *.config *.json *.manifest $(SolutionName).pdb /XD Plugins /IS /MOV 
 if %25errorlevel%25 leq 4 exit 0 else exit %25errorlevel%25</PostBuildEvent>
   </PropertyGroup>

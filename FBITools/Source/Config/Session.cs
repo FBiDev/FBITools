@@ -26,11 +26,11 @@ namespace FBITools
         {
             LanguageManager.SetLanguage(Language);
             LanguageManager.SetLanguageNumbers(LanguageNumbers);
-            //AppManager.Start();
 
             LoadOptions();
 
             //Banco.Load();
+            WiiU.BancoWiiU.Load();
 
             MainBaseForm.DebugMode = Options.DebugMode;
             MainBaseForm.AutoCenterWindow = Options.AutoCenterWindow;
@@ -52,6 +52,10 @@ namespace FBITools
         public static FileBackupForm FileBackupForm;
         public static ImageResizeForm ImageResizeForm;
         public static VbToCsharpForm VbToCsharpForm;
+        #endregion
+
+        #region WiiU
+        public static WiiUcetkForm WiiUcetkForm;
         #endregion
     }
 }

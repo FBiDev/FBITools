@@ -69,5 +69,66 @@ namespace FBITools.Properties {
                 return ((System.Drawing.Icon)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to --
+        ///SELECT 
+        ///	  r.Id
+        ///	, r.Name 
+        ///FROM Regions AS r 
+        ///WHERE 1 = 1 
+        ///ORDER BY r.Id ASC 
+        ///--.
+        /// </summary>
+        internal static string sql_WiiURegion_List {
+            get {
+                return ResourceManager.GetString("sql_WiiURegion_List", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to --
+        ///SELECT 
+        ///	  UPPER(a.TitleID) AS TitleID
+        ///	, a.Key 
+        ///	, a.Name 
+        ///	, a.Region 
+        ///	, a.Type 
+        ///FROM App AS a 
+        ///WHERE 1 = 1 
+        ///ORDER BY a.TitleID ASC 
+        ///--.
+        /// </summary>
+        internal static string sql_WiiUTitle_List {
+            get {
+                return ResourceManager.GetString("sql_WiiUTitle_List", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to --
+        ///SELECT 
+        ///	  t.Id
+        ///	, t.Name 
+        ///FROM Types AS t 
+        ///WHERE 1 = 1 
+        ///ORDER BY t.Id ASC 
+        ///--.
+        /// </summary>
+        internal static string sql_WiiUType_List {
+            get {
+                return ResourceManager.GetString("sql_WiiUType_List", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] WiiUcetk {
+            get {
+                object obj = ResourceManager.GetObject("WiiUcetk", resourceCulture);
+                return ((byte[])(obj));
+            }
+        }
     }
 }

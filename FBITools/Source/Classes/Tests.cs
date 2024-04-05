@@ -11,13 +11,6 @@ public class Hello
     {
         Console.WriteLine("hello, world" + "");
         asa = string.Empty.Trim().ToUpper();
-        try
-        {
-            return true;
-        }
-        catch (Exception ex)
-        {
-            return false;
-        }
+        return true;
     }
 }

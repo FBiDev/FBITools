@@ -25,6 +25,7 @@ namespace FBITools
             btnTabFileBackup.Click += (s, e) => SetContent(s, Session.FileBackupForm);
             btnTabImageResize.Click += (s, e) => SetContent(s, Session.ImageResizeForm);
             btnVbCsharp.Click += (s, e) => SetContent(s, Session.VbToCsharpForm);
+            btnWiiUcetk.Click += (s, e) => SetContent(s, Session.WiiUcetkForm);
 
             btnTabConfig.Click += (s, e) => SetContent(s, Session.ConfigForm);
 

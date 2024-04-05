@@ -16,6 +16,7 @@
         FlatButtonA btnTabFileBackup { get { return form.btnTabFileBackup; } }
         FlatButtonA btnTabImageResize { get { return form.btnTabImageResize; } }
         FlatButtonA btnVbCsharp { get { return form.btnVbCsharp; } }
+        FlatButtonA btnWiiUcetk { get { return form.btnWiiUcetk; } }
         FlatButtonA btnTabConfig { get { return form.btnTabConfig; } }
     }
 
@@ -128,11 +129,30 @@
         FlatLabelA lblWarning { get { return form.lblWarning; } }
 
         FlatTextBoxA txtInput { get { return form.txtInput; } }
-        
+
         FlatButtonA btnConvert { get { return form.btnConvert; } }
         FlatButtonA btnCopyResult { get { return form.btnCopyResult; } }
         FlatButtonA btnClear { get { return form.btnClear; } }
 
         FlatTextBoxA txtOutput { get { return form.txtOutput; } }
+    }
+
+    public partial class WiiUcetkController
+    {
+        WiiUcetkForm form
+        {
+            get { return Session.WiiUcetkForm; }
+            set { Session.WiiUcetkForm = value; }
+        }
+
+        FlatLabelA lblWarning { get { return form.lblWarning; } }
+
+        FlatMaskedTextBoxA txtTitleID { get { return form.txtTitleID; } }
+        FlatTextBoxA txtTitleName { get { return form.txtTitleName; } }
+
+        FlatButtonA btnGenerateCetk { get { return form.btnGenerateCetk; } }
+
+        FlatLabelA lblTitlesTotal { get { return form.lblTitlesTotal; } }
+        FlatDataGridA dgvTitles { get { return form.dgvTitles; } }
     }
 }

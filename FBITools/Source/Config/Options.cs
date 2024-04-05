@@ -68,6 +68,9 @@ namespace FBITools
         public string FileBackup_Destination { get; set; }
         public int FileBackup_Type { get; set; }
         public int FileBackup_Timer { get; set; }
+
+        [JsonIgnore]
+        public string WiiUDatabaseFile = @"Data\WiiUDatabase.db";
         #endregion
     }
 }

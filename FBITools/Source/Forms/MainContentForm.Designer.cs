@@ -35,8 +35,9 @@
             this.btnTabFileCopy = new FBITools.FlatButtonA();
             this.btnTabFileBackup = new FBITools.FlatButtonA();
             this.btnTabImageResize = new FBITools.FlatButtonA();
-            this.btnTabConfig = new FBITools.FlatButtonA();
             this.btnVbCsharp = new FBITools.FlatButtonA();
+            this.btnTabConfig = new FBITools.FlatButtonA();
+            this.btnWiiUcetk = new FBITools.FlatButtonA();
             this.pnlContentR.SuspendLayout();
             this.pnlContentL.SuspendLayout();
             this.tblMenu.SuspendLayout();
@@ -79,12 +80,14 @@
             this.tblMenu.Controls.Add(this.btnTabFileBackup, 0, 1);
             this.tblMenu.Controls.Add(this.btnTabImageResize, 0, 2);
             this.tblMenu.Controls.Add(this.btnVbCsharp, 0, 3);
-            this.tblMenu.Controls.Add(this.btnTabConfig, 0, 4);
+            this.tblMenu.Controls.Add(this.btnWiiUcetk, 0, 4);
+            this.tblMenu.Controls.Add(this.btnTabConfig, 0, 5);
             this.tblMenu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tblMenu.Location = new System.Drawing.Point(0, 0);
             this.tblMenu.Name = "tblMenu";
             this.tblMenu.Padding = new System.Windows.Forms.Padding(1);
-            this.tblMenu.RowCount = 5;
+            this.tblMenu.RowCount = 6;
+            this.tblMenu.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tblMenu.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tblMenu.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tblMenu.RowStyles.Add(new System.Windows.Forms.RowStyle());
@@ -133,19 +136,6 @@
             this.btnTabImageResize.TabIndex = 2;
             this.btnTabImageResize.Text = "Image Resize";
             // 
-            // btnTabConfig
-            // 
-            this.btnTabConfig.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnTabConfig.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(223)))), ((int)(((byte)(229)))));
-            this.btnTabConfig.FlatAppearance.BorderSize = 0;
-            this.btnTabConfig.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
-            this.btnTabConfig.Location = new System.Drawing.Point(1, 227);
-            this.btnTabConfig.Margin = new System.Windows.Forms.Padding(0, 2, 0, 0);
-            this.btnTabConfig.Name = "btnTabConfig";
-            this.btnTabConfig.Size = new System.Drawing.Size(122, 34);
-            this.btnTabConfig.TabIndex = 3;
-            this.btnTabConfig.Text = "Configurações";
-            // 
             // btnVbCsharp
             // 
             this.btnVbCsharp.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -156,8 +146,34 @@
             this.btnVbCsharp.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.btnVbCsharp.Name = "btnVbCsharp";
             this.btnVbCsharp.Size = new System.Drawing.Size(122, 34);
-            this.btnVbCsharp.TabIndex = 4;
+            this.btnVbCsharp.TabIndex = 3;
             this.btnVbCsharp.Text = "VB to CSharp";
+            // 
+            // btnTabConfig
+            // 
+            this.btnTabConfig.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.btnTabConfig.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(223)))), ((int)(((byte)(229)))));
+            this.btnTabConfig.FlatAppearance.BorderSize = 0;
+            this.btnTabConfig.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
+            this.btnTabConfig.Location = new System.Drawing.Point(1, 227);
+            this.btnTabConfig.Margin = new System.Windows.Forms.Padding(0, 2, 0, 0);
+            this.btnTabConfig.Name = "btnTabConfig";
+            this.btnTabConfig.Size = new System.Drawing.Size(122, 34);
+            this.btnTabConfig.TabIndex = 4;
+            this.btnTabConfig.Text = "Configurações";
+            // 
+            // btnWiiUcetk
+            // 
+            this.btnWiiUcetk.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnWiiUcetk.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(223)))), ((int)(((byte)(229)))));
+            this.btnWiiUcetk.FlatAppearance.BorderSize = 0;
+            this.btnWiiUcetk.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
+            this.btnWiiUcetk.Location = new System.Drawing.Point(1, 153);
+            this.btnWiiUcetk.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
+            this.btnWiiUcetk.Name = "btnWiiUcetk";
+            this.btnWiiUcetk.Size = new System.Drawing.Size(122, 34);
+            this.btnWiiUcetk.TabIndex = 5;
+            this.btnWiiUcetk.Text = "WiiU cetk";
             // 
             // MainContentForm
             // 
@@ -185,5 +201,6 @@
         internal FlatButtonA btnTabConfig;
         internal FlatButtonA btnTabImageResize;
         internal FlatButtonA btnVbCsharp;
+        internal FlatButtonA btnWiiUcetk;
     }
 }
