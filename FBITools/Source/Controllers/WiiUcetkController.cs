@@ -1,7 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
-using System.Windows.Forms;
 using App.Core;
 using App.Core.Desktop;
 
@@ -24,11 +23,13 @@ namespace FBITools
         {
             lblWarning.TextChanged += lblWarning_TextChanged;
 
-            txtTitleID.TextChanged += (s, e) => SearchTitles().TryAwait();
-            txtTitleName.TextChanged += (s, e) => SearchTitles().TryAwait();
-
             btnGenerateCetk.Click += btnGenerateCetk_Click;
             dgvTitles.DataSourceChanged += dgvTitles_DataSourceChanged;
+
+            txtTitleID.TextChanged += (s, e) => SearchTitles().TryAwait();
+            txtTitleName.TextChanged += (s, e) => SearchTitles().TryAwait();
+            chkListRegion.ItemCheck += (s, e) => SearchTitles().TryAwait();
+            chkListType.ItemCheck += (s, e) => SearchTitles().TryAwait();
         }
 
         async void lblWarning_TextChanged(object sender, EventArgs e)
@@ -39,6 +40,12 @@ namespace FBITools
 
         async Task CarregarCamposAsync()
         {
+            chkListRegion.Items.AddRange((await WiiU.Region.List()).Select(x => x.Name).ToArray());
+            chkListRegion.SetItemsChecked(true);
+
+            chkListType.Items.AddRange((await WiiU.Type.List()).Select(x => x.Name).ToArray());
+            chkListType.SetItemsChecked(true);
+
             titles = new ListBind<WiiU.Title>(await WiiU.Title.Search(new WiiU.Title()));
             titlesFilter = titles;
             SetDataSource(titlesFilter);
@@ -49,11 +56,11 @@ namespace FBITools
             string searchID = txtTitleID.Text;
             string searchName = txtTitleName.Text;
 
-            if (searchID.Length == 0 && searchName.Length == 0)
-            {
-                SetDataSource(titles);
-                return Task.CompletedTask;
-            }
+            //if (searchID.Length == 0 && searchName.Length == 0)
+            //{
+            //    SetDataSource(titles);
+            //    return Task.CompletedTask;
+            //}
 
             titlesFilter = new ListBind<WiiU.Title>();
 
@@ -61,8 +68,10 @@ namespace FBITools
             {
                 bool id = (obj.ID.HasValue() && obj.ID.Length >= searchID.Length && obj.ID.Substring(0, searchID.Length) == searchID.ToUpper());
                 bool title = (obj.Name.ContainsExtend(searchName));
+                bool region = chkListRegion.GetItemChecked(obj.Region);
+                bool type = chkListType.GetItemChecked(obj.Type);
 
-                if (id && title)
+                if (id && title && region && type)
                 {
                     titlesFilter.Add(obj);
                 }

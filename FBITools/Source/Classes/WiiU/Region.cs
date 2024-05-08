@@ -15,6 +15,11 @@ namespace FBITools.WiiU
 
         static readonly RegionDao DAO = new RegionDao();
 
+        public async static Task<List<Region>> List()
+        {
+            return await DAO.Search(null);
+        }
+
         public async static Task<List<Region>> Search(Region obj)
         {
             if (obj == null) obj = new Region { };

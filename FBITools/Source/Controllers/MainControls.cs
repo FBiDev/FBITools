@@ -150,6 +150,9 @@
         FlatMaskedTextBoxA txtTitleID { get { return form.txtTitleID; } }
         FlatTextBoxA txtTitleName { get { return form.txtTitleName; } }
 
+        FlatCheckedListA chkListRegion { get { return form.chkListRegion; } }
+        FlatCheckedListA chkListType { get { return form.chkListType; } }
+
         FlatButtonA btnGenerateCetk { get { return form.btnGenerateCetk; } }
 
         FlatLabelA lblTitlesTotal { get { return form.lblTitlesTotal; } }

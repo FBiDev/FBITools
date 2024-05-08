@@ -446,7 +446,7 @@
             this.tblResult.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tblResult.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tblResult.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tblResult.Size = new System.Drawing.Size(463, 280);
+            this.tblResult.Size = new System.Drawing.Size(463, 278);
             this.tblResult.SizeOriginal = new System.Drawing.Size(463, 280);
             this.tblResult.TabIndex = 1;
             // 
@@ -486,7 +486,7 @@
             | App.Core.ImageFormats.Png)));
             this.picDrop.Image = null;
             this.picDrop.Location = new System.Drawing.Point(0, 70);
-            this.picDrop.Margin = new System.Windows.Forms.Padding(0, 2, 2, 2);
+            this.picDrop.Margin = new System.Windows.Forms.Padding(0, 2, 2, 0);
             this.picDrop.Name = "picDrop";
             this.picDrop.Size = new System.Drawing.Size(229, 208);
             this.picDrop.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -501,7 +501,7 @@
             | App.Core.ImageFormats.Png)));
             this.picResized.Image = null;
             this.picResized.Location = new System.Drawing.Point(233, 70);
-            this.picResized.Margin = new System.Windows.Forms.Padding(2, 2, 0, 2);
+            this.picResized.Margin = new System.Windows.Forms.Padding(2, 2, 0, 0);
             this.picResized.Name = "picResized";
             this.picResized.Size = new System.Drawing.Size(230, 208);
             this.picResized.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;

@@ -14,6 +14,11 @@ namespace FBITools.WiiU
 
         static readonly TypeDao DAO = new TypeDao();
 
+        public async static Task<List<Type>> List()
+        {
+            return await DAO.Search(null);
+        }
+
         public async static Task<List<Type>> Search(Type obj)
         {
             if (obj == null) obj = new Type { };

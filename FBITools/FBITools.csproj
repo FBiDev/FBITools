@@ -72,6 +72,9 @@
     <Compile Include="Source\Assets\CustomControls\FlatCheckBoxA.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Include="Source\Assets\CustomControls\FlatCheckedListA.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Source\Assets\CustomControls\FlatDataGridA.cs">
       <SubType>Component</SubType>
     </Compile>

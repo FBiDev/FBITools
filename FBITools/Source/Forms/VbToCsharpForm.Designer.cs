@@ -196,7 +196,7 @@ namespace FBITools
             this.txtOutput.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtOutput.LabelText = "Output";
             this.txtOutput.Location = new System.Drawing.Point(0, 2);
-            this.txtOutput.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
+            this.txtOutput.Margin = new System.Windows.Forms.Padding(0, 2, 0, 0);
             this.txtOutput.MaximumSize = new System.Drawing.Size(0, 0);
             this.txtOutput.MaxLength = 0;
             this.txtOutput.Multiline = true;
@@ -205,7 +205,7 @@ namespace FBITools
             this.txtOutput.PreviousText = "";
             this.txtOutput.ReadOnly = true;
             this.txtOutput.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtOutput.Size = new System.Drawing.Size(832, 270);
+            this.txtOutput.Size = new System.Drawing.Size(832, 269);
             this.txtOutput.TabIndex = 0;
             // 
             // VbToCsharpForm
