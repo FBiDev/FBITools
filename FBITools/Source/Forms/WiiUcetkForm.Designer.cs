@@ -268,7 +268,7 @@ namespace FBITools
             this.dgvTitles.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvTitles.RowTemplate.Height = 30;
             this.dgvTitles.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvTitles.Size = new System.Drawing.Size(702, 418);
+            this.dgvTitles.Size = new System.Drawing.Size(702, 400);
             this.dgvTitles.StandardTab = true;
             this.dgvTitles.TabIndex = 1;
             this.dgvTitles.TabStop = true;
