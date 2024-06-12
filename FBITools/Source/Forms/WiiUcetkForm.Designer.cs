@@ -111,42 +111,32 @@ namespace FBITools
             // 
             // txtTitleID
             // 
-            this.txtTitleID.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtTitleID.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(223)))), ((int)(((byte)(229)))));
             this.txtTitleID.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.txtTitleID.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTitleID.LabelText = "Title ID";
             this.txtTitleID.Location = new System.Drawing.Point(0, 38);
             this.txtTitleID.Margin = new System.Windows.Forms.Padding(0, 2, 2, 2);
             this.txtTitleID.Mask = App.Core.Desktop.TextMask.None;
             this.txtTitleID.MaxLength = 16;
             this.txtTitleID.Name = "txtTitleID";
-            this.txtTitleID.Padding = new System.Windows.Forms.Padding(1);
             this.txtTitleID.Size = new System.Drawing.Size(349, 34);
             this.txtTitleID.TabIndex = 1;
             this.txtTitleID.TextAlign = App.Core.Desktop.FlatMaskedTextBox.TextAlignTypes.Left;
             // 
             // txtTitleName
             // 
-            this.txtTitleName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
-            this.txtTitleName.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(223)))), ((int)(((byte)(229)))));
             this.txtTitleName.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.txtTitleName.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTitleName.LabelText = "Title Name";
             this.txtTitleName.Location = new System.Drawing.Point(0, 94);
             this.txtTitleName.Margin = new System.Windows.Forms.Padding(0, 2, 2, 2);
             this.txtTitleName.MaxLength = 0;
             this.txtTitleName.Name = "txtTitleName";
-            this.txtTitleName.Padding = new System.Windows.Forms.Padding(1);
             this.txtTitleName.PreviousText = "";
-            this.txtTitleName.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.txtTitleName.Size = new System.Drawing.Size(349, 34);
             this.txtTitleName.TabIndex = 2;
             // 
             // chkListRegion
             // 
             this.chkListRegion.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chkListRegion.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkListRegion.Location = new System.Drawing.Point(353, 38);
             this.chkListRegion.Name = "chkListRegion";
             this.tblInput.SetRowSpan(this.chkListRegion, 2);
@@ -157,7 +147,6 @@ namespace FBITools
             // chkListType
             // 
             this.chkListType.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chkListType.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.chkListType.Location = new System.Drawing.Point(528, 38);
             this.chkListType.Name = "chkListType";
             this.tblInput.SetRowSpan(this.chkListType, 2);

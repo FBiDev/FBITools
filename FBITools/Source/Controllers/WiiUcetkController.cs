@@ -89,6 +89,7 @@ namespace FBITools
         void SetDataSource(ListBind<WiiU.Title> list)
         {
             dgvTitles.DataSource = list;
+            btnGenerateCetk.Enabled = list.Count > 0;
         }
 
         void btnGenerateCetk_Click(object sender, EventArgs e)
@@ -99,6 +100,8 @@ namespace FBITools
             var cetck = new HexFile(HexFile.WiiUcetk);
             cetck.ChangeValue(HexFile.WiiUcetkOldValue, title.Key);
             cetck.SaveWiiUcetk();
+
+            lblWarning.Text = "cetk " + title + " Saved!";
         }
     }
 }
