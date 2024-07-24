@@ -1,8 +1,8 @@
 ﻿--
 SELECT 
-	  r.Id
+	  r.ID 
 	, r.Name 
-FROM Regions AS r 
+FROM Region AS r 
 WHERE 1 = 1 
-ORDER BY r.Id ASC 
+ORDER BY r.ID ASC;
 --

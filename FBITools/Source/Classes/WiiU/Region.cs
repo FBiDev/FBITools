@@ -4,11 +4,10 @@ using System.Threading.Tasks;
 
 namespace FBITools.WiiU
 {
-
     public class Region
     {
-        [Field("Id")]
-        public int Id { get; set; }
+        [Field("ID")]
+        public int ID { get; set; }
 
         [Field("Name")]
         public string Name { get; set; }

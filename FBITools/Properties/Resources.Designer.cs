@@ -73,11 +73,27 @@ namespace FBITools.Properties {
         /// <summary>
         ///   Looks up a localized string similar to --
         ///SELECT 
-        ///	  r.Id
-        ///	, r.Name 
-        ///FROM Regions AS r 
+        ///	  c.ID 
+        ///	, c.Name 
+        ///FROM Category AS c 
         ///WHERE 1 = 1 
-        ///ORDER BY r.Id ASC 
+        ///ORDER BY c.ID ASC;
+        ///--.
+        /// </summary>
+        internal static string sql_WiiUCategory_List {
+            get {
+                return ResourceManager.GetString("sql_WiiUCategory_List", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to --
+        ///SELECT 
+        ///	  r.ID 
+        ///	, r.Name 
+        ///FROM Region AS r 
+        ///WHERE 1 = 1 
+        ///ORDER BY r.ID ASC;
         ///--.
         /// </summary>
         internal static string sql_WiiURegion_List {
@@ -89,35 +105,19 @@ namespace FBITools.Properties {
         /// <summary>
         ///   Looks up a localized string similar to --
         ///SELECT 
-        ///	  UPPER(a.TitleID) AS TitleID
-        ///	, a.Key 
-        ///	, a.Name 
-        ///	, a.Region 
-        ///	, a.Type 
-        ///FROM App AS a 
+        ///	  UPPER(t.TitleID) AS TitleID 
+        ///	, t.TitleKey 
+        ///	, t.Name 
+        ///	, t.Region 
+        ///	, t.Category 
+        ///FROM Title AS t 
         ///WHERE 1 = 1 
-        ///ORDER BY a.TitleID ASC 
+        ///ORDER BY t.TitleID ASC;
         ///--.
         /// </summary>
         internal static string sql_WiiUTitle_List {
             get {
                 return ResourceManager.GetString("sql_WiiUTitle_List", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to --
-        ///SELECT 
-        ///	  t.Id
-        ///	, t.Name 
-        ///FROM Types AS t 
-        ///WHERE 1 = 1 
-        ///ORDER BY t.Id ASC 
-        ///--.
-        /// </summary>
-        internal static string sql_WiiUType_List {
-            get {
-                return ResourceManager.GetString("sql_WiiUType_List", resourceCulture);
             }
         }
         

@@ -6,10 +6,10 @@ using FBITools.Properties;
 
 namespace FBITools.WiiU
 {
-    public class TypeDao : DatabaseDao
+    public class CategoryDao : DatabaseDao
     {
         #region " _Parameters "
-        List<SqlParameter> GetFilters(Type obj)
+        List<SqlParameter> GetFilters(Category obj)
         {
             return new List<SqlParameter>
             {
@@ -19,15 +19,15 @@ namespace FBITools.WiiU
         #endregion
 
         #region " _Select "
-        public async Task<List<Type>> Search(Type obj)
+        public async Task<List<Category>> Search(Category obj)
         {
-            var sql = Resources.sql_WiiUType_List;
+            var sql = Resources.sql_WiiUCategory_List;
             var parameters = GetFilters(obj);
 
-            return Load<List<Type>>(await BancoWiiU.ExecutarSelect(sql, parameters));
+            return Load<List<Category>>(await BancoWiiU.ExecutarSelect(sql, parameters));
         }
 
-        public async Task<Type> Find(Type obj)
+        public async Task<Category> Find(Category obj)
         {
             return (await Search(obj)).FirstOrNew();
         }

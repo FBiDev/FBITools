@@ -19,11 +19,11 @@ namespace FBITools.WiiU
         public string Region { get; set; }
 
         [Style(Width = 110, Align = ColumnAlign.Center)]
-        [Field("Type")]
-        public string Type { get; set; }
+        [Field("Category")]
+        public string Category { get; set; }
 
         [Display(AutoGenerateField = false)]
-        [Field("Key")]
+        [Field("TitleKey")]
         public string Key { get; set; }
 
         static readonly TitleDao DAO = new TitleDao();

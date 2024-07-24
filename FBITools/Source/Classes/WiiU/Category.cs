@@ -4,24 +4,24 @@ using System.Threading.Tasks;
 
 namespace FBITools.WiiU
 {
-    public class Type
+    public class Category
     {
-        [Field("Id")]
-        public int Id { get; set; }
+        [Field("ID")]
+        public int ID { get; set; }
 
         [Field("Name")]
         public string Name { get; set; }
 
-        static readonly TypeDao DAO = new TypeDao();
+        static readonly CategoryDao DAO = new CategoryDao();
 
-        public async static Task<List<Type>> List()
+        public async static Task<List<Category>> List()
         {
             return await DAO.Search(null);
         }
 
-        public async static Task<List<Type>> Search(Type obj)
+        public async static Task<List<Category>> Search(Category obj)
         {
-            if (obj == null) obj = new Type { };
+            if (obj == null) obj = new Category { };
             return await DAO.Search(obj);
         }
 

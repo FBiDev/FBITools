@@ -127,8 +127,8 @@
   <data name="sql_WiiUTitle_List" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\source\assets\sql\sql_wiiutitle_list.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
-  <data name="sql_WiiUType_List" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\source\assets\sql\sql_wiiutype_list.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  <data name="sql_WiiUCategory_List" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\source\assets\sql\sql_wiiucategory_list.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
   <data name="WiiUcetk" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Source\Assets\Data\WiiUcetk;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>

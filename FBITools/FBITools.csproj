@@ -87,18 +87,21 @@
     <Compile Include="Source\Assets\CustomControls\FlatPictureBoxA.cs">
       <SubType>Component</SubType>
     </Compile>
+    <Compile Include="Source\Assets\CustomControls\FlatStatusBarA.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Include="Source\Assets\CustomControls\FlatTableLayoutPanelA.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Source\ClassesDao\WiiU\TitleDao.cs" />
-    <Compile Include="Source\ClassesDao\WiiU\TypeDao.cs" />
+    <Compile Include="Source\ClassesDao\WiiU\CategoryDao.cs" />
     <Compile Include="Source\ClassesDao\WiiU\RegionDao.cs" />
     <Compile Include="Source\Classes\HexFile.cs" />
     <Compile Include="Source\Classes\Tests.cs" />
     <Compile Include="Source\Classes\VbToCsharp.cs" />
     <Compile Include="Source\Classes\WiiU\Region.cs" />
     <Compile Include="Source\Classes\WiiU\Title.cs" />
-    <Compile Include="Source\Classes\WiiU\Type.cs" />
+    <Compile Include="Source\Classes\WiiU\Category.cs" />
     <Compile Include="Source\Config\BancoWiiU.cs" />
     <Compile Include="Source\Config\Session.cs" />
     <Compile Include="Source\Config\Options.cs" />
@@ -230,7 +233,7 @@
   <ItemGroup>
     <Content Include="App.config" />
     <Content Include="Source\Assets\Sql\sql_WiiUTitle_List.sql" />
-    <Content Include="Source\Assets\Sql\sql_WiiUType_List.sql" />
+    <Content Include="Source\Assets\Sql\sql_WiiUCategory_List.sql" />
     <Content Include="Source\Assets\Sql\sql_WiiURegion_List.sql" />
   </ItemGroup>
   <ItemGroup>

@@ -22,14 +22,14 @@ namespace FBITools
         void form_Shown(object sender, EventArgs ev)
         {
             lblWarning.TextChanged += lblWarning_TextChanged;
-
             btnGenerateCetk.Click += btnGenerateCetk_Click;
-            dgvTitles.DataSourceChanged += dgvTitles_DataSourceChanged;
 
             txtTitleID.TextChanged += (s, e) => SearchTitles().TryAwait();
             txtTitleName.TextChanged += (s, e) => SearchTitles().TryAwait();
             chkListRegion.ItemCheck += (s, e) => SearchTitles().TryAwait();
-            chkListType.ItemCheck += (s, e) => SearchTitles().TryAwait();
+            chkListCategory.ItemCheck += (s, e) => SearchTitles().TryAwait();
+
+            dgvTitles.Statusbar = staTitles;
         }
 
         async void lblWarning_TextChanged(object sender, EventArgs e)
@@ -43,8 +43,8 @@ namespace FBITools
             chkListRegion.Items.AddRange((await WiiU.Region.List()).Select(x => x.Name).ToArray());
             chkListRegion.SetItemsChecked(true);
 
-            chkListType.Items.AddRange((await WiiU.Type.List()).Select(x => x.Name).ToArray());
-            chkListType.SetItemsChecked(true);
+            chkListCategory.Items.AddRange((await WiiU.Category.List()).Select(x => x.Name).ToArray());
+            chkListCategory.SetItemsChecked(true);
 
             titles = new ListBind<WiiU.Title>(await WiiU.Title.Search(new WiiU.Title()));
             titlesFilter = titles;
@@ -69,7 +69,7 @@ namespace FBITools
                 bool id = (obj.ID.HasValue() && obj.ID.Length >= searchID.Length && obj.ID.Substring(0, searchID.Length) == searchID.ToUpper());
                 bool title = (obj.Name.ContainsExtend(searchName));
                 bool region = chkListRegion.GetItemChecked(obj.Region);
-                bool type = chkListType.GetItemChecked(obj.Type);
+                bool type = chkListCategory.GetItemChecked(obj.Category);
 
                 if (id && title && region && type)
                 {
@@ -79,11 +79,6 @@ namespace FBITools
 
             SetDataSource(titlesFilter);
             return Task.CompletedTask;
-        }
-
-        void dgvTitles_DataSourceChanged(object sender, EventArgs e)
-        {
-            lblTitlesTotal.Text = "Titles Found: " + ((ListBind<WiiU.Title>)dgvTitles.DataSource).Count;
         }
 
         void SetDataSource(ListBind<WiiU.Title> list)

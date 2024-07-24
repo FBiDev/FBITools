@@ -38,12 +38,12 @@ namespace FBITools
             this.txtTitleID = new FBITools.FlatMaskedTextBoxA();
             this.txtTitleName = new FBITools.FlatTextBoxA();
             this.chkListRegion = new FBITools.FlatCheckedListA();
-            this.chkListType = new FBITools.FlatCheckedListA();
+            this.chkListCategory = new FBITools.FlatCheckedListA();
             this.btnGenerateCetk = new FBITools.FlatButtonA();
             this.lblWarning = new FBITools.FlatLabelA();
             this.tblResult = new FBITools.FlatTableLayoutPanelA();
-            this.lblTitlesTotal = new FBITools.FlatLabelA();
             this.dgvTitles = new FBITools.FlatDataGridA();
+            this.staTitles = new FBITools.FlatStatusBarA();
             this.tblMainContent.SuspendLayout();
             this.tblInput.SuspendLayout();
             this.tblResult.SuspendLayout();
@@ -78,7 +78,7 @@ namespace FBITools
             this.tblInput.Controls.Add(this.txtTitleID, 0, 1);
             this.tblInput.Controls.Add(this.txtTitleName, 0, 2);
             this.tblInput.Controls.Add(this.chkListRegion, 1, 1);
-            this.tblInput.Controls.Add(this.chkListType, 2, 1);
+            this.tblInput.Controls.Add(this.chkListCategory, 2, 1);
             this.tblInput.Controls.Add(this.btnGenerateCetk, 0, 3);
             this.tblInput.Controls.Add(this.lblWarning, 0, 4);
             this.tblInput.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -142,17 +142,17 @@ namespace FBITools
             this.tblInput.SetRowSpan(this.chkListRegion, 2);
             this.chkListRegion.Size = new System.Drawing.Size(171, 90);
             this.chkListRegion.TabIndex = 3;
-            this.chkListRegion.TextLegend = "Regions";
+            this.chkListRegion.TextLegend = "Region";
             // 
-            // chkListType
+            // chkListCategory
             // 
-            this.chkListType.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.chkListType.Location = new System.Drawing.Point(528, 38);
-            this.chkListType.Name = "chkListType";
-            this.tblInput.SetRowSpan(this.chkListType, 2);
-            this.chkListType.Size = new System.Drawing.Size(172, 90);
-            this.chkListType.TabIndex = 4;
-            this.chkListType.TextLegend = "Types";
+            this.chkListCategory.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.chkListCategory.Location = new System.Drawing.Point(528, 38);
+            this.chkListCategory.Name = "chkListCategory";
+            this.tblInput.SetRowSpan(this.chkListCategory, 2);
+            this.chkListCategory.Size = new System.Drawing.Size(172, 90);
+            this.chkListCategory.TabIndex = 4;
+            this.chkListCategory.TextLegend = "Category";
             // 
             // btnGenerateCetk
             // 
@@ -185,30 +185,17 @@ namespace FBITools
             // 
             this.tblResult.ColumnCount = 1;
             this.tblResult.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tblResult.Controls.Add(this.lblTitlesTotal, 0, 0);
-            this.tblResult.Controls.Add(this.dgvTitles, 0, 1);
+            this.tblResult.Controls.Add(this.dgvTitles, 0, 0);
+            this.tblResult.Controls.Add(this.staTitles, 0, 1);
             this.tblResult.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tblResult.Location = new System.Drawing.Point(1, 195);
             this.tblResult.Name = "tblResult";
             this.tblResult.RowCount = 2;
-            this.tblResult.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.tblResult.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tblResult.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.tblResult.Size = new System.Drawing.Size(702, 428);
             this.tblResult.SizeOriginal = new System.Drawing.Size(702, 428);
             this.tblResult.TabIndex = 1;
-            // 
-            // lblTitlesTotal
-            // 
-            this.tblResult.SetColumnSpan(this.lblTitlesTotal, 3);
-            this.lblTitlesTotal.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblTitlesTotal.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(149)))), ((int)(((byte)(237)))));
-            this.lblTitlesTotal.ForeColorType = App.Core.Desktop.LabelType.primary;
-            this.lblTitlesTotal.Location = new System.Drawing.Point(0, 2);
-            this.lblTitlesTotal.Margin = new System.Windows.Forms.Padding(0, 2, 0, 0);
-            this.lblTitlesTotal.Name = "lblTitlesTotal";
-            this.lblTitlesTotal.Size = new System.Drawing.Size(702, 24);
-            this.lblTitlesTotal.TabIndex = 0;
-            this.lblTitlesTotal.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // dgvTitles
             // 
@@ -244,7 +231,7 @@ namespace FBITools
             dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dgvTitles.DefaultCellStyle = dataGridViewCellStyle3;
             this.dgvTitles.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvTitles.Location = new System.Drawing.Point(0, 28);
+            this.dgvTitles.Location = new System.Drawing.Point(0, 2);
             this.dgvTitles.Margin = new System.Windows.Forms.Padding(0, 2, 0, 0);
             this.dgvTitles.Name = "dgvTitles";
             dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
@@ -257,10 +244,23 @@ namespace FBITools
             this.dgvTitles.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.dgvTitles.RowTemplate.Height = 30;
             this.dgvTitles.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.dgvTitles.Size = new System.Drawing.Size(702, 400);
+            this.dgvTitles.Size = new System.Drawing.Size(702, 397);
             this.dgvTitles.StandardTab = true;
-            this.dgvTitles.TabIndex = 1;
+            this.dgvTitles.TabIndex = 0;
             this.dgvTitles.TabStop = true;
+            // 
+            // staTitles
+            // 
+            this.staTitles.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(145)))), ((int)(((byte)(145)))), ((int)(((byte)(145)))));
+            this.staTitles.BackColorContent = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
+            this.staTitles.BorderEnable = true;
+            this.staTitles.Dock = System.Windows.Forms.DockStyle.Top;
+            this.staTitles.Location = new System.Drawing.Point(3, 402);
+            this.staTitles.Movimento = App.Core.Desktop.Movimento.Nenhum;
+            this.staTitles.Name = "staTitles";
+            this.staTitles.Registros = null;
+            this.staTitles.Size = new System.Drawing.Size(696, 23);
+            this.staTitles.TabIndex = 1;
             // 
             // WiiUcetkForm
             // 
@@ -289,8 +289,8 @@ namespace FBITools
         private FlatTableLayoutPanelA tblResult;
         internal FlatTextBoxA txtTitleName;
         internal FlatDataGridA dgvTitles;
-        internal FlatLabelA lblTitlesTotal;
         internal FlatCheckedListA chkListRegion;
-        internal FlatCheckedListA chkListType;
+        internal FlatCheckedListA chkListCategory;
+        internal FlatStatusBarA staTitles;
     }
 }

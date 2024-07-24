@@ -151,11 +151,11 @@
         FlatTextBoxA txtTitleName { get { return form.txtTitleName; } }
 
         FlatCheckedListA chkListRegion { get { return form.chkListRegion; } }
-        FlatCheckedListA chkListType { get { return form.chkListType; } }
+        FlatCheckedListA chkListCategory { get { return form.chkListCategory; } }
 
         FlatButtonA btnGenerateCetk { get { return form.btnGenerateCetk; } }
 
-        FlatLabelA lblTitlesTotal { get { return form.lblTitlesTotal; } }
         FlatDataGridA dgvTitles { get { return form.dgvTitles; } }
+        FlatStatusBarA staTitles { get { return form.staTitles; } }
     }
 }
