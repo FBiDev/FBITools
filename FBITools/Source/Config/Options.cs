@@ -1,5 +1,5 @@
-﻿using Newtonsoft.Json;
-using App.Core.Desktop;
+﻿using App.Core.Desktop;
+using App.Json;
 
 namespace FBITools
 {
@@ -10,22 +10,22 @@ namespace FBITools
         public const string FileName = "Options.json";
         [JsonIgnore]
         public static bool Loaded;
-
+        [JsonIgnore]
         bool darkMode = true;
         bool debugMode = true;
         bool autoCenterWindow = true;
         bool autoResizeWindow = true;
 
-        [JsonConverter(typeof(BoolConverter))]
+        [JsonConverter(JsonType.Boolean)]
         public bool DarkMode { get { return darkMode; } set { darkMode = value; } }
 
-        [JsonConverter(typeof(BoolConverter))]
+        [JsonConverter(JsonType.Boolean)]
         public bool DebugMode { get { return debugMode; } set { debugMode = value; } }
 
-        [JsonConverter(typeof(BoolConverter))]
+        [JsonConverter(JsonType.Boolean)]
         public bool AutoCenterWindow { get { return autoCenterWindow; } set { autoCenterWindow = value; } }
 
-        [JsonConverter(typeof(BoolConverter))]
+        [JsonConverter(JsonType.Boolean)]
         public bool AutoResizeWindow { get { return autoResizeWindow; } set { autoResizeWindow = value; } }
 
         public bool ToggleDarkMode()
