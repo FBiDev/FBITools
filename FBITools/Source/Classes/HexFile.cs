@@ -1,28 +1,24 @@
 ﻿using System;
 using System.Linq;
-using FBITools.Properties;
 using System.IO;
 
 namespace FBITools
 {
     public class HexFile
     {
-        public static byte[] WiiUcetk { get { return Resources.WiiUcetk; } }
-        public static string WiiUcetkOldValue { get { return "0323FFC337C286242E8EF8F5813711EC"; } }
+        byte[] Content { get; set; }
 
-        public byte[] Content { get; set; }
-
-        public HexFile(byte[] fileByteArray)
+        public HexFile(byte[] fileContent)
         {
-            Content = fileByteArray;
+            Content = fileContent;
         }
 
-        public string ConvertToString()
+        string ConvertToString()
         {
             return BitConverter.ToString(Content).Replace("-", "");
         }
 
-        public byte[] ConvertToByteArray(string strHex)
+        byte[] ConvertToByteArray(string strHex)
         {
             return Enumerable.Range(0, strHex.Length)
                              .Where(x => x % 2 == 0)
@@ -30,7 +26,7 @@ namespace FBITools
                              .ToArray();
         }
 
-        public void ChangeValue(string oldValue, string newValue)
+        public void Replace(string oldValue, string newValue)
         {
             var strHex = ConvertToString();
             Content = ConvertToByteArray(strHex.Replace(oldValue, newValue));
@@ -39,11 +35,6 @@ namespace FBITools
         public void Save(string newFileName)
         {
             File.WriteAllBytes(newFileName, Content);
-        }
-
-        public void SaveWiiUcetk()
-        {
-            Save(@"Data\cetk");
         }
     }
 }

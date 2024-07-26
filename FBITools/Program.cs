@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading;
 using System.Windows.Forms;
 
 namespace FBITools
@@ -12,10 +11,11 @@ namespace FBITools
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            App.Core.Desktop.AppManager.SingleProcess(Session.Singleton, new Mutex(true, Session.SystemName), Session.SystemName);
-            Session.Start();
-
-            Application.Run(new MainForm());
+            using (App.Core.Desktop.AppManager.SingleProcess(Session.Singleton, Session.SystemName))
+            {
+                Session.Start();
+                Application.Run(new MainForm());
+            }
         }
     }
 }

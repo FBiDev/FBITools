@@ -15,7 +15,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
-    <DebugType>pdbonly</DebugType>
+    <DebugType>full</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
@@ -97,11 +97,11 @@
     <Compile Include="Source\ClassesDao\WiiU\CategoryDao.cs" />
     <Compile Include="Source\ClassesDao\WiiU\RegionDao.cs" />
     <Compile Include="Source\Classes\HexFile.cs" />
-    <Compile Include="Source\Classes\Tests.cs" />
     <Compile Include="Source\Classes\VbToCsharp.cs" />
     <Compile Include="Source\Classes\WiiU\Region.cs" />
     <Compile Include="Source\Classes\WiiU\Title.cs" />
     <Compile Include="Source\Classes\WiiU\Category.cs" />
+    <Compile Include="Source\Classes\WiiU\Cetk.cs" />
     <Compile Include="Source\Config\BancoWiiU.cs" />
     <Compile Include="Source\Config\Session.cs" />
     <Compile Include="Source\Config\Options.cs" />
@@ -241,17 +241,16 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Plugins\" />
-    <Folder Include="Source\Utils\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>:: Move to Plugins
-ROBOCOPY "$(SolutionDir)..\App\Assembly\data " "$(TargetDir) " SQLite.Interop.dll /XO
-ROBOCOPY "$(TargetDir) " "$(TargetDir)Plugins\ " /XF *.exe *.config *.json *.manifest $(SolutionName).pdb /XD Plugins /IS /MOV 
+    <PostBuildEvent>:: Move Plugins
+robocopy "$(SolutionDir)..\App\Assembly\data " "$(TargetDir) " SQLite.Interop.dll /XO
+robocopy "$(TargetDir) " "$(TargetDir)Plugins\ " /XF *.exe *.config *.json *.manifest $(SolutionName).pdb /XD Plugins /IS /MOV 
 if %25errorlevel%25 leq 4 exit 0 else exit %25errorlevel%25</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PreBuildEvent>:: Clean Plugins
+    <PreBuildEvent>:: Clean/Copy Plugins
 robocopy "$(ProjectDir)Plugins\ " "$(TargetDir)Plugins\ " /PURGE /XF .gitkeep
 if %25errorlevel%25 leq 4 exit 0 else exit %25errorlevel%25</PreBuildEvent>
   </PropertyGroup>

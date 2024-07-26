@@ -70,7 +70,7 @@ namespace FBITools
         public int FileBackup_Timer { get; set; }
 
         [JsonIgnore]
-        public string WiiUDatabaseFile = @"Data\WiiUDatabase.db";
+        public string WiiUDatabaseFile = WiiU.Cetk.Database;
         #endregion
     }
 }

@@ -92,9 +92,9 @@ namespace FBITools
             if (dgvTitles.SelectedRows.AnyRow() == false) return;
 
             var title = dgvTitles.GetCurrentRowObject<WiiU.Title>();
-            var cetck = new HexFile(HexFile.WiiUcetk);
-            cetck.ChangeValue(HexFile.WiiUcetkOldValue, title.Key);
-            cetck.SaveWiiUcetk();
+            var cetck = new HexFile(WiiU.Cetk.BaseFile);
+            cetck.Replace(WiiU.Cetk.CommonKey, title.Key);
+            cetck.Save(WiiU.Cetk.FilePath);
 
             lblWarning.Text = "cetk " + title + " Saved!";
         }

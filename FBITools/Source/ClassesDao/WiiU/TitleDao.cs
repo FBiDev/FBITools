@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
+using FBITools.Properties;
 using App.Core;
 using App.Core.Desktop;
-using FBITools.Properties;
 
-namespace FBITools.WiiU
+namespace FBITools.WiiU.Dao
 {
     public class TitleDao : DatabaseDao
     {
