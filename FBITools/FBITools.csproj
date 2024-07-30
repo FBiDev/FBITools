@@ -15,7 +15,7 @@
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
+    <DebugType>pdbonly</DebugType>
     <Optimize>false</Optimize>
     <OutputPath>bin\Debug\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
@@ -42,7 +42,7 @@
     <StartupObject />
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Source\Assets\Icons\ico_app.ico</ApplicationIcon>
+    <ApplicationIcon>Source\Asset\Icon\ico_app.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="App.Core">
@@ -69,144 +69,143 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Source\Assets\CustomControls\FlatCheckBoxA.cs">
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Source\Asset\CustomControl\FlatCheckBoxA.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Source\Assets\CustomControls\FlatCheckedListA.cs">
+    <Compile Include="Source\Asset\CustomControl\FlatCheckedListA.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Source\Assets\CustomControls\FlatDataGridA.cs">
+    <Compile Include="Source\Asset\CustomControl\FlatDataGridA.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Source\Assets\CustomControls\FlatGroupBoxA.cs">
+    <Compile Include="Source\Asset\CustomControl\FlatGroupBoxA.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Source\Assets\CustomControls\FlatMaskedTextBoxA.cs">
+    <Compile Include="Source\Asset\CustomControl\FlatMaskedTextBoxA.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Source\Assets\CustomControls\FlatPictureBoxA.cs">
+    <Compile Include="Source\Asset\CustomControl\FlatPictureBoxA.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Source\Assets\CustomControls\FlatStatusBarA.cs">
+    <Compile Include="Source\Asset\CustomControl\FlatStatusBarA.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Source\Assets\CustomControls\FlatTableLayoutPanelA.cs">
+    <Compile Include="Source\Asset\CustomControl\FlatTableLayoutPanelA.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Source\ClassesDao\WiiU\TitleDao.cs" />
-    <Compile Include="Source\ClassesDao\WiiU\CategoryDao.cs" />
-    <Compile Include="Source\ClassesDao\WiiU\RegionDao.cs" />
-    <Compile Include="Source\Classes\HexFile.cs" />
-    <Compile Include="Source\Classes\VbToCsharp.cs" />
-    <Compile Include="Source\Classes\WiiU\Region.cs" />
-    <Compile Include="Source\Classes\WiiU\Title.cs" />
-    <Compile Include="Source\Classes\WiiU\Category.cs" />
-    <Compile Include="Source\Classes\WiiU\Cetk.cs" />
+    <Compile Include="Source\ModelDao\WiiU\TitleDao.cs" />
+    <Compile Include="Source\ModelDao\WiiU\CategoryDao.cs" />
+    <Compile Include="Source\ModelDao\WiiU\RegionDao.cs" />
+    <Compile Include="Source\Model\VbToCsharp.cs" />
+    <Compile Include="Source\Model\WiiU\Region.cs" />
+    <Compile Include="Source\Model\WiiU\Title.cs" />
+    <Compile Include="Source\Model\WiiU\Category.cs" />
+    <Compile Include="Source\Model\WiiU\Cetk.cs" />
     <Compile Include="Source\Config\BancoWiiU.cs" />
     <Compile Include="Source\Config\Session.cs" />
     <Compile Include="Source\Config\Options.cs" />
     <Compile Include="Source\Config\Theme.cs" />
-    <Compile Include="Source\Controllers\ConfigController.cs" />
-    <Compile Include="Source\Controllers\WiiUcetkController.cs" />
-    <Compile Include="Source\Controllers\VbToCsharpController.cs" />
-    <Compile Include="Source\Controllers\ImageResizeController.cs" />
-    <Compile Include="Source\Controllers\MainController.cs" />
-    <Compile Include="Source\Controllers\MainContentController.cs" />
-    <Compile Include="Source\Assets\CustomControls\FlatButtonA.cs">
+    <Compile Include="Source\FormController\ConfigController.cs" />
+    <Compile Include="Source\FormController\WiiUcetkController.cs" />
+    <Compile Include="Source\FormController\VbToCsharpController.cs" />
+    <Compile Include="Source\FormController\ImageResizeController.cs" />
+    <Compile Include="Source\FormController\MainController.cs" />
+    <Compile Include="Source\FormController\MainContentController.cs" />
+    <Compile Include="Source\Asset\CustomControl\FlatButtonA.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Source\Assets\CustomControls\FlatLabelA.cs">
+    <Compile Include="Source\Asset\CustomControl\FlatLabelA.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Source\Assets\CustomControls\FlatPanelA.cs">
+    <Compile Include="Source\Asset\CustomControl\FlatPanelA.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Source\Assets\CustomControls\FlatTextBoxA.cs">
+    <Compile Include="Source\Asset\CustomControl\FlatTextBoxA.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Source\Controllers\MainControls.cs" />
-    <Compile Include="Source\Forms\ConfigForm.cs">
+    <Compile Include="Source\FormController\MainControls.cs" />
+    <Compile Include="Source\FormPage\ConfigForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Source\Forms\ConfigForm.Designer.cs">
+    <Compile Include="Source\FormPage\ConfigForm.Designer.cs">
       <DependentUpon>ConfigForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\Forms\WiiUcetkForm.cs">
+    <Compile Include="Source\FormPage\WiiUcetkForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Source\Forms\WiiUcetkForm.Designer.cs">
+    <Compile Include="Source\FormPage\WiiUcetkForm.Designer.cs">
       <DependentUpon>WiiUcetkForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\Forms\VbToCsharpForm.cs">
+    <Compile Include="Source\FormPage\VbToCsharpForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Source\Forms\VbToCsharpForm.Designer.cs">
+    <Compile Include="Source\FormPage\VbToCsharpForm.Designer.cs">
       <DependentUpon>VbToCsharpForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\Forms\ImageResizeForm.cs">
+    <Compile Include="Source\FormPage\ImageResizeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Source\Forms\ImageResizeForm.Designer.cs">
+    <Compile Include="Source\FormPage\ImageResizeForm.Designer.cs">
       <DependentUpon>ImageResizeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\Forms\MainContentForm.cs">
+    <Compile Include="Source\FormPage\MainContentForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Source\Forms\MainContentForm.Designer.cs">
+    <Compile Include="Source\FormPage\MainContentForm.Designer.cs">
       <DependentUpon>MainContentForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\Forms\FileBackupForm.cs">
+    <Compile Include="Source\FormPage\FileBackupForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Source\Forms\FileBackupForm.Designer.cs">
+    <Compile Include="Source\FormPage\FileBackupForm.Designer.cs">
       <DependentUpon>FileBackupForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\Forms\FileCopyForm.cs">
+    <Compile Include="Source\FormPage\FileCopyForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Source\Forms\FileCopyForm.Designer.cs">
+    <Compile Include="Source\FormPage\FileCopyForm.Designer.cs">
       <DependentUpon>FileCopyForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\Forms\MainForm.cs">
+    <Compile Include="Source\FormPage\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Source\Forms\MainForm.Designer.cs">
+    <Compile Include="Source\FormPage\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
-    <EmbeddedResource Include="Source\Forms\ConfigForm.resx">
+    <EmbeddedResource Include="Source\FormPage\ConfigForm.resx">
       <DependentUpon>ConfigForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\Forms\WiiUcetkForm.resx">
+    <EmbeddedResource Include="Source\FormPage\WiiUcetkForm.resx">
       <DependentUpon>WiiUcetkForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\Forms\VbToCsharpForm.resx">
+    <EmbeddedResource Include="Source\FormPage\VbToCsharpForm.resx">
       <DependentUpon>VbToCsharpForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\Forms\ImageResizeForm.resx">
+    <EmbeddedResource Include="Source\FormPage\ImageResizeForm.resx">
       <DependentUpon>ImageResizeForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\Forms\MainContentForm.resx">
+    <EmbeddedResource Include="Source\FormPage\MainContentForm.resx">
       <DependentUpon>MainContentForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\Forms\FileBackupForm.resx">
+    <EmbeddedResource Include="Source\FormPage\FileBackupForm.resx">
       <DependentUpon>FileBackupForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\Forms\FileCopyForm.resx">
+    <EmbeddedResource Include="Source\FormPage\FileCopyForm.resx">
       <DependentUpon>FileCopyForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\Forms\MainForm.resx">
+    <EmbeddedResource Include="Source\FormPage\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
@@ -218,41 +217,38 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Source\Controllers\FileCopyController.cs" />
-    <Compile Include="Source\Controllers\FileBackupController.cs" />
-    <Compile Include="Source\Assets\CustomControls\FlatComboBoxA.cs">
+    <Compile Include="Source\FormController\FileCopyController.cs" />
+    <Compile Include="Source\FormController\FileBackupController.cs" />
+    <Compile Include="Source\Asset\CustomControl\FlatComboBoxA.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <ContentWithTargetPath Include="Source\Assets\Data\WiiUDatabase.db">
+    <ContentWithTargetPath Include="Source\Asset\Data\WiiUDatabase.db">
       <TargetPath>Data\WiiUDatabase.db</TargetPath>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </ContentWithTargetPath>
-    <None Include="Source\Assets\Data\WiiUcetk" />
+    <None Include="Source\Asset\Data\WiiUcetk" />
+    <None Include="Source\Asset\Script\Postbuild.bat" />
+    <None Include="Source\Asset\Script\Prebuild.bat" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />
-    <Content Include="Source\Assets\Sql\sql_WiiUTitle_List.sql" />
-    <Content Include="Source\Assets\Sql\sql_WiiUCategory_List.sql" />
-    <Content Include="Source\Assets\Sql\sql_WiiURegion_List.sql" />
+    <Content Include="Source\Asset\Sql\sql_WiiUTitle_List.sql" />
+    <Content Include="Source\Asset\Sql\sql_WiiUCategory_List.sql" />
+    <Content Include="Source\Asset\Sql\sql_WiiURegion_List.sql" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Source\Assets\Icons\ico_app.ico" />
-    <Content Include="Source\Assets\Icons\ico_app.png" />
+    <Content Include="Source\Asset\Icon\ico_app.ico" />
+    <Content Include="Source\Asset\Icon\ico_app.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Plugins\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>:: Move Plugins
-robocopy "$(SolutionDir)..\App\Assembly\data " "$(TargetDir) " SQLite.Interop.dll /XO
-robocopy "$(TargetDir) " "$(TargetDir)Plugins\ " /XF *.exe *.config *.json *.manifest $(SolutionName).pdb /XD Plugins /IS /MOV 
-if %25errorlevel%25 leq 4 exit 0 else exit %25errorlevel%25</PostBuildEvent>
+    <PostBuildEvent>call "$(ProjectDir)Source\Asset\Script\Postbuild.bat" $(SolutionName)</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PreBuildEvent>:: Clean/Copy Plugins
-robocopy "$(ProjectDir)Plugins\ " "$(TargetDir)Plugins\ " /PURGE /XF .gitkeep
-if %25errorlevel%25 leq 4 exit 0 else exit %25errorlevel%25</PreBuildEvent>
+    <PreBuildEvent>call "$(ProjectDir)Source\Asset\Script\Prebuild.bat"</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

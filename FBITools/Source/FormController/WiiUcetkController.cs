@@ -68,8 +68,8 @@ namespace FBITools
             {
                 bool id = (obj.ID.HasValue() && obj.ID.Length >= searchID.Length && obj.ID.Substring(0, searchID.Length) == searchID.ToUpper());
                 bool title = (obj.Name.ContainsExtend(searchName));
-                bool region = chkListRegion.GetItemChecked(obj.Region);
-                bool type = chkListCategory.GetItemChecked(obj.Category);
+                var region = chkListRegion.GetItemChecked(obj.Region);
+                var type = chkListCategory.GetItemChecked(obj.Category);
 
                 if (id && title && region && type)
                 {
