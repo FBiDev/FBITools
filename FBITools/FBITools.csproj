@@ -52,11 +52,11 @@
       <HintPath>..\..\App\Bin\App.Data.SQLite.dll</HintPath>
       <EmbedInteropTypes>False</EmbedInteropTypes>
     </Reference>
+    <Reference Include="App.File.Json">
+      <HintPath>..\..\App\Bin\App.File.Json.dll</HintPath>
+    </Reference>
     <Reference Include="App.Image.MagicScaler">
       <HintPath>..\..\App\Bin\App.Image.MagicScaler.dll</HintPath>
-    </Reference>
-    <Reference Include="App.Json">
-      <HintPath>..\..\App\Bin\App.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
