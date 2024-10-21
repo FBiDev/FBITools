@@ -1,43 +1,42 @@
 ﻿using App.Core;
 using App.Core.Desktop;
-using App.File.Desktop;
 
 namespace FBITools
 {
     public static class Session
     {
-        #region Options
-        public static Options Options = new Options();
-
-        public static bool LoadOptions()
-        { return Options.Loaded = Json.Load(ref Options, Options.FileName); }
-
-        public static bool UpdateOptions()
-        { return Json.Save(Options, Options.FileName); }
-        #endregion
-
-        #region Main
-        public const bool Singleton = true;
-        public static string SystemName = AppManager.Name;
-
+        #region Fields
         public const CultureID Language = CultureID.Brazil_Portuguese;
         public const CultureID LanguageNumbers = CultureID.Brazil_Portuguese;
+
+        public const bool SystemLock = true;
+        public static readonly string SystemName = AppManager.Name;
+
+        private static Options _options = new Options();
+        #endregion
+
+        #region Properties
+        public static Options Options
+        {
+            get { return _options; }
+            private set { _options = value; }
+        }
 
         public static void Start()
         {
             LanguageManager.SetLanguage(Language);
             LanguageManager.SetLanguageNumbers(LanguageNumbers);
 
-            LoadOptions();
+            Options.Load();
 
             //Banco.Load();
             WiiU.BancoWiiU.Load();
 
-            MainBaseForm.DebugMode = Options.DebugMode;
-            MainBaseForm.AutoCenterWindow = Options.AutoCenterWindow;
-            MainBaseForm.AutoResizeWindow = Options.AutoResizeWindow;
+            MainBaseForm.DebugMode = Options.IsDebugMode;
+            MainBaseForm.AutoCenterWindow = Options.IsAutoCenterWindow;
+            MainBaseForm.AutoResizeWindow = Options.IsAutoResizeWindow;
 
-            DebugManager.Enable = Options.DebugMode;
+            DebugManager.Enable = Options.IsDebugMode;
         }
         #endregion
 

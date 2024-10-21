@@ -14,16 +14,16 @@
         void form_Shown(object sender, System.EventArgs ev)
         {
             //Initial Value
-            chkDarkMode.Checked = Session.Options.DarkMode;
+            chkDarkMode.Checked = Session.Options.IsDarkMode;
             chkDarkMode.CheckedChanged += (s, e) => Session.Options.ToggleDarkMode();
 
-            chkAutoCenterWindow.Checked = Session.Options.AutoCenterWindow;
+            chkAutoCenterWindow.Checked = Session.Options.IsAutoCenterWindow;
             chkAutoCenterWindow.CheckedChanged += (s, e) => Session.Options.ToggleAutoCenterWindow();
 
-            chkAutoResizeWindow.Checked = Session.Options.AutoResizeWindow;
+            chkAutoResizeWindow.Checked = Session.Options.IsAutoResizeWindow;
             chkAutoResizeWindow.CheckedChanged += (s, e) => Session.Options.ToggleAutoResizeWindow();
 
-            chkDebugMode.Checked = Session.Options.DebugMode;
+            chkDebugMode.Checked = Session.Options.IsDebugMode;
             chkDebugMode.CheckedChanged += (s, e) => Session.Options.ToggleDebugMode();
         }
         #endregion

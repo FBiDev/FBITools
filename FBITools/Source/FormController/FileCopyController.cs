@@ -25,7 +25,7 @@ namespace FBITools
 
             CarregarCombos();
 
-            if (Options.Loaded)
+            if (Options.IsLoaded)
             {
                 file.OriginPath = Session.Options.FileCopy_Origin;
                 file.DestinationPath = Session.Options.FileCopy_Destination;
@@ -49,7 +49,7 @@ namespace FBITools
             {
                 if (file.Copy())
                 {
-                    Session.UpdateOptions();
+                    Session.Options.Update();
                     if (file.TimerIsRunning)
                     {
                         file.StartBackupTimer().TryAwait();

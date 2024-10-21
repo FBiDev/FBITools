@@ -15,10 +15,10 @@ namespace FBITools
 
         public static void SetTheme()
         {
-            DesignMode = Session.MainForm.isDesignMode;
+            DesignMode = Session.MainForm.IsDesignMode;
             if (DesignMode) return;
 
-            if (Session.Options.DarkMode)
+            if (Session.Options.IsDarkMode)
                 ThemeBase.SetTheme(ThemeBase.ThemeNames.Dark);
             else
                 ThemeBase.SetTheme(ThemeBase.ThemeNames.Light);

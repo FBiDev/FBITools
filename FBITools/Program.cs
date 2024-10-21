@@ -11,7 +11,7 @@ namespace FBITools
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
 
-            using (App.Core.Desktop.AppManager.SingleProcess(Session.Singleton, Session.SystemName))
+            using (App.Core.Desktop.AppManager.SingleProcess(Session.SystemLock, Session.SystemName))
             {
                 Session.Start();
                 Application.Run(new MainForm());

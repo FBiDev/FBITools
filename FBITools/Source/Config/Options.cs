@@ -1,5 +1,6 @@
 ﻿using App.Core.Desktop;
 using App.File;
+using App.File.Desktop;
 
 namespace FBITools
 {
@@ -9,54 +10,67 @@ namespace FBITools
         [JsonIgnore]
         public const string FileName = "Options.json";
         [JsonIgnore]
-        public static bool Loaded;
-        [JsonIgnore]
-        bool darkMode = true;
-        bool debugMode = true;
-        bool autoCenterWindow = true;
-        bool autoResizeWindow = true;
+        public static bool IsLoaded;
+
+        public Options()
+        {
+            IsDarkMode = true;
+            IsDebugMode = true;
+            IsAutoCenterWindow = true;
+            IsAutoResizeWindow = true;
+        }
 
         [JsonConverter(JsonType.Boolean)]
-        public bool DarkMode { get { return darkMode; } set { darkMode = value; } }
+        public bool IsDarkMode { get; set; }
 
         [JsonConverter(JsonType.Boolean)]
-        public bool DebugMode { get { return debugMode; } set { debugMode = value; } }
+        public bool IsDebugMode { get; set; }
 
         [JsonConverter(JsonType.Boolean)]
-        public bool AutoCenterWindow { get { return autoCenterWindow; } set { autoCenterWindow = value; } }
+        public bool IsAutoCenterWindow { get; set; }
 
         [JsonConverter(JsonType.Boolean)]
-        public bool AutoResizeWindow { get { return autoResizeWindow; } set { autoResizeWindow = value; } }
+        public bool IsAutoResizeWindow { get; set; }
 
         public bool ToggleDarkMode()
         {
-            DarkMode = Theme.ToggleDarkTheme();
-            return Session.UpdateOptions();
+            IsDarkMode = Theme.ToggleDarkTheme();
+            return Update();
         }
 
         public bool ToggleDebugMode()
         {
-            DebugMode = !DebugMode;
-            DebugManager.Enable = DebugMode;
-            MainBaseForm.DebugMode = DebugMode;
+            IsDebugMode = !IsDebugMode;
+            DebugManager.Enable = IsDebugMode;
+            MainBaseForm.DebugMode = IsDebugMode;
 
-            return Session.UpdateOptions();
+            return Update();
         }
 
         public bool ToggleAutoCenterWindow()
         {
-            AutoCenterWindow = !AutoCenterWindow;
-            MainBaseForm.AutoCenterWindow = AutoCenterWindow;
-            return Session.UpdateOptions();
+            IsAutoCenterWindow = !IsAutoCenterWindow;
+            MainBaseForm.AutoCenterWindow = IsAutoCenterWindow;
+            return Update();
         }
 
         public bool ToggleAutoResizeWindow()
         {
-            AutoResizeWindow = !AutoResizeWindow;
-            MainBaseForm.AutoResizeWindow = AutoResizeWindow;
-            return Session.UpdateOptions();
+            IsAutoResizeWindow = !IsAutoResizeWindow;
+            MainBaseForm.AutoResizeWindow = IsAutoResizeWindow;
+            return Update();
         }
         #endregion
+
+        public bool Load()
+        {
+            return IsLoaded = Json.Load(this, FileName);
+        }
+
+        public bool Update()
+        {
+            return Json.Save(this, FileName);
+        }
 
         #region System
         public string FileCopy_Origin { get; set; }
