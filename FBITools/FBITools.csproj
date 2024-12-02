@@ -11,6 +11,7 @@
     <AssemblyName>FBITools</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -60,9 +61,6 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Windows.Forms" />
@@ -227,8 +225,8 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </ContentWithTargetPath>
     <None Include="Source\Asset\Data\WiiUcetk" />
-    <None Include="Source\Asset\Script\Postbuild.bat" />
-    <None Include="Source\Asset\Script\Prebuild.bat" />
+    <None Include="Source\Asset\Script\PostMovePlugins.bat" />
+    <None Include="Source\Asset\Script\PrePurgePlugins.bat" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />
@@ -245,10 +243,13 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>call "$(ProjectDir)Source\Asset\Script\Postbuild.bat" $(SolutionName)</PostBuildEvent>
+    <PostBuildEvent>call "$(ProjectDir)Source\Asset\Script\PostMovePlugins.bat" ^
+$(ProjectName), $(Platform), $(ProjectDir)$(ProjectFileName), ^
+$(SolutionDir), $(TargetDir)</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PreBuildEvent>call "$(ProjectDir)Source\Asset\Script\Prebuild.bat"</PreBuildEvent>
+    <PreBuildEvent>call "$(ProjectDir)Source\Asset\Script\PrePurgePlugins.bat" ^
+$(ProjectName), $(ProjectDir), $(TargetDir)</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

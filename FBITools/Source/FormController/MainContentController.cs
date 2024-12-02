@@ -2,15 +2,15 @@
 using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using App.Core;
 using App.Core.Desktop;
+using System.Collections.Generic;
 
 namespace FBITools
 {
     public partial class MainContentController
     {
         #region Entrada
-        public FlatButton selectedTab;
-
         public MainContentController(MainContentForm formView)
         {
             form = formView;
@@ -18,6 +18,8 @@ namespace FBITools
             form.KeyDown += form_KeyDown;
             form.KeyPreview = true;
         }
+
+        private FlatButton SelectedTab { get; set; }
 
         void form_Shown(object sender, EventArgs ev)
         {
@@ -30,7 +32,11 @@ namespace FBITools
             btnTabConfig.Click += (s, e) => SetContent(s, Session.ConfigForm);
 
             btnTabFileCopy.PerformClick();
-            selectedTab.Focus();
+
+            if (SelectedTab != null)
+            {
+                SelectedTab.Focus();
+            }
         }
 
         void form_KeyDown(object sender, KeyEventArgs e)
@@ -49,17 +55,17 @@ namespace FBITools
 
             if (e.KeyData == Keys.Escape)
             {
-                selectedTab.Focus();
+                SelectedTab.Focus();
             }
         }
 
         void SetSelectedTab(FlatButton btnClicked)
         {
-            if (selectedTab != null && selectedTab != btnClicked)
-                selectedTab.Selected = false;
+            if (SelectedTab != null && SelectedTab != btnClicked)
+                SelectedTab.Selected = false;
 
             btnClicked.Selected = true;
-            selectedTab = btnClicked;
+            SelectedTab = btnClicked;
         }
 
         void ResizeContent(Size content)
@@ -79,7 +85,19 @@ namespace FBITools
         #region Common
         void SetContent<T>(object sender, T contentForm) where T : ContentBaseForm, new()
         {
-            if (contentForm == null) contentForm = new T();
+            if (contentForm == null || contentForm.IsDisposed)
+            {
+                try
+                {
+                    contentForm = new T();
+                }
+                catch (Exception ex)
+                {
+                    ExceptionManager.Resolve(ex, Environment.NewLine + "ShownForm : " + typeof(T).ToString());
+                    return;
+                }
+            }
+
             if (pnlContentRInside.Controls.Contains(contentForm))
             {
                 contentForm.Focus();
