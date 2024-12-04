@@ -3,10 +3,10 @@ using System.Windows.Forms;
 
 namespace FBITools
 {
-    static class Program
+    internal static class Program
     {
         [STAThread]
-        static void Main()
+        internal static void Main()
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);

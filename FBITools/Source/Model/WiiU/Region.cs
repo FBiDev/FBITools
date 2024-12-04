@@ -7,22 +7,22 @@ namespace FBITools.WiiU
 {
     public class Region
     {
+        private static readonly RegionDao DAO = new RegionDao();
+
         [Field("ID")]
         public int ID { get; set; }
 
         [Field("Name")]
         public string Name { get; set; }
 
-        static readonly RegionDao DAO = new RegionDao();
-
-        public async static Task<List<Region>> List()
+        public static async Task<List<Region>> List()
         {
             return await DAO.Search(null);
         }
 
-        public async static Task<List<Region>> Search(Region obj)
+        public static async Task<List<Region>> Search(Region obj)
         {
-            if (obj == null) obj = new Region { };
+            obj = obj ?? new Region();
             return await DAO.Search(obj);
         }
 

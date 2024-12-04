@@ -1,10 +1,10 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using App.Core;
 using App.Core.Desktop;
-using System.Collections.Generic;
 
 namespace FBITools
 {
@@ -13,25 +13,25 @@ namespace FBITools
         #region Entrada
         public MainContentController(MainContentForm formView)
         {
-            form = formView;
-            form.Shown += form_Shown;
-            form.KeyDown += form_KeyDown;
-            form.KeyPreview = true;
+            Page = formView;
+            Page.Shown += ShownForm;
+            Page.KeyDown += Page_KeyDown;
+            Page.KeyPreview = true;
         }
 
         private FlatButton SelectedTab { get; set; }
 
-        void form_Shown(object sender, EventArgs ev)
+        private void ShownForm(object sender, EventArgs ev)
         {
-            btnTabFileCopy.Click += (s, e) => SetContent(s, Session.FileCopyForm);
-            btnTabFileBackup.Click += (s, e) => SetContent(s, Session.FileBackupForm);
-            btnTabImageResize.Click += (s, e) => SetContent(s, Session.ImageResizeForm);
-            btnVbCsharp.Click += (s, e) => SetContent(s, Session.VbToCsharpForm);
-            btnWiiUcetk.Click += (s, e) => SetContent(s, Session.WiiUcetkForm);
+            FileCopyTabButton.Click += (s, e) => SetContent(s, Session.FileCopyForm);
+            FileBackupTabButton.Click += (s, e) => SetContent(s, Session.FileBackupForm);
+            ImageResizeTabButton.Click += (s, e) => SetContent(s, Session.ImageResizeForm);
+            VbCsharpTabButton.Click += (s, e) => SetContent(s, Session.VbToCsharpForm);
+            WiiUcetkTabButton.Click += (s, e) => SetContent(s, Session.WiiUcetkForm);
 
-            btnTabConfig.Click += (s, e) => SetContent(s, Session.ConfigForm);
+            ConfigTabButton.Click += (s, e) => SetContent(s, Session.ConfigForm);
 
-            btnTabFileCopy.PerformClick();
+            FileCopyTabButton.PerformClick();
 
             if (SelectedTab != null)
             {
@@ -39,17 +39,22 @@ namespace FBITools
             }
         }
 
-        void form_KeyDown(object sender, KeyEventArgs e)
+        private void Page_KeyDown(object sender, KeyEventArgs e)
         {
-            if (form.ActiveControl is FlatButton)
+            if (Page.ActiveControl is FlatButton)
             {
-                var ctl = form.ActiveControl as FlatButton;
+                var ctl = Page.ActiveControl as FlatButton;
 
                 if (e.KeyData == Keys.Space)
+                {
                     Window.SendKey(Keys.Enter);
+                }
 
                 if (e.KeyData == Keys.Enter)
+                {
                     ctl.PerformClick();
+                }
+
                 return;
             }
 
@@ -59,31 +64,38 @@ namespace FBITools
             }
         }
 
-        void SetSelectedTab(FlatButton btnClicked)
+        private void SetSelectedTab(FlatButton btnClicked)
         {
             if (SelectedTab != null && SelectedTab != btnClicked)
+            {
                 SelectedTab.Selected = false;
+            }
 
             btnClicked.Selected = true;
             SelectedTab = btnClicked;
         }
 
-        void ResizeContent(Size content)
+        private void ResizeContent(Size content)
         {
-            if (MainBaseForm.AutoResizeWindow == false) return;
+            if (MainBaseForm.AutoResizeWindow == false)
+            {
+                return;
+            }
 
-            var newW = content.Width + pnlContentL.Width + 30;
+            var newW = content.Width + ContentLPanel.Width + 30;
             var newH = content.Height + 26;
 
             if (Session.MainForm.StatusBarEnable)
+            {
                 newH += 24;
+            }
 
             Session.MainForm.ClientSize = new Size(newW, newH);
         }
         #endregion
 
         #region Common
-        void SetContent<T>(object sender, T contentForm) where T : ContentBaseForm, new()
+        private void SetContent<T>(object sender, T contentForm) where T : ContentBaseForm, new()
         {
             if (contentForm == null || contentForm.IsDisposed)
             {
@@ -98,7 +110,7 @@ namespace FBITools
                 }
             }
 
-            if (pnlContentRInside.Controls.Contains(contentForm))
+            if (ContentRInsidePanel.Controls.Contains(contentForm))
             {
                 contentForm.Focus();
                 return;
@@ -107,8 +119,8 @@ namespace FBITools
             contentForm.AutoScroll = false;
             SetSelectedTab(sender as FlatButton);
 
-            pnlContentRInside.Controls.Clear();
-            pnlContentRInside.Controls.Add(contentForm);
+            ContentRInsidePanel.Controls.Clear();
+            ContentRInsidePanel.Controls.Add(contentForm);
             ThemeBase.CheckTheme(contentForm);
 
             contentForm.Show();
@@ -118,16 +130,21 @@ namespace FBITools
             ResizeContent(contentForm.SizeOriginal);
             contentForm.AutoScroll = true;
 
-            //Fix Resize Selection End
+            // Fix Resize Selection End
             foreach (var item in contentForm.GetControls<FlatMaskedTextBox>())
+            {
                 item.SelectionStart = 0;
+            }
+
             foreach (var item in contentForm.GetControls<FlatTextBox>())
+            {
                 item.SelectionStart = 0;
+            }
 
             CenterMainWindow(contentForm).TryAwait();
         }
 
-        async Task CenterMainWindow<T>(T contentForm) where T : ContentBaseForm, new()
+        private async Task CenterMainWindow<T>(T contentForm) where T : ContentBaseForm, new()
         {
             await Task.Delay(50);
             Session.MainForm.CenterWindow();

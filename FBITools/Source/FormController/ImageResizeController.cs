@@ -8,120 +8,130 @@ namespace FBITools
 {
     public partial class ImageResizeController
     {
-        MagicScaler Scaler;
+        private MagicScaler scaler;
 
         public ImageResizeController(ImageResizeForm formView)
         {
-            form = formView;
-            form.Shown += form_Shown;
+            Page = formView;
+            Page.Shown += ShownForm;
         }
 
-        void form_Shown(object sender, EventArgs ev)
+        private void ShownForm(object sender, EventArgs ev)
         {
-            lblWarning.TextChanged += lblWarning_TextChanged;
+            WarningLabel.TextChanged += WarningLabel_TextChanged;
 
-            Scaler = new MagicScaler { };
+            scaler = new MagicScaler { };
 
-            Scaler.EncoderChanged += UpdateDestination;
+            scaler.EncoderChanged += UpdateDestination;
 
-            Scaler.InvalidFile += () =>
+            scaler.InvalidFile += () =>
             {
-                lblWarning.ForeColorType = LabelType.danger;
-                lblWarning.Text = "MagicScaler Failed!";
+                WarningLabel.ForeColorType = LabelType.danger;
+                WarningLabel.Text = "MagicScaler Failed!";
             };
 
-            Scaler.Resized += () =>
+            scaler.Resized += () =>
             {
                 UpdateResizedImage();
 
-                lblWarning.ForeColorType = LabelType.success;
-                lblWarning.Text = "MagicScaler Executed!";
+                WarningLabel.ForeColorType = LabelType.success;
+                WarningLabel.Text = "MagicScaler Executed!";
             };
 
-            Scaler.EnableAnchor += (enable) => { cboAnchor.Enabled = enable; };
+            scaler.EnableAnchor += (enable) => { AnchorComboBox.Enabled = enable; };
 
-            btnOrigin.Click += (s, e) =>
+            OriginButton.Click += (s, e) =>
             {
-                if (Scaler.PickOrigin())
+                if (scaler.PickOrigin())
                 {
                     UpdateDropImage();
                     UpdateOrigin();
                 }
             };
 
-            btnDestination.Click += (s, e) =>
+            DestinationButton.Click += (s, e) =>
             {
-                if (Scaler.PickDestination())
+                if (scaler.PickDestination())
+                {
                     UpdateDestination();
+                }
             };
 
-            btnResize.Click += (s, e) =>
+            ResizeButton.Click += (s, e) =>
             {
-                Scaler.Resize().TryAwait();
+                scaler.Resize().TryAwait();
             };
 
             CarregarCombos();
         }
 
-        async void lblWarning_TextChanged(object sender, EventArgs e)
+        private async void WarningLabel_TextChanged(object sender, EventArgs e)
         {
             await TaskController.Delay(4);
-            lblWarning.Text = "";
+            WarningLabel.Text = string.Empty;
         }
 
-        void CarregarCombos()
+        private void CarregarCombos()
         {
-            Scaler.LoadEncoders(cboEncoder);
-            Scaler.LoadResizeModes(cboResizeMode);
-            Scaler.LoadSizes(cboSizes);
+            scaler.LoadEncoders(EncoderComboBox);
+            scaler.LoadResizeModes(ResizeModeComboBox);
+            scaler.LoadSizes(SizesComboBox);
 
-            Scaler.LoadAnchors(cboAnchor);
-            Scaler.LoadInterpolations(cboInterpolation);
+            scaler.LoadAnchors(AnchorComboBox);
+            scaler.LoadInterpolations(InterpolationComboBox);
 
-            Scaler.LoadMatteColors(cboMatteColor);
-            Scaler.LoadColorProfiles(cboColorProfile);
+            scaler.LoadMatteColors(MatteColorComboBox);
+            scaler.LoadColorProfiles(ColorProfileComboBox);
 
-            Scaler.LoadSharpen(cboSharpen);
-            Scaler.LoadBlendingModes(cboBlendingMode);
-            Scaler.LoadHybridModes(cboHybridMode);
+            scaler.LoadSharpen(SharpenComboBox);
+            scaler.LoadBlendingModes(BlendingModeComboBox);
+            scaler.LoadHybridModes(HybridModeComboBox);
 
-            Scaler.LoadJpgQuality(cboJpgQuality);
-            Scaler.LoadJpgChromaSubsample(cboJpgChromaSubsample);
+            scaler.LoadJpgQuality(JpgQualityComboBox);
+            scaler.LoadJpgChromaSubsample(JpgChromaSubsampleComboBox);
 
-            Scaler.LoadPngFilters(cboPngFilter);
-            Scaler.LoadPngInterlaces(cboPngInterlace);
+            scaler.LoadPngFilters(PngFilterComboBox);
+            scaler.LoadPngInterlaces(PngInterlaceComboBox);
         }
 
-        void UpdateOrigin()
+        private void UpdateOrigin()
         {
-            txtOrigin.Text = Scaler.OriginPath;
+            OriginTextBox.Text = scaler.OriginPath;
         }
 
-        void UpdateDestination()
+        private void UpdateDestination()
         {
-            txtDestination.Text = Scaler.DestinationPath;
+            DestinationTextBox.Text = scaler.DestinationPath;
         }
 
-        void UpdateDropImage()
+        private void UpdateDropImage()
         {
-            var imageOrigin = BitmapExtension.SuperFastLoad(Scaler.OriginPath);
-            picDrop.Image = imageOrigin;
+            var imageOrigin = BitmapExtension.SuperFastLoad(scaler.OriginPath);
+            DropPictureBox.Image = imageOrigin;
 
-            if (imageOrigin.Size.Width <= picDrop.Width && imageOrigin.Size.Height <= picDrop.Height)
-                picDrop.SizeMode = PictureBoxSizeMode.CenterImage;
+            if (imageOrigin.Size.Width <= DropPictureBox.Width && imageOrigin.Size.Height <= DropPictureBox.Height)
+            {
+                DropPictureBox.SizeMode = PictureBoxSizeMode.CenterImage;
+            }
             else
-                picDrop.SizeMode = PictureBoxSizeMode.Zoom;
+            {
+                DropPictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+            }
         }
 
-        void UpdateResizedImage()
+        private void UpdateResizedImage()
         {
-            var imageResized = BitmapExtension.SuperFastLoad(Scaler.DestinationPath);
-            picResized.Image = imageResized;
+            var imageResized = BitmapExtension.SuperFastLoad(scaler.DestinationPath);
+            ResizedPictureBox.Image = imageResized;
 
-            if (imageResized.Size.Width <= picResized.Width && imageResized.Size.Height <= picResized.Height)
-                picResized.SizeMode = PictureBoxSizeMode.CenterImage;
+            if (imageResized.Size.Width <= ResizedPictureBox.Width && imageResized.Size.Height <= ResizedPictureBox.Height)
+            {
+                ResizedPictureBox.SizeMode = PictureBoxSizeMode.CenterImage;
+            }
             else
-                picResized.SizeMode = PictureBoxSizeMode.Zoom;
+            {
+                ResizedPictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+            }
         }
     }
 }

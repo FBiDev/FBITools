@@ -8,68 +8,68 @@ namespace FBITools
 {
     public partial class WiiUcetkController
     {
-        ListBind<WiiU.Title> titles = new ListBind<WiiU.Title>();
-        ListBind<WiiU.Title> titlesFilter = new ListBind<WiiU.Title>();
+        private ListBind<WiiU.Title> titles = new ListBind<WiiU.Title>();
+        private ListBind<WiiU.Title> titlesFilter = new ListBind<WiiU.Title>();
 
-        public WiiUcetkController(WiiUcetkForm formView)
+        public WiiUcetkController(WiiUcetkForm pageForm)
         {
-            form = formView;
-            form.Shown += form_Shown;
-            form.GotFocus += (s, e) => txtTitleID.Focus();
-            form.FinalLoadOnceAsync += CarregarCamposAsync;
+            Page = pageForm;
+            Page.Shown += ShownForm;
+            Page.GotFocus += (s, e) => TitleIDTextBox.Focus();
+            Page.FinalLoadOnceAsync += CarregarCamposAsync;
         }
 
-        void form_Shown(object sender, EventArgs ev)
+        private void ShownForm(object sender, EventArgs ev)
         {
-            lblWarning.TextChanged += lblWarning_TextChanged;
-            btnGenerateCetk.Click += btnGenerateCetk_Click;
+            WarningLabel.TextChanged += WarningLabel_TextChanged;
+            GenerateCetkButton.Click += GenerateCetkButton_Click;
 
-            txtTitleID.TextChanged += (s, e) => SearchTitles().TryAwait();
-            txtTitleName.TextChanged += (s, e) => SearchTitles().TryAwait();
-            chkListRegion.ItemCheck += (s, e) => SearchTitles().TryAwait();
-            chkListCategory.ItemCheck += (s, e) => SearchTitles().TryAwait();
+            TitleIDTextBox.TextChanged += (s, e) => SearchTitles().TryAwait();
+            TitleNameTextBox.TextChanged += (s, e) => SearchTitles().TryAwait();
+            ListRegionCheckedList.ItemCheck += (s, e) => SearchTitles().TryAwait();
+            ListCategoryCheckedList.ItemCheck += (s, e) => SearchTitles().TryAwait();
 
-            dgvTitles.Statusbar = staTitles;
+            TitlesGrid.Statusbar = TitlesStatusBar;
         }
 
-        async void lblWarning_TextChanged(object sender, EventArgs e)
+        private async void WarningLabel_TextChanged(object sender, EventArgs e)
         {
             await TaskController.Delay(4);
-            lblWarning.Text = "";
+            WarningLabel.Text = string.Empty;
         }
 
-        async Task CarregarCamposAsync()
+        private async Task CarregarCamposAsync()
         {
-            chkListRegion.Items.AddRange((await WiiU.Region.List()).Select(x => x.Name).ToArray());
-            chkListRegion.SetItemsChecked(true);
+            ListRegionCheckedList.Items.AddRange((await WiiU.Region.List()).Select(x => x.Name).ToArray());
+            ListRegionCheckedList.SetItemsChecked(true);
 
-            chkListCategory.Items.AddRange((await WiiU.Category.List()).Select(x => x.Name).ToArray());
-            chkListCategory.SetItemsChecked(true);
+            ListCategoryCheckedList.Items.AddRange((await WiiU.Category.List()).Select(x => x.Name).ToArray());
+            ListCategoryCheckedList.SetItemsChecked(true);
 
             titles = new ListBind<WiiU.Title>(await WiiU.Title.Search(new WiiU.Title()));
             titlesFilter = titles;
             SetDataSource(titlesFilter);
         }
 
-        Task SearchTitles()
+        private Task SearchTitles()
         {
-            string searchID = txtTitleID.Text;
-            string searchName = txtTitleName.Text;
+            string searchID = TitleIDTextBox.Text;
+            string searchName = TitleNameTextBox.Text;
 
-            //if (searchID.Length == 0 && searchName.Length == 0)
-            //{
-            //    SetDataSource(titles);
-            //    return Task.CompletedTask;
-            //}
+            ////if (searchID.Length == 0 && searchName.Length == 0)
+            ////{
+            ////    SetDataSource(titles);
+            ////    return Task.CompletedTask;
+            ////}
 
             titlesFilter = new ListBind<WiiU.Title>();
 
             foreach (WiiU.Title obj in titles)
             {
-                bool id = (obj.ID.HasValue() && obj.ID.Length >= searchID.Length && obj.ID.Substring(0, searchID.Length) == searchID.ToUpper());
-                bool title = (obj.Name.ContainsExtend(searchName));
-                var region = chkListRegion.GetItemChecked(obj.Region);
-                var type = chkListCategory.GetItemChecked(obj.Category);
+                bool id = obj.ID.HasValue() && obj.ID.Length >= searchID.Length && obj.ID.Substring(0, searchID.Length) == searchID.ToUpper();
+                bool title = obj.Name.ContainsExtend(searchName);
+                var region = ListRegionCheckedList.GetItemChecked(obj.Region);
+                var type = ListCategoryCheckedList.GetItemChecked(obj.Category);
 
                 if (id && title && region && type)
                 {
@@ -81,22 +81,25 @@ namespace FBITools
             return Task.CompletedTask;
         }
 
-        void SetDataSource(ListBind<WiiU.Title> list)
+        private void SetDataSource(ListBind<WiiU.Title> list)
         {
-            dgvTitles.DataSource = list;
-            btnGenerateCetk.Enabled = list.Count > 0;
+            TitlesGrid.DataSource = list;
+            GenerateCetkButton.Enabled = list.Count > 0;
         }
 
-        void btnGenerateCetk_Click(object sender, EventArgs e)
+        private void GenerateCetkButton_Click(object sender, EventArgs e)
         {
-            if (dgvTitles.SelectedRows.AnyRow() == false) return;
+            if (TitlesGrid.SelectedRows.AnyRow() == false)
+            {
+                return;
+            }
 
-            var title = dgvTitles.GetCurrentRowObject<WiiU.Title>();
+            var title = TitlesGrid.GetCurrentRowObject<WiiU.Title>();
             var cetck = new HexFile(WiiU.Cetk.BaseFile);
             cetck.Replace(WiiU.Cetk.CommonKey, title.Key);
             cetck.Save(WiiU.Cetk.FilePath);
 
-            lblWarning.Text = "cetk " + title + " Saved!";
+            WarningLabel.Text = "cetk " + title + " Saved!";
         }
     }
 }

@@ -6,49 +6,53 @@ namespace FBITools
 {
     public partial class VbToCsharpController
     {
-        public VbToCsharpController(VbToCsharpForm formView)
+        public VbToCsharpController(VbToCsharpForm pageForm)
         {
-            form = formView;
-            form.Shown += form_Shown;
-            form.GotFocus += (s, e) => txtInput.Focus();
+            Page = pageForm;
+            Page.Shown += ShownForm;
+            Page.GotFocus += (s, e) => InputTextBox.Focus();
         }
 
-        void form_Shown(object sender, EventArgs ev)
+        private void ShownForm(object sender, EventArgs ev)
         {
-            lblWarning.TextChanged += lblWarning_TextChanged;
+            WarningLabel.TextChanged += WarningLabel_TextChanged;
 
-            btnClear.Click += (s, e) =>
+            ClearButton.Click += (s, e) =>
             {
-                txtInput.Text = txtOutput.Text = string.Empty;
-                txtInput.Focus();
-                lblWarning.Text = "Text Cleared!";
+                InputTextBox.Text = OutputTextBox.Text = string.Empty;
+                InputTextBox.Focus();
+                WarningLabel.Text = "Text Cleared!";
             };
 
-            btnCopyResult.Click += (s, e) =>
+            CopyResultButton.Click += (s, e) =>
             {
-                if (txtOutput.Text.Length > 0)
+                if (OutputTextBox.Text.Length > 0)
                 {
-                    txtInput.Focus();
-                    Clipboard.SetText(txtOutput.Text);
-                    lblWarning.Text = "Text Copied!";
+                    InputTextBox.Focus();
+                    Clipboard.SetText(OutputTextBox.Text);
+                    WarningLabel.Text = "Text Copied!";
                 }
             };
 
-            btnConvert.Click += btnConvert_Click;
+            ConvertButton.Click += ConvertButton_Click;
         }
 
-        async void lblWarning_TextChanged(object sender, EventArgs e)
+        private async void WarningLabel_TextChanged(object sender, EventArgs e)
         {
             await TaskController.Delay(4);
-            lblWarning.Text = "";
+            WarningLabel.Text = string.Empty;
         }
 
-        void btnConvert_Click(object sender, EventArgs e)
+        private void ConvertButton_Click(object sender, EventArgs e)
         {
-            if (txtInput.Text.Length == 0) return;
-            txtInput.Focus();
+            if (InputTextBox.Text.Length == 0)
+            {
+                return;
+            }
 
-            txtOutput.Text = VbToCsharp.Convert(txtInput.Text);
+            InputTextBox.Focus();
+
+            OutputTextBox.Text = VbToCsharp.Convert(InputTextBox.Text);
         }
     }
 }

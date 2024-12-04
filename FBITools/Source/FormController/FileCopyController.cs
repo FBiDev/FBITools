@@ -6,17 +6,17 @@ namespace FBITools
 {
     public partial class FileCopyController
     {
-        FileBackup file;
+        private FileBackup file;
 
         public FileCopyController(FileCopyForm formView)
         {
-            form = formView;
-            form.Shown += form_Shown;
+            Page = formView;
+            Page.Shown += ShownForm;
         }
 
-        void form_Shown(object sender, EventArgs ev)
+        private void ShownForm(object sender, EventArgs ev)
         {
-            lblWarning.TextChanged += lblWarning_TextChanged;
+            WarningLabel.TextChanged += WarningLabel_TextChanged;
 
             file = new FileBackup
             {
@@ -31,21 +31,33 @@ namespace FBITools
                 file.DestinationPath = Session.Options.FileCopy_Destination;
                 file.TimerValue = Session.Options.FileCopy_Timer;
 
-                cboType.SelectedValue = Session.Options.FileCopy_Type;
-                cboTimer.SelectedValue = Session.Options.FileCopy_Timer;
+                TypeComboBox.SelectedValue = Session.Options.FileCopy_Type;
+                TimerComboBox.SelectedValue = Session.Options.FileCopy_Timer;
 
                 PreencherCampos();
             }
 
-            btnOrigin.Click += (s, e) => { if (file.PickOrigin()) PreencherCampos(); };
+            OriginButton.Click += (s, e) =>
+            {
+                if (file.PickOrigin())
+                {
+                    PreencherCampos();
+                }
+            };
 
-            btnDestination.Click += (s, e) => { if (file.PickDestination()) PreencherCampos(); };
+            DestinationButton.Click += (s, e) =>
+            {
+                if (file.PickDestination())
+                {
+                    PreencherCampos();
+                }
+            };
 
-            cboType.SelectedIndexChanged += (s, e) => { PreencherCampos(); };
+            TypeComboBox.SelectedIndexChanged += (s, e) => { PreencherCampos(); };
 
-            cboTimer.SelectedIndexChanged += (s, e) => { PreencherCampos(); };
+            TimerComboBox.SelectedIndexChanged += (s, e) => { PreencherCampos(); };
 
-            btnCopy.Click += (s, e) =>
+            CopyButton.Click += (s, e) =>
             {
                 if (file.Copy())
                 {
@@ -59,62 +71,60 @@ namespace FBITools
 
             file.Copied += () =>
             {
-                lblWarning.ForeColorType = LabelType.success;
-                lblWarning.Text = "File Copied!";
+                WarningLabel.ForeColorType = LabelType.success;
+                WarningLabel.Text = "File Copied!";
             };
 
             file.InvalidFile += () =>
             {
-                lblWarning.ForeColorType = LabelType.danger;
-                lblWarning.Text = "File Copy Failed!";
+                WarningLabel.ForeColorType = LabelType.danger;
+                WarningLabel.Text = "File Copy Failed!";
             };
 
             file.TimerRunningChanged += () =>
             {
-                FormManager.EnableFormControls(!file.TimerIsRunning, tblInput);
+                FormManager.EnableFormControls(!file.TimerIsRunning, InputTable);
 
-                lblWarning.ForeColorType = LabelType.primary;
+                WarningLabel.ForeColorType = LabelType.primary;
 
                 if (file.TimerIsRunning)
                 {
-                    lblWarning.Text = "File Backup Started!";
-                    btnCopy.Text = "Backup Stop";
+                    WarningLabel.Text = "File Backup Started!";
+                    CopyButton.Text = "Backup Stop";
                 }
                 else
                 {
-                    lblWarning.Text = "File Backup Stopped!";
-                    btnCopy.Text = "Backup Start";
+                    WarningLabel.Text = "File Backup Stopped!";
+                    CopyButton.Text = "Backup Start";
                 }
             };
         }
 
-        async void lblWarning_TextChanged(object sender, EventArgs e)
+        private async void WarningLabel_TextChanged(object sender, EventArgs e)
         {
             await TaskController.Delay(4);
-            lblWarning.Text = "";
+            WarningLabel.Text = string.Empty;
         }
 
-        void CarregarCombos()
+        private void CarregarCombos()
         {
-            file.LoadTypes(cboType);
-            file.LoadTimer(cboTimer);
+            file.LoadTypes(TypeComboBox);
+            file.LoadTimer(TimerComboBox);
         }
 
-        void PreencherCampos()
+        private void PreencherCampos()
         {
-            txtOrigin.Text = file.OriginPath;
-            txtDestination.Text = file.DestinationPath;
+            OriginTextBox.Text = file.OriginPath;
+            DestinationTextBox.Text = file.DestinationPath;
 
             Session.Options.FileCopy_Origin = file.OriginPath;
             Session.Options.FileCopy_Destination = file.DestinationPath;
-            Session.Options.FileCopy_Type = cboType.SelectedValueInt;
+            Session.Options.FileCopy_Type = TypeComboBox.SelectedValueInt;
             Session.Options.FileCopy_Timer = file.TimerValue;
 
-            cboTimer.Enabled = cboType.SelectedValueInt == 2;
-            if (cboTimer.Enabled)
-                btnCopy.Text = "Backup Start";
-            else
-                btnCopy.Text = "Copy";
+            TimerComboBox.Enabled = TypeComboBox.SelectedValueInt == 2;
+
+            CopyButton.Text = TimerComboBox.Enabled ? "Backup Start" : "Copy";
         }
     }
 }

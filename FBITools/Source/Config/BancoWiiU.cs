@@ -10,54 +10,104 @@ namespace FBITools.WiiU
 {
     public static class BancoWiiU
     {
-        static DatabaseManager Database { get; set; }
-        public static ListSynced<SqlLog> Log { get { return Database.Log; } }
-        public static bool Loaded { get; set; }
-        
-        public static void Load()
+        public static ListSynced<SqlLog> Log
         {
-            Database = new DatabaseManager
-            {
-                DatabaseType = DatabaseType.SQLite,
-                Connection = new SQLite { DefaultTimeout = DatabaseManager.DefaultCommandTimeout }.Connection(),
-                ServerAddress = "",
-                DatabaseName = "",
-                DatabaseFile = Session.Options.WiiUDatabaseFile,
-                Username = "",
-                Password = "",
-                ConnectionString = ""
-            };
-
-            Loaded = true;
+            get { return Database.Log; }
         }
 
-        public async static Task<DataTable> ExecutarSelect(string sql, List<SqlParameter> parameters = null, string storedProcedure = default(string))
+        private static DatabaseManager Database { get; set; }
+
+        private static bool IsLoaded { get; set; }
+
+        public static void Load()
         {
-            if (Loaded)
+            IsLoaded = false;
+            Database = new DatabaseManager { };
+            Reload();
+            IsLoaded = true;
+        }
+
+        public static void Reload()
+        {
+            Database.DatabaseName = string.Empty;
+            Database.DatabaseType = DatabaseType.SQLite;
+            Database.Connection = new SQLite
             {
-                try { return await Database.ExecuteSelect(sql, parameters, storedProcedure); }
-                catch (Exception ex) { ExceptionManager.Resolve(ex); }
+                DefaultTimeout = DatabaseManager.DefaultCommandTimeout
+            }.Connection();
+            Database.ServerAddress = string.Empty;
+
+            Database.Username = string.Empty;
+            Database.Password = string.Empty;
+            Database.DatabaseFile = Session.Options.WiiUDatabaseFile;
+            Database.ConnectionString = string.Empty;
+        }
+
+        public static async Task<DataTable> ExecutarSelect(string sql, List<SqlParameter> parameters = null, string storedProcedure = default(string))
+        {
+            if (IsLoaded)
+            {
+                try
+                {
+                    return await Database.ExecuteSelect(sql, parameters, storedProcedure);
+                }
+                catch (Exception ex)
+                {
+                    ExceptionManager.Resolve(ex, Database.LastCall);
+                }
             }
+
             return new DataTable();
         }
 
-        public async static Task<SqlResult> Executar(string sql, DatabaseAction action, List<SqlParameter> parameters)
+        public static async Task<string> ExecutarSelectString(string sql, List<SqlParameter> parameters = null)
         {
-            if (Loaded)
+            if (IsLoaded)
             {
-                try { return await Database.Execute(sql, action, parameters); }
-                catch (Exception ex) { ExceptionManager.Resolve(ex); }
+                try
+                {
+                    return await Database.ExecuteSelectString(sql, parameters);
+                }
+                catch (Exception ex)
+                {
+                    ExceptionManager.Resolve(ex, Database.LastCall);
+                }
             }
+
+            return string.Empty;
+        }
+
+        public static async Task<SqlResult> Executar(string sql, DatabaseAction action, List<SqlParameter> parameters)
+        {
+            if (IsLoaded)
+            {
+                try
+                {
+                    return await Database.Execute(sql, action, parameters);
+                }
+                catch (Exception ex)
+                {
+                    ExceptionManager.Resolve(ex, Database.LastCall);
+                }
+            }
+
             return new SqlResult();
         }
 
-        public async static Task<DateTime> DataServidor()
+        public static async Task<DateTime> DataServidor()
         {
-            if (Loaded)
+            if (IsLoaded)
             {
-                try { return await Database.DateTimeServer(); }
-                catch (Exception ex) { ExceptionManager.Resolve(ex); }
+                try
+                {
+                    return await Database.DateTimeServer();
+                }
+                catch (Exception ex)
+                {
+                    ExceptionManager.Resolve(ex, Database.LastCall);
+                }
             }
+
             return DateTime.MinValue;
         }
     }

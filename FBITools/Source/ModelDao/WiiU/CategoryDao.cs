@@ -1,23 +1,13 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using FBITools.Properties;
 using App.Core;
 using App.Core.Desktop;
+using FBITools.Properties;
 
 namespace FBITools.WiiU.Dao
 {
     public class CategoryDao : DatabaseDao
     {
-        #region " _Parameters "
-        List<SqlParameter> GetFilters(Category obj)
-        {
-            return new List<SqlParameter>
-            {
-                //new SqlParameter("@name", obj.Name)
-            };
-        }
-        #endregion
-
         #region " _Select "
         public async Task<List<Category>> Search(Category obj)
         {
@@ -30,6 +20,16 @@ namespace FBITools.WiiU.Dao
         public async Task<Category> Find(Category obj)
         {
             return (await Search(obj)).FirstOrNew();
+        }
+        #endregion
+
+        #region " _Parameters "
+        private List<SqlParameter> GetFilters(Category obj)
+        {
+            return new List<SqlParameter>
+            {
+                ////new SqlParameter("@name", obj.Name)
+            };
         }
         #endregion
     }

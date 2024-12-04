@@ -7,6 +7,13 @@ namespace FBITools.WiiU
 {
     public class Title
     {
+        private static readonly TitleDao DAO = new TitleDao();
+
+        public Title()
+        {
+            ID = Name = Key = string.Empty;
+        }
+
         [Style(Width = 120, FontName = "Courier New")]
         [Field("TitleID")]
         public string ID { get; set; }
@@ -27,16 +34,9 @@ namespace FBITools.WiiU
         [Field("TitleKey")]
         public string Key { get; set; }
 
-        static readonly TitleDao DAO = new TitleDao();
-
-        public Title()
+        public static async Task<List<Title>> Search(Title obj)
         {
-            ID = Name = Key = string.Empty;
-        }
-
-        public async static Task<List<Title>> Search(Title obj)
-        {
-            if (obj == null) obj = new Title { };
+            obj = obj ?? new Title();
             return await DAO.Search(obj);
         }
 

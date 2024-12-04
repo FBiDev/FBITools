@@ -1,6 +1,6 @@
 ﻿namespace FBITools
 {
-    class FlatGroupBoxA : App.Core.Desktop.FlatGroupBox
+    public class FlatGroupBoxA : App.Core.Desktop.FlatGroupBox
     {
     }
 }

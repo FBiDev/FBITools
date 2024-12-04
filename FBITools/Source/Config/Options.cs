@@ -5,11 +5,12 @@ namespace FBITools
 {
     public class Options
     {
-        #region Options
+        #region Fields
         [JsonIgnore]
-        public const string FileName = "Options.json";
+        public readonly string FileName = "Options.json";
         [JsonIgnore]
-        public static bool IsLoaded;
+        public readonly string WiiUDatabaseFile = WiiU.Cetk.Database;
+        #endregion
 
         public Options()
         {
@@ -18,6 +19,10 @@ namespace FBITools
             IsAutoCenterWindow = true;
             IsAutoResizeWindow = true;
         }
+
+        #region Properties
+        [JsonIgnore]
+        public static bool IsLoaded { get; private set; }
 
         [JsonConverter(JsonType.Boolean)]
         public bool IsDarkMode { get; set; }
@@ -30,6 +35,35 @@ namespace FBITools
 
         [JsonConverter(JsonType.Boolean)]
         public bool IsAutoResizeWindow { get; set; }
+        #endregion
+
+        #region System
+        public string FileCopy_Origin { get; set; }
+
+        public string FileCopy_Destination { get; set; }
+
+        public int FileCopy_Type { get; set; }
+
+        public int FileCopy_Timer { get; set; }
+
+        public string FileBackup_Origin { get; set; }
+
+        public string FileBackup_Destination { get; set; }
+
+        public int FileBackup_Type { get; set; }
+
+        public int FileBackup_Timer { get; set; }
+        #endregion
+
+        public bool Load()
+        {
+            return IsLoaded = Json.Load(this, FileName);
+        }
+
+        public bool Update()
+        {
+            return Json.Save(this, FileName);
+        }
 
         public bool ToggleDarkMode()
         {
@@ -59,31 +93,5 @@ namespace FBITools
             MainBaseForm.AutoResizeWindow = IsAutoResizeWindow;
             return Update();
         }
-        #endregion
-
-        public bool Load()
-        {
-            return IsLoaded = Json.Load(this, FileName);
-        }
-
-        public bool Update()
-        {
-            return Json.Save(this, FileName);
-        }
-
-        #region System
-        public string FileCopy_Origin { get; set; }
-        public string FileCopy_Destination { get; set; }
-        public int FileCopy_Type { get; set; }
-        public int FileCopy_Timer { get; set; }
-
-        public string FileBackup_Origin { get; set; }
-        public string FileBackup_Destination { get; set; }
-        public int FileBackup_Type { get; set; }
-        public int FileBackup_Timer { get; set; }
-
-        [JsonIgnore]
-        public string WiiUDatabaseFile = WiiU.Cetk.Database;
-        #endregion
     }
 }
