@@ -3,19 +3,19 @@
     public class MainController
     {
         #region Entrada
-        public MainController(MainForm pageForm)
+        public MainController(MainForm page)
         {
             Session.SetFormIcon();
-            Session.MainForm = pageForm;
+            Session.MainForm = page;
             Session.MainForm.StatusBarEnable = false;
 
-            Session.MainForm.Shown += ShownForm;
+            Session.MainForm.Shown += Page_Shown;
 
             var contentPage = new MainContentForm();
             Session.MainForm.SetMainFormContent(contentPage);
         }
 
-        private void ShownForm(object sender, System.EventArgs e)
+        private void Page_Shown(object sender, System.EventArgs e)
         {
             Theme.SetTheme();
             Session.MainForm.CenterWindow();

@@ -33,11 +33,11 @@ namespace FBITools
             // 
             // pnlContent
             // 
-            this.pnlContent.Size = new System.Drawing.Size(405, 258);
+            this.ContentPanel.Size = new System.Drawing.Size(405, 258);
             // 
             // staStatus
             // 
-            this.staStatus.Size = new System.Drawing.Size(431, 24);
+            this.MainStatusBar.Size = new System.Drawing.Size(431, 24);
             // 
             // MainForm
             // 
