@@ -1,17 +1,19 @@
-﻿namespace FBITools
+﻿using System;
+
+namespace FBITools
 {
     public partial class ConfigController
     {
         #region Entrada
-        public ConfigController(ConfigForm pageForm)
+        public ConfigController(ConfigForm page)
         {
-            Page = pageForm;
-            Page.Shown += ShownForm;
+            Page = page;
+            Page.Shown += Page_Shown;
             Page.GotFocus += (s, e) => DarkModeCheckBox.Focus();
             Page.TabStop = false;
         }
 
-        private void ShownForm(object sender, System.EventArgs ev)
+        private void Page_Shown(object sender, EventArgs ev)
         {
             DarkModeCheckBox.Checked = Session.Options.IsDarkMode;
             DarkModeCheckBox.CheckedChanged += (s, e) => Session.Options.ToggleDarkMode();

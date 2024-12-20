@@ -121,16 +121,16 @@
   <data name="ico_app" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\source\asset\icon\ico_app.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
-  <data name="sql_WiiUCategory_List" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\source\asset\sql\sql_wiiucategory_list.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="sql_WiiURegion_List" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\source\asset\sql\sql_wiiuregion_list.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
-  <data name="sql_WiiUTitle_List" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\source\asset\sql\sql_wiiutitle_list.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
-  </data>
   <data name="WiiUcetk" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\source\asset\data\wiiucetk;System.Byte[], mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="sql_WiiUCategory_List" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\source\asset\sqlscript\sql_wiiucategory_list.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="sql_WiiURegion_List" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\source\asset\sqlscript\sql_wiiuregion_list.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
+  </data>
+  <data name="sql_WiiUTitle_List" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\source\asset\sqlscript\sql_wiiutitle_list.sql;System.String, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089;utf-8</value>
   </data>
 </root>

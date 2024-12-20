@@ -4,7 +4,7 @@ using System.Data;
 using System.Threading.Tasks;
 using App.Core;
 using App.Core.Desktop;
-using App.Data.SQLite;
+using DbConnection = App.Data.SQLite;
 
 namespace FBITools.WiiU
 {
@@ -31,10 +31,7 @@ namespace FBITools.WiiU
         {
             Database.DatabaseName = string.Empty;
             Database.DatabaseType = DatabaseType.SQLite;
-            Database.Connection = new SQLite
-            {
-                DefaultTimeout = DatabaseManager.DefaultCommandTimeout
-            }.Connection();
+            Database.Connection = new DbConnection.SQLite().Connection();
             Database.ServerAddress = string.Empty;
 
             Database.Username = string.Empty;

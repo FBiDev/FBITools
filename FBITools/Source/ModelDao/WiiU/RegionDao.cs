@@ -11,10 +11,17 @@ namespace FBITools.WiiU.Dao
         #region " _Select "
         public async Task<List<Region>> Search(Region obj)
         {
+            obj = obj ?? new Region();
+
             var sql = Resources.sql_WiiURegion_List;
             var parameters = GetFilters(obj);
 
             return Load<List<Region>>(await BancoWiiU.ExecutarSelect(sql, parameters));
+        }
+
+        public async Task<List<Region>> List()
+        {
+            return await Search(null);
         }
 
         public async Task<Region> Find(Region obj)

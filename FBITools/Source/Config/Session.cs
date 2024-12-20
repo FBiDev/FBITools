@@ -30,13 +30,11 @@ namespace FBITools
 
         public static FileCopyForm FileCopyForm { get; set; }
 
-        public static FileBackupForm FileBackupForm { get; set; }
-
         public static ImageResizeForm ImageResizeForm { get; set; }
 
         public static VbToCsharpForm VbToCsharpForm { get; set; }
 
-        public static WiiUcetkForm WiiUcetkForm { get; set; }
+        public static WiiU.WiiUcetkForm WiiUcetkForm { get; set; }
         #endregion
 
         public static void Start()

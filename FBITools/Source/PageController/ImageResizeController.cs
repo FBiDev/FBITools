@@ -10,13 +10,13 @@ namespace FBITools
     {
         private MagicScaler scaler;
 
-        public ImageResizeController(ImageResizeForm formView)
+        public ImageResizeController(ImageResizeForm page)
         {
-            Page = formView;
-            Page.Shown += ShownForm;
+            Page = page;
+            Page.Shown += Page_Shown;
         }
 
-        private void ShownForm(object sender, EventArgs ev)
+        private void Page_Shown(object sender, EventArgs ev)
         {
             WarningLabel.TextChanged += WarningLabel_TextChanged;
 

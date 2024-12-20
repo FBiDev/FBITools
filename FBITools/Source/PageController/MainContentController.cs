@@ -11,20 +11,19 @@ namespace FBITools
     public partial class MainContentController
     {
         #region Entrada
-        public MainContentController(MainContentForm formView)
+        public MainContentController(MainContentForm page)
         {
-            Page = formView;
-            Page.Shown += ShownForm;
+            Page = page;
+            Page.Shown += Page_Shown;
             Page.KeyDown += Page_KeyDown;
             Page.KeyPreview = true;
         }
 
         private FlatButton SelectedTab { get; set; }
 
-        private void ShownForm(object sender, EventArgs ev)
+        private void Page_Shown(object sender, EventArgs ev)
         {
             FileCopyTabButton.Click += (s, e) => SetContent(s, Session.FileCopyForm);
-            FileBackupTabButton.Click += (s, e) => SetContent(s, Session.FileBackupForm);
             ImageResizeTabButton.Click += (s, e) => SetContent(s, Session.ImageResizeForm);
             VbCsharpTabButton.Click += (s, e) => SetContent(s, Session.VbToCsharpForm);
             WiiUcetkTabButton.Click += (s, e) => SetContent(s, Session.WiiUcetkForm);

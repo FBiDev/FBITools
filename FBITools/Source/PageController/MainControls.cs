@@ -17,8 +17,6 @@ namespace FBITools
 
         private FlatButtonA FileCopyTabButton { get { return Page.FileCopyTabButton; } }
 
-        private FlatButtonA FileBackupTabButton { get { return Page.FileBackupTabButton; } }
-
         private FlatButtonA ImageResizeTabButton { get { return Page.ImageResizeTabButton; } }
 
         private FlatButtonA VbCsharpTabButton { get { return Page.VbCsharpTabButton; } }
@@ -36,13 +34,13 @@ namespace FBITools
             set { Session.ConfigForm = value; }
         }
 
-        private FlatCheckBoxA DarkModeCheckBox { get { return Page.chkDarkMode; } }
+        private FlatCheckBoxA DarkModeCheckBox { get { return Page.DarkModeCheckBox; } }
 
-        private FlatCheckBoxA WindowAutoCenterCheckBox { get { return Page.chkAutoCenterWindow; } }
+        private FlatCheckBoxA WindowAutoCenterCheckBox { get { return Page.AutoCenterWindowCheckBox; } }
 
-        private FlatCheckBoxA WindowAutoResizeCheckBox { get { return Page.chkAutoResizeWindow; } }
+        private FlatCheckBoxA WindowAutoResizeCheckBox { get { return Page.AutoResizeWindowCheckBox; } }
 
-        private FlatCheckBoxA DebugModeCheckBox { get { return Page.chkDebugMode; } }
+        private FlatCheckBoxA DebugModeCheckBox { get { return Page.DebugModeCheckBox; } }
     }
 
     public partial class FileCopyController
@@ -65,36 +63,13 @@ namespace FBITools
 
         private FlatTextBoxA DestinationTextBox { get { return Page.DestinationTextBox; } }
 
+        private FlatCheckBoxA CustomDestinationCheckBox { get { return Page.CustomDestinationCheckBox; } }
+
         private FlatComboBoxA TypeComboBox { get { return Page.TypeComboBox; } }
 
         private FlatComboBoxA TimerComboBox { get { return Page.TimerComboBox; } }
 
         private FlatButtonA CopyButton { get { return Page.CopyButton; } }
-    }
-
-    public partial class FileBackupController
-    {
-        private FileBackupForm Page
-        {
-            get { return Session.FileBackupForm; }
-            set { Session.FileBackupForm = value; }
-        }
-
-        private FlatTableLayoutPanelA InputTable { get { return Page.InputTable; } }
-
-        private FlatLabelA WarningLabel { get { return Page.WarningLabel; } }
-
-        private FlatButtonA OriginButton { get { return Page.OriginButton; } }
-
-        private FlatTextBoxA OriginTextBox { get { return Page.OriginTextBox; } }
-
-        private FlatButtonA DestinationButton { get { return Page.DestinationButton; } }
-
-        private FlatTextBoxA DestinationTextBox { get { return Page.DestinationTextBox; } }
-
-        private FlatComboBoxA TimerComboBox { get { return Page.TimerComboBox; } }
-
-        private FlatButtonA BackupButton { get { return Page.BackupButton; } }
     }
 
     public partial class ImageResizeController
@@ -104,8 +79,6 @@ namespace FBITools
             get { return Session.ImageResizeForm; }
             set { Session.ImageResizeForm = value; }
         }
-
-        private FlatTableLayoutPanelA InputTable { get { return Page.InputTable; } }
 
         private FlatLabelA WarningLabel { get { return Page.WarningLabel; } }
 
@@ -172,7 +145,10 @@ namespace FBITools
 
         private FlatTextBoxA OutputTextBox { get { return Page.OutputTextBox; } }
     }
+}
 
+namespace FBITools.WiiU
+{
     public partial class WiiUcetkController
     {
         private WiiUcetkForm Page
@@ -185,11 +161,11 @@ namespace FBITools
 
         private FlatMaskedTextBoxA TitleIDTextBox { get { return Page.TitleIDTextBox; } }
 
-        private FlatTextBoxA TitleNameTextBox { get { return Page.txtTitleName; } }
+        private FlatTextBoxA TitleNameTextBox { get { return Page.TitleNameTextBox; } }
 
-        private FlatCheckedListA ListRegionCheckedList { get { return Page.ListRegionCheckedList; } }
+        private FlatCheckedListA RegionCheckedList { get { return Page.RegionCheckedList; } }
 
-        private FlatCheckedListA ListCategoryCheckedList { get { return Page.ListCategoryCheckedList; } }
+        private FlatCheckedListA CategoryCheckedList { get { return Page.CategoryCheckedList; } }
 
         private FlatButtonA GenerateCetkButton { get { return Page.GenerateCetkButton; } }
 

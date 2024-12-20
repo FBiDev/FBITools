@@ -35,24 +35,17 @@ namespace FBITools
 
         [JsonConverter(JsonType.Boolean)]
         public bool IsAutoResizeWindow { get; set; }
-        #endregion
 
-        #region System
         public string FileCopy_Origin { get; set; }
 
         public string FileCopy_Destination { get; set; }
 
+        [JsonConverter(JsonType.Boolean)]
+        public bool FileCopy_CustomDestination { get; set; }
+
         public int FileCopy_Type { get; set; }
 
         public int FileCopy_Timer { get; set; }
-
-        public string FileBackup_Origin { get; set; }
-
-        public string FileBackup_Destination { get; set; }
-
-        public int FileBackup_Type { get; set; }
-
-        public int FileBackup_Timer { get; set; }
         #endregion
 
         public bool Load()

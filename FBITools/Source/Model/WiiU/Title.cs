@@ -36,8 +36,17 @@ namespace FBITools.WiiU
 
         public static async Task<List<Title>> Search(Title obj)
         {
-            obj = obj ?? new Title();
             return await DAO.Search(obj);
+        }
+
+        public static async Task<List<Title>> List()
+        {
+            return await DAO.List();
+        }
+
+        public static async Task<Title> Find(Title obj)
+        {
+            return await DAO.Find(obj);
         }
 
         public override string ToString()

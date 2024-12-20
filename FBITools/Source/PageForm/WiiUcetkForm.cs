@@ -1,4 +1,4 @@
-﻿namespace FBITools
+﻿namespace FBITools.WiiU
 {
     public partial class WiiUcetkForm : App.Core.Desktop.ContentBaseForm
     {

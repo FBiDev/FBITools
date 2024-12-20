@@ -29,98 +29,99 @@ namespace FBITools
         /// </summary>
         private void InitializeComponent()
         {
-            this.tblMainContent = new FBITools.FlatTableLayoutPanelA();
+            this.MainContentTable = new FBITools.FlatTableLayoutPanelA();
             this.InputTable = new FBITools.FlatTableLayoutPanelA();
-            this.lblTitle = new FBITools.FlatLabelA();
+            this.TitleLabel = new FBITools.FlatLabelA();
             this.OriginButton = new FBITools.FlatButtonA();
             this.OriginTextBox = new FBITools.FlatTextBoxA();
             this.DestinationButton = new FBITools.FlatButtonA();
             this.DestinationTextBox = new FBITools.FlatTextBoxA();
             this.TypeComboBox = new FBITools.FlatComboBoxA();
             this.TimerComboBox = new FBITools.FlatComboBoxA();
-            this.tblResult = new FBITools.FlatTableLayoutPanelA();
+            this.CustomDestinationCheckBox = new FBITools.FlatCheckBoxA();
+            this.ResultTable = new FBITools.FlatTableLayoutPanelA();
             this.CopyButton = new FBITools.FlatButtonA();
             this.WarningLabel = new FBITools.FlatLabelA();
-            this.tblMainContent.SuspendLayout();
+            this.MainContentTable.SuspendLayout();
             this.InputTable.SuspendLayout();
-            this.tblResult.SuspendLayout();
+            this.ResultTable.SuspendLayout();
             this.SuspendLayout();
             // 
-            // tblMainContent
+            // MainContentTable
             // 
-            this.tblMainContent.ColumnCount = 1;
-            this.tblMainContent.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tblMainContent.Controls.Add(this.InputTable, 0, 0);
-            this.tblMainContent.Controls.Add(this.tblResult, 0, 1);
-            this.tblMainContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tblMainContent.FillOnFormResize = true;
-            this.tblMainContent.Location = new System.Drawing.Point(0, 0);
-            this.tblMainContent.Name = "tblMainContent";
-            this.tblMainContent.Padding = new System.Windows.Forms.Padding(1);
-            this.tblMainContent.RowCount = 3;
-            this.tblMainContent.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tblMainContent.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tblMainContent.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tblMainContent.Size = new System.Drawing.Size(430, 262);
-            this.tblMainContent.SizeOriginal = new System.Drawing.Size(430, 262);
-            this.tblMainContent.TabIndex = 0;
+            this.MainContentTable.ColumnCount = 1;
+            this.MainContentTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.MainContentTable.Controls.Add(this.InputTable, 0, 0);
+            this.MainContentTable.Controls.Add(this.ResultTable, 0, 1);
+            this.MainContentTable.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.MainContentTable.FillOnFormResize = true;
+            this.MainContentTable.Location = new System.Drawing.Point(0, 0);
+            this.MainContentTable.Name = "MainContentTable";
+            this.MainContentTable.Padding = new System.Windows.Forms.Padding(1);
+            this.MainContentTable.RowCount = 3;
+            this.MainContentTable.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.MainContentTable.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.MainContentTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.MainContentTable.Size = new System.Drawing.Size(430, 262);
+            this.MainContentTable.SizeOriginal = new System.Drawing.Size(430, 262);
+            this.MainContentTable.TabIndex = 0;
             // 
-            // tblInput
+            // InputTable
             // 
             this.InputTable.ColumnCount = 2;
             this.InputTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 102F));
             this.InputTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.InputTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.InputTable.Controls.Add(this.lblTitle, 0, 0);
+            this.InputTable.Controls.Add(this.TitleLabel, 0, 0);
             this.InputTable.Controls.Add(this.OriginButton, 0, 1);
             this.InputTable.Controls.Add(this.OriginTextBox, 1, 1);
             this.InputTable.Controls.Add(this.DestinationButton, 0, 2);
             this.InputTable.Controls.Add(this.DestinationTextBox, 1, 2);
-            this.InputTable.Controls.Add(this.TypeComboBox, 0, 3);
-            this.InputTable.Controls.Add(this.TimerComboBox, 1, 3);
+            this.InputTable.Controls.Add(this.CustomDestinationCheckBox, 0, 3);
+            this.InputTable.Controls.Add(this.TypeComboBox, 0, 4);
+            this.InputTable.Controls.Add(this.TimerComboBox, 1, 4);
             this.InputTable.Location = new System.Drawing.Point(1, 1);
-            this.InputTable.Name = "tblInput";
-            this.InputTable.RowCount = 4;
+            this.InputTable.Name = "InputTable";
+            this.InputTable.RowCount = 5;
             this.InputTable.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.InputTable.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.InputTable.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.InputTable.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.InputTable.Size = new System.Drawing.Size(428, 148);
-            this.InputTable.SizeOriginal = new System.Drawing.Size(428, 148);
+            this.InputTable.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.InputTable.Size = new System.Drawing.Size(428, 186);
+            this.InputTable.SizeOriginal = new System.Drawing.Size(428, 186);
             this.InputTable.TabIndex = 0;
             // 
-            // lblTitle
+            // TitleLabel
             // 
-            this.InputTable.SetColumnSpan(this.lblTitle, 2);
-            this.lblTitle.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lblTitle.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(149)))), ((int)(((byte)(237)))));
-            this.lblTitle.ForeColorType = App.Core.Desktop.LabelType.primary;
-            this.lblTitle.Location = new System.Drawing.Point(0, 0);
-            this.lblTitle.Margin = new System.Windows.Forms.Padding(0, 0, 0, 2);
-            this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(428, 34);
-            this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "File Copy";
-            this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.InputTable.SetColumnSpan(this.TitleLabel, 2);
+            this.TitleLabel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.TitleLabel.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.TitleLabel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(100)))), ((int)(((byte)(149)))), ((int)(((byte)(237)))));
+            this.TitleLabel.ForeColorType = App.Core.Desktop.LabelType.primary;
+            this.TitleLabel.Location = new System.Drawing.Point(0, 0);
+            this.TitleLabel.Margin = new System.Windows.Forms.Padding(0, 0, 0, 2);
+            this.TitleLabel.Name = "TitleLabel";
+            this.TitleLabel.Size = new System.Drawing.Size(428, 34);
+            this.TitleLabel.TabIndex = 0;
+            this.TitleLabel.Text = "File Copy";
+            this.TitleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // btnOrigin
+            // OriginButton
             // 
+            this.OriginButton.BorderColorDefault = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(223)))), ((int)(((byte)(229)))));
             this.OriginButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.OriginButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(223)))), ((int)(((byte)(229)))));
             this.OriginButton.FlatAppearance.BorderSize = 0;
             this.OriginButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
             this.OriginButton.Location = new System.Drawing.Point(0, 38);
             this.OriginButton.Margin = new System.Windows.Forms.Padding(0, 2, 2, 2);
-            this.OriginButton.Name = "btnOrigin";
+            this.OriginButton.Name = "OriginButton";
             this.OriginButton.Size = new System.Drawing.Size(100, 34);
             this.OriginButton.TabIndex = 1;
             this.OriginButton.Text = "Origin";
             // 
-            // txtOrigin
+            // OriginTextBox
             // 
-            this.OriginTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
-            this.OriginTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(223)))), ((int)(((byte)(229)))));
             this.OriginTextBox.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.OriginTextBox.BackgroundColorFocus = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.OriginTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -130,30 +131,28 @@ namespace FBITools
             this.OriginTextBox.Location = new System.Drawing.Point(104, 38);
             this.OriginTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.OriginTextBox.MaximumSize = new System.Drawing.Size(0, 34);
-            this.OriginTextBox.Name = "txtOrigin";
-            this.OriginTextBox.Padding = new System.Windows.Forms.Padding(1);
+            this.OriginTextBox.Name = "OriginTextBox";
             this.OriginTextBox.PreviousText = "";
             this.OriginTextBox.ReadOnly = true;
             this.OriginTextBox.Size = new System.Drawing.Size(324, 34);
             this.OriginTextBox.TabIndex = 2;
             // 
-            // btnDestination
+            // DestinationButton
             // 
+            this.DestinationButton.BorderColorDefault = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(223)))), ((int)(((byte)(229)))));
             this.DestinationButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DestinationButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(223)))), ((int)(((byte)(229)))));
             this.DestinationButton.FlatAppearance.BorderSize = 0;
             this.DestinationButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
             this.DestinationButton.Location = new System.Drawing.Point(0, 76);
             this.DestinationButton.Margin = new System.Windows.Forms.Padding(0, 2, 2, 2);
-            this.DestinationButton.Name = "btnDestination";
+            this.DestinationButton.Name = "DestinationButton";
             this.DestinationButton.Size = new System.Drawing.Size(100, 34);
             this.DestinationButton.TabIndex = 3;
             this.DestinationButton.Text = "Destination";
             // 
-            // txtDestination
+            // DestinationTextBox
             // 
-            this.DestinationTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
-            this.DestinationTextBox.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(223)))), ((int)(((byte)(229)))));
             this.DestinationTextBox.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.DestinationTextBox.BackgroundColorFocus = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.DestinationTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -163,75 +162,86 @@ namespace FBITools
             this.DestinationTextBox.Location = new System.Drawing.Point(104, 76);
             this.DestinationTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.DestinationTextBox.MaximumSize = new System.Drawing.Size(0, 34);
-            this.DestinationTextBox.Name = "txtDestination";
-            this.DestinationTextBox.Padding = new System.Windows.Forms.Padding(1);
+            this.DestinationTextBox.Name = "DestinationTextBox";
             this.DestinationTextBox.PreviousText = "";
             this.DestinationTextBox.ReadOnly = true;
             this.DestinationTextBox.Size = new System.Drawing.Size(324, 34);
             this.DestinationTextBox.TabIndex = 4;
             // 
-            // cboType
+            // TypeComboBox
             // 
             this.TypeComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
             this.TypeComboBox.BackColor = System.Drawing.Color.White;
             this.TypeComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TypeComboBox.LabelText = "Type";
-            this.TypeComboBox.Location = new System.Drawing.Point(0, 114);
+            this.TypeComboBox.Location = new System.Drawing.Point(0, 152);
             this.TypeComboBox.Margin = new System.Windows.Forms.Padding(0, 2, 2, 0);
-            this.TypeComboBox.Name = "cboType";
+            this.TypeComboBox.Name = "TypeComboBox";
             this.TypeComboBox.Size = new System.Drawing.Size(100, 34);
             this.TypeComboBox.TabIndex = 5;
             // 
-            // cboTimer
+            // TimerComboBox
             // 
             this.TimerComboBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)));
             this.TimerComboBox.BackColor = System.Drawing.Color.White;
             this.TimerComboBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.TimerComboBox.LabelText = "Timer";
-            this.TimerComboBox.Location = new System.Drawing.Point(104, 114);
+            this.TimerComboBox.Location = new System.Drawing.Point(104, 152);
             this.TimerComboBox.Margin = new System.Windows.Forms.Padding(2, 2, 0, 0);
-            this.TimerComboBox.Name = "cboTimer";
+            this.TimerComboBox.Name = "TimerComboBox";
             this.TimerComboBox.Size = new System.Drawing.Size(324, 34);
             this.TimerComboBox.TabIndex = 6;
             // 
-            // tblResult
+            // CustomDestinationCheckBox
             // 
-            this.tblResult.ColumnCount = 1;
-            this.tblResult.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tblResult.Controls.Add(this.CopyButton, 0, 0);
-            this.tblResult.Controls.Add(this.WarningLabel, 0, 1);
-            this.tblResult.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tblResult.Location = new System.Drawing.Point(1, 149);
-            this.tblResult.Name = "tblResult";
-            this.tblResult.RowCount = 3;
-            this.tblResult.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tblResult.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.tblResult.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tblResult.Size = new System.Drawing.Size(428, 66);
-            this.tblResult.SizeOriginal = new System.Drawing.Size(428, 66);
-            this.tblResult.TabIndex = 1;
+            this.InputTable.SetColumnSpan(this.CustomDestinationCheckBox, 2);
+            this.CustomDestinationCheckBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CustomDestinationCheckBox.Location = new System.Drawing.Point(0, 114);
+            this.CustomDestinationCheckBox.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
+            this.CustomDestinationCheckBox.Name = "CustomDestinationCheckBox";
+            this.CustomDestinationCheckBox.Size = new System.Drawing.Size(428, 34);
+            this.CustomDestinationCheckBox.TabIndex = 7;
+            this.CustomDestinationCheckBox.TextLegend = "Custom Destination";
             // 
-            // btnCopy
+            // ResultTable
             // 
+            this.ResultTable.ColumnCount = 1;
+            this.ResultTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.ResultTable.Controls.Add(this.CopyButton, 0, 0);
+            this.ResultTable.Controls.Add(this.WarningLabel, 0, 1);
+            this.ResultTable.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ResultTable.Location = new System.Drawing.Point(1, 187);
+            this.ResultTable.Name = "ResultTable";
+            this.ResultTable.RowCount = 3;
+            this.ResultTable.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.ResultTable.RowStyles.Add(new System.Windows.Forms.RowStyle());
+            this.ResultTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.ResultTable.Size = new System.Drawing.Size(428, 66);
+            this.ResultTable.SizeOriginal = new System.Drawing.Size(428, 66);
+            this.ResultTable.TabIndex = 1;
+            // 
+            // CopyButton
+            // 
+            this.CopyButton.BorderColorDefault = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(223)))), ((int)(((byte)(229)))));
             this.CopyButton.Dock = System.Windows.Forms.DockStyle.Fill;
             this.CopyButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(223)))), ((int)(((byte)(229)))));
             this.CopyButton.FlatAppearance.BorderSize = 0;
             this.CopyButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
             this.CopyButton.Location = new System.Drawing.Point(0, 4);
             this.CopyButton.Margin = new System.Windows.Forms.Padding(0, 4, 0, 2);
-            this.CopyButton.Name = "btnCopy";
+            this.CopyButton.Name = "CopyButton";
             this.CopyButton.Size = new System.Drawing.Size(428, 34);
             this.CopyButton.TabIndex = 0;
             this.CopyButton.Text = "Copy";
             // 
-            // lblWarning
+            // WarningLabel
             // 
             this.WarningLabel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.WarningLabel.ForeColor = System.Drawing.Color.Firebrick;
             this.WarningLabel.ForeColorType = App.Core.Desktop.LabelType.danger;
             this.WarningLabel.Location = new System.Drawing.Point(0, 42);
             this.WarningLabel.Margin = new System.Windows.Forms.Padding(0, 2, 0, 0);
-            this.WarningLabel.Name = "lblWarning";
+            this.WarningLabel.Name = "WarningLabel";
             this.WarningLabel.Size = new System.Drawing.Size(428, 24);
             this.WarningLabel.TabIndex = 1;
             this.WarningLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
@@ -239,13 +249,14 @@ namespace FBITools
             // FileCopyForm
             // 
             this.ClientSize = new System.Drawing.Size(430, 262);
-            this.Controls.Add(this.tblMainContent);
+            this.Controls.Add(this.MainContentTable);
             this.Name = "FileCopyForm";
+            this.SizeOriginal = new System.Drawing.Size(430, 262);
             this.Text = "FileCopyForm";
-            this.tblMainContent.ResumeLayout(false);
-            this.tblMainContent.PerformLayout();
+            this.MainContentTable.ResumeLayout(false);
+            this.MainContentTable.PerformLayout();
             this.InputTable.ResumeLayout(false);
-            this.tblResult.ResumeLayout(false);
+            this.ResultTable.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -253,17 +264,18 @@ namespace FBITools
 
         #endregion
 
-        private FlatLabelA lblTitle;
+        private FlatLabelA TitleLabel;
         internal FlatButtonA DestinationButton;
         internal FlatButtonA OriginButton;
         internal FlatTextBoxA OriginTextBox;
         internal FlatTextBoxA DestinationTextBox;
         internal FlatButtonA CopyButton;
         internal FlatLabelA WarningLabel;
-        private FlatTableLayoutPanelA tblMainContent;
+        private FlatTableLayoutPanelA MainContentTable;
         internal FlatComboBoxA TypeComboBox;
         internal FlatComboBoxA TimerComboBox;
         internal FlatTableLayoutPanelA InputTable;
-        private FlatTableLayoutPanelA tblResult;
+        private FlatTableLayoutPanelA ResultTable;
+        internal FlatCheckBoxA CustomDestinationCheckBox;
     }
 }

@@ -108,12 +108,12 @@
     <Compile Include="Source\Config\Session.cs" />
     <Compile Include="Source\Config\Options.cs" />
     <Compile Include="Source\Config\Theme.cs" />
-    <Compile Include="Source\FormController\ConfigController.cs" />
-    <Compile Include="Source\FormController\WiiUcetkController.cs" />
-    <Compile Include="Source\FormController\VbToCsharpController.cs" />
-    <Compile Include="Source\FormController\ImageResizeController.cs" />
-    <Compile Include="Source\FormController\MainController.cs" />
-    <Compile Include="Source\FormController\MainContentController.cs" />
+    <Compile Include="Source\PageController\ConfigController.cs" />
+    <Compile Include="Source\PageController\WiiUcetkController.cs" />
+    <Compile Include="Source\PageController\VbToCsharpController.cs" />
+    <Compile Include="Source\PageController\ImageResizeController.cs" />
+    <Compile Include="Source\PageController\MainController.cs" />
+    <Compile Include="Source\PageController\MainContentController.cs" />
     <Compile Include="Source\Asset\CustomControl\FlatButtonA.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -126,53 +126,47 @@
     <Compile Include="Source\Asset\CustomControl\FlatTextBoxA.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Source\FormController\MainControls.cs" />
-    <Compile Include="Source\FormPage\ConfigForm.cs">
+    <Compile Include="Source\PageController\MainControls.cs" />
+    <Compile Include="Source\PageForm\ConfigForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Source\FormPage\ConfigForm.Designer.cs">
+    <Compile Include="Source\PageForm\ConfigForm.Designer.cs">
       <DependentUpon>ConfigForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\FormPage\WiiUcetkForm.cs">
+    <Compile Include="Source\PageForm\WiiUcetkForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Source\FormPage\WiiUcetkForm.Designer.cs">
+    <Compile Include="Source\PageForm\WiiUcetkForm.Designer.cs">
       <DependentUpon>WiiUcetkForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\FormPage\VbToCsharpForm.cs">
+    <Compile Include="Source\PageForm\VbToCsharpForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Source\FormPage\VbToCsharpForm.Designer.cs">
+    <Compile Include="Source\PageForm\VbToCsharpForm.Designer.cs">
       <DependentUpon>VbToCsharpForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\FormPage\ImageResizeForm.cs">
+    <Compile Include="Source\PageForm\ImageResizeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Source\FormPage\ImageResizeForm.Designer.cs">
+    <Compile Include="Source\PageForm\ImageResizeForm.Designer.cs">
       <DependentUpon>ImageResizeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\FormPage\MainContentForm.cs">
+    <Compile Include="Source\PageForm\MainContentForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Source\FormPage\MainContentForm.Designer.cs">
+    <Compile Include="Source\PageForm\MainContentForm.Designer.cs">
       <DependentUpon>MainContentForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\FormPage\FileBackupForm.cs">
+    <Compile Include="Source\PageForm\FileCopyForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Source\FormPage\FileBackupForm.Designer.cs">
-      <DependentUpon>FileBackupForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Source\FormPage\FileCopyForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Source\FormPage\FileCopyForm.Designer.cs">
+    <Compile Include="Source\PageForm\FileCopyForm.Designer.cs">
       <DependentUpon>FileCopyForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\FormPage\MainForm.cs">
+    <Compile Include="Source\PageForm\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Source\FormPage\MainForm.Designer.cs">
+    <Compile Include="Source\PageForm\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -182,28 +176,25 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\FormPage\ConfigForm.resx">
+    <EmbeddedResource Include="Source\PageForm\ConfigForm.resx">
       <DependentUpon>ConfigForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\FormPage\WiiUcetkForm.resx">
+    <EmbeddedResource Include="Source\PageForm\WiiUcetkForm.resx">
       <DependentUpon>WiiUcetkForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\FormPage\VbToCsharpForm.resx">
+    <EmbeddedResource Include="Source\PageForm\VbToCsharpForm.resx">
       <DependentUpon>VbToCsharpForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\FormPage\ImageResizeForm.resx">
+    <EmbeddedResource Include="Source\PageForm\ImageResizeForm.resx">
       <DependentUpon>ImageResizeForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\FormPage\MainContentForm.resx">
+    <EmbeddedResource Include="Source\PageForm\MainContentForm.resx">
       <DependentUpon>MainContentForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\FormPage\FileBackupForm.resx">
-      <DependentUpon>FileBackupForm.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Source\FormPage\FileCopyForm.resx">
+    <EmbeddedResource Include="Source\PageForm\FileCopyForm.resx">
       <DependentUpon>FileCopyForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\FormPage\MainForm.resx">
+    <EmbeddedResource Include="Source\PageForm\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
@@ -215,8 +206,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Source\FormController\FileCopyController.cs" />
-    <Compile Include="Source\FormController\FileBackupController.cs" />
+    <Compile Include="Source\PageController\FileCopyController.cs" />
     <Compile Include="Source\Asset\CustomControl\FlatComboBoxA.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -225,14 +215,14 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </ContentWithTargetPath>
     <None Include="Source\Asset\Data\WiiUcetk" />
-    <None Include="Source\Asset\Script\PostMovePlugins.bat" />
-    <None Include="Source\Asset\Script\PrePurgePlugins.bat" />
+    <None Include="Source\Asset\BuildScript\PostMovePlugins.bat" />
+    <None Include="Source\Asset\BuildScript\PrePurgePlugins.bat" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />
-    <Content Include="Source\Asset\Sql\sql_WiiUTitle_List.sql" />
-    <Content Include="Source\Asset\Sql\sql_WiiUCategory_List.sql" />
-    <Content Include="Source\Asset\Sql\sql_WiiURegion_List.sql" />
+    <Content Include="Source\Asset\SqlScript\sql_WiiUTitle_List.sql" />
+    <Content Include="Source\Asset\SqlScript\sql_WiiUCategory_List.sql" />
+    <Content Include="Source\Asset\SqlScript\sql_WiiURegion_List.sql" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Source\Asset\Icon\ico_app.ico" />
@@ -243,12 +233,12 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>call "$(ProjectDir)Source\Asset\Script\PostMovePlugins.bat" ^
+    <PostBuildEvent>call "$(ProjectDir)Source\Asset\BuildScript\PostMovePlugins.bat" ^
 $(ProjectName), $(Platform), $(ProjectDir)$(ProjectFileName), ^
 $(SolutionDir), $(TargetDir)</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PreBuildEvent>call "$(ProjectDir)Source\Asset\Script\PrePurgePlugins.bat" ^
+    <PreBuildEvent>call "$(ProjectDir)Source\Asset\BuildScript\PrePurgePlugins.bat" ^
 $(ProjectName), $(ProjectDir), $(TargetDir)</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

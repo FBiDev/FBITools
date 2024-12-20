@@ -6,14 +6,14 @@ namespace FBITools
 {
     public partial class VbToCsharpController
     {
-        public VbToCsharpController(VbToCsharpForm pageForm)
+        public VbToCsharpController(VbToCsharpForm page)
         {
-            Page = pageForm;
-            Page.Shown += ShownForm;
+            Page = page;
+            Page.Shown += Page_Shown;
             Page.GotFocus += (s, e) => InputTextBox.Focus();
         }
 
-        private void ShownForm(object sender, EventArgs ev)
+        private void Page_Shown(object sender, EventArgs ev)
         {
             WarningLabel.TextChanged += WarningLabel_TextChanged;
 
