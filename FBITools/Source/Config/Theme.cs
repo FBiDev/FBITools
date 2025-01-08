@@ -18,7 +18,7 @@ namespace FBITools
 
         public static void SetTheme()
         {
-            isDesignMode = Session.MainForm.IsDesignMode;
+            isDesignMode = Session.MainPage.IsDesignMode;
 
             if (isDesignMode)
             {

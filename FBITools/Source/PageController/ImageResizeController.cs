@@ -62,7 +62,7 @@ namespace FBITools
                 scaler.Resize().TryAwait();
             };
 
-            CarregarCombos();
+            ComboBox_Load();
         }
 
         private async void WarningLabel_TextChanged(object sender, EventArgs e)
@@ -71,7 +71,7 @@ namespace FBITools
             WarningLabel.Text = string.Empty;
         }
 
-        private void CarregarCombos()
+        private void ComboBox_Load()
         {
             scaler.LoadEncoders(EncoderComboBox);
             scaler.LoadResizeModes(ResizeModeComboBox);

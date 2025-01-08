@@ -22,22 +22,22 @@ namespace FBITools
             private set { _options = value; }
         }
 
-        public static MainForm MainForm { get; set; }
+        public static MainForm MainPage { get; set; }
 
-        public static MainContentForm MainContentForm { get; set; }
+        public static MainContentForm MainContentPage { get; set; }
 
-        public static ConfigForm ConfigForm { get; set; }
+        public static ConfigForm ConfigPage { get; set; }
 
-        public static FileCopyForm FileCopyForm { get; set; }
+        public static FileCopyForm FileCopyPage { get; set; }
 
-        public static ImageResizeForm ImageResizeForm { get; set; }
+        public static ImageResizeForm ImageResizePage { get; set; }
 
-        public static VbToCsharpForm VbToCsharpForm { get; set; }
+        public static VbToCsharpForm VbToCsharpPage { get; set; }
 
-        public static WiiU.WiiUcetkForm WiiUcetkForm { get; set; }
+        public static WiiU.WiiUcetkForm WiiUCetkPage { get; set; }
         #endregion
 
-        public static void Start()
+        public static void Load()
         {
             LanguageManager.SetLanguage(Language);
             LanguageManager.SetLanguageNumbers(LanguageNumbers);
@@ -54,7 +54,7 @@ namespace FBITools
             DebugManager.LogSQLSistema.SyncList(WiiU.BancoWiiU.Log);
         }
 
-        public static void SetFormIcon()
+        public static void SetDefaultPageIcon()
         {
             MainBaseForm.Ico = Properties.Resources.ico_app;
         }

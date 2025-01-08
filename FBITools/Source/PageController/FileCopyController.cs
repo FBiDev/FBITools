@@ -19,9 +19,9 @@ namespace FBITools
         {
             file = new FileBackup();
 
-            CarregarCombos();
+            ComboBox_Load();
 
-            LoadOptions();
+            Controls_Load();
         }
 
         private void Page_Shown(object sender, EventArgs ev)
@@ -53,7 +53,7 @@ namespace FBITools
 
             CopyButton.Click += (s, e) =>
             {
-                SaveOptions();
+                UpdateSession();
 
                 if (file.Copy())
                 {
@@ -94,13 +94,13 @@ namespace FBITools
             WarningLabel.Text = string.Empty;
         }
 
-        private void CarregarCombos()
+        private void ComboBox_Load()
         {
             file.LoadTypes(TypeComboBox);
             file.LoadTimer(TimerComboBox);
         }
 
-        private void LoadOptions()
+        private void Controls_Load()
         {
             if (Options.IsLoaded)
             {
@@ -136,7 +136,7 @@ namespace FBITools
             CopyButton.Text = file.ButtonMessage;
         }
 
-        private void SaveOptions()
+        private void UpdateSession()
         {
             Session.Options.FileCopy_Origin = file.OriginPath;
             Session.Options.FileCopy_Destination = file.DestinationPath;

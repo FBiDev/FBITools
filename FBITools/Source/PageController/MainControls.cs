@@ -5,8 +5,8 @@ namespace FBITools
     {
         private MainContentForm Page
         {
-            get { return Session.MainContentForm; }
-            set { Session.MainContentForm = value; }
+            get { return Session.MainContentPage; }
+            set { Session.MainContentPage = value; }
         }
 
         private FlatPanelA ContentLPanel { get { return Page.ContentLPanel; } }
@@ -30,8 +30,8 @@ namespace FBITools
     {
         private ConfigForm Page
         {
-            get { return Session.ConfigForm; }
-            set { Session.ConfigForm = value; }
+            get { return Session.ConfigPage; }
+            set { Session.ConfigPage = value; }
         }
 
         private FlatCheckBoxA DarkModeCheckBox { get { return Page.DarkModeCheckBox; } }
@@ -47,8 +47,8 @@ namespace FBITools
     {
         private FileCopyForm Page
         {
-            get { return Session.FileCopyForm; }
-            set { Session.FileCopyForm = value; }
+            get { return Session.FileCopyPage; }
+            set { Session.FileCopyPage = value; }
         }
 
         private FlatTableLayoutPanelA InputTable { get { return Page.InputTable; } }
@@ -76,8 +76,8 @@ namespace FBITools
     {
         private ImageResizeForm Page
         {
-            get { return Session.ImageResizeForm; }
-            set { Session.ImageResizeForm = value; }
+            get { return Session.ImageResizePage; }
+            set { Session.ImageResizePage = value; }
         }
 
         private FlatLabelA WarningLabel { get { return Page.WarningLabel; } }
@@ -129,8 +129,8 @@ namespace FBITools
     {
         private VbToCsharpForm Page
         {
-            get { return Session.VbToCsharpForm; }
-            set { Session.VbToCsharpForm = value; }
+            get { return Session.VbToCsharpPage; }
+            set { Session.VbToCsharpPage = value; }
         }
 
         private FlatLabelA WarningLabel { get { return Page.WarningLabel; } }
@@ -153,8 +153,8 @@ namespace FBITools.WiiU
     {
         private WiiUcetkForm Page
         {
-            get { return Session.WiiUcetkForm; }
-            set { Session.WiiUcetkForm = value; }
+            get { return Session.WiiUCetkPage; }
+            set { Session.WiiUCetkPage = value; }
         }
 
         private FlatLabelA WarningLabel { get { return Page.WarningLabel; } }

@@ -1,25 +1,25 @@
-﻿namespace FBITools
+﻿using System;
+
+namespace FBITools
 {
     public class MainController
     {
-        #region Entrada
         public MainController(MainForm page)
         {
-            Session.SetFormIcon();
-            Session.MainForm = page;
-            Session.MainForm.StatusBarEnable = false;
+            Session.SetDefaultPageIcon();
+            Session.MainPage = page;
+            Session.MainPage.StatusBarEnable = false;
 
-            Session.MainForm.Shown += Page_Shown;
+            Session.MainPage.Shown += Page_Shown;
 
-            var contentPage = new MainContentForm();
-            Session.MainForm.SetMainFormContent(contentPage);
+            var mainContentPage = new MainContentForm();
+            Session.MainPage.SetMainContentPage(mainContentPage);
         }
 
-        private void Page_Shown(object sender, System.EventArgs e)
+        private void Page_Shown(object sender, EventArgs e)
         {
             Theme.SetTheme();
-            Session.MainForm.CenterWindow();
+            Session.MainPage.CenterWindow();
         }
-        #endregion
     }
 }

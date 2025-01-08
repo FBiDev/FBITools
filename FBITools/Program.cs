@@ -13,7 +13,7 @@ namespace FBITools
 
             using (App.Core.Desktop.AppManager.SingleProcess(Session.SystemLock, Session.SystemName))
             {
-                Session.Start();
+                Session.Load();
                 Application.Run(new MainForm());
             }
         }

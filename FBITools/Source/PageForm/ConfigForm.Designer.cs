@@ -91,7 +91,7 @@ namespace FBITools
             this.TitleLabel.Name = "TitleLabel";
             this.TitleLabel.Size = new System.Drawing.Size(298, 34);
             this.TitleLabel.TabIndex = 0;
-            this.TitleLabel.Text = "Configurações";
+            this.TitleLabel.Text = "Config";
             this.TitleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // DarkModeCheckBox

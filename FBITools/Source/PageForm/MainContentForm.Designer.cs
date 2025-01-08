@@ -164,7 +164,7 @@ namespace FBITools
             this.ConfigTabButton.Name = "ConfigTabButton";
             this.ConfigTabButton.Size = new System.Drawing.Size(122, 34);
             this.ConfigTabButton.TabIndex = 4;
-            this.ConfigTabButton.Text = "Configurações";
+            this.ConfigTabButton.Text = "Config";
             // 
             // MainContentForm
             // 

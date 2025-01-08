@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Drawing;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -10,7 +9,6 @@ namespace FBITools
 {
     public partial class MainContentController
     {
-        #region Entrada
         public MainContentController(MainContentForm page)
         {
             Page = page;
@@ -23,12 +21,12 @@ namespace FBITools
 
         private void Page_Shown(object sender, EventArgs ev)
         {
-            FileCopyTabButton.Click += (s, e) => SetContent(s, Session.FileCopyForm);
-            ImageResizeTabButton.Click += (s, e) => SetContent(s, Session.ImageResizeForm);
-            VbCsharpTabButton.Click += (s, e) => SetContent(s, Session.VbToCsharpForm);
-            WiiUcetkTabButton.Click += (s, e) => SetContent(s, Session.WiiUcetkForm);
+            FileCopyTabButton.Click += (s, e) => SetContent(s, Session.FileCopyPage);
+            ImageResizeTabButton.Click += (s, e) => SetContent(s, Session.ImageResizePage);
+            VbCsharpTabButton.Click += (s, e) => SetContent(s, Session.VbToCsharpPage);
+            WiiUcetkTabButton.Click += (s, e) => SetContent(s, Session.WiiUCetkPage);
 
-            ConfigTabButton.Click += (s, e) => SetContent(s, Session.ConfigForm);
+            ConfigTabButton.Click += (s, e) => SetContent(s, Session.ConfigPage);
 
             FileCopyTabButton.PerformClick();
 
@@ -63,94 +61,100 @@ namespace FBITools
             }
         }
 
-        private void SetSelectedTab(FlatButton btnClicked)
+        private void SetSelectedTab(FlatButton clickedButton)
         {
-            if (SelectedTab != null && SelectedTab != btnClicked)
+            if (SelectedTab != null && SelectedTab != clickedButton)
             {
                 SelectedTab.Selected = false;
             }
 
-            btnClicked.Selected = true;
-            SelectedTab = btnClicked;
+            clickedButton.Selected = true;
+            SelectedTab = clickedButton;
         }
 
-        private void ResizeContent(Size content)
+        private void ResizeContent(Size contentSize)
         {
             if (MainBaseForm.AutoResizeWindow == false)
             {
                 return;
             }
 
-            var newW = content.Width + ContentLPanel.Width + 30;
-            var newH = content.Height + 26;
+            var newW = contentSize.Width + ContentLPanel.Width + 30;
+            var newH = contentSize.Height + 26;
 
-            if (Session.MainForm.StatusBarEnable)
+            if (Session.MainPage.StatusBarEnable)
             {
                 newH += 24;
             }
 
-            Session.MainForm.ClientSize = new Size(newW, newH);
+            Session.MainPage.ClientSize = new Size(newW, newH);
         }
-        #endregion
 
-        #region Common
-        private void SetContent<T>(object sender, T contentForm) where T : ContentBaseForm, new()
+        private void SetContent<T>(object sender, T contentPage) where T : ContentBaseForm, new()
         {
-            if (contentForm == null || contentForm.IsDisposed)
+            if (contentPage == null || contentPage.IsDisposed)
             {
                 try
                 {
-                    contentForm = new T();
+                    contentPage = new T();
                 }
                 catch (Exception ex)
                 {
-                    ExceptionManager.Resolve(ex, Environment.NewLine + "ShownForm : " + typeof(T).ToString());
+                    ExceptionManager.Resolve(ex, "Page : " + typeof(T).FullName);
                     return;
                 }
             }
 
-            if (ContentRInsidePanel.Controls.Contains(contentForm))
+            if (ContentRInsidePanel.Controls.Contains(contentPage))
             {
-                contentForm.Focus();
+                contentPage.Focus();
                 return;
             }
 
-            contentForm.AutoScroll = false;
+            contentPage.AutoScroll = false;
             SetSelectedTab(sender as FlatButton);
 
             ContentRInsidePanel.Controls.Clear();
-            ContentRInsidePanel.Controls.Add(contentForm);
-            ThemeBase.CheckTheme(contentForm);
+            ContentRInsidePanel.Controls.Add(contentPage);
+            ThemeBase.CheckTheme(contentPage);
 
-            contentForm.Show();
-            contentForm.Dock = DockStyle.Fill;
-            contentForm.Focus();
+            try
+            {
+                contentPage.Show();
+            }
+            catch (Exception ex)
+            {
+                ExceptionManager.Resolve(ex, "Page : " + typeof(T).FullName);
+                return;
+            }
 
-            ResizeContent(contentForm.SizeOriginal);
-            contentForm.AutoScroll = true;
+            contentPage.Dock = DockStyle.Fill;
+            contentPage.Focus();
+
+            ResizeContent(contentPage.SizeOriginal);
+            contentPage.AutoScroll = true;
 
             // Fix Resize Selection End
-            foreach (var item in contentForm.GetControls<FlatMaskedTextBox>())
+            foreach (var item in contentPage.GetControls<FlatMaskedTextBox>())
             {
                 item.SelectionStart = 0;
             }
 
-            foreach (var item in contentForm.GetControls<FlatTextBox>())
+            foreach (var item in contentPage.GetControls<FlatTextBox>())
             {
                 item.SelectionStart = 0;
             }
 
-            CenterMainWindow(contentForm).TryAwait();
+            CenterMainWindow(contentPage).TryAwait();
         }
 
-        private async Task CenterMainWindow<T>(T contentForm) where T : ContentBaseForm, new()
+        private async Task CenterMainWindow<T>(T contentPage) where T : ContentBaseForm, new()
         {
             await Task.Delay(50);
-            Session.MainForm.CenterWindow();
+            Session.MainPage.CenterWindow();
             await Task.Delay(50);
 
-            contentForm.FinalLoadOnShow();
+            contentPage.FinalLoadOnShow();
         }
-        #endregion
     }
 }

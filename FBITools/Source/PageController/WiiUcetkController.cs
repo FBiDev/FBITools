@@ -16,7 +16,7 @@ namespace FBITools.WiiU
             Page = page;
             Page.Shown += Page_Shown;
             Page.GotFocus += (s, e) => TitleIDTextBox.Focus();
-            Page.FinalLoadOnceAsync += CarregarCampos;
+            Page.FinalLoadOnceAsync += Controls_Load;
         }
 
         private void Page_Shown(object sender, EventArgs ev)
@@ -30,7 +30,13 @@ namespace FBITools.WiiU
             TitlesGrid.Statusbar = TitlesStatusBar;
         }
 
-        private async Task CarregarCampos()
+        private async void WarningLabel_TextChanged(object sender, EventArgs e)
+        {
+            await TaskController.Delay(4);
+            WarningLabel.Text = string.Empty;
+        }
+
+        private async Task Controls_Load()
         {
             RegionCheckedList.DataSource = await Region.List();
             RegionCheckedList.SetItemsChecked(true);
@@ -44,12 +50,6 @@ namespace FBITools.WiiU
             titles = new ListBind<Title>((await Title.List()).OrderBy(x => x.Name).ToList());
 
             await SearchTitles();
-        }
-
-        private async void WarningLabel_TextChanged(object sender, EventArgs e)
-        {
-            await TaskController.Delay(4);
-            WarningLabel.Text = string.Empty;
         }
 
         private void GenerateCetkButton_Click(object sender, EventArgs e)
@@ -83,7 +83,7 @@ namespace FBITools.WiiU
             foreach (Title obj in titles)
             {
                 bool id = obj.ID.HasValue() && obj.ID.Length >= searchID.Length && obj.ID.Substring(0, searchID.Length) == searchID.ToUpper();
-                bool title = obj.Name.ContainsExtend(searchName);
+                var title = obj.Name.ContainsExtend(searchName);
                 var region = RegionCheckedList.IsItemChecked(obj.Region);
                 var category = CategoryCheckedList.IsItemChecked(obj.Category);
 
