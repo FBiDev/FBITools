@@ -8,7 +8,7 @@ namespace FBITools
         {
             Session.SetDefaultPageIcon();
             Session.MainPage = page;
-            Session.MainPage.StatusBarEnable = false;
+            ////Session.MainPage.StatusBarEnable = true;
 
             Session.MainPage.Shown += Page_Shown;
 

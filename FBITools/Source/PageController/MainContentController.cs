@@ -19,16 +19,110 @@ namespace FBITools
 
         private FlatButton SelectedTab { get; set; }
 
+        internal void SetContent<T>(object sender, T contentPage) where T : ContentBaseForm, new()
+        {
+            if (contentPage == null || contentPage.IsDisposed)
+            {
+                try
+                {
+                    contentPage = new T();
+                }
+                catch (Exception ex)
+                {
+                    ExceptionManager.Resolve(ex, "Page : " + typeof(T).FullName);
+                    return;
+                }
+            }
+
+            if (ContentRInsidePanel.Controls.Contains(contentPage))
+            {
+                contentPage.Focus();
+                return;
+            }
+
+            contentPage.AutoScroll = false;
+            SetSelectedTab(sender as FlatButton);
+
+            ContentRInsidePanel.Controls.Clear();
+            ContentRInsidePanel.Controls.Add(contentPage);
+            ThemeBase.CheckTheme(contentPage);
+
+            try
+            {
+                contentPage.Show();
+            }
+            catch (Exception ex)
+            {
+                ExceptionManager.Resolve(ex, "Page : " + typeof(T).FullName);
+                return;
+            }
+
+            contentPage.Dock = DockStyle.Fill;
+            contentPage.Focus();
+
+            var newSize = new Size(ContentLPanel.Width + 4, 0);
+            Session.MainPage.ResizeWindow(contentPage.SizeOriginal, newSize);
+            contentPage.AutoScroll = true;
+
+            // Fix Resize Selection End
+            foreach (var item in contentPage.GetControls<FlatMaskedTextBox>())
+            {
+                item.SelectionStart = 0;
+            }
+
+            foreach (var item in contentPage.GetControls<FlatTextBox>())
+            {
+                item.SelectionStart = 0;
+            }
+
+            CenterMainWindow(contentPage).TryAwait();
+        }
+
+        private void SetMenu<T>(object sender, T contentPage) where T : ContentBaseForm, new()
+        {
+            if (contentPage == null || contentPage.IsDisposed)
+            {
+                try
+                {
+                    contentPage = new T();
+                }
+                catch (Exception ex)
+                {
+                    ExceptionManager.Resolve(ex, "Page : " + typeof(T).FullName);
+                    return;
+                }
+            }
+
+            if (ContentLInsidePanel.Controls.Contains(contentPage))
+            {
+                contentPage.Focus();
+                return;
+            }
+
+            contentPage.AutoScroll = false;
+
+            ContentLInsidePanel.Controls.Clear();
+            ContentLInsidePanel.Controls.Add(contentPage);
+            ThemeBase.CheckTheme(contentPage);
+
+            try
+            {
+                contentPage.Show();
+            }
+            catch (Exception ex)
+            {
+                ExceptionManager.Resolve(ex, "Page : " + typeof(T).FullName);
+                return;
+            }
+
+            contentPage.Dock = DockStyle.Fill;
+            contentPage.Focus();
+            contentPage.AutoScroll = true;
+        }
+
         private void Page_Shown(object sender, EventArgs ev)
         {
-            FileCopyTabButton.Click += (s, e) => SetContent(s, Session.FileCopyPage);
-            ImageResizeTabButton.Click += (s, e) => SetContent(s, Session.ImageResizePage);
-            VbCsharpTabButton.Click += (s, e) => SetContent(s, Session.VbToCsharpPage);
-            WiiUcetkTabButton.Click += (s, e) => SetContent(s, Session.WiiUCetkPage);
-
-            ConfigTabButton.Click += (s, e) => SetContent(s, Session.ConfigPage);
-
-            FileCopyTabButton.PerformClick();
+            SetMenu(sender, new MainMenuForm());
 
             if (SelectedTab != null)
             {
@@ -74,7 +168,7 @@ namespace FBITools
 
         private void ResizeContent(Size contentSize)
         {
-            if (MainBaseForm.AutoResizeWindow == false)
+            if (Session.Options.IsAutoResizeWindow == false)
             {
                 return;
             }
@@ -90,69 +184,9 @@ namespace FBITools
             Session.MainPage.ClientSize = new Size(newW, newH);
         }
 
-        private void SetContent<T>(object sender, T contentPage) where T : ContentBaseForm, new()
-        {
-            if (contentPage == null || contentPage.IsDisposed)
-            {
-                try
-                {
-                    contentPage = new T();
-                }
-                catch (Exception ex)
-                {
-                    ExceptionManager.Resolve(ex, "Page : " + typeof(T).FullName);
-                    return;
-                }
-            }
-
-            if (ContentRInsidePanel.Controls.Contains(contentPage))
-            {
-                contentPage.Focus();
-                return;
-            }
-
-            contentPage.AutoScroll = false;
-            SetSelectedTab(sender as FlatButton);
-
-            ContentRInsidePanel.Controls.Clear();
-            ContentRInsidePanel.Controls.Add(contentPage);
-            ThemeBase.CheckTheme(contentPage);
-
-            try
-            {
-                contentPage.Show();
-            }
-            catch (Exception ex)
-            {
-                ExceptionManager.Resolve(ex, "Page : " + typeof(T).FullName);
-                return;
-            }
-
-            contentPage.Dock = DockStyle.Fill;
-            contentPage.Focus();
-
-            ResizeContent(contentPage.SizeOriginal);
-            contentPage.AutoScroll = true;
-
-            // Fix Resize Selection End
-            foreach (var item in contentPage.GetControls<FlatMaskedTextBox>())
-            {
-                item.SelectionStart = 0;
-            }
-
-            foreach (var item in contentPage.GetControls<FlatTextBox>())
-            {
-                item.SelectionStart = 0;
-            }
-
-            CenterMainWindow(contentPage).TryAwait();
-        }
-
         private async Task CenterMainWindow<T>(T contentPage) where T : ContentBaseForm, new()
         {
-            await Task.Delay(50);
-            Session.MainPage.CenterWindow();
-            await Task.Delay(50);
+            await Session.MainPage.CenterWindow();
 
             contentPage.FinalLoadOnShow();
         }

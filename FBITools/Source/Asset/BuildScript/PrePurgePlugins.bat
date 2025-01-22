@@ -13,7 +13,7 @@ echo    Project      ::     %ProjectName%
 echo    Event        ::     Begin %EventType% -^> %EventName%
 echo ===============================================================================
 
-robocopy "%ProjectDir%Plugins\ " "%TargetDir%Plugins\ " /PURGE /XF .gitkeep
+rd /s /q "%TargetDir%Plugins\"
 
 echo ===============================================================================
 echo    Project      ::     %ProjectName%

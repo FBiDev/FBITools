@@ -109,6 +109,7 @@
     <Compile Include="Source\Config\Options.cs" />
     <Compile Include="Source\Config\Theme.cs" />
     <Compile Include="Source\PageController\ConfigController.cs" />
+    <Compile Include="Source\PageController\MainMenuController.cs" />
     <Compile Include="Source\PageController\WiiUcetkController.cs" />
     <Compile Include="Source\PageController\VbToCsharpController.cs" />
     <Compile Include="Source\PageController\ImageResizeController.cs" />
@@ -132,6 +133,12 @@
     </Compile>
     <Compile Include="Source\PageForm\ConfigForm.Designer.cs">
       <DependentUpon>ConfigForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Source\PageForm\MainMenuForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Source\PageForm\MainMenuForm.Designer.cs">
+      <DependentUpon>MainMenuForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Source\PageForm\WiiUcetkForm.cs">
       <SubType>Form</SubType>
@@ -178,6 +185,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Source\PageForm\ConfigForm.resx">
       <DependentUpon>ConfigForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Source\PageForm\MainMenuForm.resx">
+      <DependentUpon>MainMenuForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Source\PageForm\WiiUcetkForm.resx">
       <DependentUpon>WiiUcetkForm.cs</DependentUpon>

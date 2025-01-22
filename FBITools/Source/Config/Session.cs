@@ -26,6 +26,10 @@ namespace FBITools
 
         public static MainContentForm MainContentPage { get; set; }
 
+        public static MainContentController MainContentController { get; set; }
+
+        public static MainMenuForm MainMenuPage { get; set; }
+
         public static ConfigForm ConfigPage { get; set; }
 
         public static FileCopyForm FileCopyPage { get; set; }
@@ -45,12 +49,6 @@ namespace FBITools
             Options.Load();
 
             WiiU.BancoWiiU.Load();
-
-            MainBaseForm.DebugMode = Options.IsDebugMode;
-            MainBaseForm.AutoCenterWindow = Options.IsAutoCenterWindow;
-            MainBaseForm.AutoResizeWindow = Options.IsAutoResizeWindow;
-
-            DebugManager.Enable = Options.IsDebugMode;
             DebugManager.LogSQLSistema.SyncList(WiiU.BancoWiiU.Log);
         }
 

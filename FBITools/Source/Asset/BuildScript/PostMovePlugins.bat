@@ -27,7 +27,7 @@ if /I %PlatformName%==AnyCPU (
 
 robocopy "%SolutionDir%..\App\Bin\%Platform%\ " "%TargetDir%Plugins\%Platform%\ " SQLite.Interop.dll /XO
 
-robocopy "%TargetDir% " "%TargetDir%Plugins\ " /XF %ProjectName%.* *.json /XD Plugins /IS /MOV
+robocopy "%TargetDir% " "%TargetDir%Plugins\ " /XF %ProjectName%.* *.json /IS /MOV /XD Plugins
 
 echo ===============================================================================
 echo    Project      ::     %ProjectName%

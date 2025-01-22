@@ -32,15 +32,9 @@ namespace FBITools
             this.ContentRPanel = new FBITools.FlatPanelA();
             this.ContentRInsidePanel = new FBITools.FlatPanelA();
             this.ContentLPanel = new FBITools.FlatPanelA();
-            this.MenuTable = new FBITools.FlatTableLayoutPanelA();
-            this.FileCopyTabButton = new FBITools.FlatButtonA();
-            this.ImageResizeTabButton = new FBITools.FlatButtonA();
-            this.VbCsharpTabButton = new FBITools.FlatButtonA();
-            this.WiiUcetkTabButton = new FBITools.FlatButtonA();
-            this.ConfigTabButton = new FBITools.FlatButtonA();
+            this.ContentLInsidePanel = new FBITools.FlatPanelA();
             this.ContentRPanel.SuspendLayout();
             this.ContentLPanel.SuspendLayout();
-            this.MenuTable.SuspendLayout();
             this.SuspendLayout();
             // 
             // ContentRPanel
@@ -49,11 +43,10 @@ namespace FBITools
             this.ContentRPanel.BackColorType = App.Core.Desktop.PanelType.white;
             this.ContentRPanel.Controls.Add(this.ContentRInsidePanel);
             this.ContentRPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ContentRPanel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
-            this.ContentRPanel.Location = new System.Drawing.Point(124, 0);
+            this.ContentRPanel.Location = new System.Drawing.Point(146, 0);
             this.ContentRPanel.Name = "ContentRPanel";
             this.ContentRPanel.Padding = new System.Windows.Forms.Padding(4, 0, 0, 0);
-            this.ContentRPanel.Size = new System.Drawing.Size(306, 262);
+            this.ContentRPanel.Size = new System.Drawing.Size(284, 262);
             this.ContentRPanel.TabIndex = 3;
             // 
             // ContentRInsidePanel
@@ -61,110 +54,24 @@ namespace FBITools
             this.ContentRInsidePanel.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ContentRInsidePanel.Location = new System.Drawing.Point(4, 0);
             this.ContentRInsidePanel.Name = "ContentRInsidePanel";
-            this.ContentRInsidePanel.Size = new System.Drawing.Size(302, 262);
+            this.ContentRInsidePanel.Size = new System.Drawing.Size(280, 262);
             // 
             // ContentLPanel
             // 
-            this.ContentLPanel.Controls.Add(this.MenuTable);
+            this.ContentLPanel.Controls.Add(this.ContentLInsidePanel);
             this.ContentLPanel.Dock = System.Windows.Forms.DockStyle.Left;
             this.ContentLPanel.Location = new System.Drawing.Point(0, 0);
             this.ContentLPanel.Name = "ContentLPanel";
-            this.ContentLPanel.Size = new System.Drawing.Size(124, 262);
+            this.ContentLPanel.Size = new System.Drawing.Size(146, 262);
             this.ContentLPanel.TabIndex = 2;
             // 
-            // MenuTable
+            // ContentLInsidePanel
             // 
-            this.MenuTable.ColumnCount = 1;
-            this.MenuTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
-            this.MenuTable.Controls.Add(this.FileCopyTabButton, 0, 0);
-            this.MenuTable.Controls.Add(this.ImageResizeTabButton, 0, 1);
-            this.MenuTable.Controls.Add(this.VbCsharpTabButton, 0, 2);
-            this.MenuTable.Controls.Add(this.WiiUcetkTabButton, 0, 3);
-            this.MenuTable.Controls.Add(this.ConfigTabButton, 0, 4);
-            this.MenuTable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.MenuTable.Location = new System.Drawing.Point(0, 0);
-            this.MenuTable.Name = "MenuTable";
-            this.MenuTable.Padding = new System.Windows.Forms.Padding(1);
-            this.MenuTable.RowCount = 5;
-            this.MenuTable.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.MenuTable.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.MenuTable.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.MenuTable.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.MenuTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.MenuTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.MenuTable.Size = new System.Drawing.Size(124, 262);
-            this.MenuTable.SizeOriginal = new System.Drawing.Size(124, 262);
-            this.MenuTable.TabIndex = 5;
-            // 
-            // FileCopyTabButton
-            // 
-            this.FileCopyTabButton.BorderColorDefault = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(223)))), ((int)(((byte)(229)))));
-            this.FileCopyTabButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.FileCopyTabButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(223)))), ((int)(((byte)(229)))));
-            this.FileCopyTabButton.FlatAppearance.BorderSize = 0;
-            this.FileCopyTabButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
-            this.FileCopyTabButton.Location = new System.Drawing.Point(1, 1);
-            this.FileCopyTabButton.Margin = new System.Windows.Forms.Padding(0, 0, 0, 2);
-            this.FileCopyTabButton.Name = "FileCopyTabButton";
-            this.FileCopyTabButton.Size = new System.Drawing.Size(122, 34);
-            this.FileCopyTabButton.TabIndex = 0;
-            this.FileCopyTabButton.Text = "File Copy";
-            // 
-            // ImageResizeTabButton
-            // 
-            this.ImageResizeTabButton.BorderColorDefault = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(223)))), ((int)(((byte)(229)))));
-            this.ImageResizeTabButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ImageResizeTabButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(223)))), ((int)(((byte)(229)))));
-            this.ImageResizeTabButton.FlatAppearance.BorderSize = 0;
-            this.ImageResizeTabButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
-            this.ImageResizeTabButton.Location = new System.Drawing.Point(1, 39);
-            this.ImageResizeTabButton.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
-            this.ImageResizeTabButton.Name = "ImageResizeTabButton";
-            this.ImageResizeTabButton.Size = new System.Drawing.Size(122, 34);
-            this.ImageResizeTabButton.TabIndex = 1;
-            this.ImageResizeTabButton.Text = "Image Resize";
-            // 
-            // VbCsharpTabButton
-            // 
-            this.VbCsharpTabButton.BorderColorDefault = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(223)))), ((int)(((byte)(229)))));
-            this.VbCsharpTabButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.VbCsharpTabButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(223)))), ((int)(((byte)(229)))));
-            this.VbCsharpTabButton.FlatAppearance.BorderSize = 0;
-            this.VbCsharpTabButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
-            this.VbCsharpTabButton.Location = new System.Drawing.Point(1, 77);
-            this.VbCsharpTabButton.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
-            this.VbCsharpTabButton.Name = "VbCsharpTabButton";
-            this.VbCsharpTabButton.Size = new System.Drawing.Size(122, 34);
-            this.VbCsharpTabButton.TabIndex = 2;
-            this.VbCsharpTabButton.Text = "VB to CSharp";
-            // 
-            // WiiUcetkTabButton
-            // 
-            this.WiiUcetkTabButton.BorderColorDefault = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(223)))), ((int)(((byte)(229)))));
-            this.WiiUcetkTabButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.WiiUcetkTabButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(223)))), ((int)(((byte)(229)))));
-            this.WiiUcetkTabButton.FlatAppearance.BorderSize = 0;
-            this.WiiUcetkTabButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
-            this.WiiUcetkTabButton.Location = new System.Drawing.Point(1, 115);
-            this.WiiUcetkTabButton.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
-            this.WiiUcetkTabButton.Name = "WiiUcetkTabButton";
-            this.WiiUcetkTabButton.Size = new System.Drawing.Size(122, 34);
-            this.WiiUcetkTabButton.TabIndex = 3;
-            this.WiiUcetkTabButton.Text = "WiiU cetk";
-            // 
-            // ConfigTabButton
-            // 
-            this.ConfigTabButton.BorderColorDefault = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(223)))), ((int)(((byte)(229)))));
-            this.ConfigTabButton.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.ConfigTabButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(223)))), ((int)(((byte)(229)))));
-            this.ConfigTabButton.FlatAppearance.BorderSize = 0;
-            this.ConfigTabButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
-            this.ConfigTabButton.Location = new System.Drawing.Point(1, 227);
-            this.ConfigTabButton.Margin = new System.Windows.Forms.Padding(0, 2, 0, 0);
-            this.ConfigTabButton.Name = "ConfigTabButton";
-            this.ConfigTabButton.Size = new System.Drawing.Size(122, 34);
-            this.ConfigTabButton.TabIndex = 4;
-            this.ConfigTabButton.Text = "Config";
+            this.ContentLInsidePanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ContentLInsidePanel.Location = new System.Drawing.Point(0, 0);
+            this.ContentLInsidePanel.Name = "ContentLInsidePanel";
+            this.ContentLInsidePanel.Size = new System.Drawing.Size(146, 262);
+            this.ContentLInsidePanel.TabIndex = 6;
             // 
             // MainContentForm
             // 
@@ -176,8 +83,6 @@ namespace FBITools
             this.Text = "MainContentForm";
             this.ContentRPanel.ResumeLayout(false);
             this.ContentLPanel.ResumeLayout(false);
-            this.ContentLPanel.PerformLayout();
-            this.MenuTable.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -185,13 +90,8 @@ namespace FBITools
         #endregion
 
         internal FlatPanelA ContentLPanel;
-        internal FlatButtonA FileCopyTabButton;
         internal FlatPanelA ContentRPanel;
         internal FlatPanelA ContentRInsidePanel;
-        private FlatTableLayoutPanelA MenuTable;
-        internal FlatButtonA ConfigTabButton;
-        internal FlatButtonA ImageResizeTabButton;
-        internal FlatButtonA VbCsharpTabButton;
-        internal FlatButtonA WiiUcetkTabButton;
+        internal FlatPanelA ContentLInsidePanel;
     }
 }

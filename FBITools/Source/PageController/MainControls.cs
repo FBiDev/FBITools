@@ -11,9 +11,20 @@ namespace FBITools
 
         private FlatPanelA ContentLPanel { get { return Page.ContentLPanel; } }
 
+        private FlatPanelA ContentLInsidePanel { get { return Page.ContentLInsidePanel; } }
+
         private FlatPanelA ContentRPanel { get { return Page.ContentRPanel; } }
 
         private FlatPanelA ContentRInsidePanel { get { return Page.ContentRInsidePanel; } }
+    }
+
+    public partial class MainMenuController
+    {
+        private MainMenuForm Page
+        {
+            get { return Session.MainMenuPage; }
+            set { Session.MainMenuPage = value; }
+        }
 
         private FlatButtonA FileCopyTabButton { get { return Page.FileCopyTabButton; } }
 

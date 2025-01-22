@@ -5,7 +5,7 @@
         public MainContentForm()
         {
             InitializeComponent();
-            var _ = new MainContentController(this);
+            Session.MainContentController = new MainContentController(this);
         }
     }
 }

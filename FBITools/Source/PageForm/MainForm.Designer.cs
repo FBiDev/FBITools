@@ -31,18 +31,18 @@ namespace FBITools
         {
             this.SuspendLayout();
             // 
-            // pnlContent
+            // ContentPanel
             // 
             this.ContentPanel.Size = new System.Drawing.Size(405, 258);
             // 
-            // staStatus
+            // MainStatusBar
             // 
             this.MainStatusBar.Size = new System.Drawing.Size(431, 24);
             // 
             // MainForm
             // 
             this.ClientSize = new System.Drawing.Size(431, 308);
-            this.MinimumSize = new System.Drawing.Size(420, 290);
+            this.MinimumSize = new System.Drawing.Size(356, 253);
             this.Name = "MainForm";
             this.Text = "FBI Tools";
             this.ResumeLayout(false);

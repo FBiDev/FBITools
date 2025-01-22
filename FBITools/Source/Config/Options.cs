@@ -50,7 +50,15 @@ namespace FBITools
 
         public bool Load()
         {
-            return IsLoaded = Json.Load(this, FileName);
+            IsLoaded = Json.Load(this, FileName);
+
+            MainBaseForm.AutoCenterWindow = IsAutoCenterWindow;
+            MainBaseForm.AutoResizeWindow = IsAutoResizeWindow;
+
+            MainBaseForm.DebugMode = IsDebugMode;
+            DebugManager.Enable = IsDebugMode;
+
+            return IsLoaded;
         }
 
         public bool Update()
@@ -61,14 +69,15 @@ namespace FBITools
         public bool ToggleDarkMode()
         {
             IsDarkMode = Theme.ToggleDarkTheme();
+
             return Update();
         }
 
         public bool ToggleDebugMode()
         {
             IsDebugMode = !IsDebugMode;
-            DebugManager.Enable = IsDebugMode;
             MainBaseForm.DebugMode = IsDebugMode;
+            DebugManager.Enable = IsDebugMode;
 
             return Update();
         }
@@ -77,6 +86,7 @@ namespace FBITools
         {
             IsAutoCenterWindow = !IsAutoCenterWindow;
             MainBaseForm.AutoCenterWindow = IsAutoCenterWindow;
+
             return Update();
         }
 
@@ -84,6 +94,7 @@ namespace FBITools
         {
             IsAutoResizeWindow = !IsAutoResizeWindow;
             MainBaseForm.AutoResizeWindow = IsAutoResizeWindow;
+
             return Update();
         }
     }
