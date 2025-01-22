@@ -109,12 +109,12 @@
     <Compile Include="Source\Config\Options.cs" />
     <Compile Include="Source\Config\Theme.cs" />
     <Compile Include="Source\PageController\ConfigController.cs" />
-    <Compile Include="Source\PageController\MainMenuController.cs" />
+    <Compile Include="Source\PageMaster\Controller\MainMenuController.cs" />
     <Compile Include="Source\PageController\WiiUcetkController.cs" />
     <Compile Include="Source\PageController\VbToCsharpController.cs" />
     <Compile Include="Source\PageController\ImageResizeController.cs" />
-    <Compile Include="Source\PageController\MainController.cs" />
-    <Compile Include="Source\PageController\MainContentController.cs" />
+    <Compile Include="Source\PageMaster\Controller\MainController.cs" />
+    <Compile Include="Source\PageMaster\Controller\MainContentController.cs" />
     <Compile Include="Source\Asset\CustomControl\FlatButtonA.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -127,17 +127,17 @@
     <Compile Include="Source\Asset\CustomControl\FlatTextBoxA.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Source\PageController\MainControls.cs" />
+    <Compile Include="Source\PageMaster\Controller\MainControls.cs" />
     <Compile Include="Source\PageForm\ConfigForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Source\PageForm\ConfigForm.Designer.cs">
       <DependentUpon>ConfigForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\PageForm\MainMenuForm.cs">
+    <Compile Include="Source\PageMaster\Form\MainMenuForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Source\PageForm\MainMenuForm.Designer.cs">
+    <Compile Include="Source\PageMaster\Form\MainMenuForm.Designer.cs">
       <DependentUpon>MainMenuForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Source\PageForm\WiiUcetkForm.cs">
@@ -158,10 +158,10 @@
     <Compile Include="Source\PageForm\ImageResizeForm.Designer.cs">
       <DependentUpon>ImageResizeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\PageForm\MainContentForm.cs">
+    <Compile Include="Source\PageMaster\Form\MainContentForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Source\PageForm\MainContentForm.Designer.cs">
+    <Compile Include="Source\PageMaster\Form\MainContentForm.Designer.cs">
       <DependentUpon>MainContentForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Source\PageForm\FileCopyForm.cs">
@@ -170,10 +170,10 @@
     <Compile Include="Source\PageForm\FileCopyForm.Designer.cs">
       <DependentUpon>FileCopyForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\PageForm\MainForm.cs">
+    <Compile Include="Source\PageMaster\Form\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Source\PageForm\MainForm.Designer.cs">
+    <Compile Include="Source\PageMaster\Form\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -186,7 +186,7 @@
     <EmbeddedResource Include="Source\PageForm\ConfigForm.resx">
       <DependentUpon>ConfigForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\PageForm\MainMenuForm.resx">
+    <EmbeddedResource Include="Source\PageMaster\Form\MainMenuForm.resx">
       <DependentUpon>MainMenuForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Source\PageForm\WiiUcetkForm.resx">
@@ -198,13 +198,13 @@
     <EmbeddedResource Include="Source\PageForm\ImageResizeForm.resx">
       <DependentUpon>ImageResizeForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\PageForm\MainContentForm.resx">
+    <EmbeddedResource Include="Source\PageMaster\Form\MainContentForm.resx">
       <DependentUpon>MainContentForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Source\PageForm\FileCopyForm.resx">
       <DependentUpon>FileCopyForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\PageForm\MainForm.resx">
+    <EmbeddedResource Include="Source\PageMaster\Form\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
