@@ -29,15 +29,15 @@ namespace FBITools
         /// </summary>
         private void InitializeComponent()
         {
-            this.MainContentTable = new FBITools.FlatTableLayoutPanelA();
-            this.InputTable = new FBITools.FlatTableLayoutPanelA();
+            this.MainContentTable = new FBITools.FlatTableA();
+            this.InputTable = new FBITools.FlatTableA();
             this.TitleLabel = new FBITools.FlatLabelA();
             this.InputTextBox = new FBITools.FlatTextBoxA();
             this.ConvertButton = new FBITools.FlatButtonA();
             this.CopyResultButton = new FBITools.FlatButtonA();
             this.ClearButton = new FBITools.FlatButtonA();
             this.WarningLabel = new FBITools.FlatLabelA();
-            this.ResultTable = new FBITools.FlatTableLayoutPanelA();
+            this.ResultTable = new FBITools.FlatTableA();
             this.OutputTextBox = new FBITools.FlatTextBoxA();
             this.MainContentTable.SuspendLayout();
             this.InputTable.SuspendLayout();
@@ -226,13 +226,13 @@ namespace FBITools
 
         private FlatLabelA TitleLabel;
         internal FlatTextBoxA InputTextBox;
-        private FlatTableLayoutPanelA MainContentTable;
+        private FlatTableA MainContentTable;
         internal FlatButtonA ConvertButton;
         internal FlatLabelA WarningLabel;
-        private FlatTableLayoutPanelA ResultTable;
+        private FlatTableA ResultTable;
         internal FlatButtonA CopyResultButton;
         internal FlatButtonA ClearButton;
         internal FlatTextBoxA OutputTextBox;
-        private FlatTableLayoutPanelA InputTable;
+        private FlatTableA InputTable;
     }
 }

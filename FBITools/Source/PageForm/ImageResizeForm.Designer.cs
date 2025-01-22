@@ -29,8 +29,8 @@ namespace FBITools
         /// </summary>
         private void InitializeComponent()
         {
-            this.MainContentTable = new FBITools.FlatTableLayoutPanelA();
-            this.InputTable = new FBITools.FlatTableLayoutPanelA();
+            this.MainContentTable = new FBITools.FlatTableA();
+            this.InputTable = new FBITools.FlatTableA();
             this.TitleLabel = new FBITools.FlatLabelA();
             this.OriginButton = new FBITools.FlatButtonA();
             this.OriginTextBox = new FBITools.FlatTextBoxA();
@@ -52,7 +52,7 @@ namespace FBITools
             this.JPGLabel = new FBITools.FlatLabelA();
             this.JpgQualityComboBox = new FBITools.FlatComboBoxA();
             this.JpgChromaSubsampleComboBox = new FBITools.FlatComboBoxA();
-            this.ResultTable = new FBITools.FlatTableLayoutPanelA();
+            this.ResultTable = new FBITools.FlatTableA();
             this.ResizeButton = new FBITools.FlatButtonA();
             this.WarningLabel = new FBITools.FlatLabelA();
             this.DropPictureBox = new FBITools.FlatPictureBoxA();
@@ -533,8 +533,8 @@ namespace FBITools
         internal FlatTextBoxA DestinationTextBox;
         internal FlatButtonA ResizeButton;
         internal FlatLabelA WarningLabel;
-        private FlatTableLayoutPanelA MainContentTable;
-        private FlatTableLayoutPanelA ResultTable;
+        private FlatTableA MainContentTable;
+        private FlatTableA ResultTable;
         internal FlatPictureBoxA DropPictureBox;
         internal FlatPictureBoxA ResizedPictureBox;
         internal FlatComboBoxA SizesComboBox;
@@ -554,6 +554,6 @@ namespace FBITools
         private FlatLabelA JPGLabel;
         internal FlatComboBoxA JpgQualityComboBox;
         internal FlatComboBoxA JpgChromaSubsampleComboBox;
-        private FlatTableLayoutPanelA InputTable;
+        private FlatTableA InputTable;
     }
 }

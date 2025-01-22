@@ -62,7 +62,7 @@ namespace FBITools
             set { Session.FileCopyPage = value; }
         }
 
-        private FlatTableLayoutPanelA InputTable { get { return Page.InputTable; } }
+        private FlatTableA InputTable { get { return Page.InputTable; } }
 
         private FlatLabelA WarningLabel { get { return Page.WarningLabel; } }
 

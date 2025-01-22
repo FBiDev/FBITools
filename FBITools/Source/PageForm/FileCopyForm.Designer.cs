@@ -29,8 +29,8 @@ namespace FBITools
         /// </summary>
         private void InitializeComponent()
         {
-            this.MainContentTable = new FBITools.FlatTableLayoutPanelA();
-            this.InputTable = new FBITools.FlatTableLayoutPanelA();
+            this.MainContentTable = new FBITools.FlatTableA();
+            this.InputTable = new FBITools.FlatTableA();
             this.TitleLabel = new FBITools.FlatLabelA();
             this.OriginButton = new FBITools.FlatButtonA();
             this.OriginTextBox = new FBITools.FlatTextBoxA();
@@ -39,7 +39,7 @@ namespace FBITools
             this.TypeComboBox = new FBITools.FlatComboBoxA();
             this.TimerComboBox = new FBITools.FlatComboBoxA();
             this.CustomDestinationCheckBox = new FBITools.FlatCheckBoxA();
-            this.ResultTable = new FBITools.FlatTableLayoutPanelA();
+            this.ResultTable = new FBITools.FlatTableA();
             this.CopyButton = new FBITools.FlatButtonA();
             this.WarningLabel = new FBITools.FlatLabelA();
             this.MainContentTable.SuspendLayout();
@@ -271,11 +271,11 @@ namespace FBITools
         internal FlatTextBoxA DestinationTextBox;
         internal FlatButtonA CopyButton;
         internal FlatLabelA WarningLabel;
-        private FlatTableLayoutPanelA MainContentTable;
+        private FlatTableA MainContentTable;
         internal FlatComboBoxA TypeComboBox;
         internal FlatComboBoxA TimerComboBox;
-        internal FlatTableLayoutPanelA InputTable;
-        private FlatTableLayoutPanelA ResultTable;
+        internal FlatTableA InputTable;
+        private FlatTableA ResultTable;
         internal FlatCheckBoxA CustomDestinationCheckBox;
     }
 }

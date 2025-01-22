@@ -33,8 +33,8 @@ namespace FBITools.WiiU
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            this.MainContentTable = new FBITools.FlatTableLayoutPanelA();
-            this.InputTable = new FBITools.FlatTableLayoutPanelA();
+            this.MainContentTable = new FBITools.FlatTableA();
+            this.InputTable = new FBITools.FlatTableA();
             this.TitleLabel = new FBITools.FlatLabelA();
             this.TitleIDTextBox = new FBITools.FlatMaskedTextBoxA();
             this.TitleNameTextBox = new FBITools.FlatTextBoxA();
@@ -42,7 +42,7 @@ namespace FBITools.WiiU
             this.CategoryCheckedList = new FBITools.FlatCheckedListA();
             this.GenerateCetkButton = new FBITools.FlatButtonA();
             this.WarningLabel = new FBITools.FlatLabelA();
-            this.ResultTable = new FBITools.FlatTableLayoutPanelA();
+            this.ResultTable = new FBITools.FlatTableA();
             this.TitlesGrid = new FBITools.FlatDataGridA();
             this.TitlesStatusBar = new FBITools.FlatStatusBarA();
             this.MainContentTable.SuspendLayout();
@@ -291,15 +291,15 @@ namespace FBITools.WiiU
 
         private FlatLabelA TitleLabel;
         internal FlatMaskedTextBoxA TitleIDTextBox;
-        private FlatTableLayoutPanelA MainContentTable;
+        private FlatTableA MainContentTable;
         internal FlatButtonA GenerateCetkButton;
         internal FlatLabelA WarningLabel;
-        private FlatTableLayoutPanelA ResultTable;
+        private FlatTableA ResultTable;
         internal FlatTextBoxA TitleNameTextBox;
         internal FlatDataGridA TitlesGrid;
         internal FlatCheckedListA RegionCheckedList;
         internal FlatCheckedListA CategoryCheckedList;
         internal FlatStatusBarA TitlesStatusBar;
-        private FlatTableLayoutPanelA InputTable;
+        private FlatTableA InputTable;
     }
 }

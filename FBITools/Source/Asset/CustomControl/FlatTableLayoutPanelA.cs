@@ -1,6 +1,6 @@
 ﻿namespace FBITools
 {
-    public class FlatTableLayoutPanelA : App.Core.Desktop.FlatTable
+    public class FlatTableA : App.Core.Desktop.FlatTable
     {
     }
 }

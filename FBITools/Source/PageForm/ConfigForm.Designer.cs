@@ -29,8 +29,8 @@ namespace FBITools
         /// </summary>
         private void InitializeComponent()
         {
-            this.MainContentTable = new FBITools.FlatTableLayoutPanelA();
-            this.InputTable = new FBITools.FlatTableLayoutPanelA();
+            this.MainContentTable = new FBITools.FlatTableA();
+            this.InputTable = new FBITools.FlatTableA();
             this.TitleLabel = new FBITools.FlatLabelA();
             this.DarkModeCheckBox = new FBITools.FlatCheckBoxA();
             this.AutoCenterWindowCheckBox = new FBITools.FlatCheckBoxA();
@@ -157,12 +157,12 @@ namespace FBITools
         #endregion
 
         private FlatLabelA TitleLabel;
-        private FlatTableLayoutPanelA MainContentTable;
+        private FlatTableA MainContentTable;
         internal FlatCheckBoxA DarkModeCheckBox;
         internal FlatCheckBoxA DebugModeCheckBox;
         internal FlatCheckBoxA AutoResizeWindowCheckBox;
         internal FlatCheckBoxA AutoCenterWindowCheckBox;
-        private FlatTableLayoutPanelA InputTable;
+        private FlatTableA InputTable;
 
     }
 }

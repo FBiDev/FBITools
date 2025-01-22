@@ -29,8 +29,8 @@ namespace FBITools
         /// </summary>
         private void InitializeComponent()
         {
-            this.MainContentTable = new FBITools.FlatTableLayoutPanelA();
-            this.InputTable = new FBITools.FlatTableLayoutPanelA();
+            this.MainContentTable = new FBITools.FlatTableA();
+            this.InputTable = new FBITools.FlatTableA();
             this.FileCopyTabButton = new FBITools.FlatButtonA();
             this.ImageResizeTabButton = new FBITools.FlatButtonA();
             this.VbCsharpTabButton = new FBITools.FlatButtonA();
@@ -173,8 +173,8 @@ namespace FBITools
 
         #endregion
 
-        private FlatTableLayoutPanelA MainContentTable;
-        private FlatTableLayoutPanelA InputTable;
+        private FlatTableA MainContentTable;
+        private FlatTableA InputTable;
         internal FlatButtonA FileCopyTabButton;
         internal FlatButtonA ImageResizeTabButton;
         internal FlatButtonA VbCsharpTabButton;
