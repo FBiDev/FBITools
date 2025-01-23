@@ -60,8 +60,8 @@ namespace FBITools
             contentPage.Dock = DockStyle.Fill;
             contentPage.Focus();
 
-            var newSize = new Size(ContentLPanel.Width + 4, 0);
-            Session.MainPage.ResizeWindow(contentPage.SizeOriginal, newSize);
+            var additionalSize = new Size(ContentLPanel.Width + 4, 0);
+            Session.MainPage.ResizeWindow(contentPage.SizeOriginal, additionalSize);
             contentPage.AutoScroll = true;
 
             // Fix Resize Selection End
