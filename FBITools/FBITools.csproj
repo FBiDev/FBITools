@@ -93,7 +93,7 @@
     <Compile Include="Source\Asset\CustomControl\FlatStatusBarA.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Source\Asset\CustomControl\FlatTableLayoutPanelA.cs">
+    <Compile Include="Source\Asset\CustomControl\FlatTableA.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="Source\ModelDao\WiiU\TitleDao.cs" />
