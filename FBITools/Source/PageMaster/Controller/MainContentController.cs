@@ -60,8 +60,12 @@ namespace FBITools
             contentPage.Dock = DockStyle.Fill;
             contentPage.Focus();
 
-            var additionalSize = new Size(ContentLPanel.Width + 4, 0);
-            Session.MainPage.ResizeWindow(contentPage.SizeOriginal, additionalSize);
+            if (Session.Options.IsAutoResizeWindow)
+            {
+                var additionalSize = new Size(ContentLPanel.Width + 4, 0);
+                Session.MainPage.ResizeWindow(contentPage.SizeOriginal, additionalSize);
+            }
+
             contentPage.AutoScroll = true;
 
             // Fix Resize Selection End
@@ -78,7 +82,7 @@ namespace FBITools
             CenterMainWindow(contentPage).TryAwait();
         }
 
-        private void SetMenu<T>(object sender, T contentPage) where T : ContentBaseForm, new()
+        private void SetMenu<T>(T contentPage) where T : ContentBaseForm, new()
         {
             if (contentPage == null || contentPage.IsDisposed)
             {
@@ -122,7 +126,7 @@ namespace FBITools
 
         private void Page_Shown(object sender, EventArgs ev)
         {
-            SetMenu(sender, new MainMenuForm());
+            SetMenu(new MainMenuForm());
 
             if (SelectedTab != null)
             {
@@ -164,24 +168,6 @@ namespace FBITools
 
             clickedButton.Selected = true;
             SelectedTab = clickedButton;
-        }
-
-        private void ResizeContent(Size contentSize)
-        {
-            if (Session.Options.IsAutoResizeWindow == false)
-            {
-                return;
-            }
-
-            var newW = contentSize.Width + ContentLPanel.Width + 30;
-            var newH = contentSize.Height + 26;
-
-            if (Session.MainPage.StatusBarEnable)
-            {
-                newH += 24;
-            }
-
-            Session.MainPage.ClientSize = new Size(newW, newH);
         }
 
         private async Task CenterMainWindow<T>(T contentPage) where T : ContentBaseForm, new()
