@@ -36,9 +36,9 @@ namespace FBITools
             this.OriginTextBox = new FBITools.FlatTextBoxA();
             this.DestinationButton = new FBITools.FlatButtonA();
             this.DestinationTextBox = new FBITools.FlatTextBoxA();
+            this.CustomDestinationCheckBox = new FBITools.FlatCheckBoxA();
             this.TypeComboBox = new FBITools.FlatComboBoxA();
             this.TimerComboBox = new FBITools.FlatComboBoxA();
-            this.CustomDestinationCheckBox = new FBITools.FlatCheckBoxA();
             this.ResultTable = new FBITools.FlatTableA();
             this.CopyButton = new FBITools.FlatButtonA();
             this.WarningLabel = new FBITools.FlatLabelA();
@@ -126,7 +126,6 @@ namespace FBITools
             this.OriginTextBox.BackgroundColorFocus = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.OriginTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.OriginTextBox.Enabled = false;
-            this.OriginTextBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.OriginTextBox.LabelText = "File";
             this.OriginTextBox.Location = new System.Drawing.Point(104, 38);
             this.OriginTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 0, 2);
@@ -157,7 +156,6 @@ namespace FBITools
             this.DestinationTextBox.BackgroundColorFocus = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(255)))), ((int)(((byte)(255)))));
             this.DestinationTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.DestinationTextBox.Enabled = false;
-            this.DestinationTextBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.DestinationTextBox.LabelText = "File";
             this.DestinationTextBox.Location = new System.Drawing.Point(104, 76);
             this.DestinationTextBox.Margin = new System.Windows.Forms.Padding(2, 2, 0, 2);
@@ -167,6 +165,17 @@ namespace FBITools
             this.DestinationTextBox.ReadOnly = true;
             this.DestinationTextBox.Size = new System.Drawing.Size(324, 34);
             this.DestinationTextBox.TabIndex = 4;
+            // 
+            // CustomDestinationCheckBox
+            // 
+            this.InputTable.SetColumnSpan(this.CustomDestinationCheckBox, 2);
+            this.CustomDestinationCheckBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.CustomDestinationCheckBox.Location = new System.Drawing.Point(0, 114);
+            this.CustomDestinationCheckBox.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
+            this.CustomDestinationCheckBox.Name = "CustomDestinationCheckBox";
+            this.CustomDestinationCheckBox.Size = new System.Drawing.Size(428, 34);
+            this.CustomDestinationCheckBox.TabIndex = 5;
+            this.CustomDestinationCheckBox.TextLegend = "Custom Destination";
             // 
             // TypeComboBox
             // 
@@ -178,7 +187,7 @@ namespace FBITools
             this.TypeComboBox.Margin = new System.Windows.Forms.Padding(0, 2, 2, 0);
             this.TypeComboBox.Name = "TypeComboBox";
             this.TypeComboBox.Size = new System.Drawing.Size(100, 34);
-            this.TypeComboBox.TabIndex = 5;
+            this.TypeComboBox.TabIndex = 6;
             // 
             // TimerComboBox
             // 
@@ -190,18 +199,7 @@ namespace FBITools
             this.TimerComboBox.Margin = new System.Windows.Forms.Padding(2, 2, 0, 0);
             this.TimerComboBox.Name = "TimerComboBox";
             this.TimerComboBox.Size = new System.Drawing.Size(324, 34);
-            this.TimerComboBox.TabIndex = 6;
-            // 
-            // CustomDestinationCheckBox
-            // 
-            this.InputTable.SetColumnSpan(this.CustomDestinationCheckBox, 2);
-            this.CustomDestinationCheckBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.CustomDestinationCheckBox.Location = new System.Drawing.Point(0, 114);
-            this.CustomDestinationCheckBox.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
-            this.CustomDestinationCheckBox.Name = "CustomDestinationCheckBox";
-            this.CustomDestinationCheckBox.Size = new System.Drawing.Size(428, 34);
-            this.CustomDestinationCheckBox.TabIndex = 7;
-            this.CustomDestinationCheckBox.TextLegend = "Custom Destination";
+            this.TimerComboBox.TabIndex = 7;
             // 
             // ResultTable
             // 

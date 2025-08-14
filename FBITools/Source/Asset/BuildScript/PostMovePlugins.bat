@@ -5,10 +5,10 @@ set "EventType=Post-build"
 set "EventName=Move Plugins"
 
 set "ProjectName=%1"
-set "PlatformName=%2"
-set "ProjectFileName=%3"
-set "SolutionDir=%4"
-set "TargetDir=%5"
+set "TargetDir=%2"
+set "SolutionDir=%3"
+set "PlatformName=%4"
+set "ProjectFileName=%5"
 
 set "Platform=x64"
 
@@ -25,7 +25,7 @@ if /I %PlatformName%==AnyCPU (
 	set Platform=x86
 )
 
-robocopy "%SolutionDir%..\App\Bin\%Platform%\ " "%TargetDir%Plugins\%Platform%\ " SQLite.Interop.dll /XO
+:: robocopy "%SolutionDir%..\App\Bin\%Platform%\ " "%TargetDir%Plugins\%Platform%\ " SQLite.Interop.dll /XO
 
 robocopy "%TargetDir% " "%TargetDir%Plugins\ " /XF %ProjectName%.* *.json /IS /MOV /XD Plugins
 

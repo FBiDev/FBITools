@@ -5,8 +5,7 @@ set "EventType=Pre-build"
 set "EventName=Clean Plugins"
 
 set "ProjectName=%1"
-set "ProjectDir=%2"
-set "TargetDir=%3"
+set "TargetDir=%2"
 
 echo ===============================================================================
 echo    Project      ::     %ProjectName%

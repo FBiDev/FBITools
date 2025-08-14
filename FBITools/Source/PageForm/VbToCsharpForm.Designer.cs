@@ -105,7 +105,6 @@ namespace FBITools
             // 
             this.InputTable.SetColumnSpan(this.InputTextBox, 3);
             this.InputTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.InputTextBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.InputTextBox.LabelText = "Input";
             this.InputTextBox.Location = new System.Drawing.Point(0, 38);
             this.InputTextBox.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
@@ -192,7 +191,6 @@ namespace FBITools
             // OutputTextBox
             // 
             this.OutputTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.OutputTextBox.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.OutputTextBox.LabelText = "Output";
             this.OutputTextBox.Location = new System.Drawing.Point(0, 2);
             this.OutputTextBox.Margin = new System.Windows.Forms.Padding(0, 2, 0, 0);

@@ -244,12 +244,12 @@
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
     <PostBuildEvent>call "$(ProjectDir)Source\Asset\BuildScript\PostMovePlugins.bat" ^
-$(ProjectName), $(Platform), $(ProjectDir)$(ProjectFileName), ^
-$(SolutionDir), $(TargetDir)</PostBuildEvent>
+$(ProjectName), $(TargetDir), $(SolutionDir), ^
+$(Platform), $(ProjectDir)$(ProjectFileName)</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PreBuildEvent>call "$(ProjectDir)Source\Asset\BuildScript\PrePurgePlugins.bat" ^
-$(ProjectName), $(ProjectDir), $(TargetDir)</PreBuildEvent>
+$(ProjectName), $(TargetDir)</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
