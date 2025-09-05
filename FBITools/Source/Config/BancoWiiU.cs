@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Threading.Tasks;
 using App.Core;
@@ -39,13 +38,13 @@ namespace FBITools.WiiU
             Database.ConnectionString = string.Empty;
         }
 
-        public static async Task<DataTable> ExecutarSelect(string sql, List<SqlParameter> parameters = null, string storedProcedure = default(string))
+        public static async Task<DataTable> ExecutarSelect(SqlQuery sql)
         {
             if (IsLoaded)
             {
                 try
                 {
-                    return await Database.ExecuteSelect(sql, parameters, storedProcedure);
+                    return await Database.ExecuteSelect(sql);
                 }
                 catch (Exception ex)
                 {
@@ -56,13 +55,13 @@ namespace FBITools.WiiU
             return new DataTable();
         }
 
-        public static async Task<string> ExecutarSelectString(string sql, List<SqlParameter> parameters = null)
+        public static async Task<string> ExecutarSelectString(SqlQuery sql)
         {
             if (IsLoaded)
             {
                 try
                 {
-                    return await Database.ExecuteSelectString(sql, parameters);
+                    return await Database.ExecuteSelectString(sql);
                 }
                 catch (Exception ex)
                 {
@@ -73,13 +72,13 @@ namespace FBITools.WiiU
             return string.Empty;
         }
 
-        public static async Task<SqlResult> Executar(string sql, DatabaseAction action, List<SqlParameter> parameters)
+        public static async Task<SqlResult> Executar(SqlQuery sql)
         {
             if (IsLoaded)
             {
                 try
                 {
-                    return await Database.Execute(sql, action, parameters);
+                    return await Database.Execute(sql);
                 }
                 catch (Exception ex)
                 {

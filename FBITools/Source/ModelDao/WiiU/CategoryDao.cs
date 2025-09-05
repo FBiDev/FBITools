@@ -1,42 +1,54 @@
 ﻿using System.Collections.Generic;
+using System.Data;
 using System.Threading.Tasks;
 using App.Core;
-using App.Core.Desktop;
 using FBITools.Properties;
 
 namespace FBITools.WiiU.Dao
 {
-    public class CategoryDao : DatabaseDao
+    public class CategoryDao : DaoBase
     {
         #region " _Select "
-        public async Task<List<Category>> Search(Category obj)
-        {
-            obj = obj ?? new Category();
-
-            var sql = Resources.sql_WiiUCategory_List;
-            var parameters = GetFilters(obj);
-
-            return Load<List<Category>>(await BancoWiiU.ExecutarSelect(sql, parameters));
-        }
-
         public async Task<List<Category>> List()
         {
-            return await Search(null);
+            return await Select();
+        }
+
+        public async Task<List<Category>> Search(Category obj)
+        {
+            return await Select(obj);
         }
 
         public async Task<Category> Find(Category obj)
         {
-            return (await Search(obj)).FirstOrNew();
+            return (await Select(obj)).FirstOrNew();
         }
         #endregion
 
-        #region " _Parameters "
-        private List<SqlParameter> GetFilters(Category obj)
+        #region " _Actions "
+        public async Task<List<Category>> Select(Category obj = null)
         {
-            return new List<SqlParameter>
+            obj = obj ?? new Category();
+
+            var sql = new SqlQuery(Resources.sql_WiiUCategory_List, DatabaseAction.Select);
+
+            return Load(await BancoWiiU.ExecutarSelect(sql));
+        }
+        #endregion
+
+        #region " _Load "
+        private List<Category> Load(DataTable table)
+        {
+            return table.ProcessRows<Category>((row, lst) =>
             {
-                ////new SqlParameter("@name", obj.Name)
-            };
+                var entity = new Category
+                {
+                    ID = row.Value<int>("ID"),
+                    Name = row.Value<string>("Name"),
+                };
+
+                lst.Add(entity);
+            });
         }
         #endregion
     }

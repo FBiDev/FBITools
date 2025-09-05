@@ -34,14 +34,14 @@ namespace FBITools.WiiU
         [Field("TitleKey")]
         public string Key { get; set; }
 
-        public static async Task<List<Title>> Search(Title obj)
-        {
-            return await DAO.Search(obj);
-        }
-
         public static async Task<List<Title>> List()
         {
             return await DAO.List();
+        }
+
+        public static async Task<List<Title>> Search(Title obj)
+        {
+            return await DAO.Search(obj);
         }
 
         public static async Task<Title> Find(Title obj)

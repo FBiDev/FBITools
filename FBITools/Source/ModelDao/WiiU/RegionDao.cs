@@ -1,42 +1,54 @@
 ﻿using System.Collections.Generic;
+using System.Data;
 using System.Threading.Tasks;
 using App.Core;
-using App.Core.Desktop;
 using FBITools.Properties;
 
 namespace FBITools.WiiU.Dao
 {
-    public class RegionDao : DatabaseDao
+    public class RegionDao : DaoBase
     {
         #region " _Select "
-        public async Task<List<Region>> Search(Region obj)
-        {
-            obj = obj ?? new Region();
-
-            var sql = Resources.sql_WiiURegion_List;
-            var parameters = GetFilters(obj);
-
-            return Load<List<Region>>(await BancoWiiU.ExecutarSelect(sql, parameters));
-        }
-
         public async Task<List<Region>> List()
         {
-            return await Search(null);
+            return await Select();
+        }
+
+        public async Task<List<Region>> Search(Region obj)
+        {
+            return await Select(obj);
         }
 
         public async Task<Region> Find(Region obj)
         {
-            return (await Search(obj)).FirstOrNew();
+            return (await Select(obj)).FirstOrNew();
         }
         #endregion
 
-        #region " _Parameters "
-        private List<SqlParameter> GetFilters(Region obj)
+        #region " _Actions "
+        public async Task<List<Region>> Select(Region obj = null)
         {
-            return new List<SqlParameter>
+            obj = obj ?? new Region();
+
+            var sql = new SqlQuery(Resources.sql_WiiURegion_List, DatabaseAction.Select);
+
+            return Load(await BancoWiiU.ExecutarSelect(sql));
+        }
+        #endregion
+
+        #region " _Load "
+        private List<Region> Load(DataTable table)
+        {
+            return table.ProcessRows<Region>((row, lst) =>
             {
-                ////new SqlParameter("@name", obj.Name)
-            };
+                var entity = new Region
+                {
+                    ID = row.Value<int>("ID"),
+                    Name = row.Value<string>("Name"),
+                };
+
+                lst.Add(entity);
+            });
         }
         #endregion
     }
