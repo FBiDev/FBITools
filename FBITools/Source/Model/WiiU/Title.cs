@@ -1,14 +1,9 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel;
-using System.Threading.Tasks;
-using FBITools.WiiU.Dao;
+﻿using System.ComponentModel;
 
 namespace FBITools.WiiU
 {
     public class Title
     {
-        private static readonly TitleDao DAO = new TitleDao();
-
         public Title()
         {
             ID = Name = Key = string.Empty;
@@ -33,21 +28,6 @@ namespace FBITools.WiiU
         [Display(AutoGenerateField = false)]
         [Field("TitleKey")]
         public string Key { get; set; }
-
-        public static async Task<List<Title>> List()
-        {
-            return await DAO.List();
-        }
-
-        public static async Task<List<Title>> Search(Title obj)
-        {
-            return await DAO.Search(obj);
-        }
-
-        public static async Task<Title> Find(Title obj)
-        {
-            return await DAO.Find(obj);
-        }
 
         public override string ToString()
         {

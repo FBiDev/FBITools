@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq;
 using System.Threading.Tasks;
 using App.Core;
 using App.Core.Desktop;
@@ -8,93 +7,110 @@ namespace FBITools.WiiU
 {
     public partial class WiiUcetkController
     {
-        private ListBind<Title> titles;
-        private ListBind<Title> titlesFilter;
+        private TitleService titleService;
+        private RegionService regionService;
+        private CategoryService categoryService;
 
+        #region InitializeForm
         public WiiUcetkController(WiiUcetkForm page)
         {
+            titleService = new TitleService();
+            regionService = new RegionService();
+            categoryService = new CategoryService();
+
             Page = page;
-            Page.Shown += Page_Shown;
+            Page.Shown += OnFormShown;
+            Page.FinalLoadOnceAsync += InitializeControls;
             Page.GotFocus += (s, e) => TitleIDTextBox.Focus();
-            Page.FinalLoadOnceAsync += Controls_Load;
         }
 
-        private void Page_Shown(object sender, EventArgs ev)
+        private void OnFormShown(object sender, EventArgs ev)
         {
-            WarningLabel.TextChanged += WarningLabel_TextChanged;
-            GenerateCetkButton.Click += GenerateCetkButton_Click;
+            RegisterShownEvents();
+            BindStatusBar();
+        }
 
-            TitleIDTextBox.TextChanged += (s, e) => SearchTitles().TryAwait();
-            TitleNameTextBox.TextChanged += (s, e) => SearchTitles().TryAwait();
+        private void RegisterShownEvents()
+        {
+            WarningLabel.TextChanged += async (s, e) => await ClearWarningLabel(s, e);
+            GenerateCetkButton.Click += OnGenerateCetkClicked;
 
+            TitleIDTextBox.TextChanged += (s, e) => FilterTitles().TryAwait();
+            TitleNameTextBox.TextChanged += (s, e) => FilterTitles().TryAwait();
+        }
+
+        private void BindStatusBar()
+        {
             TitlesGrid.Statusbar = TitlesStatusBar;
         }
+        #endregion
 
-        private async void WarningLabel_TextChanged(object sender, EventArgs e)
+        #region InitializeControls
+        private async Task InitializeControls()
+        {
+            await LoadControls();
+            RegisterControlsEvents();
+            await FilterTitles();
+        }
+
+        private async Task LoadControls()
+        {
+            RegionCheckedList.DataSource = await regionService.List();
+            RegionCheckedList.SetItemsChecked(true);
+
+            CategoryCheckedList.DataSource = await categoryService.List();
+            CategoryCheckedList.SetItemsChecked(true);
+        }
+
+        private void RegisterControlsEvents()
+        {
+            RegionCheckedList.ItemCheck += (s, e) => FilterTitles().TryAwait();
+            CategoryCheckedList.ItemCheck += (s, e) => FilterTitles().TryAwait();
+        }
+
+        private void UpdateGrid(ListBind<Title> list)
+        {
+            TitlesGrid.DataSource = list;
+            GenerateCetkButton.Enabled = list.Count > 0;
+        }
+
+        private async Task FilterTitles()
+        {
+            await titleService.FilterTitles(
+                TitleIDTextBox.Text,
+                TitleNameTextBox.Text,
+                region => RegionCheckedList.IsItemChecked(region),
+                category => CategoryCheckedList.IsItemChecked(category));
+
+            UpdateGrid(titleService.GetFilteredTitles());
+        }
+        #endregion
+
+        #region UserEvents
+        private async Task ClearWarningLabel(object sender, EventArgs e)
         {
             await TaskController.Delay(4);
             WarningLabel.Text = string.Empty;
         }
 
-        private async Task Controls_Load()
-        {
-            RegionCheckedList.DataSource = await Region.List();
-            RegionCheckedList.SetItemsChecked(true);
-
-            CategoryCheckedList.DataSource = await Category.List();
-            CategoryCheckedList.SetItemsChecked(true);
-
-            RegionCheckedList.ItemCheck += (s, e) => SearchTitles().TryAwait();
-            CategoryCheckedList.ItemCheck += (s, e) => SearchTitles().TryAwait();
-
-            titles = new ListBind<Title>((await Title.List()).OrderBy(x => x.Name).ToList());
-
-            await SearchTitles();
-        }
-
-        private void GenerateCetkButton_Click(object sender, EventArgs e)
+        private void OnGenerateCetkClicked(object sender, EventArgs e)
         {
             if (TitlesGrid.SelectedRows.AnyRow() == false)
             {
                 return;
             }
 
-            var title = TitlesGrid.GetCurrentRowObject<Title>();
-            var cetck = new HexFile(Cetk.BaseFile);
-            cetck.Replace(Cetk.CommonKey, title.Key);
-            cetck.Save(Cetk.FilePath);
+            var currentTitle = TitlesGrid.GetCurrentRowObject<Title>();
 
-            WarningLabel.Text = "cetk " + title + " Saved!";
-        }
-
-        private void SetGridDataSource(ListBind<Title> list)
-        {
-            TitlesGrid.DataSource = list;
-            GenerateCetkButton.Enabled = list.Count > 0;
-        }
-
-        private Task SearchTitles()
-        {
-            string searchID = TitleIDTextBox.Text;
-            string searchName = TitleNameTextBox.Text;
-
-            titlesFilter = new ListBind<Title>();
-
-            foreach (Title obj in titles)
+            if (titleService.GenerateCetk(currentTitle))
             {
-                bool id = obj.ID.HasValue() && obj.ID.Length >= searchID.Length && obj.ID.Substring(0, searchID.Length) == searchID.ToUpper();
-                var title = obj.Name.ContainsExtend(searchName);
-                var region = RegionCheckedList.IsItemChecked(obj.Region);
-                var category = CategoryCheckedList.IsItemChecked(obj.Category);
-
-                if (id && title && region && category)
-                {
-                    titlesFilter.Add(obj);
-                }
+                WarningLabel.Text = "cetk " + currentTitle + " Saved!";
             }
-
-            SetGridDataSource(titlesFilter);
-            return Task.CompletedTask;
+            else
+            {
+                WarningLabel.Text = "cetk " + currentTitle + " Failed!";
+            }
         }
+        #endregion
     }
 }
