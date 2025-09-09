@@ -96,25 +96,25 @@
     <Compile Include="Source\Asset\CustomControl\FlatTableA.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Source\ModelDao\WiiU\TitleDao.cs" />
-    <Compile Include="Source\ModelDao\WiiU\CategoryDao.cs" />
-    <Compile Include="Source\ModelDao\WiiU\RegionDao.cs" />
-    <Compile Include="Source\Model\VbToCsharp.cs" />
-    <Compile Include="Source\Model\WiiU\Region.cs" />
-    <Compile Include="Source\Model\WiiU\Title.cs" />
-    <Compile Include="Source\Model\WiiU\Category.cs" />
-    <Compile Include="Source\Model\WiiU\Cetk.cs" />
+    <Compile Include="Source\Entity\Dao\WiiU\TitleDao.cs" />
+    <Compile Include="Source\Entity\Dao\WiiU\CategoryDao.cs" />
+    <Compile Include="Source\Entity\Dao\WiiU\RegionDao.cs" />
+    <Compile Include="Source\Entity\Model\VbToCsharp.cs" />
+    <Compile Include="Source\Entity\Model\WiiU\Region.cs" />
+    <Compile Include="Source\Entity\Model\WiiU\Title.cs" />
+    <Compile Include="Source\Entity\Model\WiiU\Category.cs" />
+    <Compile Include="Source\Entity\Model\WiiU\Cetk.cs" />
     <Compile Include="Source\Config\BancoWiiU.cs" />
     <Compile Include="Source\Config\Session.cs" />
     <Compile Include="Source\Config\Options.cs" />
     <Compile Include="Source\Config\Theme.cs" />
-    <Compile Include="Source\PageController\ConfigController.cs" />
-    <Compile Include="Source\PageMaster\Controller\MainMenuController.cs" />
-    <Compile Include="Source\PageController\WiiUcetkController.cs" />
-    <Compile Include="Source\PageController\VbToCsharpController.cs" />
-    <Compile Include="Source\PageController\ImageResizeController.cs" />
-    <Compile Include="Source\PageMaster\Controller\MainController.cs" />
-    <Compile Include="Source\PageMaster\Controller\MainContentController.cs" />
+    <Compile Include="Source\Pages\Controller\ConfigController.cs" />
+    <Compile Include="Source\Pages\Master\Controller\MainMenuController.cs" />
+    <Compile Include="Source\Pages\Controller\WiiUController.cs" />
+    <Compile Include="Source\Pages\Controller\VbToCsharpController.cs" />
+    <Compile Include="Source\Pages\Controller\ImageResizeController.cs" />
+    <Compile Include="Source\Pages\Master\Controller\MainController.cs" />
+    <Compile Include="Source\Pages\Master\Controller\MainContentController.cs" />
     <Compile Include="Source\Asset\CustomControl\FlatButtonA.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -127,87 +127,87 @@
     <Compile Include="Source\Asset\CustomControl\FlatTextBoxA.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Source\PageMaster\Controller\MainControls.cs" />
-    <Compile Include="Source\PageForm\ConfigForm.cs">
+    <Compile Include="Source\Pages\Master\Controller\MainControls.cs" />
+    <Compile Include="Source\Pages\Design\ConfigForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Source\PageForm\ConfigForm.Designer.cs">
+    <Compile Include="Source\Pages\Design\ConfigForm.Designer.cs">
       <DependentUpon>ConfigForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\PageMaster\Form\MainMenuForm.cs">
+    <Compile Include="Source\Pages\Master\Form\MainMenuForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Source\PageMaster\Form\MainMenuForm.Designer.cs">
+    <Compile Include="Source\Pages\Master\Form\MainMenuForm.Designer.cs">
       <DependentUpon>MainMenuForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\PageForm\WiiUcetkForm.cs">
+    <Compile Include="Source\Pages\Design\WiiUForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Source\PageForm\WiiUcetkForm.Designer.cs">
-      <DependentUpon>WiiUcetkForm.cs</DependentUpon>
+    <Compile Include="Source\Pages\Design\WiiUForm.Designer.cs">
+      <DependentUpon>WiiUForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\PageForm\VbToCsharpForm.cs">
+    <Compile Include="Source\Pages\Design\VbToCsharpForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Source\PageForm\VbToCsharpForm.Designer.cs">
+    <Compile Include="Source\Pages\Design\VbToCsharpForm.Designer.cs">
       <DependentUpon>VbToCsharpForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\PageForm\ImageResizeForm.cs">
+    <Compile Include="Source\Pages\Design\ImageResizeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Source\PageForm\ImageResizeForm.Designer.cs">
+    <Compile Include="Source\Pages\Design\ImageResizeForm.Designer.cs">
       <DependentUpon>ImageResizeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\PageMaster\Form\MainContentForm.cs">
+    <Compile Include="Source\Pages\Master\Form\MainContentForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Source\PageMaster\Form\MainContentForm.Designer.cs">
+    <Compile Include="Source\Pages\Master\Form\MainContentForm.Designer.cs">
       <DependentUpon>MainContentForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\PageForm\FileCopyForm.cs">
+    <Compile Include="Source\Pages\Design\FileCopyForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Source\PageForm\FileCopyForm.Designer.cs">
+    <Compile Include="Source\Pages\Design\FileCopyForm.Designer.cs">
       <DependentUpon>FileCopyForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\PageMaster\Form\MainForm.cs">
+    <Compile Include="Source\Pages\Master\Form\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Source\PageMaster\Form\MainForm.Designer.cs">
+    <Compile Include="Source\Pages\Master\Form\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Source\Service\CategoryService.cs" />
-    <Compile Include="Source\Service\RegionService.cs" />
-    <Compile Include="Source\Service\TitleService.cs" />
+    <Compile Include="Source\Entity\Service\CategoryService.cs" />
+    <Compile Include="Source\Entity\Service\RegionService.cs" />
+    <Compile Include="Source\Entity\Service\TitleService.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\PageForm\ConfigForm.resx">
+    <EmbeddedResource Include="Source\Pages\Design\ConfigForm.resx">
       <DependentUpon>ConfigForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\PageMaster\Form\MainMenuForm.resx">
+    <EmbeddedResource Include="Source\Pages\Master\Form\MainMenuForm.resx">
       <DependentUpon>MainMenuForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\PageForm\WiiUcetkForm.resx">
-      <DependentUpon>WiiUcetkForm.cs</DependentUpon>
+    <EmbeddedResource Include="Source\Pages\Design\WiiUForm.resx">
+      <DependentUpon>WiiUForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\PageForm\VbToCsharpForm.resx">
+    <EmbeddedResource Include="Source\Pages\Design\VbToCsharpForm.resx">
       <DependentUpon>VbToCsharpForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\PageForm\ImageResizeForm.resx">
+    <EmbeddedResource Include="Source\Pages\Design\ImageResizeForm.resx">
       <DependentUpon>ImageResizeForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\PageMaster\Form\MainContentForm.resx">
+    <EmbeddedResource Include="Source\Pages\Master\Form\MainContentForm.resx">
       <DependentUpon>MainContentForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\PageForm\FileCopyForm.resx">
+    <EmbeddedResource Include="Source\Pages\Design\FileCopyForm.resx">
       <DependentUpon>FileCopyForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\PageMaster\Form\MainForm.resx">
+    <EmbeddedResource Include="Source\Pages\Master\Form\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
@@ -219,7 +219,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Source\PageController\FileCopyController.cs" />
+    <Compile Include="Source\Pages\Controller\FileCopyController.cs" />
     <Compile Include="Source\Asset\CustomControl\FlatComboBoxA.cs">
       <SubType>UserControl</SubType>
     </Compile>

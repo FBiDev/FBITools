@@ -32,7 +32,7 @@ namespace FBITools
 
         private FlatButtonA VbCsharpTabButton { get { return Page.VbCsharpTabButton; } }
 
-        private FlatButtonA WiiUcetkTabButton { get { return Page.WiiUcetkTabButton; } }
+        private FlatButtonA WiiUTabButton { get { return Page.WiiUTabButton; } }
 
         private FlatButtonA ConfigTabButton { get { return Page.ConfigTabButton; } }
     }
@@ -160,12 +160,12 @@ namespace FBITools
 
 namespace FBITools.WiiU
 {
-    public partial class WiiUcetkController
+    public partial class WiiUController
     {
-        private WiiUcetkForm Page
+        private WiiUForm Page
         {
-            get { return Session.WiiUCetkPage; }
-            set { Session.WiiUCetkPage = value; }
+            get { return Session.WiiUPage; }
+            set { Session.WiiUPage = value; }
         }
 
         private FlatLabelA WarningLabel { get { return Page.WarningLabel; } }

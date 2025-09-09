@@ -5,14 +5,14 @@ using App.Core.Desktop;
 
 namespace FBITools.WiiU
 {
-    public partial class WiiUcetkController
+    public partial class WiiUController
     {
         private TitleService titleService;
         private RegionService regionService;
         private CategoryService categoryService;
 
         #region InitializeForm
-        public WiiUcetkController(WiiUcetkForm page)
+        public WiiUController(WiiUForm page)
         {
             titleService = new TitleService();
             regionService = new RegionService();

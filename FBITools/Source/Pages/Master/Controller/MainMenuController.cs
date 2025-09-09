@@ -16,7 +16,7 @@ namespace FBITools
             FileCopyTabButton.Click += (s, e) => Session.MainContentController.SetContent(s, Session.FileCopyPage);
             ImageResizeTabButton.Click += (s, e) => Session.MainContentController.SetContent(s, Session.ImageResizePage);
             VbCsharpTabButton.Click += (s, e) => Session.MainContentController.SetContent(s, Session.VbToCsharpPage);
-            WiiUcetkTabButton.Click += (s, e) => Session.MainContentController.SetContent(s, Session.WiiUCetkPage);
+            WiiUTabButton.Click += (s, e) => Session.MainContentController.SetContent(s, Session.WiiUPage);
 
             ConfigTabButton.Click += (s, e) => Session.MainContentController.SetContent(s, Session.ConfigPage);
 

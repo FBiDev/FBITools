@@ -38,7 +38,7 @@ namespace FBITools
 
         public static VbToCsharpForm VbToCsharpPage { get; set; }
 
-        public static WiiU.WiiUcetkForm WiiUCetkPage { get; set; }
+        public static WiiU.WiiUForm WiiUPage { get; set; }
         #endregion
 
         public static void Load()

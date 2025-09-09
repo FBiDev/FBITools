@@ -34,7 +34,7 @@ namespace FBITools
             this.FileCopyTabButton = new FBITools.FlatButtonA();
             this.ImageResizeTabButton = new FBITools.FlatButtonA();
             this.VbCsharpTabButton = new FBITools.FlatButtonA();
-            this.WiiUcetkTabButton = new FBITools.FlatButtonA();
+            this.WiiUTabButton = new FBITools.FlatButtonA();
             this.ConfigTabButton = new FBITools.FlatButtonA();
             this.MainContentTable.SuspendLayout();
             this.InputTable.SuspendLayout();
@@ -55,7 +55,7 @@ namespace FBITools
             this.MainContentTable.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.MainContentTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.MainContentTable.Size = new System.Drawing.Size(300, 189);
-            this.MainContentTable.SizeOriginal = new System.Drawing.Size(300, 191);
+            this.MainContentTable.SizeOriginal = new System.Drawing.Size(300, 189);
             this.MainContentTable.TabIndex = 10;
             // 
             // InputTable
@@ -67,7 +67,7 @@ namespace FBITools
             this.InputTable.Controls.Add(this.FileCopyTabButton, 0, 0);
             this.InputTable.Controls.Add(this.ImageResizeTabButton, 0, 1);
             this.InputTable.Controls.Add(this.VbCsharpTabButton, 0, 2);
-            this.InputTable.Controls.Add(this.WiiUcetkTabButton, 0, 3);
+            this.InputTable.Controls.Add(this.WiiUTabButton, 0, 3);
             this.InputTable.Dock = System.Windows.Forms.DockStyle.None;
             this.InputTable.Location = new System.Drawing.Point(1, 1);
             this.InputTable.Name = "InputTable";
@@ -78,7 +78,7 @@ namespace FBITools
             this.InputTable.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.InputTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.InputTable.Size = new System.Drawing.Size(298, 150);
-            this.InputTable.SizeOriginal = new System.Drawing.Size(298, 153);
+            this.InputTable.SizeOriginal = new System.Drawing.Size(298, 150);
             this.InputTable.TabIndex = 0;
             // 
             // FileCopyTabButton
@@ -126,20 +126,20 @@ namespace FBITools
             this.VbCsharpTabButton.TabIndex = 2;
             this.VbCsharpTabButton.Text = "VB to CSharp";
             // 
-            // WiiUcetkTabButton
+            // WiiUTabButton
             // 
-            this.WiiUcetkTabButton.BorderColorDefault = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(223)))), ((int)(((byte)(229)))));
-            this.InputTable.SetColumnSpan(this.WiiUcetkTabButton, 2);
-            this.WiiUcetkTabButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.WiiUcetkTabButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(223)))), ((int)(((byte)(229)))));
-            this.WiiUcetkTabButton.FlatAppearance.BorderSize = 0;
-            this.WiiUcetkTabButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
-            this.WiiUcetkTabButton.Location = new System.Drawing.Point(0, 114);
-            this.WiiUcetkTabButton.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
-            this.WiiUcetkTabButton.Name = "WiiUcetkTabButton";
-            this.WiiUcetkTabButton.Size = new System.Drawing.Size(298, 34);
-            this.WiiUcetkTabButton.TabIndex = 3;
-            this.WiiUcetkTabButton.Text = "WiiU cetk";
+            this.WiiUTabButton.BorderColorDefault = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(223)))), ((int)(((byte)(229)))));
+            this.InputTable.SetColumnSpan(this.WiiUTabButton, 2);
+            this.WiiUTabButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.WiiUTabButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(223)))), ((int)(((byte)(229)))));
+            this.WiiUTabButton.FlatAppearance.BorderSize = 0;
+            this.WiiUTabButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
+            this.WiiUTabButton.Location = new System.Drawing.Point(0, 114);
+            this.WiiUTabButton.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
+            this.WiiUTabButton.Name = "WiiUTabButton";
+            this.WiiUTabButton.Size = new System.Drawing.Size(298, 34);
+            this.WiiUTabButton.TabIndex = 3;
+            this.WiiUTabButton.Text = "WiiU";
             // 
             // ConfigTabButton
             // 
@@ -178,7 +178,7 @@ namespace FBITools
         internal FlatButtonA FileCopyTabButton;
         internal FlatButtonA ImageResizeTabButton;
         internal FlatButtonA VbCsharpTabButton;
-        internal FlatButtonA WiiUcetkTabButton;
+        internal FlatButtonA WiiUTabButton;
         internal FlatButtonA ConfigTabButton;
 
     }
