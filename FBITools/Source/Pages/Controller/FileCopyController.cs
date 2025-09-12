@@ -1,148 +1,122 @@
 ﻿using System;
-using App.Core;
 using App.Core.Desktop;
 
 namespace FBITools
 {
     public partial class FileCopyController
     {
-        private FileBackup file;
+        private readonly FileCopyService service;
 
         public FileCopyController(FileCopyForm page)
         {
+            service = new FileCopyService();
+
             Page = page;
-            Page.Load += Page_Load;
-            Page.Shown += Page_Shown;
+            Page.Load += OnFormLoad;
+            Page.Shown += OnFormShown;
         }
 
-        private void Page_Load(object sender, EventArgs e)
+        private void OnFormLoad(object sender, EventArgs e)
         {
-            file = new FileBackup();
-
-            ComboBox_Load();
-
-            Controls_Load();
+            service.LoadOptions();
+            service.LoadComboBoxData(TypeComboBox, TimerComboBox);
+            InitializeControls();
         }
 
-        private void Page_Shown(object sender, EventArgs ev)
+        private void InitializeControls()
         {
-            WarningLabel.TextChanged += WarningLabel_TextChanged;
-
-            OriginButton.Click += (s, e) =>
-            {
-                if (file.PickOrigin())
-                {
-                    UpdateOrigin();
-                }
-            };
-
-            DestinationButton.Click += (s, e) =>
-            {
-                if (file.PickDestination())
-                {
-                    UpdateDestination();
-                }
-            };
-
-            CustomDestinationCheckBox.CheckedChanged += (s, e) =>
-            {
-                file.CustomDestination = CustomDestinationCheckBox.Checked;
-            };
-
-            TypeComboBox.SelectedIndexChanged += (s, e) => UpdateType();
-
-            CopyButton.Click += (s, e) =>
-            {
-                UpdateSession();
-
-                if (file.Copy())
-                {
-                    Session.Options.Update();
-                    if (file.TimerIsRunning)
-                    {
-                        file.StartBackupTimer().TryAwait();
-                    }
-                }
-            };
-
-            file.Copied += () =>
-            {
-                WarningLabel.ForeColorType = LabelType.success;
-                WarningLabel.Text = file.SuccessMessage;
-            };
-
-            file.InvalidFile += () =>
-            {
-                WarningLabel.ForeColorType = LabelType.danger;
-                WarningLabel.Text = file.ErrorMessage;
-            };
-
-            file.TimerRunningChanged += () =>
-            {
-                FormManager.EnableFormControls(!file.TimerIsRunning, InputTable);
-
-                WarningLabel.ForeColorType = LabelType.primary;
-                WarningLabel.Text = file.SuccessMessage;
-
-                CopyButton.Text = file.ButtonMessage;
-            };
-        }
-
-        private async void WarningLabel_TextChanged(object sender, EventArgs e)
-        {
-            await TaskController.Delay(4);
-            WarningLabel.Text = string.Empty;
-        }
-
-        private void ComboBox_Load()
-        {
-            file.LoadTypes(TypeComboBox);
-            file.LoadTimer(TimerComboBox);
-        }
-
-        private void Controls_Load()
-        {
-            if (Options.IsLoaded)
-            {
-                file.OriginPath = Session.Options.FileCopy_Origin;
-                file.DestinationPath = Session.Options.FileCopy_Destination;
-                file.CustomDestination = Session.Options.FileCopy_CustomDestination;
-                CustomDestinationCheckBox.Checked = Session.Options.FileCopy_CustomDestination;
-
-                TypeComboBox.SelectedValue = Session.Options.FileCopy_Type;
-                file.TimerValue = Session.Options.FileCopy_Timer;
-                TimerComboBox.SelectedValue = Session.Options.FileCopy_Timer;
-            }
-
-            UpdateOrigin();
-            UpdateDestination();
+            OriginTextBox.Text = service.OriginPath;
+            DestinationTextBox.Text = service.DestinationPath;
+            CustomDestinationCheckBox.Checked = Session.Options.FileCopy_CustomDestination;
+            TypeComboBox.SelectedValue = Session.Options.FileCopy_Type;
+            TimerComboBox.SelectedValue = Session.Options.FileCopy_Timer;
             UpdateType();
+        }
+
+        private void OnFormShown(object sender, EventArgs e)
+        {
+            WarningLabel.TextChanged += ClearLabelText;
+
+            OriginButton.Click += OriginButton_Click;
+            DestinationButton.Click += DestinationButton_Click;
+            CustomDestinationCheckBox.CheckedChanged += CustomDestinationCheckBox_CheckedChanged;
+            TypeComboBox.SelectedIndexChanged += TypeComboBox_SelectedIndexChanged;
+            CopyButton.Click += CopyButton_Click;
+
+            service.StatusChanged += Service_StatusChanged;
+            service.TimerStateChanged += Service_TimerStateChanged;
+        }
+
+        private async void ClearLabelText(object sender, EventArgs e)
+        {
+            var label = (FlatLabel)sender;
+            await label.ClearTextAfterDelay(4);
+        }
+
+        private void OriginButton_Click(object sender, EventArgs e)
+        {
+            if (service.PickOrigin())
+            {
+                UpdateOrigin();
+            }
+        }
+
+        private void DestinationButton_Click(object sender, EventArgs e)
+        {
+            if (service.PickDestination())
+            {
+                UpdateDestination();
+            }
+        }
+
+        private void CustomDestinationCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            service.SetCustomDestination(CustomDestinationCheckBox.Checked);
+        }
+
+        private void TypeComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            service.SetType(TypeComboBox.SelectedValueInt);
+            UpdateType();
+        }
+
+        private void CopyButton_Click(object sender, EventArgs e)
+        {
+            service.SaveOptions();
+
+            if (service.Copy())
+            {
+                UpdateType();
+            }
         }
 
         private void UpdateOrigin()
         {
-            OriginTextBox.Text = file.OriginPath;
-            DestinationTextBox.Text = file.DestinationPath;
+            OriginTextBox.Text = service.OriginPath;
+            DestinationTextBox.Text = service.DestinationPath;
         }
 
         private void UpdateDestination()
         {
-            DestinationTextBox.Text = file.DestinationPath;
+            DestinationTextBox.Text = service.DestinationPath;
         }
 
         private void UpdateType()
         {
-            TimerComboBox.Enabled = file.IsTimer;
-            CopyButton.Text = file.ButtonMessage;
+            TimerComboBox.Enabled = service.IsTimer;
+            CopyButton.Text = service.ButtonMessage;
         }
 
-        private void UpdateSession()
+        private void Service_StatusChanged(string message, LabelType type)
         {
-            Session.Options.FileCopy_Origin = file.OriginPath;
-            Session.Options.FileCopy_Destination = file.DestinationPath;
-            Session.Options.FileCopy_CustomDestination = file.CustomDestination;
-            Session.Options.FileCopy_Type = TypeComboBox.SelectedValueInt;
-            Session.Options.FileCopy_Timer = file.TimerValue;
+            WarningLabel.ForeColorType = type;
+            WarningLabel.Text = message;
+        }
+
+        private void Service_TimerStateChanged(bool isRunning, string buttonText)
+        {
+            FormManager.EnableFormControls(!isRunning, InputTable);
+            CopyButton.Text = buttonText;
         }
     }
 }

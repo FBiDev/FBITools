@@ -32,11 +32,11 @@ namespace FBITools.WiiU
 
         private void RegisterShownEvents()
         {
-            WarningLabel.TextChanged += async (s, e) => await ClearWarningLabel(s, e);
+            WarningLabel.TextChanged += ClearLabelText;
             GenerateCetkButton.Click += OnGenerateCetkClicked;
 
-            TitleIDTextBox.TextChanged += (s, e) => FilterTitles().TryAwait();
-            TitleNameTextBox.TextChanged += (s, e) => FilterTitles().TryAwait();
+            TitleIDTextBox.TextChanged += UpdateFilterTitles;
+            TitleNameTextBox.TextChanged += UpdateFilterTitles;
         }
 
         private void BindStatusBar()
@@ -64,8 +64,8 @@ namespace FBITools.WiiU
 
         private void RegisterControlsEvents()
         {
-            RegionCheckedList.ItemCheck += (s, e) => FilterTitles().TryAwait();
-            CategoryCheckedList.ItemCheck += (s, e) => FilterTitles().TryAwait();
+            RegionCheckedList.ItemCheck += UpdateFilterTitles;
+            CategoryCheckedList.ItemCheck += UpdateFilterTitles;
         }
 
         private void UpdateGrid(ListBind<Title> list)
@@ -87,10 +87,15 @@ namespace FBITools.WiiU
         #endregion
 
         #region UserEvents
-        private async Task ClearWarningLabel(object sender, EventArgs e)
+        private async void ClearLabelText(object sender, EventArgs e)
         {
-            await TaskController.Delay(4);
-            WarningLabel.Text = string.Empty;
+            var label = (FlatLabel)sender;
+            await label.ClearTextAfterDelay(4);
+        }
+
+        private async void UpdateFilterTitles(object sender, EventArgs e)
+        {
+            await FilterTitles();
         }
 
         private void OnGenerateCetkClicked(object sender, EventArgs e)

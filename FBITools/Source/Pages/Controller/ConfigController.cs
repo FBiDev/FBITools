@@ -4,29 +4,42 @@ namespace FBITools
 {
     public partial class ConfigController
     {
+        #region InitializeForm
         public ConfigController(ConfigForm page)
         {
             Page = page;
-            Page.Load += Page_Load;
-            Page.Shown += Page_Shown;
-            Page.GotFocus += (s, e) => DarkModeCheckBox.Focus();
             Page.TabStop = false;
+            Page.Load += OnFormLoad;
+            Page.Shown += OnFormShown;
+            Page.GotFocus += OnFormGotFocus;
         }
 
-        private void Page_Load(object sender, EventArgs e)
+        private void OnFormLoad(object sender, EventArgs e)
         {
-            Controls_Load();
+            InitializeControls();
         }
 
-        private void Page_Shown(object sender, EventArgs ev)
+        private void OnFormShown(object sender, EventArgs ev)
         {
-            DarkModeCheckBox.CheckedChanged += (s, e) => Session.Options.ToggleDarkMode();
-            WindowAutoCenterCheckBox.CheckedChanged += (s, e) => Session.Options.ToggleAutoCenterWindow();
-            WindowAutoResizeCheckBox.CheckedChanged += (s, e) => Session.Options.ToggleAutoResizeWindow();
-            DebugModeCheckBox.CheckedChanged += (s, e) => Session.Options.ToggleDebugMode();
+            RegisterShownEvents();
         }
 
-        private void Controls_Load()
+        private void RegisterShownEvents()
+        {
+            DarkModeCheckBox.CheckedChanged += DarkModeCheckBox_CheckedChanged;
+            WindowAutoCenterCheckBox.CheckedChanged += WindowAutoCenterCheckBox_CheckedChanged;
+            WindowAutoResizeCheckBox.CheckedChanged += WindowAutoResizeCheckBox_CheckedChanged;
+            DebugModeCheckBox.CheckedChanged += DebugModeCheckBox_CheckedChanged;
+        }
+
+        private void OnFormGotFocus(object sender, EventArgs e)
+        {
+            DarkModeCheckBox.Focus();
+        }
+        #endregion
+
+        #region InitializeControls
+        private void InitializeControls()
         {
             if (Options.IsLoaded)
             {
@@ -36,5 +49,28 @@ namespace FBITools
                 DebugModeCheckBox.Checked = Session.Options.IsDebugMode;
             }
         }
+        #endregion
+
+        #region UserEvents
+        private void DarkModeCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            Session.Options.ToggleDarkMode();
+        }
+
+        private void WindowAutoCenterCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            Session.Options.ToggleAutoCenterWindow();
+        }
+
+        private void WindowAutoResizeCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            Session.Options.ToggleAutoResizeWindow();
+        }
+
+        private void DebugModeCheckBox_CheckedChanged(object sender, EventArgs e)
+        {
+            Session.Options.ToggleDebugMode();
+        }
+        #endregion
     }
 }

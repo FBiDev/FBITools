@@ -3,7 +3,7 @@ using System.Text.RegularExpressions;
 
 namespace FBITools
 {
-    public static class VbToCsharp
+    public static class VbToCsharpService
     {
         private static string codeConverted;
         private static string handles;

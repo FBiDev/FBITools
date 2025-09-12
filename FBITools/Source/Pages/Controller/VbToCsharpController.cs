@@ -1,58 +1,77 @@
 ﻿using System;
-using System.Windows.Forms;
 using App.Core;
+using App.Core.Desktop;
 
 namespace FBITools
 {
     public partial class VbToCsharpController
     {
+        private const string CopiedMessage = "Text Copied!";
+        private const string ClearedMessage = "Text Cleared!";
+
+        #region InitializeForm
         public VbToCsharpController(VbToCsharpForm page)
         {
             Page = page;
-            Page.Shown += Page_Shown;
-            Page.GotFocus += (s, e) => InputTextBox.Focus();
+            Page.Shown += OnFormShown;
+            Page.GotFocus += OnFormGotFocus;
         }
 
-        private void Page_Shown(object sender, EventArgs ev)
+        private void OnFormShown(object sender, EventArgs ev)
         {
-            WarningLabel.TextChanged += WarningLabel_TextChanged;
+            RegisterShownEvents();
+        }
 
-            ClearButton.Click += (s, e) =>
-            {
-                InputTextBox.Text = OutputTextBox.Text = string.Empty;
-                InputTextBox.Focus();
-                WarningLabel.Text = "Text Cleared!";
-            };
-
-            CopyResultButton.Click += (s, e) =>
-            {
-                if (OutputTextBox.Text.Length > 0)
-                {
-                    InputTextBox.Focus();
-                    Clipboard.SetText(OutputTextBox.Text);
-                    WarningLabel.Text = "Text Copied!";
-                }
-            };
-
+        private void RegisterShownEvents()
+        {
+            WarningLabel.TextChanged += ClearLabelText;
             ConvertButton.Click += ConvertButton_Click;
+            CopyResultButton.Click += OnCopyResult;
+            ClearButton.Click += OnClear;
         }
 
-        private async void WarningLabel_TextChanged(object sender, EventArgs e)
+        private void OnFormGotFocus(object sender, EventArgs e)
         {
-            await TaskController.Delay(4);
-            WarningLabel.Text = string.Empty;
+            InputTextBox.Focus();
+        }
+        #endregion
+
+        #region UserEvents
+        private async void ClearLabelText(object sender, EventArgs e)
+        {
+            var label = (FlatLabel)sender;
+            await label.ClearTextAfterDelay(4);
         }
 
         private void ConvertButton_Click(object sender, EventArgs e)
         {
-            if (InputTextBox.Text.Length == 0)
+            if (InputTextBox.Text.IsEmpty())
             {
                 return;
             }
 
             InputTextBox.Focus();
 
-            OutputTextBox.Text = VbToCsharp.Convert(InputTextBox.Text);
+            OutputTextBox.Text = VbToCsharpService.Convert(InputTextBox.Text);
         }
+
+        private void OnCopyResult(object sender, EventArgs e)
+        {
+            if (OutputTextBox.Text.HasValue())
+            {
+                ClipboardSafe.SetText(OutputTextBox.Text);
+                WarningLabel.Text = CopiedMessage;
+                InputTextBox.Focus();
+            }
+        }
+
+        private void OnClear(object sender, EventArgs e)
+        {
+            InputTextBox.Text = string.Empty;
+            OutputTextBox.Text = string.Empty;
+            WarningLabel.Text = ClearedMessage;
+            InputTextBox.Focus();
+        }
+        #endregion
     }
 }
