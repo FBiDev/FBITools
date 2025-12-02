@@ -1,137 +1,119 @@
 ﻿using System;
+using System.Drawing;
 using System.Windows.Forms;
-using App.Core;
 using App.Core.Desktop;
-using App.Image.MagicScaler;
 
 namespace FBITools
 {
     public partial class ImageResizeController
     {
-        private MagicScaler scaler;
+        private readonly ImageResizeService service;
 
         public ImageResizeController(ImageResizeForm page)
         {
+            service = new ImageResizeService();
+
             Page = page;
-            Page.Shown += Page_Shown;
+            Page.Shown += OnFormShown;
         }
 
-        private void Page_Shown(object sender, EventArgs ev)
+        private void OnFormShown(object sender, EventArgs ev)
         {
-            WarningLabel.TextChanged += WarningLabel_TextChanged;
+            WarningLabel.TextChanged += ClearLabelText;
 
-            scaler = new MagicScaler { };
+            service.EncoderChanged += UpdateOut;
+            service.StatusChanged += Service_StatusChanged;
+            service.Resized += Service_Resized;
+            service.ResizeModeCrop += Service_ResizeModeCrop;
 
-            scaler.EncoderChanged += UpdateDestination;
+            OriginButton.Click += OriginButton_Click;
+            DestinationButton.Click += DestinationButton_Click;
+            ResizeButton.Click += ResizeButton_Click;
 
-            scaler.InvalidFile += () =>
-            {
-                WarningLabel.ForeColorType = LabelType.danger;
-                WarningLabel.Text = "MagicScaler Failed!";
-            };
-
-            scaler.Resized += () =>
-            {
-                UpdateResizedImage();
-
-                WarningLabel.ForeColorType = LabelType.success;
-                WarningLabel.Text = "MagicScaler Executed!";
-            };
-
-            scaler.EnableAnchor += (enable) => { AnchorComboBox.Enabled = enable; };
-
-            OriginButton.Click += (s, e) =>
-            {
-                if (scaler.PickOrigin())
-                {
-                    UpdateDropImage();
-                    UpdateOrigin();
-                }
-            };
-
-            DestinationButton.Click += (s, e) =>
-            {
-                if (scaler.PickDestination())
-                {
-                    UpdateDestination();
-                }
-            };
-
-            ResizeButton.Click += (s, e) =>
-            {
-                scaler.Resize().TryAwait();
-            };
-
-            ComboBox_Load();
+            service.LoadComboBoxData(
+                EncoderComboBox,
+                ResizeModeComboBox,
+                SizesComboBox,
+                AnchorComboBox,
+                InterpolationComboBox,
+                MatteColorComboBox,
+                ColorProfileComboBox,
+                SharpenComboBox,
+                BlendingModeComboBox,
+                HybridModeComboBox,
+                JpgQualityComboBox,
+                JpgChromaSubsampleComboBox,
+                PngFilterComboBox,
+                PngInterlaceComboBox);
         }
 
-        private async void WarningLabel_TextChanged(object sender, EventArgs e)
+        private async void ClearLabelText(object sender, EventArgs e)
         {
-            await TaskController.Delay(4);
-            WarningLabel.Text = string.Empty;
+            var label = (FlatLabel)sender;
+            await label.ClearTextAfterDelay(4);
         }
 
-        private void ComboBox_Load()
+        private void OriginButton_Click(object sender, EventArgs e)
         {
-            scaler.LoadEncoders(EncoderComboBox);
-            scaler.LoadResizeModes(ResizeModeComboBox);
-            scaler.LoadSizes(SizesComboBox);
-
-            scaler.LoadAnchors(AnchorComboBox);
-            scaler.LoadInterpolations(InterpolationComboBox);
-
-            scaler.LoadMatteColors(MatteColorComboBox);
-            scaler.LoadColorProfiles(ColorProfileComboBox);
-
-            scaler.LoadSharpen(SharpenComboBox);
-            scaler.LoadBlendingModes(BlendingModeComboBox);
-            scaler.LoadHybridModes(HybridModeComboBox);
-
-            scaler.LoadJpgQuality(JpgQualityComboBox);
-            scaler.LoadJpgChromaSubsample(JpgChromaSubsampleComboBox);
-
-            scaler.LoadPngFilters(PngFilterComboBox);
-            scaler.LoadPngInterlaces(PngInterlaceComboBox);
-        }
-
-        private void UpdateOrigin()
-        {
-            OriginTextBox.Text = scaler.OriginPath;
-        }
-
-        private void UpdateDestination()
-        {
-            DestinationTextBox.Text = scaler.DestinationPath;
-        }
-
-        private void UpdateDropImage()
-        {
-            var imageOrigin = BitmapExtension.SuperFastLoad(scaler.OriginPath);
-            DropPictureBox.Image = imageOrigin;
-
-            if (imageOrigin.Size.Width <= DropPictureBox.Width && imageOrigin.Size.Height <= DropPictureBox.Height)
+            if (service.PickImg())
             {
-                DropPictureBox.SizeMode = PictureBoxSizeMode.CenterImage;
+                UpdatePictureBoxImage(DropPictureBox, service.GetImgBitmap());
+                UpdateImg();
+                UpdateOut();
+            }
+        }
+
+        private void DestinationButton_Click(object sender, EventArgs e)
+        {
+            if (service.PickOut())
+            {
+                UpdateOut();
+            }
+        }
+
+        private void ResizeButton_Click(object sender, EventArgs e)
+        {
+            service.Resize();
+        }
+
+        private void UpdateImg()
+        {
+            OriginTextBox.Text = service.ImgPath;
+        }
+
+        private void UpdateOut()
+        {
+            DestinationTextBox.Text = service.OutPath;
+        }
+
+        private void UpdatePictureBoxImage(FlatPictureBox pictureBox, Bitmap image)
+        {
+            pictureBox.Image = image;
+
+            if (image.Size.Width <= pictureBox.Width && image.Size.Height <= pictureBox.Height)
+            {
+                pictureBox.SizeMode = PictureBoxSizeMode.CenterImage;
             }
             else
             {
-                DropPictureBox.SizeMode = PictureBoxSizeMode.Zoom;
+                pictureBox.SizeMode = PictureBoxSizeMode.Zoom;
             }
         }
 
-        private void UpdateResizedImage()
+        private void Service_StatusChanged(string message, LabelType type)
         {
-            var imageResized = BitmapExtension.SuperFastLoad(scaler.DestinationPath);
-            ResizedPictureBox.Image = imageResized;
+            WarningLabel.ForeColorType = type;
+            WarningLabel.Text = message;
+        }
 
-            if (imageResized.Size.Width <= ResizedPictureBox.Width && imageResized.Size.Height <= ResizedPictureBox.Height)
-            {
-                ResizedPictureBox.SizeMode = PictureBoxSizeMode.CenterImage;
-            }
-            else
-            {
-                ResizedPictureBox.SizeMode = PictureBoxSizeMode.Zoom;
-            }
+        private void Service_Resized()
+        {
+            UpdatePictureBoxImage(ResizedPictureBox, service.GetOutBitmap());
+        }
+
+        private void Service_ResizeModeCrop(bool isCrop)
+        {
+            AnchorComboBox.Enabled = isCrop;
         }
     }
 }

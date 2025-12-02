@@ -7,7 +7,7 @@ namespace FBITools
     {
         #region Fields
         [JsonIgnore]
-        public readonly string FileName = "Options.json";
+        private const string FileName = "Options.json";
         [JsonIgnore]
         public readonly string WiiUDatabaseFile = WiiU.Cetk.Database;
         #endregion

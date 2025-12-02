@@ -41,6 +41,12 @@ namespace FBITools
             get { return file.ButtonMessage; }
         }
 
+        public void LoadComboBoxData(FlatComboBox typeComboBox, FlatComboBox timerComboBox)
+        {
+            file.LoadTypes(typeComboBox);
+            file.LoadTimer(timerComboBox);
+        }
+
         public void LoadOptions()
         {
             if (Options.IsLoaded)
@@ -51,12 +57,6 @@ namespace FBITools
                 file.TimerValue = Session.Options.FileCopy_Timer;
                 file.Type = Session.Options.FileCopy_Type;
             }
-        }
-
-        public void LoadComboBoxData(FlatComboBox typeComboBox, FlatComboBox timerComboBox)
-        {
-            file.LoadTypes(typeComboBox);
-            file.LoadTimer(timerComboBox);
         }
 
         public void SaveOptions()
