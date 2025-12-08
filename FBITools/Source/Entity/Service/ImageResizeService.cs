@@ -21,10 +21,10 @@ namespace FBITools
         }
 
         public event Action<string, LabelType> StatusChanged;
-        
+
         public event Action Resized;
-        
-        public event MagicScaler.BoolAction ResizeModeCrop;
+
+        public event BoolAction ResizeModeCrop;
 
         public event Action EncoderChanged;
 
@@ -102,39 +102,24 @@ namespace FBITools
 
         private void OnEncoderChanged()
         {
-            if (EncoderChanged != null)
-            {
-                EncoderChanged();
-            }
+            EncoderChanged.Run();
         }
 
         private void OnResizeModeCrop(bool isCrop)
         {
-            if (ResizeModeCrop != null)
-            {
-                ResizeModeCrop(isCrop);
-            }
+            ResizeModeCrop.Run(isCrop);
         }
 
         private void OnInvalidFile()
         {
-            if (StatusChanged != null)
-            {
-                StatusChanged(scaler.ErrorMessage, LabelType.danger);
-            }
+            StatusChanged.Run(scaler.ErrorMessage, LabelType.danger);
         }
 
         private void OnResized()
         {
-            if (Resized != null)
-            {
-                Resized();
-            }
+            Resized.Run();
 
-            if (StatusChanged != null)
-            {
-                StatusChanged(scaler.SuccessMessage, LabelType.success);
-            }
+            StatusChanged.Run(scaler.SuccessMessage, LabelType.success);
         }
     }
 }

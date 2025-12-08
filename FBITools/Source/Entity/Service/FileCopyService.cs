@@ -111,31 +111,19 @@ namespace FBITools
 
         private void OnInvalidFile()
         {
-            if (StatusChanged != null)
-            {
-                StatusChanged(file.ErrorMessage, LabelType.danger);
-            }
+            StatusChanged.Run(file.ErrorMessage, LabelType.danger);
         }
 
         private void OnCopied()
         {
-            if (StatusChanged != null)
-            {
-                StatusChanged(file.SuccessMessage, LabelType.success);
-            }
+            StatusChanged.Run(file.SuccessMessage, LabelType.success);
         }
 
         private void OnTimerRunningChanged()
         {
-            if (TimerStateChanged != null)
-            {
-                TimerStateChanged(file.TimerIsRunning, file.ButtonMessage);
-            }
+            TimerStateChanged.Run(file.TimerIsRunning, file.ButtonMessage);
 
-            if (StatusChanged != null)
-            {
-                StatusChanged(file.SuccessMessage, LabelType.primary);
-            }
+            StatusChanged.Run(file.SuccessMessage, LabelType.primary);
         }
     }
 }
