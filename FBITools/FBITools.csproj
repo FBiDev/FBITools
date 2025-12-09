@@ -99,9 +99,9 @@
     <Compile Include="Source\Entity\Dao\WiiU\TitleDao.cs" />
     <Compile Include="Source\Entity\Dao\WiiU\CategoryDao.cs" />
     <Compile Include="Source\Entity\Dao\WiiU\RegionDao.cs" />
-    <Compile Include="Source\Entity\Service\FileCopyService.cs" />
-    <Compile Include="Source\Entity\Service\ImageResizeService.cs" />
-    <Compile Include="Source\Entity\Service\VbToCsharpService.cs" />
+    <Compile Include="Source\Pages\Service\FileCopyService.cs" />
+    <Compile Include="Source\Pages\Service\ImageResizeService.cs" />
+    <Compile Include="Source\Pages\Service\VbToCsharpService.cs" />
     <Compile Include="Source\Entity\Model\WiiU\Region.cs" />
     <Compile Include="Source\Entity\Model\WiiU\Title.cs" />
     <Compile Include="Source\Entity\Model\WiiU\Category.cs" />
@@ -136,10 +136,10 @@
     <Compile Include="Source\Pages\Design\ConfigForm.Designer.cs">
       <DependentUpon>ConfigForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\Pages\Master\Form\MainMenuForm.cs">
+    <Compile Include="Source\Pages\Master\Design\MainMenuForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Source\Pages\Master\Form\MainMenuForm.Designer.cs">
+    <Compile Include="Source\Pages\Master\Design\MainMenuForm.Designer.cs">
       <DependentUpon>MainMenuForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Source\Pages\Design\WiiUForm.cs">
@@ -160,10 +160,10 @@
     <Compile Include="Source\Pages\Design\ImageResizeForm.Designer.cs">
       <DependentUpon>ImageResizeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\Pages\Master\Form\MainContentForm.cs">
+    <Compile Include="Source\Pages\Master\Design\MainContentForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Source\Pages\Master\Form\MainContentForm.Designer.cs">
+    <Compile Include="Source\Pages\Master\Design\MainContentForm.Designer.cs">
       <DependentUpon>MainContentForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Source\Pages\Design\FileCopyForm.cs">
@@ -172,10 +172,10 @@
     <Compile Include="Source\Pages\Design\FileCopyForm.Designer.cs">
       <DependentUpon>FileCopyForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Source\Pages\Master\Form\MainForm.cs">
+    <Compile Include="Source\Pages\Master\Design\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Source\Pages\Master\Form\MainForm.Designer.cs">
+    <Compile Include="Source\Pages\Master\Design\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -191,7 +191,7 @@
     <EmbeddedResource Include="Source\Pages\Design\ConfigForm.resx">
       <DependentUpon>ConfigForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\Pages\Master\Form\MainMenuForm.resx">
+    <EmbeddedResource Include="Source\Pages\Master\Design\MainMenuForm.resx">
       <DependentUpon>MainMenuForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Source\Pages\Design\WiiUForm.resx">
@@ -203,13 +203,13 @@
     <EmbeddedResource Include="Source\Pages\Design\ImageResizeForm.resx">
       <DependentUpon>ImageResizeForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\Pages\Master\Form\MainContentForm.resx">
+    <EmbeddedResource Include="Source\Pages\Master\Design\MainContentForm.resx">
       <DependentUpon>MainContentForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Source\Pages\Design\FileCopyForm.resx">
       <DependentUpon>FileCopyForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Source\Pages\Master\Form\MainForm.resx">
+    <EmbeddedResource Include="Source\Pages\Master\Design\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
