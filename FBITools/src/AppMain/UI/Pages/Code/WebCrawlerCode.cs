@@ -91,7 +91,7 @@ namespace FBITools
                 {
                     Found = CheckFile(name),
                     FileName = name,
-                    FileSize = size,
+                    FileSize = ConvertSize(size),
                     Date = ConvertDate(date)
                 };
 
@@ -119,9 +119,17 @@ namespace FBITools
             return newDate;
         }
 
-        private int ConvertSize(string size)
+        private string ConvertSize(string size)
         {
-            return 0;
+            if (size.Contains("MiB"))
+            {
+                var newSize = size.Replace(" MiB", "");
+                var newSizeDouble = Cast.ToDouble(newSize);
+                var newSizeInt = newSizeDouble * 1000 *1000;
+                return Archive.CalculateSize(newSizeInt);
+            }
+
+            return "0";
         }
     }
 }
