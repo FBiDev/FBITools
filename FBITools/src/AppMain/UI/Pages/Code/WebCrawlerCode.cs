@@ -1,20 +1,29 @@
 ﻿using System;
+using System.ComponentModel;
+using System.IO;
+using System.Linq;
+using System.Net;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using App.Core;
 using App.Core.Desktop;
-using System.Net;
-using System.IO;
-using System.ComponentModel;
 
 namespace FBITools
 {
     public class MyrientRom
     {
         public MyrientRom() { }
+
         [Display(IsBool = IsBool.Yes, AutoGenerateField = true)]
         public bool Found { get; set; }
+
+        [Style(AutoSizeMode = ColumnAutoSizeMode.Fill)]
         public string FileName { get; set; }
-        public string FileSize { get; set; }
+
+        [Style(Align = ColumnAlign.Right, AutoSizeMode = ColumnAutoSizeMode.AllCells)]
+        public int FileSize { get; set; }
+
+        [Style(AutoSizeMode = ColumnAutoSizeMode.AllCells)]
         public DateTime Date { get; set; }
     }
 
@@ -29,11 +38,6 @@ namespace FBITools
             base.UI = UI = new WebCrawlerUI();
             UI.Shown += OnFormShown;
             UI.GotFocus += OnFormGotFocus;
-
-            UI.UrlTextBox.Text = "https://myrient.erista.me/files/No-Intro/Atari%20-%20Atari%20Jaguar%20%28J64%29/";
-            UI.FolderTextBox.Text = @"C:\Users\fbirnfeld\Downloads\temp";
-
-            UI.ResultGrid.AutoGenerateColumns = false;
 
             Browser.UseProxy = Environment.MachineName.Equals("cohab-ct0157", StringComparison.InvariantCultureIgnoreCase);
             Browser.DefaultProxy = new WebProxy
@@ -51,11 +55,26 @@ namespace FBITools
         {
             RegisterShownEvents();
             BindStatusBar();
+
+            UI.UrlTextBox.Text = "https://myrient.erista.me/files/No-Intro/Atari%20-%20Atari%20Jaguar%20%28J64%29/";
+            UI.FolderTextBox.Text = @"C:\Users\fbirnfeld\Downloads\temp";
         }
 
         private void RegisterShownEvents()
         {
             UI.CrawButton.Click += CrawButton_Click;
+
+            UI.ResultGrid.AutoGenerateColumns = true;
+            UI.ResultGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            UI.ResultGrid.DataBindingComplete += ResultGrid_DataBindingComplete;
+            UI.ResultGrid.CellFormatting += ResultGrid_CellFormatting;
+            //UI.ResultGrid.SortCompare += ResultGrid_SortCompare;
+
+            //UI.ResultGrid.AddBooleanColumn("FoundX");
+            //UI.ResultGrid.SetBooleanColumns(new List<string>() { "FoundX" });
+            //UI.ResultGrid.Columns["FileSize"].ValueType = typeof(int);
+            //UI.ResultGrid.Columns["Date"].ValueType = typeof(DateTime);
+            //UI.ResultGrid.Columns["Date"].DefaultCellStyle.Format = "dd-MMM-yyyy HH:mm";
         }
 
         private void BindStatusBar()
@@ -76,13 +95,18 @@ namespace FBITools
 
             var htmlTable = html.GetBetween("<table id=\"list\">", "</table>", true);
             var romList = htmlTable.GetBetweenList("<tr><td class=\"link\"><a href=\"", "</td></tr>", true);
-            romList.RemoveRange(0, 3);
+
+            if (romList.Count > 0)
+            {
+                romList.RemoveRange(0, 3);
+            }
 
             var MyrientRomList = new DataList<MyrientRom>();
 
             foreach (var rom in romList)
             {
                 var name = rom.GetBetween("title=\"", "\"");
+                name = name.HtmlDecode();
 
                 var date = rom.GetBetween("<td class=\"date\">", "</td></tr>");
                 var size = rom.GetBetween("<td class=\"size\">", "</td>");
@@ -96,11 +120,17 @@ namespace FBITools
                 };
 
                 MyrientRomList.Add(currentRom);
+
+                //UI.ResultGrid.Rows.Add(currentRom.Found, currentRom.FileName, currentRom.FileSize, currentRom.Date);
             }
 
             UI.ResultGrid.DataSource = MyrientRomList;
+            UI.ResultGrid.OrderBy("Found", false);
+            UI.ResultGrid.OrderBy("Found");
 
-            UI.WarningLabel.Text = "Finalizado";
+            var totalFound = MyrientRomList.Where(x => x.Found).Count();
+
+            UI.WarningLabel.Text = "Finalizado - Found: " + totalFound + " Not Found: " + (MyrientRomList.Count - totalFound);
         }
 
         private async Task<string> getURLHtml(string url)
@@ -119,17 +149,82 @@ namespace FBITools
             return newDate;
         }
 
-        private string ConvertSize(string size)
+        private int ConvertSize(string size)
         {
             if (size.Contains("MiB"))
             {
                 var newSize = size.Replace(" MiB", "");
                 var newSizeDouble = Cast.ToDouble(newSize);
-                var newSizeInt = newSizeDouble * 1000 *1000;
-                return Archive.CalculateSize(newSizeInt);
+                var newSizeInt = newSizeDouble * 1024 * 1024;
+                return Convert.ToInt32(newSizeInt);
             }
+            else if (size.Contains("KiB"))
+            {
+                var newSize = size.Replace(" KiB", "");
+                var newSizeDouble = Cast.ToDouble(newSize);
+                var newSizeInt = newSizeDouble * 1024;
+                return Convert.ToInt32(newSizeInt);
+            }
+            else
+            {
+                var newSize = size.Replace(" B", "");
+                return Convert.ToInt32(newSize);
+            }
+        }
 
-            return "0";
+        private void ResultGrid_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        {
+            foreach (DataGridViewColumn col in UI.ResultGrid.Columns)
+            {
+                if (col.ValueType == typeof(DateTime))
+                {
+                    col.DefaultCellStyle.Format = "dd-MMM-yyyy HH:mm";
+                }
+            }
+        }
+
+        private void ResultGrid_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            if (UI.ResultGrid.Columns[e.ColumnIndex].Name == "FileSize"
+                && e.Value != null && e.Value is int)
+            {
+                int valor = (int)e.Value;
+
+                if (valor >= 1024 * 1024)
+                {
+                    double mb = valor / (1024.0 * 1024.0);
+                    e.Value = mb.ToString("0.0") + " MB";
+                }
+                else if (valor >= 1024.0)
+                {
+                    double kb = valor / 1024.0;
+                    e.Value = kb.ToString("0.0") + " KB";
+                }
+                else
+                {
+                    e.Value = valor.ToString("0.0") + " B";
+                }
+
+                e.FormattingApplied = true;
+            }
+        }
+
+        private void ResultGrid_SortCompare(object sender, DataGridViewSortCompareEventArgs e)
+        {
+            string valor1 = e.CellValue1 != null ? e.CellValue1.ToString() : string.Empty;
+            string valor2 = e.CellValue2 != null ? e.CellValue2.ToString() : string.Empty;
+
+            bool v1Especial = valor1.Length == 0 || !char.IsLetterOrDigit(valor1[0]);
+            bool v2Especial = valor2.Length == 0 || !char.IsLetterOrDigit(valor2[0]);
+
+            if (v1Especial && !v2Especial)
+                e.SortResult = 1;
+            else if (!v1Especial && v2Especial)
+                e.SortResult = -1;
+            else
+                e.SortResult = string.Compare(valor1, valor2, true);
+
+            e.Handled = true;
         }
     }
 }

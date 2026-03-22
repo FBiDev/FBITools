@@ -31,23 +31,25 @@ namespace FBITools
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.MainContentTable = new FBITools.FlatTableA();
             this.InputTable = new FBITools.FlatTableA();
             this.TitleLabel = new FBITools.FlatLabelA();
             this.UrlTextBox = new FBITools.FlatMaskedTextBoxA();
             this.FolderTextBox = new FBITools.FlatTextBoxA();
+            this.WgetURLTextBox = new FBITools.FlatTextBoxA();
             this.CrawButton = new FBITools.FlatButtonA();
             this.WarningLabel = new FBITools.FlatLabelA();
             this.ResultTable = new FBITools.FlatTableA();
             this.ResultGrid = new FBITools.FlatDataGridA();
-            this.ResultStatusBar = new FBITools.FlatStatusBarA();
             this.Found = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FileName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FileSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ResultStatusBar = new FBITools.FlatStatusBarA();
+            this.WgetURLButton = new FBITools.FlatButtonA();
+            this.WgetNamesTextBox = new FBITools.FlatTextBoxA();
             this.MainContentTable.SuspendLayout();
             this.InputTable.SuspendLayout();
             this.ResultTable.SuspendLayout();
@@ -78,21 +80,25 @@ namespace FBITools
             this.InputTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.InputTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.InputTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.InputTable.Controls.Add(this.WgetNamesTextBox, 1, 2);
             this.InputTable.Controls.Add(this.TitleLabel, 0, 0);
             this.InputTable.Controls.Add(this.UrlTextBox, 0, 1);
             this.InputTable.Controls.Add(this.FolderTextBox, 0, 2);
+            this.InputTable.Controls.Add(this.WgetURLTextBox, 1, 1);
+            this.InputTable.Controls.Add(this.WgetURLButton, 3, 1);
             this.InputTable.Controls.Add(this.CrawButton, 0, 3);
             this.InputTable.Controls.Add(this.WarningLabel, 0, 4);
             this.InputTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.InputTable.Location = new System.Drawing.Point(1, 1);
             this.InputTable.Name = "InputTable";
-            this.InputTable.RowCount = 5;
+            this.InputTable.RowCount = 6;
             this.InputTable.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.InputTable.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.InputTable.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.InputTable.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.InputTable.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.InputTable.Size = new System.Drawing.Size(702, 176);
+            this.InputTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.InputTable.Size = new System.Drawing.Size(702, 196);
             this.InputTable.SizeOriginal = new System.Drawing.Size(702, 176);
             this.InputTable.TabIndex = 0;
             // 
@@ -118,7 +124,7 @@ namespace FBITools
             this.UrlTextBox.Location = new System.Drawing.Point(0, 38);
             this.UrlTextBox.Margin = new System.Windows.Forms.Padding(0, 2, 2, 2);
             this.UrlTextBox.Mask = App.Core.Desktop.TextMask.None;
-            this.UrlTextBox.MaxLength = 16;
+            this.UrlTextBox.MaxLength = 255;
             this.UrlTextBox.Name = "UrlTextBox";
             this.UrlTextBox.Size = new System.Drawing.Size(349, 34);
             this.UrlTextBox.TabIndex = 1;
@@ -136,6 +142,17 @@ namespace FBITools
             this.FolderTextBox.Size = new System.Drawing.Size(349, 34);
             this.FolderTextBox.TabIndex = 2;
             // 
+            // WgetURLTextBox
+            // 
+            this.WgetURLTextBox.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.WgetURLTextBox.LabelText = "Wget URL";
+            this.WgetURLTextBox.Location = new System.Drawing.Point(353, 38);
+            this.WgetURLTextBox.MaxLength = 0;
+            this.WgetURLTextBox.Name = "WgetURLTextBox";
+            this.WgetURLTextBox.PreviousText = "";
+            this.WgetURLTextBox.Size = new System.Drawing.Size(171, 34);
+            this.WgetURLTextBox.TabIndex = 3;
+            // 
             // CrawButton
             // 
             this.CrawButton.BorderColorDefault = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(223)))), ((int)(((byte)(229)))));
@@ -148,7 +165,7 @@ namespace FBITools
             this.CrawButton.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.CrawButton.Name = "CrawButton";
             this.CrawButton.Size = new System.Drawing.Size(702, 34);
-            this.CrawButton.TabIndex = 3;
+            this.CrawButton.TabIndex = 4;
             this.CrawButton.Text = "Craw";
             // 
             // WarningLabel
@@ -161,7 +178,7 @@ namespace FBITools
             this.WarningLabel.Margin = new System.Windows.Forms.Padding(0, 2, 0, 0);
             this.WarningLabel.Name = "WarningLabel";
             this.WarningLabel.Size = new System.Drawing.Size(702, 24);
-            this.WarningLabel.TabIndex = 4;
+            this.WarningLabel.TabIndex = 5;
             this.WarningLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // ResultTable
@@ -171,12 +188,12 @@ namespace FBITools
             this.ResultTable.Controls.Add(this.ResultGrid, 0, 0);
             this.ResultTable.Controls.Add(this.ResultStatusBar, 0, 1);
             this.ResultTable.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ResultTable.Location = new System.Drawing.Point(1, 177);
+            this.ResultTable.Location = new System.Drawing.Point(1, 197);
             this.ResultTable.Name = "ResultTable";
             this.ResultTable.RowCount = 2;
             this.ResultTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.ResultTable.RowStyles.Add(new System.Windows.Forms.RowStyle());
-            this.ResultTable.Size = new System.Drawing.Size(702, 446);
+            this.ResultTable.Size = new System.Drawing.Size(702, 426);
             this.ResultTable.SizeOriginal = new System.Drawing.Size(702, 446);
             this.ResultTable.TabIndex = 1;
             // 
@@ -210,33 +227,59 @@ namespace FBITools
             this.FileName,
             this.FileSize,
             this.Date});
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(226)))), ((int)(((byte)(244)))));
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.ResultGrid.DefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle3.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle3.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle3.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(229)))), ((int)(((byte)(226)))), ((int)(((byte)(244)))));
+            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(64)))), ((int)(((byte)(64)))));
+            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.ResultGrid.DefaultCellStyle = dataGridViewCellStyle3;
             this.ResultGrid.Dock = System.Windows.Forms.DockStyle.Fill;
             this.ResultGrid.Location = new System.Drawing.Point(0, 2);
             this.ResultGrid.Margin = new System.Windows.Forms.Padding(0, 2, 0, 0);
             this.ResultGrid.MultiSelect = true;
             this.ResultGrid.Name = "ResultGrid";
-            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle5.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle5.ForeColor = System.Drawing.Color.White;
-            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.ResultGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle4.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle4.ForeColor = System.Drawing.Color.White;
+            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.ResultGrid.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
             this.ResultGrid.RowTemplate.Height = 30;
             this.ResultGrid.RowTemplate.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.ResultGrid.Size = new System.Drawing.Size(702, 415);
+            this.ResultGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
+            this.ResultGrid.Size = new System.Drawing.Size(702, 395);
             this.ResultGrid.StandardTab = true;
             this.ResultGrid.TabIndex = 0;
             this.ResultGrid.TabStop = true;
+            // 
+            // Found
+            // 
+            this.Found.HeaderText = "Found";
+            this.Found.Name = "Found";
+            this.Found.ReadOnly = true;
+            this.Found.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            // 
+            // FileName
+            // 
+            this.FileName.HeaderText = "FileName";
+            this.FileName.Name = "FileName";
+            this.FileName.ReadOnly = true;
+            // 
+            // FileSize
+            // 
+            this.FileSize.HeaderText = "FileSize";
+            this.FileSize.Name = "FileSize";
+            this.FileSize.ReadOnly = true;
+            // 
+            // Date
+            // 
+            this.Date.HeaderText = "Date";
+            this.Date.Name = "Date";
+            this.Date.ReadOnly = true;
             // 
             // ResultStatusBar
             // 
@@ -244,45 +287,37 @@ namespace FBITools
             this.ResultStatusBar.BackColorContent = System.Drawing.Color.FromArgb(((int)(((byte)(240)))), ((int)(((byte)(240)))), ((int)(((byte)(240)))));
             this.ResultStatusBar.BorderEnable = true;
             this.ResultStatusBar.Dock = System.Windows.Forms.DockStyle.Top;
-            this.ResultStatusBar.Location = new System.Drawing.Point(3, 420);
+            this.ResultStatusBar.Location = new System.Drawing.Point(3, 400);
             this.ResultStatusBar.Movimento = App.Core.Desktop.Movimento.Nenhum;
             this.ResultStatusBar.Name = "ResultStatusBar";
             this.ResultStatusBar.Registros = null;
             this.ResultStatusBar.Size = new System.Drawing.Size(696, 23);
             this.ResultStatusBar.TabIndex = 1;
             // 
-            // Found
+            // WgetURLButton
             // 
-            this.Found.DataPropertyName = "Found";
-            this.Found.HeaderText = "Found";
-            this.Found.Name = "Found";
-            this.Found.ReadOnly = true;
+            this.WgetURLButton.BorderColorDefault = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(223)))), ((int)(((byte)(229)))));
+            this.WgetURLButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.WgetURLButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(223)))), ((int)(((byte)(229)))));
+            this.WgetURLButton.FlatAppearance.BorderSize = 0;
+            this.WgetURLButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
+            this.WgetURLButton.Location = new System.Drawing.Point(528, 38);
+            this.WgetURLButton.Margin = new System.Windows.Forms.Padding(2, 2, 0, 2);
+            this.WgetURLButton.Name = "WgetURLButton";
+            this.WgetURLButton.Size = new System.Drawing.Size(174, 34);
+            this.WgetURLButton.TabIndex = 6;
+            this.WgetURLButton.Text = "Wget";
             // 
-            // FileName
+            // WgetNamesTextBox
             // 
-            this.FileName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.AllCells;
-            this.FileName.DataPropertyName = "FileName";
-            this.FileName.HeaderText = "FileName";
-            this.FileName.Name = "FileName";
-            this.FileName.ReadOnly = true;
-            this.FileName.Width = 81;
-            // 
-            // FileSize
-            // 
-            this.FileSize.DataPropertyName = "FileSize";
-            this.FileSize.HeaderText = "FileSize";
-            this.FileSize.Name = "FileSize";
-            this.FileSize.ReadOnly = true;
-            // 
-            // Date
-            // 
-            this.Date.DataPropertyName = "Date";
-            dataGridViewCellStyle3.Format = "dd-MMM-yyyy HH:mm";
-            dataGridViewCellStyle3.NullValue = null;
-            this.Date.DefaultCellStyle = dataGridViewCellStyle3;
-            this.Date.HeaderText = "Date";
-            this.Date.Name = "Date";
-            this.Date.ReadOnly = true;
+            this.WgetNamesTextBox.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.WgetNamesTextBox.LabelText = "Wget names Regex";
+            this.WgetNamesTextBox.Location = new System.Drawing.Point(353, 76);
+            this.WgetNamesTextBox.MaxLength = 0;
+            this.WgetNamesTextBox.Name = "WgetNamesTextBox";
+            this.WgetNamesTextBox.PreviousText = "";
+            this.WgetNamesTextBox.Size = new System.Drawing.Size(171, 34);
+            this.WgetNamesTextBox.TabIndex = 7;
             // 
             // WebCrawlerUI
             // 
@@ -317,5 +352,8 @@ namespace FBITools
         private System.Windows.Forms.DataGridViewTextBoxColumn FileName;
         private System.Windows.Forms.DataGridViewTextBoxColumn FileSize;
         private System.Windows.Forms.DataGridViewTextBoxColumn Date;
+        internal FlatTextBoxA WgetURLTextBox;
+        internal FlatButtonA WgetURLButton;
+        internal FlatTextBoxA WgetNamesTextBox;
     }
 }
