@@ -35,12 +35,14 @@ namespace FBITools
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.MainContentTable = new FBITools.FlatTableA();
             this.InputTable = new FBITools.FlatTableA();
+            this.WgetNamesTextBox = new FBITools.FlatTextBoxA();
             this.TitleLabel = new FBITools.FlatLabelA();
-            this.UrlTextBox = new FBITools.FlatMaskedTextBoxA();
             this.FolderTextBox = new FBITools.FlatTextBoxA();
             this.WgetURLTextBox = new FBITools.FlatTextBoxA();
+            this.WgetURLButton = new FBITools.FlatButtonA();
             this.CrawButton = new FBITools.FlatButtonA();
             this.WarningLabel = new FBITools.FlatLabelA();
+            this.URLComboBox = new FBITools.FlatComboBoxA();
             this.ResultTable = new FBITools.FlatTableA();
             this.ResultGrid = new FBITools.FlatDataGridA();
             this.Found = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -48,8 +50,6 @@ namespace FBITools
             this.FileSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ResultStatusBar = new FBITools.FlatStatusBarA();
-            this.WgetURLButton = new FBITools.FlatButtonA();
-            this.WgetNamesTextBox = new FBITools.FlatTextBoxA();
             this.MainContentTable.SuspendLayout();
             this.InputTable.SuspendLayout();
             this.ResultTable.SuspendLayout();
@@ -82,12 +82,12 @@ namespace FBITools
             this.InputTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.InputTable.Controls.Add(this.WgetNamesTextBox, 1, 2);
             this.InputTable.Controls.Add(this.TitleLabel, 0, 0);
-            this.InputTable.Controls.Add(this.UrlTextBox, 0, 1);
             this.InputTable.Controls.Add(this.FolderTextBox, 0, 2);
             this.InputTable.Controls.Add(this.WgetURLTextBox, 1, 1);
             this.InputTable.Controls.Add(this.WgetURLButton, 3, 1);
             this.InputTable.Controls.Add(this.CrawButton, 0, 3);
             this.InputTable.Controls.Add(this.WarningLabel, 0, 4);
+            this.InputTable.Controls.Add(this.URLComboBox, 0, 1);
             this.InputTable.Dock = System.Windows.Forms.DockStyle.Fill;
             this.InputTable.Location = new System.Drawing.Point(1, 1);
             this.InputTable.Name = "InputTable";
@@ -99,8 +99,19 @@ namespace FBITools
             this.InputTable.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.InputTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.InputTable.Size = new System.Drawing.Size(702, 196);
-            this.InputTable.SizeOriginal = new System.Drawing.Size(702, 176);
+            this.InputTable.SizeOriginal = new System.Drawing.Size(702, 196);
             this.InputTable.TabIndex = 0;
+            // 
+            // WgetNamesTextBox
+            // 
+            this.WgetNamesTextBox.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.WgetNamesTextBox.LabelText = "Wget names Regex";
+            this.WgetNamesTextBox.Location = new System.Drawing.Point(353, 76);
+            this.WgetNamesTextBox.MaxLength = 0;
+            this.WgetNamesTextBox.Name = "WgetNamesTextBox";
+            this.WgetNamesTextBox.PreviousText = "";
+            this.WgetNamesTextBox.Size = new System.Drawing.Size(171, 34);
+            this.WgetNamesTextBox.TabIndex = 0;
             // 
             // TitleLabel
             // 
@@ -113,22 +124,9 @@ namespace FBITools
             this.TitleLabel.Margin = new System.Windows.Forms.Padding(0, 0, 0, 2);
             this.TitleLabel.Name = "TitleLabel";
             this.TitleLabel.Size = new System.Drawing.Size(702, 34);
-            this.TitleLabel.TabIndex = 0;
+            this.TitleLabel.TabIndex = 1;
             this.TitleLabel.Text = "WebCrawler";
             this.TitleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            // 
-            // UrlTextBox
-            // 
-            this.UrlTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.UrlTextBox.LabelText = "URL";
-            this.UrlTextBox.Location = new System.Drawing.Point(0, 38);
-            this.UrlTextBox.Margin = new System.Windows.Forms.Padding(0, 2, 2, 2);
-            this.UrlTextBox.Mask = App.Core.Desktop.TextMask.None;
-            this.UrlTextBox.MaxLength = 255;
-            this.UrlTextBox.Name = "UrlTextBox";
-            this.UrlTextBox.Size = new System.Drawing.Size(349, 34);
-            this.UrlTextBox.TabIndex = 1;
-            this.UrlTextBox.TextAlign = App.Core.Desktop.FlatMaskedTextBox.TextAlignTypes.Left;
             // 
             // FolderTextBox
             // 
@@ -140,7 +138,7 @@ namespace FBITools
             this.FolderTextBox.Name = "FolderTextBox";
             this.FolderTextBox.PreviousText = "";
             this.FolderTextBox.Size = new System.Drawing.Size(349, 34);
-            this.FolderTextBox.TabIndex = 2;
+            this.FolderTextBox.TabIndex = 3;
             // 
             // WgetURLTextBox
             // 
@@ -151,7 +149,21 @@ namespace FBITools
             this.WgetURLTextBox.Name = "WgetURLTextBox";
             this.WgetURLTextBox.PreviousText = "";
             this.WgetURLTextBox.Size = new System.Drawing.Size(171, 34);
-            this.WgetURLTextBox.TabIndex = 3;
+            this.WgetURLTextBox.TabIndex = 4;
+            // 
+            // WgetURLButton
+            // 
+            this.WgetURLButton.BorderColorDefault = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(223)))), ((int)(((byte)(229)))));
+            this.WgetURLButton.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.WgetURLButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(223)))), ((int)(((byte)(229)))));
+            this.WgetURLButton.FlatAppearance.BorderSize = 0;
+            this.WgetURLButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
+            this.WgetURLButton.Location = new System.Drawing.Point(528, 38);
+            this.WgetURLButton.Margin = new System.Windows.Forms.Padding(2, 2, 0, 2);
+            this.WgetURLButton.Name = "WgetURLButton";
+            this.WgetURLButton.Size = new System.Drawing.Size(174, 34);
+            this.WgetURLButton.TabIndex = 5;
+            this.WgetURLButton.Text = "Wget";
             // 
             // CrawButton
             // 
@@ -165,7 +177,7 @@ namespace FBITools
             this.CrawButton.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.CrawButton.Name = "CrawButton";
             this.CrawButton.Size = new System.Drawing.Size(702, 34);
-            this.CrawButton.TabIndex = 4;
+            this.CrawButton.TabIndex = 6;
             this.CrawButton.Text = "Craw";
             // 
             // WarningLabel
@@ -178,8 +190,17 @@ namespace FBITools
             this.WarningLabel.Margin = new System.Windows.Forms.Padding(0, 2, 0, 0);
             this.WarningLabel.Name = "WarningLabel";
             this.WarningLabel.Size = new System.Drawing.Size(702, 24);
-            this.WarningLabel.TabIndex = 5;
+            this.WarningLabel.TabIndex = 7;
             this.WarningLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // URLComboBox
+            // 
+            this.URLComboBox.BackColor = System.Drawing.Color.White;
+            this.URLComboBox.LabelText = "URL";
+            this.URLComboBox.Location = new System.Drawing.Point(2, 38);
+            this.URLComboBox.Name = "URLComboBox";
+            this.URLComboBox.Size = new System.Drawing.Size(347, 34);
+            this.URLComboBox.TabIndex = 8;
             // 
             // ResultTable
             // 
@@ -194,7 +215,7 @@ namespace FBITools
             this.ResultTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.ResultTable.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.ResultTable.Size = new System.Drawing.Size(702, 426);
-            this.ResultTable.SizeOriginal = new System.Drawing.Size(702, 446);
+            this.ResultTable.SizeOriginal = new System.Drawing.Size(702, 426);
             this.ResultTable.TabIndex = 1;
             // 
             // ResultGrid
@@ -294,31 +315,6 @@ namespace FBITools
             this.ResultStatusBar.Size = new System.Drawing.Size(696, 23);
             this.ResultStatusBar.TabIndex = 1;
             // 
-            // WgetURLButton
-            // 
-            this.WgetURLButton.BorderColorDefault = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(223)))), ((int)(((byte)(229)))));
-            this.WgetURLButton.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.WgetURLButton.FlatAppearance.BorderColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(223)))), ((int)(((byte)(229)))));
-            this.WgetURLButton.FlatAppearance.BorderSize = 0;
-            this.WgetURLButton.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(213)))), ((int)(((byte)(213)))), ((int)(((byte)(213)))));
-            this.WgetURLButton.Location = new System.Drawing.Point(528, 38);
-            this.WgetURLButton.Margin = new System.Windows.Forms.Padding(2, 2, 0, 2);
-            this.WgetURLButton.Name = "WgetURLButton";
-            this.WgetURLButton.Size = new System.Drawing.Size(174, 34);
-            this.WgetURLButton.TabIndex = 6;
-            this.WgetURLButton.Text = "Wget";
-            // 
-            // WgetNamesTextBox
-            // 
-            this.WgetNamesTextBox.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.WgetNamesTextBox.LabelText = "Wget names Regex";
-            this.WgetNamesTextBox.Location = new System.Drawing.Point(353, 76);
-            this.WgetNamesTextBox.MaxLength = 0;
-            this.WgetNamesTextBox.Name = "WgetNamesTextBox";
-            this.WgetNamesTextBox.PreviousText = "";
-            this.WgetNamesTextBox.Size = new System.Drawing.Size(171, 34);
-            this.WgetNamesTextBox.TabIndex = 7;
-            // 
             // WebCrawlerUI
             // 
             this.ClientSize = new System.Drawing.Size(704, 624);
@@ -339,7 +335,6 @@ namespace FBITools
         #endregion
 
         private FlatLabelA TitleLabel;
-        internal FlatMaskedTextBoxA UrlTextBox;
         private FlatTableA MainContentTable;
         internal FlatButtonA CrawButton;
         internal FlatLabelA WarningLabel;
@@ -355,5 +350,6 @@ namespace FBITools
         internal FlatTextBoxA WgetURLTextBox;
         internal FlatButtonA WgetURLButton;
         internal FlatTextBoxA WgetNamesTextBox;
+        internal FlatComboBoxA URLComboBox;
     }
 }

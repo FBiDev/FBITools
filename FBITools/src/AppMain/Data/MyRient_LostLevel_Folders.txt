@@ -1,0 +1,68 @@
+001 - Lost Level Archive - Sega - Mega Drive - Genesis
+002 - Lost Level Archive - Nintendo - Nintendo 64
+003 - Lost Level Archive - Nintendo - Super Famicom - SNES
+003 - Lost Level Archive - Nintendo - Super Famicom - SNES - MSU-1
+004 - Lost Level Archive - Nintendo - Game Boy
+005 - Lost Level Archive - Nintendo - Game Boy Advance
+006 - Lost Level Archive - Nintendo - Game Boy Color
+007 - Lost Level Archive - Nintendo - Famicom - NES
+007 - Lost Level Archive - Nintendo - Famicom - NES (UNF)
+008 - Lost Level Archive - NEC - PC Engine - TurboGrafx-16
+009 - Lost Level Archive - Sega - Sega CD
+010 - Lost Level Archive - Sega - 32X
+011 - Lost Level Archive - Sega - Master System
+012 - Lost Level Archive - Sony - PlayStation
+013 - Lost Level Archive - Atari - Lynx
+014 - Lost Level Archive - SNK - Neo Geo Pocket Color
+016 - Lost Level Archive - Nintendo - GameCube
+017 - Lost Level Archive - Atari - Jaguar
+018 - Lost Level Archive - Nintendo - Nintendo DS
+019 - Lost Level Archive - Nintendo - Wii - ISO
+021 - Lost Level Archive - Sony - PlayStation 2
+023 - Lost Level Archive - Magnavox - Odyssey2
+024 - Lost Level Archive - Nintendo - Pokemon Mini
+025 - Lost Level Archive - Atari - 2600
+028 - Lost Level Archive - Nintendo - Virtual Boy
+029 - Lost Level Archive - Microsoft - MSX - CAS
+029 - Lost Level Archive - Microsoft - MSX - DSK
+029 - Lost Level Archive - Microsoft - MSX - ROM
+029 - Lost Level Archive - Microsoft - MSX - TAP
+033 - Lost Level Archive - Sega - SG-1000
+037 - Lost Level Archive - Amstrad - CPC (CDT)
+037 - Lost Level Archive - Amstrad - CPC (CPR)
+037 - Lost Level Archive - Amstrad - CPC (DSK)
+037 - Lost Level Archive - Amstrad - CPC (SNA)
+038 - Lost Level Archive - Apple II
+039 - Lost Level Archive - Sega - Saturn
+040 - Lost Level Archive - Sega - Dreamcast - BIN-CUE
+040 - Lost Level Archive - Sega - Dreamcast - GDI
+040 - Lost Level Archive - Sega - Dreamcast - NRG
+041 - Lost Level Archive - Sony - PlayStation Portable (CSO)
+041 - Lost Level Archive - Sony - PlayStation Portable (EBOOT)
+041 - Lost Level Archive - Sony - PlayStation Portable (ISO)
+041 - Lost Level Archive - Sony - PlayStation Portable (TBD)
+043 - Lost Level Archive - Panasonic - 3DO Interactive Multiplayer
+044 - Lost Level Archive - Coleco - ColecoVision
+045 - Lost Level Archive - Mattel - Intellivision
+046 - Lost Level Archive - GCE - Vectrex
+047 - Lost Level Archive - NEC - PC-8001
+047 - Lost Level Archive - NEC - PC-8801 - D88
+047 - Lost Level Archive - NEC - PC-8801 - T88
+049 - Lost Level Archive - NEC - PC-FX
+051 - Lost Level Archive - Atari - 7800
+053 - Lost Level Archive - Bandai - WonderSwan
+053 - Lost Level Archive - Bandai - WonderSwan Color
+056 - Lost Level Archive - SNK - Neo Geo CD
+057 - Lost Level Archive - Fairchild - Channel F
+059 - Lost Level Archive - Sinclair - ZX Spectrum
+063 - Lost Level Archive - Watara - Supervision
+069 - Lost Level Archive - Wellback - Mega Duck
+071 - Lost Level Archive - Arduboy Inc. - Arduboy
+071 - Lost Level Archive - Arduboy Inc. - Arduboy FX
+072 - Lost Level Archive - WASM-4
+073 - Lost Level Archive - Emerson - Arcadia 2001
+074 - Lost Level Archive - Interton - VC 4000
+075 - Lost Level Archive - Elektor TV Games Computer
+076 - Lost Level Archive - NEC - PC Engine CD - TurboGrafx-CD
+077 - Lost Level Archive - Atari - Jaguar CD
+080 - Lost Level Archive - Uzebox

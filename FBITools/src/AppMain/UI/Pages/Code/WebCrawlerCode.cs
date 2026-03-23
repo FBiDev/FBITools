@@ -12,7 +12,9 @@ namespace FBITools
 {
     public class MyrientRom
     {
-        public MyrientRom() { }
+        public MyrientRom()
+        {
+        }
 
         [Display(IsBool = IsBool.Yes, AutoGenerateField = true)]
         public bool Found { get; set; }
@@ -21,7 +23,7 @@ namespace FBITools
         public string FileName { get; set; }
 
         [Style(Align = ColumnAlign.Right, AutoSizeMode = ColumnAutoSizeMode.AllCells)]
-        public int FileSize { get; set; }
+        public long FileSize { get; set; }
 
         [Style(AutoSizeMode = ColumnAutoSizeMode.AllCells)]
         public DateTime Date { get; set; }
@@ -29,8 +31,6 @@ namespace FBITools
 
     public class WebCrawlerCode : PageCode
     {
-        public WebClientExtend Client { get; set; }
-
         public WebCrawlerCode()
         {
             Session.WebCrawlerPage = this;
@@ -56,8 +56,11 @@ namespace FBITools
             RegisterShownEvents();
             BindStatusBar();
 
-            UI.UrlTextBox.Text = "https://myrient.erista.me/files/No-Intro/Atari%20-%20Atari%20Jaguar%20%28J64%29/";
             UI.FolderTextBox.Text = @"C:\Users\fbirnfeld\Downloads\temp";
+
+            UI.URLComboBox.DataSource = new BindingSource(WebCrawlerInfo.GetMyrientFolders(), null);
+            UI.URLComboBox.DisplayMember = "Value";
+            UI.URLComboBox.ValueMember = "Key";
         }
 
         private void RegisterShownEvents()
@@ -68,13 +71,13 @@ namespace FBITools
             UI.ResultGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             UI.ResultGrid.DataBindingComplete += ResultGrid_DataBindingComplete;
             UI.ResultGrid.CellFormatting += ResultGrid_CellFormatting;
-            //UI.ResultGrid.SortCompare += ResultGrid_SortCompare;
 
-            //UI.ResultGrid.AddBooleanColumn("FoundX");
-            //UI.ResultGrid.SetBooleanColumns(new List<string>() { "FoundX" });
-            //UI.ResultGrid.Columns["FileSize"].ValueType = typeof(int);
-            //UI.ResultGrid.Columns["Date"].ValueType = typeof(DateTime);
-            //UI.ResultGrid.Columns["Date"].DefaultCellStyle.Format = "dd-MMM-yyyy HH:mm";
+            // UI.ResultGrid.SortCompare += ResultGrid_SortCompare;
+            // UI.ResultGrid.AddBooleanColumn("FoundX");
+            // UI.ResultGrid.SetBooleanColumns(new List<string>() { "FoundX" });
+            // UI.ResultGrid.Columns["FileSize"].ValueType = typeof(int);
+            // UI.ResultGrid.Columns["Date"].ValueType = typeof(DateTime);
+            // UI.ResultGrid.Columns["Date"].DefaultCellStyle.Format = "dd-MMM-yyyy HH:mm";
         }
 
         private void BindStatusBar()
@@ -84,15 +87,16 @@ namespace FBITools
 
         private void OnFormGotFocus(object sender, EventArgs e)
         {
-            UI.UrlTextBox.Focus();
+            UI.URLComboBox.Focus();
         }
 
         private async void CrawButton_Click(object sender, EventArgs e)
         {
             UI.WarningLabel.Text = "Executando...";
-
-            var html = await getURLHtml(UI.UrlTextBox.Text);
-
+            //
+            var temp = "https://myrient.erista.me/files/No-Intro/";
+            var html = await GetURLHtml(UI.URLComboBox.SelectedValue.ToString());
+            
             var htmlTable = html.GetBetween("<table id=\"list\">", "</table>", true);
             var romList = htmlTable.GetBetweenList("<tr><td class=\"link\"><a href=\"", "</td></tr>", true);
 
@@ -101,7 +105,7 @@ namespace FBITools
                 romList.RemoveRange(0, 3);
             }
 
-            var MyrientRomList = new DataList<MyrientRom>();
+            var myrientRomList = new DataList<MyrientRom>();
 
             foreach (var rom in romList)
             {
@@ -119,21 +123,20 @@ namespace FBITools
                     Date = ConvertDate(date)
                 };
 
-                MyrientRomList.Add(currentRom);
+                myrientRomList.Add(currentRom);
 
-                //UI.ResultGrid.Rows.Add(currentRom.Found, currentRom.FileName, currentRom.FileSize, currentRom.Date);
+                // UI.ResultGrid.Rows.Add(currentRom.Found, currentRom.FileName, currentRom.FileSize, currentRom.Date);
             }
 
-            UI.ResultGrid.DataSource = MyrientRomList;
-            UI.ResultGrid.OrderBy("Found", false);
-            UI.ResultGrid.OrderBy("Found");
+            UI.ResultGrid.DataSource = myrientRomList;
+            UI.ResultGrid.Sort(UI.ResultGrid.Columns["Found"], ListSortDirection.Ascending);
 
-            var totalFound = MyrientRomList.Where(x => x.Found).Count();
+            var totalFound = myrientRomList.Where(x => x.Found).Count();
 
-            UI.WarningLabel.Text = "Finalizado - Found: " + totalFound + " Not Found: " + (MyrientRomList.Count - totalFound);
+            UI.WarningLabel.Text = "Finalizado - Found: " + totalFound + " Not Found: " + (myrientRomList.Count - totalFound);
         }
 
-        private async Task<string> getURLHtml(string url)
+        private async Task<string> GetURLHtml(string url)
         {
             return await Browser.DownloadString(url);
         }
@@ -149,26 +152,37 @@ namespace FBITools
             return newDate;
         }
 
-        private int ConvertSize(string size)
+        private long ConvertSize(string size)
         {
+            if (size.Contains("GiB"))
+            {
+                var newSize = size.Replace(" GiB", string.Empty);
+                var newSizeDouble = Cast.ToDouble(newSize);
+                var newSizeInt = newSizeDouble * 1024 * 1024 * 1024;
+                return Convert.ToInt64(newSizeInt);
+            }
             if (size.Contains("MiB"))
             {
-                var newSize = size.Replace(" MiB", "");
+                var newSize = size.Replace(" MiB", string.Empty);
                 var newSizeDouble = Cast.ToDouble(newSize);
                 var newSizeInt = newSizeDouble * 1024 * 1024;
                 return Convert.ToInt32(newSizeInt);
             }
             else if (size.Contains("KiB"))
             {
-                var newSize = size.Replace(" KiB", "");
+                var newSize = size.Replace(" KiB", string.Empty);
                 var newSizeDouble = Cast.ToDouble(newSize);
                 var newSizeInt = newSizeDouble * 1024;
                 return Convert.ToInt32(newSizeInt);
             }
+            else if (size.Contains("B"))
+            {
+                var newSize = size.Replace(" B", string.Empty);
+                return Convert.ToInt32(newSize);
+            }
             else
             {
-                var newSize = size.Replace(" B", "");
-                return Convert.ToInt32(newSize);
+                return 0;
             }
         }
 
@@ -186,11 +200,16 @@ namespace FBITools
         private void ResultGrid_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
         {
             if (UI.ResultGrid.Columns[e.ColumnIndex].Name == "FileSize"
-                && e.Value != null && e.Value is int)
+                && e.Value != null && e.Value is long)
             {
-                int valor = (int)e.Value;
+                long valor = (long)e.Value;
 
-                if (valor >= 1024 * 1024)
+                if (valor >= 1024 * 1024 * 1024)
+                {
+                    double mb = valor / (1024.0 * 1024.0 * 1024.0);
+                    e.Value = mb.ToString("0.0") + " GB";
+                }
+                else if (valor >= 1024 * 1024)
                 {
                     double mb = valor / (1024.0 * 1024.0);
                     e.Value = mb.ToString("0.0") + " MB";
@@ -218,20 +237,25 @@ namespace FBITools
             bool v2Especial = valor2.Length == 0 || !char.IsLetterOrDigit(valor2[0]);
 
             if (v1Especial && !v2Especial)
+            {
                 e.SortResult = 1;
+            }
             else if (!v1Especial && v2Especial)
+            {
                 e.SortResult = -1;
+            }
             else
+            {
                 e.SortResult = string.Compare(valor1, valor2, true);
+            }
 
             e.Handled = true;
         }
 
         // ToDo
-        //.\wget.exe -m -np -c -e robots=off -R "index.html*" "https://myrient.erista.me/files/Lost%20Level/Archive/003%20-%20Lost%20Level%20Archive%20-%20Nintendo%20-%20Super%20Famicom%20-%20SNES%20-%20MSU-1/"
-
-        //.\wget.exe --accept-regex "/(Aftermarket|Unlicensed|Unl|prototype|Proto|Net Yaroze)[^/]*$" -m -np -c -e robots=off -R "index.html*" "https://myrient.erista.me/files/Lost%20Level/Archive/012%20-%20Lost%20Level%20Archive%20-%20Sony%20-%20PlayStation/"
+        // .\wget.exe -m -np -c -e robots=off -R "index.html*" "https://myrient.erista.me/files/Lost%20Level/Archive/003%20-%20Lost%20Level%20Archive%20-%20Nintendo%20-%20Super%20Famicom%20-%20SNES%20-%20MSU-1/"
+        // .\wget.exe --accept-regex "/(Aftermarket|Unlicensed|Unl|prototype|Proto|Net Yaroze)[^/]*$" -m -np -c -e robots=off -R "index.html*" "https://myrient.erista.me/files/Lost%20Level/Archive/012%20-%20Lost%20Level%20Archive%20-%20Sony%20-%20PlayStation/"
         //                            "/[T-Z][^/]*$"
-        //--accept-regex "/Perfect%20Diamond[^/]*$"
+        // --accept-regex "/Perfect%20Diamond[^/]*$"
     }
 }

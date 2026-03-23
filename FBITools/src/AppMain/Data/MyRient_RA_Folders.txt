@@ -1,0 +1,53 @@
+RA - 3DO Interactive Multiplayer
+RA - Amstrad CPC
+RA - Apple II
+RA - Arcade
+RA - Arduboy
+RA - Atari 2600
+RA - Atari 7800
+RA - Atari Jaguar
+RA - Atari Jaguar CD
+RA - Atari Lynx
+RA - Colecovision
+RA - Elektor TV Games Computer
+RA - Emerson Arcadia 2001
+RA - Fairchild Channel F
+RA - GCE Vectrex
+RA - Interton VC 4000
+RA - Magnavox Odyssey 2
+RA - Mattel Intellivision
+RA - Mega Duck
+RA - Microsoft MSX
+RA - NEC PC-8801
+RA - NEC PC-FX
+RA - NEC TurboGrafx-16
+RA - NEC TurboGrafx-CD
+RA - Nintendo 64
+RA - Nintendo DS
+RA - Nintendo DSi
+RA - Nintendo Entertainment System
+RA - Nintendo Famicom Disk System
+RA - Nintendo Game Boy
+RA - Nintendo Game Boy Advance
+RA - Nintendo Game Boy Color
+RA - Nintendo GameCube
+RA - Nintendo Pokemon Mini
+RA - Nintendo Virtual Boy
+RA - SNK Neo Geo CD
+RA - SNK Neo Geo Pocket
+RA - Sega 32X
+RA - Sega CD
+RA - Sega Dreamcast
+RA - Sega Game Gear
+RA - Sega Genesis
+RA - Sega Master System
+RA - Sega SG-1000
+RA - Sega Saturn
+RA - Sony PSP
+RA - Sony Playstation
+RA - Sony Playstation 2
+RA - Super Nintendo Entertainment System
+RA - Uzebox
+RA - WASM-4
+RA - Watara Supervision
+RA - WonderSwan

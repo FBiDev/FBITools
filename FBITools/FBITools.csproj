@@ -96,6 +96,7 @@
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="src\AppMain\UI\Pages\Code\WebCrawlerCode.cs" />
+    <Compile Include="src\AppMain\UI\Pages\Code\WebCrawlerInfo.cs" />
     <Compile Include="src\AppMain\UI\Pages\Design\WebCrawlerUI.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -244,6 +245,18 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />
+    <ContentWithTargetPath Include="src\AppMain\Data\MyRient_LostLevel_Folders.txt">
+      <TargetPath>Data\MyRient_LostLevel_Folders.txt</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </ContentWithTargetPath>
+    <ContentWithTargetPath Include="src\AppMain\Data\MyRient_RA_Folders.txt">
+      <TargetPath>Data\MyRient_RA_Folders.txt</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </ContentWithTargetPath>
+	<ContentWithTargetPath Include="src\AppMain\Data\MyRient_No-Intro_Folders.txt">
+      <TargetPath>Data\MyRient_No-Intro_Folders.txt</TargetPath>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </ContentWithTargetPath>
     <Content Include="src\WiiU\Data\Scripts\sql_WiiUTitle_List.sql" />
     <Content Include="src\WiiU\Data\Scripts\sql_WiiUCategory_List.sql" />
     <Content Include="src\WiiU\Data\Scripts\sql_WiiURegion_List.sql" />
