@@ -226,5 +226,12 @@ namespace FBITools
 
             e.Handled = true;
         }
+
+        // ToDo
+        //.\wget.exe -m -np -c -e robots=off -R "index.html*" "https://myrient.erista.me/files/Lost%20Level/Archive/003%20-%20Lost%20Level%20Archive%20-%20Nintendo%20-%20Super%20Famicom%20-%20SNES%20-%20MSU-1/"
+
+        //.\wget.exe --accept-regex "/(Aftermarket|Unlicensed|Unl|prototype|Proto|Net Yaroze)[^/]*$" -m -np -c -e robots=off -R "index.html*" "https://myrient.erista.me/files/Lost%20Level/Archive/012%20-%20Lost%20Level%20Archive%20-%20Sony%20-%20PlayStation/"
+        //                            "/[T-Z][^/]*$"
+        //--accept-regex "/Perfect%20Diamond[^/]*$"
     }
 }
