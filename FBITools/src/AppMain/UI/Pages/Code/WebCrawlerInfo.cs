@@ -2,6 +2,9 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
+using App.Core;
+using App.Core.Desktop;
 
 namespace FBITools
 {
@@ -13,6 +16,56 @@ namespace FBITools
 
         private static Dictionary<string, string> allFolders;
 
+        public static async Task<string> GetURLHtml(string url)
+        {
+            return await Browser.DownloadString(url);
+        }
+
+        public static bool CheckFile(string folder, string fileName)
+        {
+            return File.Exists(Path.Combine(folder, fileName));
+        }
+
+        public static DateTime ConvertDate(string date)
+        {
+            var newDate = Cast.ToDateTime(date);
+            return newDate;
+        }
+
+        public static long ConvertSize(string size)
+        {
+            if (size.Contains("GiB"))
+            {
+                var newSize = size.Replace(" GiB", string.Empty);
+                var newSizeDouble = Cast.ToDouble(newSize);
+                var newSizeInt = newSizeDouble * 1024 * 1024 * 1024;
+                return Convert.ToInt64(newSizeInt);
+            }
+            else if (size.Contains("MiB"))
+            {
+                var newSize = size.Replace(" MiB", string.Empty);
+                var newSizeDouble = Cast.ToDouble(newSize);
+                var newSizeInt = newSizeDouble * 1024 * 1024;
+                return Convert.ToInt32(newSizeInt);
+            }
+            else if (size.Contains("KiB"))
+            {
+                var newSize = size.Replace(" KiB", string.Empty);
+                var newSizeDouble = Cast.ToDouble(newSize);
+                var newSizeInt = newSizeDouble * 1024;
+                return Convert.ToInt32(newSizeInt);
+            }
+            else if (size.Contains("B"))
+            {
+                var newSize = size.Replace(" B", string.Empty);
+                return Convert.ToInt32(newSize);
+            }
+            else
+            {
+                return 0;
+            }
+        }
+
         public static Dictionary<string, string> GetMyrientFolders()
         {
             allFolders = new Dictionary<string, string> { };
@@ -21,8 +74,8 @@ namespace FBITools
             var raFolders = GetRAFolders();
             var noIntroFolders = GetNoIntroFolders();
 
-            AddLostLevelFoldersToList(lostLevelFolders);
-            AddFoldersToList(raFolders, MyRientRAURL);
+            //AddLostLevelFoldersToList(lostLevelFolders);
+            //AddFoldersToList(raFolders, MyRientRAURL);
             AddNoIntroFoldersToList(noIntroFolders);
 
             allFolders = allFolders.OrderBy(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
@@ -52,7 +105,7 @@ namespace FBITools
                 key = Path.Combine(MyRientLostLevelURL, key.TrimEnd('/') + "/");
 
                 var newFolders = new List<string>();
-                var folder = f.Substring(6, (f.Length - 6));
+                var folder = f.Substring(6, f.Length - 6);
                 newFolders.Add(folder);
 
                 allFolders.Add(key, folder);

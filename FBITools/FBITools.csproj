@@ -253,10 +253,11 @@
       <TargetPath>Data\MyRient_RA_Folders.txt</TargetPath>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </ContentWithTargetPath>
-	<ContentWithTargetPath Include="src\AppMain\Data\MyRient_No-Intro_Folders.txt">
+    <ContentWithTargetPath Include="src\AppMain\Data\MyRient_No-Intro_Folders.txt">
       <TargetPath>Data\MyRient_No-Intro_Folders.txt</TargetPath>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </ContentWithTargetPath>
+    <Content Include="src\AppMain\Data\MyRient_No-Intro_Folders_Excluded.txt" />
     <Content Include="src\WiiU\Data\Scripts\sql_WiiUTitle_List.sql" />
     <Content Include="src\WiiU\Data\Scripts\sql_WiiUCategory_List.sql" />
     <Content Include="src\WiiU\Data\Scripts\sql_WiiURegion_List.sql" />

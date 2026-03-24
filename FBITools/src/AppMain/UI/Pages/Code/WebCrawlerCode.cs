@@ -7,6 +7,9 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using App.Core;
 using App.Core.Desktop;
+using System.Diagnostics;
+using System.Text;
+using System.Globalization;
 
 namespace FBITools
 {
@@ -56,7 +59,7 @@ namespace FBITools
             RegisterShownEvents();
             BindStatusBar();
 
-            UI.FolderTextBox.Text = @"C:\Users\fbirnfeld\Downloads\temp";
+            UI.FolderTextBox.Text = @"C:\WGET\myrient.erista.me\files\No-Intro\";
 
             UI.URLComboBox.DataSource = new BindingSource(WebCrawlerInfo.GetMyrientFolders(), null);
             UI.URLComboBox.DisplayMember = "Value";
@@ -66,6 +69,7 @@ namespace FBITools
         private void RegisterShownEvents()
         {
             UI.CrawButton.Click += CrawButton_Click;
+            UI.WgetURLButton.Click += WgetURLButton_Click;
 
             UI.ResultGrid.AutoGenerateColumns = true;
             UI.ResultGrid.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
@@ -95,8 +99,8 @@ namespace FBITools
             UI.WarningLabel.Text = "Executando...";
             //
             var temp = "https://myrient.erista.me/files/No-Intro/";
-            var html = await GetURLHtml(UI.URLComboBox.SelectedValue.ToString());
-            
+            var html = await WebCrawlerInfo.GetURLHtml(UI.URLComboBox.SelectedValue.ToString());
+
             var htmlTable = html.GetBetween("<table id=\"list\">", "</table>", true);
             var romList = htmlTable.GetBetweenList("<tr><td class=\"link\"><a href=\"", "</td></tr>", true);
 
@@ -106,6 +110,9 @@ namespace FBITools
             }
 
             var myrientRomList = new DataList<MyrientRom>();
+
+            var folderTitle = UI.URLComboBox.SelectedText.Replace("NoIntro - ", "");
+            var currentFolder = Path.Combine(UI.FolderTextBox.Text, folderTitle);
 
             foreach (var rom in romList)
             {
@@ -117,10 +124,10 @@ namespace FBITools
 
                 var currentRom = new MyrientRom
                 {
-                    Found = CheckFile(name),
+                    Found = WebCrawlerInfo.CheckFile(currentFolder, name),
                     FileName = name,
-                    FileSize = ConvertSize(size),
-                    Date = ConvertDate(date)
+                    FileSize = WebCrawlerInfo.ConvertSize(size),
+                    Date = WebCrawlerInfo.ConvertDate(date)
                 };
 
                 myrientRomList.Add(currentRom);
@@ -133,57 +140,34 @@ namespace FBITools
 
             var totalFound = myrientRomList.Where(x => x.Found).Count();
 
-            UI.WarningLabel.Text = "Finalizado - Found: " + totalFound + " Not Found: " + (myrientRomList.Count - totalFound);
+            var folderTotalFiles = 0;
+            if (Directory.Exists(currentFolder))
+            {
+                folderTotalFiles = Directory.EnumerateFiles(currentFolder, "*", SearchOption.AllDirectories).Count();
+            }
+
+            UI.WarningLabel.Text = "Folder: " + folderTotalFiles + " - Found: " + totalFound + " - Not: " + (myrientRomList.Count - totalFound);
         }
 
-        private async Task<string> GetURLHtml(string url)
+        private void WgetURLButton_Click(object sender, EventArgs e)
         {
-            return await Browser.DownloadString(url);
+            var command = "cd C:\\WGET && .\\wget.exe ";
+
+            if (string.IsNullOrWhiteSpace(UI.WgetNamesTextBox.Text) == false)
+            {
+                var regexWords = Uri.EscapeDataString(UI.WgetNamesTextBox.Text).Replace("%7C", "|");
+                command += "--accept-regex=\"(" + regexWords + ")\" ";
+            }
+
+            command += "-m -np -c -e robots=off -R \"index.html*\" \"" + UI.URLComboBox.SelectedValue.ToString() + "\"";
+
+            Execute(command);
+
         }
 
-        private bool CheckFile(string fileName)
+        public static void Execute(string exeCmd)
         {
-            return File.Exists(Path.Combine(UI.FolderTextBox.Text, fileName));
-        }
-
-        private DateTime ConvertDate(string date)
-        {
-            var newDate = Cast.ToDateTime(date);
-            return newDate;
-        }
-
-        private long ConvertSize(string size)
-        {
-            if (size.Contains("GiB"))
-            {
-                var newSize = size.Replace(" GiB", string.Empty);
-                var newSizeDouble = Cast.ToDouble(newSize);
-                var newSizeInt = newSizeDouble * 1024 * 1024 * 1024;
-                return Convert.ToInt64(newSizeInt);
-            }
-            if (size.Contains("MiB"))
-            {
-                var newSize = size.Replace(" MiB", string.Empty);
-                var newSizeDouble = Cast.ToDouble(newSize);
-                var newSizeInt = newSizeDouble * 1024 * 1024;
-                return Convert.ToInt32(newSizeInt);
-            }
-            else if (size.Contains("KiB"))
-            {
-                var newSize = size.Replace(" KiB", string.Empty);
-                var newSizeDouble = Cast.ToDouble(newSize);
-                var newSizeInt = newSizeDouble * 1024;
-                return Convert.ToInt32(newSizeInt);
-            }
-            else if (size.Contains("B"))
-            {
-                var newSize = size.Replace(" B", string.Empty);
-                return Convert.ToInt32(newSize);
-            }
-            else
-            {
-                return 0;
-            }
+            Process.Start("wt", "--size 60,20 -w _q cmd /K " + exeCmd);
         }
 
         private void ResultGrid_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
@@ -251,11 +235,5 @@ namespace FBITools
 
             e.Handled = true;
         }
-
-        // ToDo
-        // .\wget.exe -m -np -c -e robots=off -R "index.html*" "https://myrient.erista.me/files/Lost%20Level/Archive/003%20-%20Lost%20Level%20Archive%20-%20Nintendo%20-%20Super%20Famicom%20-%20SNES%20-%20MSU-1/"
-        // .\wget.exe --accept-regex "/(Aftermarket|Unlicensed|Unl|prototype|Proto|Net Yaroze)[^/]*$" -m -np -c -e robots=off -R "index.html*" "https://myrient.erista.me/files/Lost%20Level/Archive/012%20-%20Lost%20Level%20Archive%20-%20Sony%20-%20PlayStation/"
-        //                            "/[T-Z][^/]*$"
-        // --accept-regex "/Perfect%20Diamond[^/]*$"
     }
 }

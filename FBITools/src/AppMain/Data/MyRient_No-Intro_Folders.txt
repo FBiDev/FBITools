@@ -121,44 +121,6 @@ Google - Android (Samsung Galaxy Apps) (APK)
 HD DVD
 Hartung - Game Master
 Hitachi - S1 (Waveform)
-IBM - PC and Compatibles (Digital) (Amazon)
-IBM - PC and Compatibles (Digital) (BOOTH)
-IBM - PC and Compatibles (Digital) (Ci-en)
-IBM - PC and Compatibles (Digital) (DLsite)
-IBM - PC and Compatibles (Digital) (DLsite) (Hentai)
-IBM - PC and Compatibles (Digital) (Denpasoft)
-IBM - PC and Compatibles (Digital) (Desura)
-IBM - PC and Compatibles (Digital) (Epic Games Launcher)
-IBM - PC and Compatibles (Digital) (FANZA)
-IBM - PC and Compatibles (Digital) (FANZA) (Doujin)
-IBM - PC and Compatibles (Digital) (Flash)
-IBM - PC and Compatibles (Digital) (Freem!)
-IBM - PC and Compatibles (Digital) (GOG)
-IBM - PC and Compatibles (Digital) (GamersGate)
-IBM - PC and Compatibles (Digital) (Games for Windows Live)
-IBM - PC and Compatibles (Digital) (Games for Windows Live) (Deprecated)
-IBM - PC and Compatibles (Digital) (Getchu.com)
-IBM - PC and Compatibles (Digital) (Groupees)
-IBM - PC and Compatibles (Digital) (Humble Bundle)
-IBM - PC and Compatibles (Digital) (JAST USA)
-IBM - PC and Compatibles (Digital) (Johren)
-IBM - PC and Compatibles (Digital) (Kagura Games)
-IBM - PC and Compatibles (Digital) (MangaGamer)
-IBM - PC and Compatibles (Digital) (Microsoft Store)
-IBM - PC and Compatibles (Digital) (Misc)
-IBM - PC and Compatibles (Digital) (Misc) (Hentai)
-IBM - PC and Compatibles (Digital) (NovelGameCollection)
-IBM - PC and Compatibles (Digital) (Press Kits)
-IBM - PC and Compatibles (Digital) (Steam)
-IBM - PC and Compatibles (Digital) (Steam) (Hentai)
-IBM - PC and Compatibles (Digital) (Unknown)
-IBM - PC and Compatibles (Digital) (Updates and DLC)
-IBM - PC and Compatibles (Flash Media)
-IBM - PC and Compatibles (Flux)
-IBM - PC and Compatibles (IPF)
-IBM - PC and Compatibles (LooseFilesArchive)
-IBM - PC and Compatibles (SCP)
-IBM - PC and Compatibles (Tiger Electronics - Net Jet)
 Interton - VC 4000
 Konami - Picno
 LeapFrog - Explorer
@@ -177,13 +139,6 @@ Microsoft - Xbox (Development Kit Hard Drives)
 Microsoft - Xbox 360 (Development Kit Hard Drives)
 Microsoft - Xbox 360 (Digital)
 Milton-Bradley - Omni (Waveform)
-Mobile - J2ME
-Mobile - Palm OS
-Mobile - Palm OS (Digital)
-Mobile - Pocket PC
-Mobile - Pocket PC (Digital)
-Mobile - Symbian
-MovieCD
 NEC - PC Engine - TurboGrafx-16
 NEC - PC Engine - TurboGrafx-16 (Aftermarket)
 NEC - PC Engine - TurboGrafx-16 (Private)
@@ -371,13 +326,6 @@ Sharp - MZ-700 (Waveform)
 Sharp - X1 (Waveform)
 Sharp - X68000 (Flux)
 Sinclair - ZX Spectrum +3
-Sony - PlayStation (PS one Classics) (PSN)
-Sony - PlayStation 3 (Development Kit Hard Drives) (Decrypted)
-Sony - PlayStation 3 (PSN) (Avatars)
-Sony - PlayStation 3 (PSN) (Content)
-Sony - PlayStation 3 (PSN) (DLC)
-Sony - PlayStation 3 (PSN) (Themes)
-Sony - PlayStation 3 (PSN) (Updates)
 Sony - PlayStation Mobile (PSN)
 Sony - PlayStation Portable (PSN) (Decrypted)
 Sony - PlayStation Portable (PSN) (Encrypted)
@@ -385,25 +333,6 @@ Sony - PlayStation Portable (PSN) (Minis) (Decrypted)
 Sony - PlayStation Portable (PSN) (Minis) (Encrypted)
 Sony - PlayStation Vita (PSN) (Content)
 Sony - PlayStation Vita (PSN) (Updates)
-Source Code - Apple - II
-Source Code - Apple - IIGS
-Source Code - Arcade
-Source Code - Atari - 8-bit Family
-Source Code - Atari - Atari 2600 (Aftermarket)
-Source Code - IBM - PC and Compatibles
-Source Code - Mobile - Palm OS
-Source Code - Nintendo - Game Boy Advance
-Source Code - Nintendo - Game Boy Color
-Source Code - Nintendo - Nintendo DS
-Source Code - Nintendo - Nintendo Entertainment System
-Source Code - Nintendo - Nintendo GameCube
-Source Code - Nintendo - Super Nintendo Entertainment System
-Source Code - Panasonic - 3DO Interactive Multiplayer
-Source Code - Panasonic - M2
-Source Code - Sega - DreamCast
-Source Code - VM Labs - NUON
-Source Code - Various
-TEMP IBM - PC and Compatibles (Digital) (Games for Windows Marketplace)
 TeleNova - Compis (Flux)
 Texas Instruments - TI-99-4A (A2R)
 Tiger - Game.com
@@ -411,36 +340,6 @@ Tiger - Gizmondo
 Toshiba - Pasopia (BIN)
 Toshiba - Pasopia (WAV)
 Toshiba - Visicom
-UHD-BD
-Unofficial - Microsoft - Xbox 360 (Title Updates)
-Unofficial - Nintendo - Nintendo 3DS (Digital) (Updates and DLC) (Decrypted)
-Unofficial - Nintendo - Nintendo 3DS (Digital) (Updates and DLC) (Encrypted)
-Unofficial - Nintendo - Wii (Digital) (Deprecated) (WAD)
-Unofficial - Nintendo - Wii (Digital) (Split DLC) (Deprecated) (WAD)
-Unofficial - Nintendo - Wii U (Digital) (Deprecated)
-Unofficial - Obscure Gamers
-Unofficial - Sony - PlayStation 3 (BD-Video Extras)
-Unofficial - Sony - PlayStation 3 (PSN) (Decrypted)
-Unofficial - Sony - PlayStation Portable (PSN) (Decrypted)
-Unofficial - Sony - PlayStation Portable (PSX2PSP)
-Unofficial - Sony - PlayStation Portable (UMD Music)
-Unofficial - Sony - PlayStation Portable (UMD Video)
-Unofficial - Sony - PlayStation Vita (BlackFinPSV)
-Unofficial - Sony - PlayStation Vita (NoNpDrm)
-Unofficial - Sony - PlayStation Vita (PSN) (Decrypted) (NoNpDrm)
-Unofficial - Sony - PlayStation Vita (PSN) (Decrypted) (VPK)
-Unofficial - Sony - PlayStation Vita (PSVgameSD)
-Unofficial - Sony - PlayStation Vita (VPK)
-Unofficial - Super Mario Maker Courses (WARC)
-Unofficial - Video Game Documents (PDF)
-Unofficial - Video Game Magazine Scans (CBZ)
-Unofficial - Video Game Magazine Scans (PDF)
-Unofficial - Video Game Magazine Scans (RAW)
-Unofficial - Video Game Manual Scans (JPEG)
-Unofficial - Video Game OSTs (Digital) (RAW)
-Unofficial - Video Game OSTs (Hardware Recordings)
-Unofficial - Video Game OSTs (Playbutton)
-Unofficial - Video Game Scans (RAW)
 VM Labs - NUON (Digital)
 VTech - CreatiVision
 VTech - V.Smile

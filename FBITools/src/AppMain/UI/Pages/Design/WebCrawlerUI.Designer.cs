@@ -80,10 +80,10 @@ namespace FBITools
             this.InputTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.InputTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.InputTable.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.InputTable.Controls.Add(this.WgetNamesTextBox, 1, 2);
+            this.InputTable.Controls.Add(this.WgetNamesTextBox, 1, 1);
             this.InputTable.Controls.Add(this.TitleLabel, 0, 0);
             this.InputTable.Controls.Add(this.FolderTextBox, 0, 2);
-            this.InputTable.Controls.Add(this.WgetURLTextBox, 1, 1);
+            this.InputTable.Controls.Add(this.WgetURLTextBox, 1, 2);
             this.InputTable.Controls.Add(this.WgetURLButton, 3, 1);
             this.InputTable.Controls.Add(this.CrawButton, 0, 3);
             this.InputTable.Controls.Add(this.WarningLabel, 0, 4);
@@ -106,7 +106,7 @@ namespace FBITools
             // 
             this.WgetNamesTextBox.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.WgetNamesTextBox.LabelText = "Wget names Regex";
-            this.WgetNamesTextBox.Location = new System.Drawing.Point(353, 76);
+            this.WgetNamesTextBox.Location = new System.Drawing.Point(353, 38);
             this.WgetNamesTextBox.MaxLength = 0;
             this.WgetNamesTextBox.Name = "WgetNamesTextBox";
             this.WgetNamesTextBox.PreviousText = "";
@@ -138,18 +138,18 @@ namespace FBITools
             this.FolderTextBox.Name = "FolderTextBox";
             this.FolderTextBox.PreviousText = "";
             this.FolderTextBox.Size = new System.Drawing.Size(349, 34);
-            this.FolderTextBox.TabIndex = 3;
+            this.FolderTextBox.TabIndex = 2;
             // 
             // WgetURLTextBox
             // 
             this.WgetURLTextBox.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.WgetURLTextBox.LabelText = "Wget URL";
-            this.WgetURLTextBox.Location = new System.Drawing.Point(353, 38);
+            this.WgetURLTextBox.Location = new System.Drawing.Point(353, 76);
             this.WgetURLTextBox.MaxLength = 0;
             this.WgetURLTextBox.Name = "WgetURLTextBox";
             this.WgetURLTextBox.PreviousText = "";
             this.WgetURLTextBox.Size = new System.Drawing.Size(171, 34);
-            this.WgetURLTextBox.TabIndex = 4;
+            this.WgetURLTextBox.TabIndex = 3;
             // 
             // WgetURLButton
             // 
@@ -162,7 +162,7 @@ namespace FBITools
             this.WgetURLButton.Margin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.WgetURLButton.Name = "WgetURLButton";
             this.WgetURLButton.Size = new System.Drawing.Size(174, 34);
-            this.WgetURLButton.TabIndex = 5;
+            this.WgetURLButton.TabIndex = 4;
             this.WgetURLButton.Text = "Wget";
             // 
             // CrawButton
@@ -177,7 +177,7 @@ namespace FBITools
             this.CrawButton.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.CrawButton.Name = "CrawButton";
             this.CrawButton.Size = new System.Drawing.Size(702, 34);
-            this.CrawButton.TabIndex = 6;
+            this.CrawButton.TabIndex = 5;
             this.CrawButton.Text = "Craw";
             // 
             // WarningLabel
@@ -190,7 +190,7 @@ namespace FBITools
             this.WarningLabel.Margin = new System.Windows.Forms.Padding(0, 2, 0, 0);
             this.WarningLabel.Name = "WarningLabel";
             this.WarningLabel.Size = new System.Drawing.Size(702, 24);
-            this.WarningLabel.TabIndex = 7;
+            this.WarningLabel.TabIndex = 6;
             this.WarningLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // URLComboBox
@@ -200,7 +200,7 @@ namespace FBITools
             this.URLComboBox.Location = new System.Drawing.Point(2, 38);
             this.URLComboBox.Name = "URLComboBox";
             this.URLComboBox.Size = new System.Drawing.Size(347, 34);
-            this.URLComboBox.TabIndex = 8;
+            this.URLComboBox.TabIndex = 7;
             // 
             // ResultTable
             // 
