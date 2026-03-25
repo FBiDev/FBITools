@@ -75,8 +75,8 @@ namespace FBITools
             var noIntroFolders = GetNoIntroFolders();
 
             //AddLostLevelFoldersToList(lostLevelFolders);
-            //AddFoldersToList(raFolders, MyRientRAURL);
-            AddNoIntroFoldersToList(noIntroFolders);
+            AddFoldersToList(raFolders, MyRientRAURL);
+            //AddNoIntroFoldersToList(noIntroFolders);
 
             allFolders = allFolders.OrderBy(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
             return allFolders;

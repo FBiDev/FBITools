@@ -1,15 +1,12 @@
 ﻿using System;
 using System.ComponentModel;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Net;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using App.Core;
 using App.Core.Desktop;
-using System.Diagnostics;
-using System.Text;
-using System.Globalization;
 
 namespace FBITools
 {
@@ -59,7 +56,11 @@ namespace FBITools
             RegisterShownEvents();
             BindStatusBar();
 
-            UI.FolderTextBox.Text = @"C:\WGET\myrient.erista.me\files\No-Intro\";
+            UI.FolderTextBox.Text = @"D:\Fazendo\wget-1.21.4-win64\myrient.erista.me\files\RetroAchievements\";
+            if (Browser.UseProxy)
+            {
+                UI.FolderTextBox.Text = @"C:\WGET\myrient.erista.me\files\No-Intro\";
+            }
 
             UI.URLComboBox.DataSource = new BindingSource(WebCrawlerInfo.GetMyrientFolders(), null);
             UI.URLComboBox.DisplayMember = "Value";
@@ -146,17 +147,28 @@ namespace FBITools
                 folderTotalFiles = Directory.EnumerateFiles(currentFolder, "*", SearchOption.AllDirectories).Count();
             }
 
-            UI.WarningLabel.Text = "Folder: " + folderTotalFiles + " - Found: " + totalFound + " - Not: " + (myrientRomList.Count - totalFound);
+            var totalSize = myrientRomList.Sum(x => x.FileSize);
+            var currentSize = myrientRomList.Where(x => x.Found).Sum(x => x.FileSize);
+            var totalSizeConverted = Archive.CalculateSize(totalSize);
+            var currentSizeConverted = Archive.CalculateSize(currentSize);
+
+            UI.WarningLabel.Text = "Folder: " + folderTotalFiles + " - Good: " + totalFound + " - Bad: " + (myrientRomList.Count - totalFound) + " - TotalSize: " + currentSizeConverted + " / " + totalSizeConverted;
+
+            UI.URLComboBox.Focus();
         }
 
         private void WgetURLButton_Click(object sender, EventArgs e)
         {
-            var command = "cd C:\\WGET && .\\wget.exe ";
+            var command = "cd /d D:\\Fazendo\\wget-1.21.4-win64\\ && .\\wget.exe ";
+            if (Browser.UseProxy)
+            {
+                command = "cd /d C:\\WGET && .\\wget.exe ";
+            }
 
             if (string.IsNullOrWhiteSpace(UI.WgetNamesTextBox.Text) == false)
             {
                 var regexWords = Uri.EscapeDataString(UI.WgetNamesTextBox.Text).Replace("%7C", "|");
-                command += "--accept-regex=\"(" + regexWords + ")\" ";
+                command += "--regex-type=pcre --accept-regex=\"(?i)(" + regexWords + ")\" ";
             }
 
             command += "-m -np -c -e robots=off -R \"index.html*\" \"" + UI.URLComboBox.SelectedValue.ToString() + "\"";
