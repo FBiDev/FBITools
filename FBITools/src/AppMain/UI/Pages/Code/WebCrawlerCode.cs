@@ -56,7 +56,8 @@ namespace FBITools
             RegisterShownEvents();
             BindStatusBar();
 
-            UI.FolderTextBox.Text = @"D:\Fazendo\wget-1.21.4-win64\myrient.erista.me\files\RetroAchievements\";
+            UI.FolderTextBox.Text = @"D:\Fazendo\wget-1.21.4-win64\myrient.erista.me\files\No-Intro\";
+
             if (Browser.UseProxy)
             {
                 UI.FolderTextBox.Text = @"C:\WGET\myrient.erista.me\files\No-Intro\";
@@ -100,6 +101,7 @@ namespace FBITools
             UI.WarningLabel.Text = "Executando...";
             //
             var temp = "https://myrient.erista.me/files/No-Intro/";
+            temp = "https://myrient.erista.me/files/Redump/";
             var html = await WebCrawlerInfo.GetURLHtml(UI.URLComboBox.SelectedValue.ToString());
 
             var htmlTable = html.GetBetween("<table id=\"list\">", "</table>", true);
@@ -200,7 +202,12 @@ namespace FBITools
             {
                 long valor = (long)e.Value;
 
-                if (valor >= 1024 * 1024 * 1024)
+                if (valor >= (long)1024 * 1024 * 1024 * 1024)
+                {
+                    double mb = valor / (1024.0 * 1024.0 * 1024.0 * 1024.0);
+                    e.Value = mb.ToString("0.0") + " TB";
+                }
+                else if (valor >= 1024 * 1024 * 1024)
                 {
                     double mb = valor / (1024.0 * 1024.0 * 1024.0);
                     e.Value = mb.ToString("0.0") + " GB";

@@ -1,0 +1,85 @@
+Acorn - Archimedes
+Apple - Macintosh
+Apple - Macintosh - SBI Subchannels
+Arcade - Hasbro - VideoNow
+Arcade - Hasbro - VideoNow Color
+Arcade - Hasbro - VideoNow Jr
+Arcade - Hasbro - VideoNow XP
+Arcade - Konami - FireBeat
+Arcade - Konami - M2
+Arcade - Konami - System 573
+Arcade - Konami - System GV
+Arcade - Konami - e-Amusement
+Arcade - Namco - Sega - Nintendo - Triforce
+Arcade - Namco - Sega - Nintendo - Triforce - GDI Files
+Arcade - Namco - System 246
+Arcade - Sega - Chihiro
+Arcade - Sega - Chihiro - GDI Files
+Arcade - Sega - Lindbergh
+Arcade - Sega - Naomi
+Arcade - Sega - Naomi - GDI Files
+Arcade - Sega - Naomi 2
+Arcade - Sega - Naomi 2 - GDI Files
+Arcade - Sega - RingEdge
+Arcade - Sega - RingEdge 2
+Atari - Jaguar CD Interactive Multimedia System
+Audio CD
+Audio CD - Spillover Tracks
+BD-Video
+Bandai - Pippin
+Bandai - Playdia Quick Interactive System
+Commodore - Amiga CD
+Commodore - Amiga CD32
+Commodore - Amiga CDTV
+DVD-Video
+Fujitsu - FM-Towns
+HD DVD-Video
+IBM - PC compatible
+IBM - PC compatible - SBI Subchannels
+Incredible Technologies - Eagle
+Mattel - Fisher-Price iXL
+Mattel - HyperScan
+Memorex - Visual Information System
+Microsoft - Xbox
+Microsoft - Xbox - BIOS Images (DoM Version)
+Microsoft - Xbox 360
+NEC - PC Engine CD & TurboGrafx CD
+NEC - PC-88 series
+NEC - PC-98 series
+NEC - PC-FX & PC-FXGA
+Navisoft - Naviken 2.1
+Nintendo - GameCube - BIOS Images (DoM Version)
+Nintendo - GameCube - NKit RVZ [zstd-19-128k]
+Nintendo - Wii - NKit RVZ [zstd-19-128k]
+Nintendo - Wii U - Disc Keys
+Nintendo - Wii U - WUX
+Palm
+Panasonic - 3DO Interactive Multiplayer
+Panasonic - M2
+Philips - CD-i
+Photo CD
+PlayStation GameShark Updates
+Pocket PC
+SNK - Neo Geo CD
+Sega - Dreamcast
+Sega - Dreamcast - GDI Files
+Sega - Mega CD & Sega CD
+Sega - Prologue 21
+Sega - Saturn
+Sharp - X68000
+Sony - PlayStation
+Sony - PlayStation - BIOS Images (DoM Version)
+Sony - PlayStation - SBI Subchannels
+Sony - PlayStation 2
+Sony - PlayStation 2 - BIOS Images
+Sony - PlayStation 3
+Sony - PlayStation 3 - Disc Keys
+Sony - PlayStation 3 - Disc Keys TXT
+Sony - PlayStation Portable
+TAB-Austria - Quizard
+Tomy - Kiss-Site
+VM Labs - NUON
+VTech - V.Flash & V.Smile Pro
+Video CD
+ZAPiT Games - Game Wave Family Entertainment System
+funworld - Photo Play

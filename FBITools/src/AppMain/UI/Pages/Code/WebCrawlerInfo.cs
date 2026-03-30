@@ -11,8 +11,9 @@ namespace FBITools
     public class WebCrawlerInfo
     {
         private const string MyRientLostLevelURL = "https://myrient.erista.me/files/Lost%20Level/Archive/";
-        private const string MyRientRAURL = "https://myrient.erista.me/files/RetroAchievements/";
         private const string MyRientNoIntroURL = "https://myrient.erista.me/files/No-Intro/";
+        private const string MyRientRAURL = "https://myrient.erista.me/files/RetroAchievements/";
+        private const string MyRientRedumpURL = "https://myrient.erista.me/files/Redump/";
 
         private static Dictionary<string, string> allFolders;
 
@@ -34,7 +35,14 @@ namespace FBITools
 
         public static long ConvertSize(string size)
         {
-            if (size.Contains("GiB"))
+            if (size.Contains("TiB"))
+            {
+                var newSize = size.Replace(" TiB", string.Empty);
+                var newSizeDouble = Cast.ToDouble(newSize);
+                var newSizeInt = newSizeDouble * 1024 * 1024 * 1024 * 1024;
+                return Convert.ToInt64(newSizeInt);
+            }
+            else if (size.Contains("GiB"))
             {
                 var newSize = size.Replace(" GiB", string.Empty);
                 var newSizeDouble = Cast.ToDouble(newSize);
@@ -71,12 +79,14 @@ namespace FBITools
             allFolders = new Dictionary<string, string> { };
 
             var lostLevelFolders = GetLostLevelFolders();
-            var raFolders = GetRAFolders();
             var noIntroFolders = GetNoIntroFolders();
+            var raFolders = GetRAFolders();
+            var redumpFolders = GetRedumpFolders();
 
             //AddLostLevelFoldersToList(lostLevelFolders);
-            AddFoldersToList(raFolders, MyRientRAURL);
-            //AddNoIntroFoldersToList(noIntroFolders);
+            AddNoIntroFoldersToList(noIntroFolders);
+            //AddFoldersToList(raFolders, MyRientRAURL);
+            //AddFoldersToList(redumpFolders, MyRientRedumpURL);
 
             allFolders = allFolders.OrderBy(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
             return allFolders;
@@ -87,14 +97,19 @@ namespace FBITools
             return File.ReadAllLines("Data/MyRient_LostLevel_Folders.txt").ToList();
         }
 
+        public static List<string> GetNoIntroFolders()
+        {
+            return File.ReadAllLines("Data/MyRient_No-Intro_Folders.txt").ToList();
+        }
+
         public static List<string> GetRAFolders()
         {
             return File.ReadAllLines("Data/MyRient_RA_Folders.txt").ToList();
         }
 
-        public static List<string> GetNoIntroFolders()
+        public static List<string> GetRedumpFolders()
         {
-            return File.ReadAllLines("Data/MyRient_No-Intro_Folders.txt").ToList();
+            return File.ReadAllLines("Data/MyRient_Redump_Folders.txt").ToList();
         }
 
         private static void AddLostLevelFoldersToList(List<string> folders)
@@ -105,7 +120,7 @@ namespace FBITools
                 key = Path.Combine(MyRientLostLevelURL, key.TrimEnd('/') + "/");
 
                 var newFolders = new List<string>();
-                var folder = f.Substring(6, f.Length - 6);
+                var folder = f;
                 newFolders.Add(folder);
 
                 allFolders.Add(key, folder);
