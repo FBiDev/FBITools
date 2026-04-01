@@ -99,10 +99,10 @@ namespace FBITools
         private async void CrawButton_Click(object sender, EventArgs e)
         {
             UI.WarningLabel.Text = "Executando...";
-            //
+            //UI.URLComboBox.SelectedValue.ToString()
             var temp = "https://myrient.erista.me/files/No-Intro/";
-            temp = "https://myrient.erista.me/files/Redump/";
-            var html = await WebCrawlerInfo.GetURLHtml(UI.URLComboBox.SelectedValue.ToString());
+            temp = "https://myrient.erista.me/dats/Lost%20Level/Archive/";
+            var html = await WebCrawlerInfo.GetURLHtml(temp);
 
             var htmlTable = html.GetBetween("<table id=\"list\">", "</table>", true);
             var romList = htmlTable.GetBetweenList("<tr><td class=\"link\"><a href=\"", "</td></tr>", true);
@@ -172,8 +172,9 @@ namespace FBITools
                 var regexWords = Uri.EscapeDataString(UI.WgetNamesTextBox.Text).Replace("%7C", "|");
                 command += "--regex-type=pcre --accept-regex=\"(?i)(" + regexWords + ")\" ";
             }
-
-            command += "-m -np -c -e robots=off -R \"index.html*\" \"" + UI.URLComboBox.SelectedValue.ToString() + "\"";
+            //UI.URLComboBox.SelectedValue.ToString()
+            var temp = "https://myrient.erista.me/dats/Lost%20Level/Archive/";
+            command += "-m -np -c -e robots=off -R \"index.html*\" \"" + temp + "\"";
 
             Execute(command);
 

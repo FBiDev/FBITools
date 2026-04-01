@@ -43,7 +43,7 @@
     <StartupObject />
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>src\AppMain\Assets\Icons\ico_app.ico</ApplicationIcon>
+    <ApplicationIcon>src\Assets\Icons\ico_app.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="App.Core">
@@ -71,82 +71,82 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="src\AppMain\UI\Controls\FlatCheckBoxA.cs">
+    <Compile Include="src\CoreApp\UI\Controls\FlatCheckBoxA.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\AppMain\UI\Controls\FlatCheckedListA.cs">
+    <Compile Include="src\CoreApp\UI\Controls\FlatCheckedListA.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\AppMain\UI\Controls\FlatDataGridA.cs">
+    <Compile Include="src\CoreApp\UI\Controls\FlatDataGridA.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="src\AppMain\UI\Controls\FlatGroupBoxA.cs">
+    <Compile Include="src\CoreApp\UI\Controls\FlatGroupBoxA.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="src\AppMain\UI\Controls\FlatMaskedTextBoxA.cs">
+    <Compile Include="src\CoreApp\UI\Controls\FlatMaskedTextBoxA.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\AppMain\UI\Controls\FlatPictureBoxA.cs">
+    <Compile Include="src\CoreApp\UI\Controls\FlatPictureBoxA.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="src\AppMain\UI\Controls\FlatStatusBarA.cs">
+    <Compile Include="src\CoreApp\UI\Controls\FlatStatusBarA.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\AppMain\UI\Controls\FlatTableA.cs">
+    <Compile Include="src\CoreApp\UI\Controls\FlatTableA.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="src\AppMain\UI\Pages\Code\WebCrawlerCode.cs" />
-    <Compile Include="src\AppMain\UI\Pages\Code\WebCrawlerInfo.cs" />
-    <Compile Include="src\AppMain\UI\Pages\Design\WebCrawlerUI.cs">
+    <Compile Include="src\CoreApp\UI\Pages\Code\WebCrawlerCode.cs" />
+    <Compile Include="src\CoreApp\UI\Pages\Code\WebCrawlerInfo.cs" />
+    <Compile Include="src\CoreApp\UI\Pages\Design\WebCrawlerUI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\AppMain\UI\Pages\Design\WebCrawlerUI.Designer.cs">
+    <Compile Include="src\CoreApp\UI\Pages\Design\WebCrawlerUI.Designer.cs">
       <DependentUpon>WebCrawlerUI.cs</DependentUpon>
     </Compile>
     <Compile Include="src\WiiU\Core\DataAccess\TitleDao.cs" />
     <Compile Include="src\WiiU\Core\DataAccess\CategoryDao.cs" />
     <Compile Include="src\WiiU\Core\DataAccess\RegionDao.cs" />
-    <Compile Include="src\AppMain\UI\Pages\Master\Codes\PageCode.cs" />
-    <Compile Include="src\AppMain\UI\Pages\Controllers\FileCopyController.cs" />
-    <Compile Include="src\AppMain\UI\Pages\Controllers\ImageResizeController.cs" />
-    <Compile Include="src\AppMain\UI\Pages\Controllers\VbToCsharpController.cs" />
+    <Compile Include="src\CoreApp\UI\MasterPage\Codes\PageCode.cs" />
+    <Compile Include="src\CoreApp\UI\Pages\Controllers\FileCopyController.cs" />
+    <Compile Include="src\CoreApp\UI\Pages\Controllers\ImageResizeController.cs" />
+    <Compile Include="src\CoreApp\UI\Pages\Controllers\VbToCsharpController.cs" />
     <Compile Include="src\WiiU\Core\Models\Region.cs" />
     <Compile Include="src\WiiU\Core\Models\Title.cs" />
     <Compile Include="src\WiiU\Core\Models\Category.cs" />
     <Compile Include="src\WiiU\Core\Models\Cetk.cs" />
-    <Compile Include="src\WiiU\App\DatabaseWiiU.cs" />
-    <Compile Include="src\AppMain\App\Session.cs" />
-    <Compile Include="src\AppMain\App\Options.cs" />
-    <Compile Include="src\AppMain\UI\Theme\Theme.cs" />
-    <Compile Include="src\AppMain\UI\Pages\Code\ConfigCode.cs" />
-    <Compile Include="src\AppMain\UI\Pages\Master\Codes\MainMenuCode.cs" />
+    <Compile Include="src\WiiU\Config\DatabaseWiiU.cs" />
+    <Compile Include="src\CoreApp\Config\Session.cs" />
+    <Compile Include="src\CoreApp\Config\Options.cs" />
+    <Compile Include="src\CoreApp\UI\Theme\Theme.cs" />
+    <Compile Include="src\CoreApp\UI\Pages\Code\ConfigCode.cs" />
+    <Compile Include="src\CoreApp\UI\MasterPage\Codes\MainMenuCode.cs" />
     <Compile Include="src\WiiU\UI\Pages\Code\WiiUCode.cs" />
-    <Compile Include="src\AppMain\UI\Pages\Code\VbToCsharpCode.cs" />
-    <Compile Include="src\AppMain\UI\Pages\Code\ImageResizeCode.cs" />
-    <Compile Include="src\AppMain\UI\Pages\Master\Codes\MainCode.cs" />
-    <Compile Include="src\AppMain\UI\Pages\Master\Codes\MainContentCode.cs" />
-    <Compile Include="src\AppMain\UI\Controls\FlatButtonA.cs">
+    <Compile Include="src\CoreApp\UI\Pages\Code\VbToCsharpCode.cs" />
+    <Compile Include="src\CoreApp\UI\Pages\Code\ImageResizeCode.cs" />
+    <Compile Include="src\CoreApp\UI\MasterPage\Codes\MainCode.cs" />
+    <Compile Include="src\CoreApp\UI\MasterPage\Codes\MainContentCode.cs" />
+    <Compile Include="src\CoreApp\UI\Controls\FlatButtonA.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="src\AppMain\UI\Controls\FlatLabelA.cs">
+    <Compile Include="src\CoreApp\UI\Controls\FlatLabelA.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="src\AppMain\UI\Controls\FlatPanelA.cs">
+    <Compile Include="src\CoreApp\UI\Controls\FlatPanelA.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="src\AppMain\UI\Controls\FlatTextBoxA.cs">
+    <Compile Include="src\CoreApp\UI\Controls\FlatTextBoxA.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\AppMain\UI\Pages\Design\ConfigUI.cs">
+    <Compile Include="src\CoreApp\UI\Pages\Design\ConfigUI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\AppMain\UI\Pages\Design\ConfigUI.Designer.cs">
+    <Compile Include="src\CoreApp\UI\Pages\Design\ConfigUI.Designer.cs">
       <DependentUpon>ConfigUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\AppMain\UI\Pages\Master\Designs\MainMenuUI.cs">
+    <Compile Include="src\CoreApp\UI\MasterPage\Designs\MainMenuUI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\AppMain\UI\Pages\Master\Designs\MainMenuUI.Designer.cs">
+    <Compile Include="src\CoreApp\UI\MasterPage\Designs\MainMenuUI.Designer.cs">
       <DependentUpon>MainMenuUI.cs</DependentUpon>
     </Compile>
     <Compile Include="src\WiiU\UI\Pages\Design\WiiUUI.cs">
@@ -155,34 +155,34 @@
     <Compile Include="src\WiiU\UI\Pages\Design\WiiUUI.Designer.cs">
       <DependentUpon>WiiUUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\AppMain\UI\Pages\Design\VbToCsharpUI.cs">
+    <Compile Include="src\CoreApp\UI\Pages\Design\VbToCsharpUI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\AppMain\UI\Pages\Design\VbToCsharpUI.Designer.cs">
+    <Compile Include="src\CoreApp\UI\Pages\Design\VbToCsharpUI.Designer.cs">
       <DependentUpon>VbToCsharpUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\AppMain\UI\Pages\Design\ImageResizeUI.cs">
+    <Compile Include="src\CoreApp\UI\Pages\Design\ImageResizeUI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\AppMain\UI\Pages\Design\ImageResizeUI.Designer.cs">
+    <Compile Include="src\CoreApp\UI\Pages\Design\ImageResizeUI.Designer.cs">
       <DependentUpon>ImageResizeUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\AppMain\UI\Pages\Master\Designs\MainContentUI.cs">
+    <Compile Include="src\CoreApp\UI\MasterPage\Designs\MainContentUI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\AppMain\UI\Pages\Master\Designs\MainContentUI.Designer.cs">
+    <Compile Include="src\CoreApp\UI\MasterPage\Designs\MainContentUI.Designer.cs">
       <DependentUpon>MainContentUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\AppMain\UI\Pages\Design\FileCopyUI.cs">
+    <Compile Include="src\CoreApp\UI\Pages\Design\FileCopyUI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\AppMain\UI\Pages\Design\FileCopyUI.Designer.cs">
+    <Compile Include="src\CoreApp\UI\Pages\Design\FileCopyUI.Designer.cs">
       <DependentUpon>FileCopyUI.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\AppMain\UI\Pages\Master\Designs\MainUI.cs">
+    <Compile Include="src\CoreApp\UI\MasterPage\Designs\MainUI.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\AppMain\UI\Pages\Master\Designs\MainUI.Designer.cs">
+    <Compile Include="src\CoreApp\UI\MasterPage\Designs\MainUI.Designer.cs">
       <DependentUpon>MainUI.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -195,31 +195,31 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\AppMain\UI\Pages\Design\ConfigUI.resx">
+    <EmbeddedResource Include="src\CoreApp\UI\Pages\Design\ConfigUI.resx">
       <DependentUpon>ConfigUI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\AppMain\UI\Pages\Design\WebCrawlerUI.resx">
+    <EmbeddedResource Include="src\CoreApp\UI\Pages\Design\WebCrawlerUI.resx">
       <DependentUpon>WebCrawlerUI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\AppMain\UI\Pages\Master\Designs\MainMenuUI.resx">
+    <EmbeddedResource Include="src\CoreApp\UI\MasterPage\Designs\MainMenuUI.resx">
       <DependentUpon>MainMenuUI.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="src\WiiU\UI\Pages\Design\WiiUUI.resx">
       <DependentUpon>WiiUUI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\AppMain\UI\Pages\Design\VbToCsharpUI.resx">
+    <EmbeddedResource Include="src\CoreApp\UI\Pages\Design\VbToCsharpUI.resx">
       <DependentUpon>VbToCsharpUI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\AppMain\UI\Pages\Design\ImageResizeUI.resx">
+    <EmbeddedResource Include="src\CoreApp\UI\Pages\Design\ImageResizeUI.resx">
       <DependentUpon>ImageResizeUI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\AppMain\UI\Pages\Master\Designs\MainContentUI.resx">
+    <EmbeddedResource Include="src\CoreApp\UI\MasterPage\Designs\MainContentUI.resx">
       <DependentUpon>MainContentUI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\AppMain\UI\Pages\Design\FileCopyUI.resx">
+    <EmbeddedResource Include="src\CoreApp\UI\Pages\Design\FileCopyUI.resx">
       <DependentUpon>FileCopyUI.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\AppMain\UI\Pages\Master\Designs\MainUI.resx">
+    <EmbeddedResource Include="src\CoreApp\UI\MasterPage\Designs\MainUI.resx">
       <DependentUpon>MainUI.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
@@ -231,8 +231,8 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="src\AppMain\UI\Pages\Code\FileCopyCode.cs" />
-    <Compile Include="src\AppMain\UI\Controls\FlatComboBoxA.cs">
+    <Compile Include="src\CoreApp\UI\Pages\Code\FileCopyCode.cs" />
+    <Compile Include="src\CoreApp\UI\Controls\FlatComboBoxA.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <ContentWithTargetPath Include="src\WiiU\Data\WiiUDatabase.db">
@@ -245,30 +245,30 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />
-    <ContentWithTargetPath Include="src\AppMain\Data\MyRient_LostLevel_Folders.txt">
+    <ContentWithTargetPath Include="src\CoreApp\Data\MyRient_LostLevel_Folders.txt">
       <TargetPath>Data\MyRient_LostLevel_Folders.txt</TargetPath>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </ContentWithTargetPath>
-    <ContentWithTargetPath Include="src\AppMain\Data\MyRient_RA_Folders.txt">
+    <ContentWithTargetPath Include="src\CoreApp\Data\MyRient_RA_Folders.txt">
       <TargetPath>Data\MyRient_RA_Folders.txt</TargetPath>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </ContentWithTargetPath>
-    <ContentWithTargetPath Include="src\AppMain\Data\MyRient_No-Intro_Folders.txt">
+    <ContentWithTargetPath Include="src\CoreApp\Data\MyRient_No-Intro_Folders.txt">
       <TargetPath>Data\MyRient_No-Intro_Folders.txt</TargetPath>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </ContentWithTargetPath>
-	<ContentWithTargetPath Include="src\AppMain\Data\MyRient_Redump_Folders.txt">
+    <ContentWithTargetPath Include="src\CoreApp\Data\MyRient_Redump_Folders.txt">
       <TargetPath>Data\MyRient_Redump_Folders.txt</TargetPath>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </ContentWithTargetPath>
-    <Content Include="src\AppMain\Data\MyRient_No-Intro_Folders_Excluded.txt" />
+    <Content Include="src\CoreApp\Data\MyRient_No-Intro_Folders_Excluded.txt" />
     <Content Include="src\WiiU\Data\Scripts\sql_WiiUTitle_List.sql" />
     <Content Include="src\WiiU\Data\Scripts\sql_WiiUCategory_List.sql" />
     <Content Include="src\WiiU\Data\Scripts\sql_WiiURegion_List.sql" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="src\AppMain\Assets\Icons\ico_app.ico" />
-    <Content Include="src\AppMain\Assets\Icons\ico_app.png" />
+    <Content Include="src\Assets\Icons\ico_app.ico" />
+    <Content Include="src\Assets\Icons\ico_app.png" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="lib\" />
