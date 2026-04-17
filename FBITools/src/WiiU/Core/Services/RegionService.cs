@@ -1,16 +1,16 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using FBITools.WiiU.DataAccess;
+using FBITools.WiiU.Repository;
 
 namespace FBITools.WiiU
 {
     public class RegionService
     {
-        private readonly RegionDao dao;
+        private readonly RegionRepository dao;
 
         public RegionService()
         {
-            dao = new RegionDao();
+            dao = new RegionRepository();
         }
 
         public async Task<List<Region>> List()

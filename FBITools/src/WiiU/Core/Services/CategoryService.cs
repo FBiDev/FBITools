@@ -1,31 +1,31 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using FBITools.WiiU.DataAccess;
+using FBITools.WiiU.Repository;
 
 namespace FBITools.WiiU
 {
     public class CategoryService
     {
-        private readonly CategoryDao dao;
+        private readonly CategoryRepository _repository;
 
         public CategoryService()
         {
-            dao = new CategoryDao();
+            _repository = new CategoryRepository();
         }
 
         public async Task<List<Category>> List()
         {
-            return await dao.List();
+            return await _repository.List();
         }
 
         public async Task<List<Category>> Search(Category obj)
         {
-            return await dao.Search(obj);
+            return await _repository.Search(obj);
         }
 
         public async Task<Category> Find(Category obj)
         {
-            return await dao.Find(obj);
+            return await _repository.Find(obj);
         }
     }
 }

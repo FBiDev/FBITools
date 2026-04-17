@@ -4,34 +4,34 @@ using System.Linq;
 using System.Threading.Tasks;
 using App.Core;
 using App.Core.Desktop;
-using FBITools.WiiU.DataAccess;
+using FBITools.WiiU.Repository;
 
 namespace FBITools.WiiU
 {
     public class TitleService
     {
-        private readonly TitleDao dao = new TitleDao();
+        private readonly TitleRepository _repository = new TitleRepository();
         private DataList<Title> allTitles;
         private DataList<Title> filteredTitles;
 
         public TitleService()
         {
-            dao = new TitleDao();
+            _repository = new TitleRepository();
         }
 
         public async Task<List<Title>> List()
         {
-            return await dao.List();
+            return await _repository.List();
         }
 
         public async Task<List<Title>> Search(Title obj)
         {
-            return await dao.Search(obj);
+            return await _repository.Search(obj);
         }
 
         public async Task<Title> Find(Title obj)
         {
-            return await dao.Find(obj);
+            return await _repository.Find(obj);
         }
 
         public DataList<Title> GetFilteredTitles()
