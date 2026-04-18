@@ -96,26 +96,27 @@
     <Compile Include="src\Main\UI\CustomControls\FlatTableA.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="src\Main\UI\Forms\Controllers\WebCrawlerController.cs" />
-    <Compile Include="src\Main\UI\Forms\Design\WebCrawlerForm.cs">
+    <Compile Include="src\Main\Forms\Controllers\WebCrawlerController.cs" />
+    <Compile Include="src\Main\Forms\Design\WebCrawlerForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\Main\UI\Forms\Design\WebCrawlerForm.Designer.cs">
+    <Compile Include="src\Main\Forms\Design\WebCrawlerForm.Designer.cs">
       <DependentUpon>WebCrawlerForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="src\WiiU\Core\Config\Options.cs" />
     <Compile Include="src\WiiU\Core\Repositories\TitleRepository.cs" />
     <Compile Include="src\WiiU\Core\Repositories\CategoryRepository.cs" />
     <Compile Include="src\WiiU\Core\Repositories\RegionRepository.cs" />
-    <Compile Include="src\Main\UI\Forms\Controllers\FileCopyController.cs" />
-    <Compile Include="src\Main\UI\Forms\Controllers\ImageResizeController.cs" />
-    <Compile Include="src\Main\UI\Forms\Controllers\VbToCsharpController.cs" />
+    <Compile Include="src\Main\Forms\Controllers\FileCopyController.cs" />
+    <Compile Include="src\Main\Forms\Controllers\ImageResizeController.cs" />
+    <Compile Include="src\Main\Forms\Controllers\VbToCsharpController.cs" />
     <Compile Include="src\WiiU\Core\Entities\Region.cs" />
     <Compile Include="src\WiiU\Core\Entities\Title.cs" />
     <Compile Include="src\WiiU\Core\Entities\Category.cs" />
-    <Compile Include="src\WiiU\Config\Cetk.cs" />
-    <Compile Include="src\WiiU\Config\DatabaseWiiU.cs" />
-    <Compile Include="src\Main\Config\Session.cs" />
-    <Compile Include="src\Main\Config\Options.cs" />
+    <Compile Include="src\WiiU\Core\Config\Cetk.cs" />
+    <Compile Include="src\WiiU\Core\Config\DatabaseWiiU.cs" />
+    <Compile Include="src\Main\Core\Config\Session.cs" />
+    <Compile Include="src\Main\Core\Config\Options.cs" />
     <Compile Include="src\Main\UI\Theme\Theme.cs" />
     <Compile Include="src\Main\UI\CustomControls\FlatButtonA.cs">
       <SubType>Component</SubType>
@@ -129,52 +130,52 @@
     <Compile Include="src\Main\UI\CustomControls\FlatTextBoxA.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\Main\UI\Forms\Design\ConfigForm.cs">
+    <Compile Include="src\Main\Forms\Design\ConfigForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\Main\UI\Forms\Design\ConfigForm.Designer.cs">
+    <Compile Include="src\Main\Forms\Design\ConfigForm.Designer.cs">
       <DependentUpon>ConfigForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\Main\UI\MasterForm\Design\MainMenuForm.cs">
+    <Compile Include="src\Main\MasterForm\Design\MainMenuForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\Main\UI\MasterForm\Design\MainMenuForm.Designer.cs">
+    <Compile Include="src\Main\MasterForm\Design\MainMenuForm.Designer.cs">
       <DependentUpon>MainMenuForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\WiiU\UI\Forms\Design\WiiUForm.cs">
+    <Compile Include="src\WiiU\Forms\Design\WiiUForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\WiiU\UI\Forms\Design\WiiUForm.Designer.cs">
+    <Compile Include="src\WiiU\Forms\Design\WiiUForm.Designer.cs">
       <DependentUpon>WiiUForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\Main\UI\Forms\Design\VbToCsharpForm.cs">
+    <Compile Include="src\Main\Forms\Design\VbToCsharpForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\Main\UI\Forms\Design\VbToCsharpForm.Designer.cs">
+    <Compile Include="src\Main\Forms\Design\VbToCsharpForm.Designer.cs">
       <DependentUpon>VbToCsharpForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\Main\UI\Forms\Design\ImageResizeForm.cs">
+    <Compile Include="src\Main\Forms\Design\ImageResizeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\Main\UI\Forms\Design\ImageResizeForm.Designer.cs">
+    <Compile Include="src\Main\Forms\Design\ImageResizeForm.Designer.cs">
       <DependentUpon>ImageResizeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\Main\UI\MasterForm\Design\MainContentForm.cs">
+    <Compile Include="src\Main\MasterForm\Design\MainContentForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\Main\UI\MasterForm\Design\MainContentForm.Designer.cs">
+    <Compile Include="src\Main\MasterForm\Design\MainContentForm.Designer.cs">
       <DependentUpon>MainContentForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\Main\UI\Forms\Design\FileCopyForm.cs">
+    <Compile Include="src\Main\Forms\Design\FileCopyForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\Main\UI\Forms\Design\FileCopyForm.Designer.cs">
+    <Compile Include="src\Main\Forms\Design\FileCopyForm.Designer.cs">
       <DependentUpon>FileCopyForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\Main\UI\MasterForm\Design\MainForm.cs">
+    <Compile Include="src\Main\MasterForm\Design\MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="src\Main\UI\MasterForm\Design\MainForm.Designer.cs">
+    <Compile Include="src\Main\MasterForm\Design\MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
@@ -187,31 +188,31 @@
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\Main\UI\Forms\Design\ConfigForm.resx">
+    <EmbeddedResource Include="src\Main\Forms\Design\ConfigForm.resx">
       <DependentUpon>ConfigForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\Main\UI\Forms\Design\WebCrawlerForm.resx">
+    <EmbeddedResource Include="src\Main\Forms\Design\WebCrawlerForm.resx">
       <DependentUpon>WebCrawlerForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\Main\UI\MasterForm\Design\MainMenuForm.resx">
+    <EmbeddedResource Include="src\Main\MasterForm\Design\MainMenuForm.resx">
       <DependentUpon>MainMenuForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\WiiU\UI\Forms\Design\WiiUForm.resx">
+    <EmbeddedResource Include="src\WiiU\Forms\Design\WiiUForm.resx">
       <DependentUpon>WiiUForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\Main\UI\Forms\Design\VbToCsharpForm.resx">
+    <EmbeddedResource Include="src\Main\Forms\Design\VbToCsharpForm.resx">
       <DependentUpon>VbToCsharpForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\Main\UI\Forms\Design\ImageResizeForm.resx">
+    <EmbeddedResource Include="src\Main\Forms\Design\ImageResizeForm.resx">
       <DependentUpon>ImageResizeForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\Main\UI\MasterForm\Design\MainContentForm.resx">
+    <EmbeddedResource Include="src\Main\MasterForm\Design\MainContentForm.resx">
       <DependentUpon>MainContentForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\Main\UI\Forms\Design\FileCopyForm.resx">
+    <EmbeddedResource Include="src\Main\Forms\Design\FileCopyForm.resx">
       <DependentUpon>FileCopyForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="src\Main\UI\MasterForm\Design\MainForm.resx">
+    <EmbeddedResource Include="src\Main\MasterForm\Design\MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
@@ -226,36 +227,36 @@
     <Compile Include="src\Main\UI\CustomControls\FlatComboBoxA.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <ContentWithTargetPath Include="src\WiiU\Data\WiiUDatabase.db">
+    <ContentWithTargetPath Include="src\WiiU\Core\Data\WiiUDatabase.db">
       <TargetPath>Data\WiiUDatabase.db</TargetPath>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </ContentWithTargetPath>
-    <None Include="src\WiiU\Data\WiiUcetk" />
+    <None Include="src\WiiU\Core\Data\WiiUcetk" />
     <None Include="tools\Post-build.bat" />
     <None Include="tools\Pre-build.bat" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />
-    <ContentWithTargetPath Include="src\Main\Data\MyRient_LostLevel_Folders.txt">
+    <ContentWithTargetPath Include="src\Main\Core\Data\MyRient_LostLevel_Folders.txt">
       <TargetPath>Data\MyRient_LostLevel_Folders.txt</TargetPath>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </ContentWithTargetPath>
-    <ContentWithTargetPath Include="src\Main\Data\MyRient_RA_Folders.txt">
+    <ContentWithTargetPath Include="src\Main\Core\Data\MyRient_RA_Folders.txt">
       <TargetPath>Data\MyRient_RA_Folders.txt</TargetPath>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </ContentWithTargetPath>
-    <ContentWithTargetPath Include="src\Main\Data\MyRient_No-Intro_Folders.txt">
+    <ContentWithTargetPath Include="src\Main\Core\Data\MyRient_No-Intro_Folders.txt">
       <TargetPath>Data\MyRient_No-Intro_Folders.txt</TargetPath>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </ContentWithTargetPath>
-    <ContentWithTargetPath Include="src\Main\Data\MyRient_Redump_Folders.txt">
+    <ContentWithTargetPath Include="src\Main\Core\Data\MyRient_Redump_Folders.txt">
       <TargetPath>Data\MyRient_Redump_Folders.txt</TargetPath>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </ContentWithTargetPath>
-    <Content Include="src\Main\Data\MyRient_No-Intro_Folders_Excluded.txt" />
-    <Content Include="src\WiiU\Data\Scripts\sql_WiiUTitle_List.sql" />
-    <Content Include="src\WiiU\Data\Scripts\sql_WiiUCategory_List.sql" />
-    <Content Include="src\WiiU\Data\Scripts\sql_WiiURegion_List.sql" />
+    <Content Include="src\Main\Core\Data\MyRient_No-Intro_Folders_Excluded.txt" />
+    <Content Include="src\WiiU\Core\Data\Scripts\sql_WiiUTitle_List.sql" />
+    <Content Include="src\WiiU\Core\Data\Scripts\sql_WiiUCategory_List.sql" />
+    <Content Include="src\WiiU\Core\Data\Scripts\sql_WiiURegion_List.sql" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="src\Assets\Icons\ico_app.ico" />

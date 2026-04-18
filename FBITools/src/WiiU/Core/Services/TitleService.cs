@@ -10,9 +10,10 @@ namespace FBITools.WiiU
 {
     public class TitleService
     {
-        private readonly TitleRepository _repository = new TitleRepository();
-        private DataList<Title> allTitles;
-        private DataList<Title> filteredTitles;
+        private readonly TitleRepository _repository;
+
+        private DataList<Title> _allTitles;
+        private DataList<Title> _filteredTitles;
 
         public TitleService()
         {
@@ -36,17 +37,17 @@ namespace FBITools.WiiU
 
         public DataList<Title> GetFilteredTitles()
         {
-            return filteredTitles;
+            return _filteredTitles;
         }
 
         public async Task FilterTitles(string id, string name, Func<string, bool> region, Func<string, bool> category)
         {
-            if (allTitles.IsEmpty())
+            if (_allTitles.IsEmpty())
             {
-                await LoadAllTitlesOrdered();
+                await ListOrdered();
             }
 
-            filteredTitles = new DataList<Title>(allTitles.Where(obj =>
+            _filteredTitles = new DataList<Title>(_allTitles.Where(obj =>
                 obj.ID.HasValue() &&
                 obj.ID.Length >= id.Length &&
                 obj.ID.Substring(0, id.Length) == id.ToUpper() &&
@@ -71,9 +72,9 @@ namespace FBITools.WiiU
             }
         }
 
-        private async Task LoadAllTitlesOrdered()
+        private async Task ListOrdered()
         {
-            allTitles = new DataList<Title>((await List()).OrderBy(x => x.Name).ToList());
+            _allTitles = new DataList<Title>((await List()).OrderBy(x => x.Name).ToList());
         }
     }
 }

@@ -6,26 +6,26 @@ namespace FBITools.WiiU
 {
     public class RegionService
     {
-        private readonly RegionRepository dao;
+        private readonly RegionRepository _repository;
 
         public RegionService()
         {
-            dao = new RegionRepository();
+            _repository = new RegionRepository();
         }
 
         public async Task<List<Region>> List()
         {
-            return await dao.List();
+            return await _repository.List();
         }
 
         public async Task<List<Region>> Search(Region obj)
         {
-            return await dao.Search(obj);
+            return await _repository.Search(obj);
         }
 
         public async Task<Region> Find(Region obj)
         {
-            return await dao.Find(obj);
+            return await _repository.Find(obj);
         }
     }
 }
