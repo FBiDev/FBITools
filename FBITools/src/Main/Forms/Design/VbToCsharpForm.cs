@@ -60,7 +60,7 @@ namespace FBITools
 
         private void OnCopyResult(object sender, EventArgs e)
         {
-            if (!OutputTextBox.Text.HasValue())
+            if (OutputTextBox.Text.IsEmpty())
             {
                 return;
             }

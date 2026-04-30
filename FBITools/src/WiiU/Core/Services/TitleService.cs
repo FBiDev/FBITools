@@ -48,9 +48,10 @@ namespace FBITools.WiiU
             }
 
             _filteredTitles = new DataList<Title>(_allTitles.Where(obj =>
-                obj.ID.HasValue() &&
+                obj.ID.IsNotEmpty() &&
                 obj.ID.Length >= id.Length &&
-                obj.ID.Substring(0, id.Length) == id.ToUpper() &&
+                obj.ID.Contains(id) &&
+                //obj.ID.Substring(0, id.Length) == id.ToUpper() &&
                 obj.Name.ContainsExtend(name) &&
                 region(obj.Region) &&
                 category(obj.Category)).ToList());

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 using App.Core.Desktop;
 
 namespace FBITools.WiiU
@@ -57,6 +58,8 @@ namespace FBITools.WiiU
 
         private async Task LoadControls()
         {
+            TitleIDTextBox.CharacterCasing = CharacterCasing.Upper;
+
             RegionCheckedList.DataSource = await _regionService.List();
             RegionCheckedList.SetItemsChecked(true);
 
@@ -111,11 +114,11 @@ namespace FBITools.WiiU
 
             if (_titleService.GenerateCetk(currentTitle))
             {
-                WarningLabel.Text = "cetk " + currentTitle + " Saved!";
+                WarningLabel.Text = @"cetk " + currentTitle + @" Saved!";
             }
             else
             {
-                WarningLabel.Text = "cetk " + currentTitle + " Failed!";
+                WarningLabel.Text = @"cetk " + currentTitle + @" Failed!";
             }
         }
         #endregion

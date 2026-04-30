@@ -20,7 +20,7 @@ namespace FBITools
             scaler.Resized += OnResized;
         }
 
-        public event Action<string, LabelType> StatusChanged;
+        public event Action<LabelType, string> StatusChanged;
 
         public event Action Resized;
 
@@ -112,14 +112,14 @@ namespace FBITools
 
         private void OnInvalidFile()
         {
-            StatusChanged.Run(scaler.ErrorMessage, LabelType.danger);
+            StatusChanged.Run(LabelType.danger, scaler.ErrorMessage);
         }
 
         private void OnResized()
         {
             Resized.Run();
 
-            StatusChanged.Run(scaler.SuccessMessage, LabelType.success);
+            StatusChanged.Run(LabelType.success, scaler.SuccessMessage);
         }
     }
 }

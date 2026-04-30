@@ -110,7 +110,7 @@ namespace FBITools
             CopyButton.Text = _controller.ButtonMessage;
         }
 
-        private void Service_StatusChanged(string message, LabelType type)
+        private void Service_StatusChanged(LabelType type, string message)
         {
             WarningLabel.ForeColorType = type;
             WarningLabel.Text = message;

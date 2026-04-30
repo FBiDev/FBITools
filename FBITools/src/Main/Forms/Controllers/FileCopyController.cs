@@ -17,7 +17,7 @@ namespace FBITools
             file.TimerRunningChanged += OnTimerRunningChanged;
         }
 
-        public event Action<string, LabelType> StatusChanged;
+        public event Action<LabelType, string> StatusChanged;
 
         public event Action<bool, string> TimerStateChanged;
 
@@ -111,19 +111,19 @@ namespace FBITools
 
         private void OnInvalidFile()
         {
-            StatusChanged.Run(file.ErrorMessage, LabelType.danger);
+            StatusChanged.Run(LabelType.danger, file.ErrorMessage);
         }
 
         private void OnCopied()
         {
-            StatusChanged.Run(file.SuccessMessage, LabelType.success);
+            StatusChanged.Run(LabelType.success, file.SuccessMessage);
         }
 
         private void OnTimerRunningChanged()
         {
             TimerStateChanged.Run(file.TimerIsRunning, file.ButtonMessage);
 
-            StatusChanged.Run(file.SuccessMessage, LabelType.primary);
+            StatusChanged.Run(LabelType.primary, file.SuccessMessage);
         }
     }
 }
