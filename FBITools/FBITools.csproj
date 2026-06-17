@@ -71,32 +71,32 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="src\Main\Core\Models\MyrientRom.cs" />
-    <Compile Include="src\Main\UI\CustomControls\FlatCheckBoxA.cs">
+    <Compile Include="src\Main\Core\Entity\MyrientRom.cs" />
+    <Compile Include="src\Main\UI\CustomControl\FlatCheckBoxA.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\Main\UI\CustomControls\FlatCheckedListA.cs">
+    <Compile Include="src\Main\UI\CustomControl\FlatCheckedListA.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\Main\UI\CustomControls\FlatDataGridA.cs">
+    <Compile Include="src\Main\UI\CustomControl\FlatDataGridA.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="src\Main\UI\CustomControls\FlatGroupBoxA.cs">
+    <Compile Include="src\Main\UI\CustomControl\FlatGroupBoxA.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="src\Main\UI\CustomControls\FlatMaskedTextBoxA.cs">
+    <Compile Include="src\Main\UI\CustomControl\FlatMaskedTextBoxA.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\Main\UI\CustomControls\FlatPictureBoxA.cs">
+    <Compile Include="src\Main\UI\CustomControl\FlatPictureBoxA.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="src\Main\UI\CustomControls\FlatStatusBarA.cs">
+    <Compile Include="src\Main\UI\CustomControl\FlatStatusBarA.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="src\Main\UI\CustomControls\FlatTableA.cs">
+    <Compile Include="src\Main\UI\CustomControl\FlatTableA.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="src\Main\Forms\Controllers\WebCrawlerController.cs" />
+    <Compile Include="src\Main\Forms\Controller\WebCrawlerController.cs" />
     <Compile Include="src\Main\Forms\Design\WebCrawlerForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -104,30 +104,30 @@
       <DependentUpon>WebCrawlerForm.cs</DependentUpon>
     </Compile>
     <Compile Include="src\WiiU\Core\Config\Options.cs" />
-    <Compile Include="src\WiiU\Core\Repositories\TitleRepository.cs" />
-    <Compile Include="src\WiiU\Core\Repositories\CategoryRepository.cs" />
-    <Compile Include="src\WiiU\Core\Repositories\RegionRepository.cs" />
-    <Compile Include="src\Main\Forms\Controllers\FileCopyController.cs" />
-    <Compile Include="src\Main\Forms\Controllers\ImageResizeController.cs" />
-    <Compile Include="src\Main\Forms\Controllers\VbToCsharpController.cs" />
-    <Compile Include="src\WiiU\Core\Entities\Region.cs" />
-    <Compile Include="src\WiiU\Core\Entities\Title.cs" />
-    <Compile Include="src\WiiU\Core\Entities\Category.cs" />
+    <Compile Include="src\WiiU\Core\Repository\TitleRepository.cs" />
+    <Compile Include="src\WiiU\Core\Repository\CategoryRepository.cs" />
+    <Compile Include="src\WiiU\Core\Repository\RegionRepository.cs" />
+    <Compile Include="src\Main\Forms\Controller\FileCopyController.cs" />
+    <Compile Include="src\Main\Forms\Controller\ImageResizeController.cs" />
+    <Compile Include="src\Main\Forms\Controller\VbToCsharpController.cs" />
+    <Compile Include="src\WiiU\Core\Entity\Region.cs" />
+    <Compile Include="src\WiiU\Core\Entity\Title.cs" />
+    <Compile Include="src\WiiU\Core\Entity\Category.cs" />
     <Compile Include="src\WiiU\Core\Config\Cetk.cs" />
     <Compile Include="src\WiiU\Core\Config\DatabaseWiiU.cs" />
     <Compile Include="src\Main\Core\Config\Session.cs" />
     <Compile Include="src\Main\Core\Config\Options.cs" />
     <Compile Include="src\Main\UI\Theme\Theme.cs" />
-    <Compile Include="src\Main\UI\CustomControls\FlatButtonA.cs">
+    <Compile Include="src\Main\UI\CustomControl\FlatButtonA.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="src\Main\UI\CustomControls\FlatLabelA.cs">
+    <Compile Include="src\Main\UI\CustomControl\FlatLabelA.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="src\Main\UI\CustomControls\FlatPanelA.cs">
+    <Compile Include="src\Main\UI\CustomControl\FlatPanelA.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="src\Main\UI\CustomControls\FlatTextBoxA.cs">
+    <Compile Include="src\Main\UI\CustomControl\FlatTextBoxA.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="src\Main\Forms\Design\ConfigForm.cs">
@@ -180,9 +180,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="src\WiiU\Core\Services\CategoryService.cs" />
-    <Compile Include="src\WiiU\Core\Services\RegionService.cs" />
-    <Compile Include="src\WiiU\Core\Services\TitleService.cs" />
+    <Compile Include="src\WiiU\Core\Service\CategoryService.cs" />
+    <Compile Include="src\WiiU\Core\Service\RegionService.cs" />
+    <Compile Include="src\WiiU\Core\Service\TitleService.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
@@ -225,7 +225,7 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="src\Main\UI\CustomControls\FlatComboBoxA.cs">
+    <Compile Include="src\Main\UI\CustomControl\FlatComboBoxA.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <ContentWithTargetPath Include="src\WiiU\Core\Data\WiiUDatabase.db">
@@ -233,8 +233,8 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </ContentWithTargetPath>
     <None Include="src\WiiU\Core\Data\WiiUcetk" />
-    <None Include="tools\Post-build.bat" />
-    <None Include="tools\Pre-build.bat" />
+    <None Include="tools\post-build.bat" />
+    <None Include="tools\pre-build.bat" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App.config" />
@@ -268,12 +268,12 @@
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
-    <PostBuildEvent>call "$(ProjectDir)tools\Post-build.bat" ^
+    <PostBuildEvent>call "$(ProjectDir)tools\post-build.bat" ^
 $(ProjectName), $(TargetDir), $(SolutionDir), ^
 $(Platform), $(ProjectDir)$(ProjectFileName)</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
-    <PreBuildEvent>call "$(ProjectDir)tools\Pre-build.bat" ^
+    <PreBuildEvent>call "$(ProjectDir)tools\pre-build.bat" ^
 $(ProjectName), $(TargetDir)</PreBuildEvent>
   </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

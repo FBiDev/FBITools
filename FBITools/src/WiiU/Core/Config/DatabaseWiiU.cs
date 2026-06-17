@@ -8,6 +8,9 @@ namespace FBITools.WiiU
 {
     public static class DatabaseWiiU
     {
+        private static readonly DataTable EmptyDataTable = new DataTable();
+        private static readonly SqlResult EmptySqlResult = new SqlResult();
+
         public static ListSynced<SqlLog> Log
         {
             get { return Database.Log; }
@@ -25,7 +28,7 @@ namespace FBITools.WiiU
             IsLoaded = true;
         }
 
-        public static void Reload()
+        private static void Reload()
         {
             Database.DatabaseName = string.Empty;
             Database.DatabaseType = DatabaseType.SQLite;
@@ -40,33 +43,31 @@ namespace FBITools.WiiU
 
         public static async Task<DataTable> ExecutarSelect(SqlQuery sql)
         {
-            if (IsLoaded)
+            if (!IsLoaded) { return EmptyDataTable; }
+
+            try
             {
-                try
-                {
-                    return await Database.ExecuteSelect(sql);
-                }
-                catch (Exception ex)
-                {
-                    ExceptionManager.Resolve(ex, Database.LastCall);
-                }
+                return await Database.ExecuteSelect(sql);
+            }
+            catch (Exception ex)
+            {
+                ExceptionManager.Resolve(ex, Database.LastCall);
             }
 
-            return new DataTable();
+            return EmptyDataTable;
         }
 
         public static async Task<string> ExecutarSelectString(SqlQuery sql)
         {
-            if (IsLoaded)
+            if (!IsLoaded) { return string.Empty; }
+
+            try
             {
-                try
-                {
-                    return await Database.ExecuteSelectString(sql);
-                }
-                catch (Exception ex)
-                {
-                    ExceptionManager.Resolve(ex, Database.LastCall);
-                }
+                return await Database.ExecuteSelectString(sql);
+            }
+            catch (Exception ex)
+            {
+                ExceptionManager.Resolve(ex, Database.LastCall);
             }
 
             return string.Empty;
@@ -74,33 +75,31 @@ namespace FBITools.WiiU
 
         public static async Task<SqlResult> Executar(SqlQuery sql)
         {
-            if (IsLoaded)
+            if (!IsLoaded) { return EmptySqlResult; }
+
+            try
             {
-                try
-                {
-                    return await Database.Execute(sql);
-                }
-                catch (Exception ex)
-                {
-                    ExceptionManager.Resolve(ex, Database.LastCall);
-                }
+                return await Database.Execute(sql);
+            }
+            catch (Exception ex)
+            {
+                ExceptionManager.Resolve(ex, Database.LastCall);
             }
 
-            return new SqlResult();
+            return EmptySqlResult;
         }
 
         public static async Task<DateTime> DataServidor()
         {
-            if (IsLoaded)
+            if (!IsLoaded) { return DateTime.MinValue; }
+
+            try
             {
-                try
-                {
-                    return await Database.DateTimeServer();
-                }
-                catch (Exception ex)
-                {
-                    ExceptionManager.Resolve(ex, Database.LastCall);
-                }
+                return await Database.DateTimeServer();
+            }
+            catch (Exception ex)
+            {
+                ExceptionManager.Resolve(ex, Database.LastCall);
             }
 
             return DateTime.MinValue;
