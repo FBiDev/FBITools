@@ -3,34 +3,51 @@ using System.Text.RegularExpressions;
 
 namespace FBITools
 {
-    public static class VbToCsharpController
+    public class VbToCsharpController
     {
-        private static string codeConverted;
-        private static string handles;
+        public readonly string CopiedMessage;
+        public readonly string ClearedMessage;
 
-        public static string Convert(string text)
+        private string _codeConverted;
+        private string _handles;
+
+        public VbToCsharpController()
         {
-            handles = RemoveHandles(text);
-            codeConverted = ConvertVBNetToCSharp(text);
+            CopiedMessage = "Text Copied!";
+            ClearedMessage = "Text Cleared!";
+        }
 
-            return handles + codeConverted;
+        private enum ECondition
+        {
+            If = 0,
+            Iif = 1
+        }
+
+        public string Convert(string text)
+        {
+            _handles = RemoveHandles(text);
+            _codeConverted = ConvertVbNetToCSharp(text);
+
+            return _handles + _codeConverted;
         }
 
         private static string RemoveHandles(string vbNetCode)
         {
-            string bufferHandles = "//Constructor Class" + "\r\n";
+            var bufferHandles = "//Constructor Class" + "\r\n";
 
-            var patternHandles = @"\bSub\s+(\w+)\s*\((.*)\)\s+Handles\s+([\w\.]+)\b";
-            var replaceHandles = @"$3 += $1" + "\r\n";
+            const string patternHandles = @"\bSub\s+(\w+)\s*\((.*)\)\s+Handles\s+([\w\.]+)\b";
+            const string replaceHandles = @"$3 += $1" + "\r\n";
 
             foreach (Match result in Regex.Matches(vbNetCode, patternHandles, RegexOptions.IgnoreCase))
             {
-                if (result.Success)
+                if (!result.Success)
                 {
-                    var cExtracted = result.Groups[0].ToString();
-                    cExtracted = Regex.Replace(cExtracted, patternHandles, replaceHandles, RegexOptions.IgnoreCase);
-                    bufferHandles += cExtracted;
+                    continue;
                 }
+
+                var cExtracted = result.Groups[0].ToString();
+                cExtracted = Regex.Replace(cExtracted, patternHandles, replaceHandles, RegexOptions.IgnoreCase);
+                bufferHandles += cExtracted;
             }
 
             bufferHandles += "//Constructor Class" + "\r\n\r\n";
@@ -40,7 +57,7 @@ namespace FBITools
                 { @"\bMe\.\b", "this." }
             };
 
-            foreach (KeyValuePair<string, string> item in replaces)
+            foreach (var item in replaces)
             {
                 bufferHandles = Regex.Replace(bufferHandles, item.Key, item.Value);
             }
@@ -48,54 +65,37 @@ namespace FBITools
             return bufferHandles;
         }
 
-        private static string IIfEquals(string vbNetCode)
+        private static string ReplaceIfEquals(string vbNetCode, ECondition condition)
         {
-            var patternIf = @"\bIIf\s*\((.*),";
-            var patternIfContent = @"\s*(?<![=!><])=(?![=><])\s*";
-            var replaceIfContent = @" == ";
+            const string assignmentPattern = @"\s*(?<![=!><])=(?![=><])\s*";
+            const string replacement = " == ";
+            string conditionPattern;
 
-            foreach (Match result in Regex.Matches(vbNetCode, patternIf, RegexOptions.IgnoreCase | RegexOptions.Multiline))
+            switch (condition)
             {
-                if (result.Success)
-                {
-                    var cExtracted = result.Groups[0].ToString();
-                    var newExtracted = Regex.Replace(cExtracted, patternIfContent, replaceIfContent, RegexOptions.IgnoreCase | RegexOptions.Multiline);
-                    vbNetCode = vbNetCode.Replace(cExtracted, newExtracted);
-                }
+                case ECondition.If: conditionPattern = @"\bif\((.*)\)\{"; break;
+                case ECondition.Iif: conditionPattern = @"\bIIf\s*\((.*),"; break;
+                default: conditionPattern = string.Empty; break;
             }
 
-            return vbNetCode;
-        }
-
-        private static string IfEquals(string vbNetCode)
-        {
-            var patternIf = @"\bif\((.*)\)\{";
-            var patternIfContent = @"\s*(?<![=!><])=(?![=><])\s*";
-            var replaceIfContent = @" == ";
-
-            foreach (Match result in Regex.Matches(vbNetCode, patternIf, RegexOptions.IgnoreCase | RegexOptions.Multiline))
+            return Regex.Replace(vbNetCode, conditionPattern, match =>
             {
-                if (result.Success)
-                {
-                    var cExtracted = result.Groups[0].ToString();
-                    var newExtracted = Regex.Replace(cExtracted, patternIfContent, replaceIfContent, RegexOptions.IgnoreCase | RegexOptions.Multiline);
-                    vbNetCode = vbNetCode.Replace(cExtracted, newExtracted);
-                }
-            }
-
-            return vbNetCode;
+                var original = match.Value;
+                var updated = Regex.Replace(original, assignmentPattern, replacement, RegexOptions.IgnoreCase | RegexOptions.Multiline);
+                return updated;
+            }, RegexOptions.IgnoreCase | RegexOptions.Multiline | RegexOptions.Compiled);
         }
 
-        private static string ConvertVBNetToCSharp(string vbNetCode)
+        private static string ConvertVbNetToCSharp(string vbNetCode)
         {
             // Comments (')
             vbNetCode = vbNetCode.Replace("'''", "///");
 
-            string pattern = "(?<![^\"\n]\"[^\"\n]*)(?<![^'\n]'[^'\n]*)(')";
+            const string pattern = "(?<![^\"\n]\"[^\"\n]*)(?<![^'\n]'[^'\n]*)(')";
 
-            vbNetCode = Regex.Replace(vbNetCode, pattern, delegate(Match match) { return "//" + match.Value.Substring(1); });
+            vbNetCode = Regex.Replace(vbNetCode, pattern, match => "//" + match.Value.Substring(1));
 
-            vbNetCode = IIfEquals(vbNetCode);
+            vbNetCode = ReplaceIfEquals(vbNetCode, ECondition.Iif);
 
             var replaces = new Dictionary<string, string>
             {
@@ -421,12 +421,12 @@ namespace FBITools
                 { @"(^[\s]*(?!#region\s|#endregion|\s|/{3}|/{2}\s*/{3})(?!.*[+{};>,][\r\t ]*$)[^\r]+(?<![\s]))", "$1;" }
             };
 
-            foreach (KeyValuePair<string, string> item in replaces)
+            foreach (var item in replaces)
             {
                 vbNetCode = Regex.Replace(vbNetCode, item.Key, item.Value, RegexOptions.Multiline);
             }
 
-            vbNetCode = IfEquals(vbNetCode);
+            vbNetCode = ReplaceIfEquals(vbNetCode, ECondition.If);
 
             return vbNetCode;
         }

@@ -30,10 +30,10 @@ namespace FBITools
 
         private void RegisterShownEvents()
         {
-            DarkModeCheckBox.CheckedChanged += DarkModeCheckBox_CheckedChanged;
-            AutoCenterWindowCheckBox.CheckedChanged += WindowAutoCenterCheckBox_CheckedChanged;
-            AutoResizeWindowCheckBox.CheckedChanged += WindowAutoResizeCheckBox_CheckedChanged;
-            DebugModeCheckBox.CheckedChanged += DebugModeCheckBox_CheckedChanged;
+            DarkModeCheckBox.CheckedChanged += OnDarkModeCheckBoxChanged;
+            AutoCenterWindowCheckBox.CheckedChanged += OnWindowAutoCenterCheckBoxChanged;
+            AutoResizeWindowCheckBox.CheckedChanged += OnWindowAutoResizeCheckBoxChanged;
+            DebugModeCheckBox.CheckedChanged += OnDebugModeCheckBoxChanged;
         }
 
         private void OnFormGotFocus(object sender, EventArgs e)
@@ -58,22 +58,22 @@ namespace FBITools
         #endregion
 
         #region UserEvents
-        private void DarkModeCheckBox_CheckedChanged(object sender, EventArgs e)
+        private static void OnDarkModeCheckBoxChanged(object sender, EventArgs e)
         {
             Session.Options.ToggleDarkMode();
         }
 
-        private void WindowAutoCenterCheckBox_CheckedChanged(object sender, EventArgs e)
+        private static void OnWindowAutoCenterCheckBoxChanged(object sender, EventArgs e)
         {
             Session.Options.ToggleAutoCenterWindow();
         }
 
-        private void WindowAutoResizeCheckBox_CheckedChanged(object sender, EventArgs e)
+        private static void OnWindowAutoResizeCheckBoxChanged(object sender, EventArgs e)
         {
             Session.Options.ToggleAutoResizeWindow();
         }
 
-        private void DebugModeCheckBox_CheckedChanged(object sender, EventArgs e)
+        private static void OnDebugModeCheckBoxChanged(object sender, EventArgs e)
         {
             Session.Options.ToggleDebugMode();
         }

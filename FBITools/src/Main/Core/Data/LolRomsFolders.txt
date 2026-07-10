@@ -1,0 +1,138 @@
+Acorn - Archimedes
+Acorn - Atom (Tapes) (Bitstream)
+Acorn - RISC OS - Flash Media (Misc)
+Acorn - Risc PC (Flux)
+ACT - Apricot PC Xi
+Amstrad - CPC (Flux)
+Amstrad - CPC (Misc)
+Analogue - Analogue Pocket
+APF - Imagination Machine
+APF - MP-1000
+Apple - I (Tapes)
+Apple-Bandai - Pippin (Floppies)
+Arcade - Nintendo - PC-Based
+Arcade - Seta - Aleck64 (BigEndian)
+Arduboy Inc - Arduboy
+Atari - 8-bit Family
+Atari - 8-bit Family (Kryoflux)
+Atari - Atari 2600
+Atari - Atari 5200
+Atari - Atari 7800 (A78)
+Atari - Atari 7800 (BIN)
+Atari - Atari Jaguar (ABS) (Aftermarket)
+Atari - Atari Jaguar (COF) (Aftermarket)
+Atari - Atari Jaguar (J64)
+Atari - Atari Jaguar (JAG)
+Atari - Atari Jaguar (ROM)
+Atari - Atari Lynx (BLL)
+Atari - Atari Lynx (LNX)
+Atari - Atari Lynx (LYX)
+Atari - Atari ST
+Atari - Atari ST (Flux)
+Bally - Astrocade
+Bally - Astrocade (Tapes)
+Bally - Astrocade (Tapes) (WAV)
+Bandai - Design Master Denshi Mangajuku
+Bandai - Gundam RX-78
+Bandai - Little Jammer (BIN)
+Bandai - Little Jammer Pro (BIN)
+Bandai - WonderSwan
+Bandai - WonderSwan Color
+Benesse - Pocket Challenge V2
+Benesse - Pocket Challenge W
+Bit Corporation - Gamate
+Casio - Loopy (BigEndian)
+Casio - Loopy (LittleEndian)
+Casio - PV-1000
+Coleco - ColecoVision
+Commodore - Amiga
+Commodore - Amiga (Bitstream)
+Commodore - Amiga (Flux)
+Commodore - Commodore 64
+Commodore - Commodore 64 (Headerless)
+Commodore - Commodore 64 (PP)
+Commodore - Commodore 64 (Tapes)
+Commodore - Plus-4
+Commodore - VIC-20
+Emerson - Arcadia 2001
+Entex - Adventure Vision
+Epoch - Game Pocket Computer
+Epoch - Super Cassette Vision
+Fairchild - Channel F
+Funtech - Super Acan
+GamePark - GP32
+GCE - Vectrex
+Hartung - Game Master
+Hitachi - S1 (Waveform)
+Interton - VC 4000
+Konami - Picno
+Luxor - ABC 800 (Flux)
+Magnavox - Odyssey 2
+Mattel - Intellivision
+Microsoft - MSX
+Microsoft - MSX2
+NEC - PC Engine - TurboGrafx-16
+NEC - PC Engine SuperGrafx
+NEC - PC-88 (Flux)
+NEC - PC-88 (KryoFlux)
+NEC - PC-98
+NEC - PC-98 (Flux)
+NEC - PC-98 (Greaseweazle)
+NEC - PC-98 (HardDisk)
+NEC - PC-98 (Uncategorized)
+Nichibutsu - My Vision
+Nichibutsu - My Vision (Mame)
+Nintendo - amiibo
+Nintendo - Family BASIC (Tapes)
+Nintendo - Family Computer Disk System (FDS)
+Nintendo - Family Computer Disk System (QD)
+Nintendo - Family Computer Network System
+Nintendo - Game & Watch
+Nintendo - Game Boy
+Nintendo - Game Boy Advance
+Nintendo - Game Boy Advance (e-Reader)
+Nintendo - Game Boy Advance (Multiboot)
+Nintendo - Game Boy Advance (Play-Yan)
+Nintendo - Game Boy Advance (Video)
+Nintendo - Game Boy Color
+Nintendo - Nintendo 64 (BigEndian)
+Nintendo - Nintendo 64 (Mario no Photopi SmartMedia)
+Nintendo - Nintendo 64DD
+Nintendo - Nintendo Entertainment System (Headered)
+Nintendo - Nintendo GameCube (Memory Card)
+Nintendo - Pokemon Mini
+Nintendo - Satellaview
+Nintendo - Sufami Turbo
+Nintendo - Super Nintendo Entertainment System
+Nintendo - Virtual Boy
+Philips - Videopac+
+RCA - Studio II
+Sanyo - MBC-550 (Flux)
+Sega - 32X
+Sega - Beena
+Sega - Dreamcast (Visual Memory Unit)
+Sega - Game Gear
+Sega - Master System - Mark III
+Sega - Mega Drive - Genesis
+Sega - PICO
+Sega - SG-1000 - SC-3000
+Sharp - MZ-2200 (Waveform)
+Sharp - X1 (Waveform)
+Sharp - X68000 (Flux)
+Sinclair - ZX Spectrum +3
+SNK - NeoGeo Pocket
+SNK - NeoGeo Pocket Color
+TeleNova - Compis (Flux)
+Texas Instruments - TI-99-4A (A2R)
+Tiger - Game.com
+Toshiba - Pasopia (BIN)
+Toshiba - Pasopia (WAV)
+Toshiba - Visicom
+VM Labs - NUON (Digital)
+VTech - CreatiVision
+VTech - V.Smile
+Watara - Supervision
+Web - Humble Play
+Welback - Mega Duck
+Yamaha - Copera
+Zeebo - Zeebo

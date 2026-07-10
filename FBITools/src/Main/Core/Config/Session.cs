@@ -10,20 +10,15 @@ namespace FBITools
 
         private const CultureID Language = CultureID.UnitedStates_English;
         private const CultureID LanguageNumbers = CultureID.Brazil_Portuguese;
-        private static Options _options = new Options();
 
-        public static Options Options
-        {
-            get { return _options; }
-            private set { _options = value; }
-        }
+        public static readonly Options Options = new Options();
 
+        // MasterForm
         public static MainForm MainPage { get; set; }
 
         public static MainContentForm MainContentPage { get; set; }
 
-        public static MainMenuForm MainMenuPage { get; set; }
-
+        // Forms
         public static ConfigForm ConfigPage { get; set; }
 
         public static FileCopyForm FileCopyPage { get; set; }
@@ -45,6 +40,8 @@ namespace FBITools
 
             WiiU.DatabaseWiiU.Load();
             DebugManager.LogSQLSistema.SyncList(WiiU.DatabaseWiiU.Log);
+
+            Network.Load();
         }
 
         public static void SetDefaultPageIcon()

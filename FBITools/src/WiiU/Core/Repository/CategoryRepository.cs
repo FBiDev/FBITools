@@ -30,7 +30,7 @@ namespace FBITools.WiiU.Repository
         {
             obj = obj ?? new Category();
 
-            var sql = new SqlQuery(Resources.sql_WiiUCategory_List);
+            var sql = new SqlQuery(Resources.sql_WiiUCategory_List, DatabaseAction.Select);
 
             return Load(await DatabaseWiiU.ExecutarSelect(sql));
         }

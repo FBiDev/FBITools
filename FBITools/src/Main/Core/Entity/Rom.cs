@@ -3,9 +3,9 @@ using System.ComponentModel;
 
 namespace FBITools
 {
-    public class MyrientRom
+    public class Rom
     {
-        public MyrientRom()
+        public Rom()
         {
         }
 

@@ -6,7 +6,7 @@ namespace FBITools
     public class Options
     {
         [JsonIgnore]
-        public const string FileName = "Options.json";
+        private const string FileName = "Options.json";
 
         public Options()
         {
@@ -20,29 +20,29 @@ namespace FBITools
         public static bool IsLoaded { get; private set; }
 
         [JsonConverter(JsonType.Boolean)]
-        public bool IsDarkMode { get; set; }
+        public bool IsDarkMode { get; private set; }
 
         [JsonConverter(JsonType.Boolean)]
-        public bool IsDebugMode { get; set; }
+        public bool IsDebugMode { get; private set; }
 
         [JsonConverter(JsonType.Boolean)]
-        public bool IsAutoCenterWindow { get; set; }
+        public bool IsAutoCenterWindow { get; private set; }
 
         [JsonConverter(JsonType.Boolean)]
-        public bool IsAutoResizeWindow { get; set; }
+        public bool IsAutoResizeWindow { get; private set; }
 
-        public string FileCopy_Origin { get; set; }
+        public string FileCopyOrigin { get; set; }
 
-        public string FileCopy_Destination { get; set; }
+        public string FileCopyDestination { get; set; }
 
         [JsonConverter(JsonType.Boolean)]
-        public bool FileCopy_CustomDestination { get; set; }
+        public bool FileCopyCustomDestination { get; set; }
 
-        public int FileCopy_Type { get; set; }
+        public int FileCopyType { get; set; }
 
-        public int FileCopy_Timer { get; set; }
+        public int FileCopyTimer { get; set; }
 
-        public bool Load()
+        public void Load()
         {
             IsLoaded = Json.Load(this, FileName);
 
@@ -51,45 +51,43 @@ namespace FBITools
 
             MainBaseForm.DebugMode = IsDebugMode;
             DebugManager.Enable = IsDebugMode;
-
-            return IsLoaded;
         }
 
-        public bool Update()
+        public void Update()
         {
-            return Json.Save(this, FileName);
+            Json.Save(this, FileName);
         }
 
-        public bool ToggleDarkMode()
+        public void ToggleDarkMode()
         {
             IsDarkMode = Theme.ToggleDarkTheme();
 
-            return Update();
+            Update();
         }
 
-        public bool ToggleDebugMode()
+        public void ToggleDebugMode()
         {
             IsDebugMode = !IsDebugMode;
             MainBaseForm.DebugMode = IsDebugMode;
             DebugManager.Enable = IsDebugMode;
 
-            return Update();
+            Update();
         }
 
-        public bool ToggleAutoCenterWindow()
+        public void ToggleAutoCenterWindow()
         {
             IsAutoCenterWindow = !IsAutoCenterWindow;
             MainBaseForm.AutoCenterWindow = IsAutoCenterWindow;
 
-            return Update();
+            Update();
         }
 
-        public bool ToggleAutoResizeWindow()
+        public void ToggleAutoResizeWindow()
         {
             IsAutoResizeWindow = !IsAutoResizeWindow;
             MainBaseForm.AutoResizeWindow = IsAutoResizeWindow;
 
-            return Update();
+            Update();
         }
     }
 }

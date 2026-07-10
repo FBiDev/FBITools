@@ -6,15 +6,15 @@ namespace FBITools
 {
     public class FileCopyController
     {
-        private readonly FileBackup file;
+        private readonly FileBackup _file;
 
         public FileCopyController()
         {
-            file = new FileBackup();
+            _file = new FileBackup();
 
-            file.Copied += OnCopied;
-            file.InvalidFile += OnInvalidFile;
-            file.TimerRunningChanged += OnTimerRunningChanged;
+            _file.Copied += OnCopied;
+            _file.InvalidFile += OnInvalidFile;
+            _file.TimerRunningChanged += OnTimerRunningChanged;
         }
 
         public event Action<LabelType, string> StatusChanged;
@@ -23,87 +23,87 @@ namespace FBITools
 
         public string OriginPath
         {
-            get { return file.OriginPath; }
+            get { return _file.OriginPath; }
         }
 
         public string DestinationPath
         {
-            get { return file.DestinationPath; }
+            get { return _file.DestinationPath; }
         }
 
         public bool IsTimer
         {
-            get { return file.IsTimer; }
+            get { return _file.IsTimer; }
         }
 
         public string ButtonMessage
         {
-            get { return file.ButtonMessage; }
+            get { return _file.ButtonMessage; }
         }
 
         public void LoadComboBoxData(FlatComboBox typeComboBox, FlatComboBox timerComboBox)
         {
-            file.LoadTypes(typeComboBox);
-            file.LoadTimer(timerComboBox);
+            _file.LoadTypes(typeComboBox);
+            _file.LoadTimer(timerComboBox);
         }
 
         public void LoadOptions()
         {
             if (Options.IsLoaded)
             {
-                file.OriginPath = Session.Options.FileCopy_Origin;
-                file.DestinationPath = Session.Options.FileCopy_Destination;
-                file.CustomDestination = Session.Options.FileCopy_CustomDestination;
-                file.TimerValue = Session.Options.FileCopy_Timer;
-                file.Type = Session.Options.FileCopy_Type;
+                _file.OriginPath = Session.Options.FileCopyOrigin;
+                _file.DestinationPath = Session.Options.FileCopyDestination;
+                _file.CustomDestination = Session.Options.FileCopyCustomDestination;
+                _file.TimerValue = Session.Options.FileCopyTimer;
+                _file.Type = Session.Options.FileCopyType;
             }
         }
 
         public void SaveOptions()
         {
-            Session.Options.FileCopy_Origin = file.OriginPath;
-            Session.Options.FileCopy_Destination = file.DestinationPath;
-            Session.Options.FileCopy_CustomDestination = file.CustomDestination;
-            Session.Options.FileCopy_Type = file.Type;
-            Session.Options.FileCopy_Timer = file.TimerValue;
+            Session.Options.FileCopyOrigin = _file.OriginPath;
+            Session.Options.FileCopyDestination = _file.DestinationPath;
+            Session.Options.FileCopyCustomDestination = _file.CustomDestination;
+            Session.Options.FileCopyType = _file.Type;
+            Session.Options.FileCopyTimer = _file.TimerValue;
             Session.Options.Update();
         }
 
         public bool PickOrigin()
         {
-            return file.PickOrigin();
+            return _file.PickOrigin();
         }
 
         public bool PickDestination()
         {
-            return file.PickDestination();
+            return _file.PickDestination();
         }
 
         public void SetCustomDestination(bool value)
         {
-            file.CustomDestination = value;
+            _file.CustomDestination = value;
         }
 
         public void SetType(int type)
         {
-            file.Type = type;
+            _file.Type = type;
         }
 
         public void SetTimer(int timer)
         {
-            file.TimerValue = timer;
+            _file.TimerValue = timer;
         }
 
         public bool Copy()
         {
-            if (!file.Copy())
+            if (!_file.Copy())
             {
                 return false;
             }
 
-            if (file.TimerIsRunning)
+            if (_file.TimerIsRunning)
             {
-                file.StartBackupTimer().TryAwait();
+                _file.StartBackupTimer().TryAwait();
             }
 
             return true;
@@ -111,19 +111,19 @@ namespace FBITools
 
         private void OnInvalidFile()
         {
-            StatusChanged.Run(LabelType.danger, file.ErrorMessage);
+            StatusChanged.Run(LabelType.danger, _file.ErrorMessage);
         }
 
         private void OnCopied()
         {
-            StatusChanged.Run(LabelType.success, file.SuccessMessage);
+            StatusChanged.Run(LabelType.success, _file.SuccessMessage);
         }
 
         private void OnTimerRunningChanged()
         {
-            TimerStateChanged.Run(file.TimerIsRunning, file.ButtonMessage);
+            TimerStateChanged.Run(_file.TimerIsRunning, _file.ButtonMessage);
 
-            StatusChanged.Run(LabelType.primary, file.SuccessMessage);
+            StatusChanged.Run(LabelType.primary, _file.SuccessMessage);
         }
     }
 }

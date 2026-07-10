@@ -7,6 +7,7 @@ namespace FBITools
 {
     public partial class ImageResizeForm : ContentBaseForm
     {
+        #region InitializeForm
         private readonly ImageResizeController _controller;
 
         public ImageResizeForm()
@@ -15,24 +16,14 @@ namespace FBITools
 
             Session.ImageResizePage = this;
 
+            Load += OnFormLoad;
             Shown += OnFormShown;
 
             _controller = new ImageResizeController();
         }
 
-        private void OnFormShown(object sender, EventArgs ev)
+        private void OnFormLoad(object sender, EventArgs e)
         {
-            WarningLabel.TextChanged += ClearLabelText;
-
-            _controller.EncoderChanged += UpdateOut;
-            _controller.StatusChanged += Service_StatusChanged;
-            _controller.Resized += Service_Resized;
-            _controller.ResizeModeCrop += Service_ResizeModeCrop;
-
-            OriginButton.Click += OriginButton_Click;
-            DestinationButton.Click += DestinationButton_Click;
-            ResizeButton.Click += ResizeButton_Click;
-
             _controller.LoadComboBoxData(
                 EncoderComboBox,
                 ResizeModeComboBox,
@@ -50,35 +41,26 @@ namespace FBITools
                 PngInterlaceComboBox);
         }
 
-        private async void ClearLabelText(object sender, EventArgs e)
+        private void OnFormShown(object sender, EventArgs ev)
+        {
+            WarningLabel.TextChanged += ClearLabelText;
+
+            _controller.EncoderChanged += UpdateOut;
+            _controller.StatusChanged += OnControllerStatusChanged;
+            _controller.Resized += OnControllerResized;
+            _controller.ResizeModeCrop += OnControllerResizeModeCrop;
+
+            OriginButton.Click += OnOriginButtonClick;
+            DestinationButton.Click += OnDestinationButtonClick;
+            ResizeButton.Click += OnResizeButtonClick;
+        }
+        #endregion
+
+        #region UserEvents
+        private static async void ClearLabelText(object sender, EventArgs e)
         {
             var label = (FlatLabel)sender;
             await label.ClearTextAfterDelay(4);
-        }
-
-        private void OriginButton_Click(object sender, EventArgs e)
-        {
-            if (!_controller.PickImg())
-            {
-                return;
-            }
-
-            UpdatePictureBoxImage(DropPictureBox, _controller.GetImgBitmap());
-            UpdateImg();
-            UpdateOut();
-        }
-
-        private void DestinationButton_Click(object sender, EventArgs e)
-        {
-            if (_controller.PickOut())
-            {
-                UpdateOut();
-            }
-        }
-
-        private void ResizeButton_Click(object sender, EventArgs e)
-        {
-            _controller.Resize();
         }
 
         private void UpdateImg()
@@ -91,7 +73,7 @@ namespace FBITools
             DestinationTextBox.Text = _controller.OutPath;
         }
 
-        private void UpdatePictureBoxImage(FlatPictureBox pictureBox, Bitmap image)
+        private static void UpdatePictureBoxImage(FlatPictureBox pictureBox, Image image)
         {
             pictureBox.Image = image;
 
@@ -105,20 +87,46 @@ namespace FBITools
             }
         }
 
-        private void Service_StatusChanged(LabelType type, string message)
+        private void OnOriginButtonClick(object sender, EventArgs e)
+        {
+            if (!_controller.PickImg())
+            {
+                return;
+            }
+
+            UpdatePictureBoxImage(DropPictureBox, _controller.GetImgBitmap());
+            UpdateImg();
+            UpdateOut();
+        }
+
+        private void OnDestinationButtonClick(object sender, EventArgs e)
+        {
+            if (_controller.PickOut())
+            {
+                UpdateOut();
+            }
+        }
+
+        private void OnResizeButtonClick(object sender, EventArgs e)
+        {
+            _controller.Resize();
+        }
+
+        private void OnControllerStatusChanged(LabelType type, string message)
         {
             WarningLabel.ForeColorType = type;
             WarningLabel.Text = message;
         }
 
-        private void Service_Resized()
+        private void OnControllerResized()
         {
             UpdatePictureBoxImage(ResizedPictureBox, _controller.GetOutBitmap());
         }
 
-        private void Service_ResizeModeCrop(bool isCrop)
+        private void OnControllerResizeModeCrop(bool isCrop)
         {
             AnchorComboBox.Enabled = isCrop;
         }
+        #endregion
     }
 }

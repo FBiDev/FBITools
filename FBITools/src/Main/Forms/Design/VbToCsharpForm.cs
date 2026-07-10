@@ -6,10 +6,9 @@ namespace FBITools
 {
     public partial class VbToCsharpForm : ContentBaseForm
     {
-        private const string CopiedMessage = "Text Copied!";
-        private const string ClearedMessage = "Text Cleared!";
-
         #region InitializeForm
+        private readonly VbToCsharpController _controller;
+
         public VbToCsharpForm()
         {
             InitializeComponent();
@@ -18,6 +17,8 @@ namespace FBITools
 
             Shown += OnFormShown;
             GotFocus += OnFormGotFocus;
+
+            _controller = new VbToCsharpController();
         }
 
         private void OnFormShown(object sender, EventArgs ev)
@@ -28,7 +29,7 @@ namespace FBITools
         private void RegisterShownEvents()
         {
             WarningLabel.TextChanged += ClearLabelText;
-            ConvertButton.Click += ConvertButton_Click;
+            ConvertButton.Click += OnConvertButtonClick;
             CopyResultButton.Click += OnCopyResult;
             ClearButton.Click += OnClear;
         }
@@ -40,13 +41,13 @@ namespace FBITools
         #endregion
 
         #region UserEvents
-        private async void ClearLabelText(object sender, EventArgs e)
+        private static async void ClearLabelText(object sender, EventArgs e)
         {
             var label = (FlatLabel)sender;
             await label.ClearTextAfterDelay(4);
         }
 
-        private void ConvertButton_Click(object sender, EventArgs e)
+        private void OnConvertButtonClick(object sender, EventArgs e)
         {
             if (InputTextBox.Text.IsEmpty())
             {
@@ -55,7 +56,7 @@ namespace FBITools
 
             InputTextBox.Focus();
 
-            OutputTextBox.Text = VbToCsharpController.Convert(InputTextBox.Text);
+            OutputTextBox.Text = _controller.Convert(InputTextBox.Text);
         }
 
         private void OnCopyResult(object sender, EventArgs e)
@@ -66,7 +67,7 @@ namespace FBITools
             }
 
             ClipboardSafe.SetText(OutputTextBox.Text);
-            WarningLabel.Text = CopiedMessage;
+            WarningLabel.Text = _controller.CopiedMessage;
             InputTextBox.Focus();
         }
 
@@ -74,7 +75,7 @@ namespace FBITools
         {
             InputTextBox.Text = string.Empty;
             OutputTextBox.Text = string.Empty;
-            WarningLabel.Text = ClearedMessage;
+            WarningLabel.Text = _controller.ClearedMessage;
             InputTextBox.Focus();
         }
         #endregion

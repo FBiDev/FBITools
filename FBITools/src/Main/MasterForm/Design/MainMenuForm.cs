@@ -9,8 +9,6 @@ namespace FBITools
         {
             InitializeComponent();
 
-            Session.MainMenuPage = this;
-
             Shown += Page_Shown;
             KeyPreview = true;
         }

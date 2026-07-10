@@ -1,0 +1,35 @@
+﻿Acorn_Archimedes.html,Acorn - Archimedes
+Acorn_Atom.html,Acorn - Atom (Tapes) (Bitstream)
+Acorn_RISC OS - Flash Media.html,Acorn - RISC OS - Flash Media (Misc)
+Acorn_Risc PC.html,Acorn - Risc PC (Flux)
+ACT - Apricot PC Xi.html,ACT - Apricot PC Xi
+Amstrad - CPC.html,Amstrad - CPC (Flux)
+Analogue Pocket.html,Analogue - Analogue Pocket
+APF_Imagination Machine.html,APF - Imagination Machine
+APF_MP-1000.html,APF - MP-1000
+Arduboy.html,Arduboy Inc - Arduboy
+Atari_8-bit Family.html,Atari - 8-bit Family
+Atari_2600.html,Atari - Atari 2600
+Atari_5200.html,Atari - Atari 5200
+Atari_7800_A78.html,Atari - Atari 7800 (A78)
+Atari_7800_BIN.html,Atari - Atari 7800 (BIN)
+Atari_Jaguar_ABS.html,Atari - Atari Jaguar (ABS)
+Atari_Jaguar_COF.html,Atari - Atari Jaguar (COF)
+Atari_Jaguar_J64.html,Atari - Atari Jaguar (J64)
+Atari_Jaguar_JAG.html,Atari - Atari Jaguar (JAG)
+Atari_Jaguar_ROM.html,Atari - Atari Jaguar (ROM)
+Atari_Jaguar_CD_Discs (BIN).html,Atari Jaguar CD - NONE
+Atari_Lynx_BLL.html,Atari - Atari Lynx (BLL)
+Atari_Lynx_LNX.html,Atari - Atari Lynx (LNX)
+Atari_Lynx_LYX.html,Atari - Atari Lynx (LYX)
+Bally - Astrocade.html,Bally - Astrocade
+Bally - Astrocade_Tapes.html,Bally - Astrocade (Tapes)
+Bally - Astrocade_Tapes_WAV.html,Bally - Astrocade (Tapes) (WAV)
+Bandai_Design Master Denshi Mangajuku.html,Bandai - Design Master Denshi Mangajuku
+Bandai_Gundam RX-78.html,Bandai - Gundam RX-78
+
+Benesse_Pocket Challenge V2.html,Benesse - Pocket Challenge V2
+Benesse_Pocket Challenge W.html,Benesse - Pocket Challenge W
+Bit Corporation - Gamate,Bit Corporation - Gamate
+Entex - Adventure Vision.html,Entex - Adventure Vision
+Nintendo_Game Boy Color.html,Nintendo - Game Boy Color

@@ -155,7 +155,7 @@ namespace FBITools
             this.WebCrawlerButton.Name = "WebCrawlerButton";
             this.WebCrawlerButton.Size = new System.Drawing.Size(298, 34);
             this.WebCrawlerButton.TabIndex = 4;
-            this.WebCrawlerButton.Text = "WebCrawler";
+            this.WebCrawlerButton.Text = "WebCrawlerSite";
             // 
             // ConfigTabButton
             // 

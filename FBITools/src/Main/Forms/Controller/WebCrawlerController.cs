@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Threading.Tasks;
+using System.Windows.Forms;
 using App.Core;
 using App.Core.Desktop;
 
@@ -10,149 +10,101 @@ namespace FBITools
 {
     public class WebCrawlerController
     {
-        public const string TempUrl = "https://myrient.erista.me/dats/Lost%20Level/Archive/";
+        public const string TempUrl = "https://lolroms.com/Atari/2600";
+        private const bool CountAftermarketPrivate = true;
 
-        private const string MyRientLostLevelURL = "https://myrient.erista.me/files/Lost%20Level/Archive/";
-        private const string MyRientNoIntroURL = "https://myrient.erista.me/files/No-Intro/";
-        private const string MyRientRAURL = "https://myrient.erista.me/files/RetroAchievements/";
-        private const string MyRientRedumpURL = "https://myrient.erista.me/files/Redump/";
+        private static WebCrawlerSite _currentSite;
 
-        private static Dictionary<string, string> allFolders;
+        public string LocalPath { get; private set; }
 
-        public static async Task<string> GetURLHtml(string url)
+        public List<DropItem> GetSites()
         {
-            return await Browser.DownloadString(url);
+            return Util.EnumToDropItems<WebSite>();
         }
 
-        public static bool CheckFile(string folder, string fileName)
+        public void ChangeSite(object sender)
         {
-            return File.Exists(Path.Combine(folder, fileName));
-        }
-
-        public static DateTime ConvertDate(string date)
-        {
-            var newDate = Cast.ToDateTime(date);
-            return newDate;
-        }
-
-        public static long ConvertSize(string size)
-        {
-            if (size.Contains("TiB"))
+            switch ((WebSite)((ComboBox)sender).SelectedValue)
             {
-                var newSize = size.Replace(" TiB", string.Empty);
-                var newSizeDouble = Cast.ToDouble(newSize);
-                var newSizeInt = newSizeDouble * 1024 * 1024 * 1024 * 1024;
-                return Convert.ToInt64(newSizeInt);
-            }
-            else if (size.Contains("GiB"))
-            {
-                var newSize = size.Replace(" GiB", string.Empty);
-                var newSizeDouble = Cast.ToDouble(newSize);
-                var newSizeInt = newSizeDouble * 1024 * 1024 * 1024;
-                return Convert.ToInt64(newSizeInt);
-            }
-            else if (size.Contains("MiB"))
-            {
-                var newSize = size.Replace(" MiB", string.Empty);
-                var newSizeDouble = Cast.ToDouble(newSize);
-                var newSizeInt = newSizeDouble * 1024 * 1024;
-                return Convert.ToInt32(newSizeInt);
-            }
-            else if (size.Contains("KiB"))
-            {
-                var newSize = size.Replace(" KiB", string.Empty);
-                var newSizeDouble = Cast.ToDouble(newSize);
-                var newSizeInt = newSizeDouble * 1024;
-                return Convert.ToInt32(newSizeInt);
-            }
-            else if (size.Contains("B"))
-            {
-                var newSize = size.Replace(" B", string.Empty);
-                return Convert.ToInt32(newSize);
-            }
-            else
-            {
-                return 0;
+                case WebSite.LoLRoms: _currentSite = new LolRomsSite(); break;
+                case WebSite.MyRient: _currentSite = new MyRientSite(); break;
             }
         }
 
-        public static Dictionary<string, string> GetMyrientFolders()
+        public void ChangeLocalPath(object sender)
         {
-            allFolders = new Dictionary<string, string> { };
+            var combo = (ComboBox)sender;
+            if (combo.SelectedItem == null) { return; }
 
-            var lostLevelFolders = GetLostLevelFolders();
-            var noIntroFolders = GetNoIntroFolders();
-            var raFolders = GetRAFolders();
-            var redumpFolders = GetRedumpFolders();
-
-            //// AddLostLevelFoldersToList(lostLevelFolders);
-            AddNoIntroFoldersToList(noIntroFolders);
-            ////AddFoldersToList(raFolders, MyRientRAURL);
-            //// AddFoldersToList(redumpFolders, MyRientRedumpURL);
-
-            allFolders = allFolders.OrderBy(x => x.Value).ToDictionary(x => x.Key, x => x.Value);
-            return allFolders;
+            var folder = ((KeyValuePair<string, string>)combo.SelectedItem).Value;
+            LocalPath = _currentSite.LocalPath + folder;
         }
 
-        public static List<string> GetLostLevelFolders()
+        public Dictionary<string, string> GetUrls()
         {
-            return File.ReadAllLines("Data/MyRient_LostLevel_Folders.txt").ToList();
+            return _currentSite == null ? null : _currentSite.GetUrls();
         }
 
-        public static List<string> GetNoIntroFolders()
+        public DataList<Rom> GetItems(KeyValuePair<string, string> path)
         {
-            return File.ReadAllLines("Data/MyRient_No-Intro_Folders.txt").ToList();
-        }
+            _currentSite.SetHtml(path.Key);
+            _currentSite.Items = new DataList<Rom>();
 
-        public static List<string> GetRAFolders()
-        {
-            return File.ReadAllLines("Data/MyRient_RA_Folders.txt").ToList();
-        }
-
-        public static List<string> GetRedumpFolders()
-        {
-            return File.ReadAllLines("Data/MyRient_Redump_Folders.txt").ToList();
-        }
-
-        private static void AddLostLevelFoldersToList(List<string> folders)
-        {
-            foreach (var f in folders)
+            try
             {
-                var key = Uri.EscapeDataString(f);
-                key = Path.Combine(MyRientLostLevelURL, key.TrimEnd('/') + "/");
+                foreach (var rom in _currentSite.HtmlItems)
+                {
+                    var name = _currentSite.GetItemName(rom);
+                    var size = _currentSite.GetItemSize(rom);
+                    var date = _currentSite.GetItemDate(rom);
 
-                var newFolders = new List<string>();
-                var folder = f;
-                newFolders.Add(folder);
+                    var currentRom = new Rom
+                    {
+                        Found = Archive.Exists(LocalPath, name),
+                        FileName = name,
+                        FileSize = Archive.CalculateSize(size),
+                        Date = Cast.ToDateTime(date)
+                    };
 
-                allFolders.Add(key, folder);
+                    if (CountAftermarketPrivate)
+                    {
+                        currentRom.Found = Archive.Exists(LocalPath, name) ||
+                            Archive.Exists(LocalPath + " (Aftermarket)", name) ||
+                            Archive.Exists(LocalPath + " (Private)", name);
+                    }
+
+                    _currentSite.Items.Add(currentRom);
+                }
             }
+            catch (Exception exception)
+            {
+                Console.WriteLine(exception);
+                throw;
+            }
+
+            return _currentSite.Items;
         }
 
-        private static void AddNoIntroFoldersToList(List<string> folders)
+        public string GetItemsReport()
         {
-            foreach (var f in folders)
+            var roms = _currentSite.Items;
+            var totalFound = roms.Count(x => x.Found);
+
+            var folderTotalFiles = Archive.GetFiles(LocalPath).Count();
+
+            if (CountAftermarketPrivate)
             {
-                var key = Uri.EscapeDataString(f);
-                key = Path.Combine(MyRientNoIntroURL, key.TrimEnd('/') + "/");
-
-                var newFolders = new List<string>();
-                var folder = "NoIntro - " + f;
-                newFolders.Add(folder);
-
-                allFolders.Add(key, folder);
+                folderTotalFiles += Archive.GetFiles(LocalPath + " (Aftermarket)").Count();
+                folderTotalFiles += Archive.GetFiles(LocalPath + " (Private)").Count();
             }
-        }
 
-        private static void AddFoldersToList(List<string> folders, string urlBase)
-        {
-            foreach (var f in folders)
-            {
-                var key = Uri.EscapeDataString(f);
-                key = Path.Combine(urlBase, key.TrimEnd('/') + "/");
+            var totalSize = roms.Sum(x => x.FileSize);
+            var currentSize = roms.Where(x => x.Found).Sum(x => x.FileSize);
+            var totalSizeConverted = Archive.FormatSize(totalSize);
+            var currentSizeConverted = Archive.FormatSize(currentSize);
 
-                allFolders.Add(key, f);
-            }
+            var text = @"Folder: " + folderTotalFiles + @" - Good: " + totalFound + @" - Bad: " + (roms.Count - totalFound) + @" - TotalSize: " + currentSizeConverted + @" / " + totalSizeConverted;
+            return text;
         }
     }
 }
