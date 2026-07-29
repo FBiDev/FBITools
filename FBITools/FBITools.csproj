@@ -288,6 +288,9 @@
     <Content Include="src\Main\Core\Data\lolroms_pages\Amstrad - CPC %28Flux%29.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="src\Main\Core\Data\lolroms_pages\Amstrad - CPC %28Misc%29.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="src\Main\Core\Data\lolroms_pages\Analogue - Analogue Pocket.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -343,9 +346,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="src\Main\Core\Data\lolroms_pages\Atari - Atari Jaguar %28ROM%29.html">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="src\Main\Core\Data\lolroms_pages\Atari - Atari Jaguar CD.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="src\Main\Core\Data\lolroms_pages\Atari - Atari Lynx %28BLL%29.html">
@@ -414,7 +414,19 @@
     <Content Include="src\Main\Core\Data\lolroms_pages\Commodore - Amiga %28Bitstream%29.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="src\Main\Core\Data\lolroms_pages\Commodore - Amiga %28Flux%29.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="src\Main\Core\Data\lolroms_pages\Commodore - Amiga.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="src\Main\Core\Data\lolroms_pages\Commodore - Commodore 64 %28Headerless%29.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="src\Main\Core\Data\lolroms_pages\Commodore - Commodore 64 %28PP%29.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="src\Main\Core\Data\lolroms_pages\Commodore - Commodore 64 %28Tapes%29.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="src\Main\Core\Data\lolroms_pages\Commodore - Commodore 64.html">
@@ -459,6 +471,12 @@
     <Content Include="src\Main\Core\Data\lolroms_pages\Interton - VC 4000.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="src\Main\Core\Data\lolroms_pages\iQue - iQue %28CDN%29.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="src\Main\Core\Data\lolroms_pages\iQue - iQue %28Decrypted%29.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="src\Main\Core\Data\lolroms_pages\Konami - Picno.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -495,10 +513,10 @@
     <Content Include="src\Main\Core\Data\lolroms_pages\NEC - PC-98 %28HardDisk%29.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="src\Main\Core\Data\lolroms_pages\NEC - PC-98 %28Uncategorized%29.html">
+    <Content Include="src\Main\Core\Data\lolroms_pages\NEC - PC-98 %28HDM%29.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="src\Main\Core\Data\lolroms_pages\NEC - PC-98.html">
+    <Content Include="src\Main\Core\Data\lolroms_pages\NEC - PC-98 %28Uncategorized%29.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="src\Main\Core\Data\lolroms_pages\Nichibutsu - My Vision.html">
@@ -510,13 +528,13 @@
     <Content Include="src\Main\Core\Data\lolroms_pages\Nintendo - Family BASIC %28Tapes%29.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="src\Main\Core\Data\lolroms_pages\Nintendo - Family Computer Disk System %28FDS%29.html">
+    <Content Include="src\Main\Core\Data\lolroms_pages\Nintendo - Famicom Disk System %28FDS%29.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="src\Main\Core\Data\lolroms_pages\Nintendo - Family Computer Disk System %28QD%29.html">
+    <Content Include="src\Main\Core\Data\lolroms_pages\Nintendo - Famicom Disk System %28QD%29.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="src\Main\Core\Data\lolroms_pages\Nintendo - Family Computer Network System.html">
+    <Content Include="src\Main\Core\Data\lolroms_pages\Nintendo - Famicom Network System.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="src\Main\Core\Data\lolroms_pages\Nintendo - Game &amp; Watch.html">
@@ -549,7 +567,7 @@
     <Content Include="src\Main\Core\Data\lolroms_pages\Nintendo - Nintendo 64DD.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="src\Main\Core\Data\lolroms_pages\Nintendo - Nintendo Entertainment System %28Headered%29.html">
+    <Content Include="src\Main\Core\Data\lolroms_pages\Nintendo - Famicom %28Headered%29.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="src\Main\Core\Data\lolroms_pages\Nintendo - Nintendo GameCube %28Memory Card%29.html">
@@ -564,7 +582,7 @@
     <Content Include="src\Main\Core\Data\lolroms_pages\Nintendo - Sufami Turbo.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="src\Main\Core\Data\lolroms_pages\Nintendo - Super Nintendo Entertainment System.html">
+    <Content Include="src\Main\Core\Data\lolroms_pages\Nintendo - Super Nintendo.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="src\Main\Core\Data\lolroms_pages\Nintendo - Virtual Boy.html">
@@ -598,6 +616,63 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="src\Main\Core\Data\lolroms_pages\Sega - SG-1000 - SC-3000.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="src\Main\Core\Data\lolroms_pages\Sharp - MZ-2200 %28Waveform%29.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="src\Main\Core\Data\lolroms_pages\Sharp - X1 %28Waveform%29.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="src\Main\Core\Data\lolroms_pages\Sharp - X68000 %28Flux%29.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="src\Main\Core\Data\lolroms_pages\Sinclair - ZX Spectrum +3.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="src\Main\Core\Data\lolroms_pages\SNK - NeoGeo Pocket Color.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="src\Main\Core\Data\lolroms_pages\SNK - NeoGeo Pocket.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="src\Main\Core\Data\lolroms_pages\TeleNova - Compis %28Flux%29.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="src\Main\Core\Data\lolroms_pages\Texas Instruments - TI-99-4A %28A2R%29.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="src\Main\Core\Data\lolroms_pages\Toshiba - Pasopia %28BIN%29.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="src\Main\Core\Data\lolroms_pages\Toshiba - Pasopia %28WAV%29.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="src\Main\Core\Data\lolroms_pages\Toshiba - Visicom.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="src\Main\Core\Data\lolroms_pages\VM Labs - NUON %28Digital%29.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="src\Main\Core\Data\lolroms_pages\VTech - CreatiVision.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="src\Main\Core\Data\lolroms_pages\VTech - Mobigo.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="src\Main\Core\Data\lolroms_pages\VTech - V.Smile.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="src\Main\Core\Data\lolroms_pages\Watara - Supervision.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="src\Main\Core\Data\lolroms_pages\Welback - Mega Duck.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="src\Main\Core\Data\lolroms_pages\Yamaha - Copera.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="src\Main\Core\Data\lolroms_pages\Zeebo - Zeebo.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="src\Main\Core\Data\MyRient_No-Intro_Folders_Excluded.txt" />

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using App.Core;
 using App.Core.Desktop;
 
@@ -68,7 +69,7 @@ namespace FBITools
             return GetMyrientFolders();
         }
 
-        public override async void SetHtml(string path)
+        public override async Task SetHtml(string path)
         {
             Html = await Network.DownloadString(path);
             HtmlTable = Html.GetBetween("<ul class=\"list\">", "</ul>", true);
@@ -155,6 +156,13 @@ namespace FBITools
 
                 allFolders.Add(key, f);
             }
+        }
+
+        public override bool FindFile(string path, string name)
+        {
+            return Archive.Exists(path, name) ||
+                   Archive.Exists(path + " (Aftermarket)", name) ||
+                   Archive.Exists(path + " (Private)", name);
         }
     }
 }

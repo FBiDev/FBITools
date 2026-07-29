@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.IO;
+using System.Threading.Tasks;
 using App.Core.Desktop;
 
 namespace FBITools
@@ -42,6 +43,8 @@ namespace FBITools
 
         public abstract DataList<Rom> Items { get; set; }
 
+        public abstract bool FindFile(string path, string name);
+
         public abstract Dictionary<string, string> GetUrls();
 
         protected Dictionary<string, string> SetUrls(string path)
@@ -70,6 +73,6 @@ namespace FBITools
             return dictionary;
         }
 
-        public abstract void SetHtml(string path);
+        public abstract Task SetHtml(string path);
     }
 }

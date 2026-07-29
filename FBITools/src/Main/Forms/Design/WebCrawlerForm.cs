@@ -92,11 +92,11 @@ namespace FBITools
             FolderTextBox.Text = _controller.LocalPath;
         }
 
-        private void OnCrawlerButtonClick(object sender, EventArgs e)
+        private async void OnCrawlerButtonClick(object sender, EventArgs e)
         {
             WarningLabel.Text = @"Executando...";
 
-            var roms = _controller.GetItems((KeyValuePair<string, string>)UrlComboBox.SelectedItem);
+            var roms = await _controller.GetItems((KeyValuePair<string, string>)UrlComboBox.SelectedItem);
 
             ResultGrid.DataSource = roms;
             var sortColumn = ResultGrid.Columns["Found"];

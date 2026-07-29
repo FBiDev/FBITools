@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using App.Core;
 using App.Core.Desktop;
@@ -45,9 +46,10 @@ namespace FBITools
             return _currentSite == null ? null : _currentSite.GetUrls();
         }
 
-        public DataList<Rom> GetItems(KeyValuePair<string, string> path)
+        public async Task<DataList<Rom>> GetItems(KeyValuePair<string, string> path)
         {
-            _currentSite.SetHtml(path.Key);
+            await _currentSite.SetHtml(path.Key);
+
             _currentSite.Items = new DataList<Rom>();
 
             try
@@ -57,7 +59,7 @@ namespace FBITools
                     var name = _currentSite.GetItemName(rom);
                     var size = _currentSite.GetItemSize(rom);
                     var date = _currentSite.GetItemDate(rom);
-
+                    
                     var currentRom = new Rom
                     {
                         Found = Archive.Exists(LocalPath, name),
@@ -68,9 +70,7 @@ namespace FBITools
 
                     if (CountAftermarketPrivate)
                     {
-                        currentRom.Found = Archive.Exists(LocalPath, name) ||
-                            Archive.Exists(LocalPath + " (Aftermarket)", name) ||
-                            Archive.Exists(LocalPath + " (Private)", name);
+                        currentRom.Found = _currentSite.FindFile(LocalPath, name);
                     }
 
                     _currentSite.Items.Add(currentRom);

@@ -54,6 +54,7 @@ Commodore - Commodore 64 (PP)
 Commodore - Commodore 64 (Tapes)
 Commodore - Plus-4
 Commodore - VIC-20
+Digital Media Cartridge - Firecore
 Emerson - Arcadia 2001
 Entex - Adventure Vision
 Epoch - Game Pocket Computer
@@ -65,6 +66,8 @@ GCE - Vectrex
 Hartung - Game Master
 Hitachi - S1 (Waveform)
 Interton - VC 4000
+iQue - iQue (CDN)
+iQue - iQue (Decrypted)
 Konami - Picno
 Luxor - ABC 800 (Flux)
 Magnavox - Odyssey 2
@@ -75,18 +78,19 @@ NEC - PC Engine - TurboGrafx-16
 NEC - PC Engine SuperGrafx
 NEC - PC-88 (Flux)
 NEC - PC-88 (KryoFlux)
-NEC - PC-98
 NEC - PC-98 (Flux)
 NEC - PC-98 (Greaseweazle)
 NEC - PC-98 (HardDisk)
+NEC - PC-98 (HDM)
 NEC - PC-98 (Uncategorized)
 Nichibutsu - My Vision
 Nichibutsu - My Vision (Mame)
 Nintendo - amiibo
+Nintendo - Famicom (Headered)
+Nintendo - Famicom Disk System (FDS)
+Nintendo - Famicom Disk System (QD)
+Nintendo - Famicom Network System
 Nintendo - Family BASIC (Tapes)
-Nintendo - Family Computer Disk System (FDS)
-Nintendo - Family Computer Disk System (QD)
-Nintendo - Family Computer Network System
 Nintendo - Game & Watch
 Nintendo - Game Boy
 Nintendo - Game Boy Advance
@@ -98,12 +102,11 @@ Nintendo - Game Boy Color
 Nintendo - Nintendo 64 (BigEndian)
 Nintendo - Nintendo 64 (Mario no Photopi SmartMedia)
 Nintendo - Nintendo 64DD
-Nintendo - Nintendo Entertainment System (Headered)
 Nintendo - Nintendo GameCube (Memory Card)
 Nintendo - Pokemon Mini
 Nintendo - Satellaview
 Nintendo - Sufami Turbo
-Nintendo - Super Nintendo Entertainment System
+Nintendo - Super Nintendo
 Nintendo - Virtual Boy
 Philips - Videopac+
 RCA - Studio II
@@ -125,11 +128,13 @@ SNK - NeoGeo Pocket Color
 TeleNova - Compis (Flux)
 Texas Instruments - TI-99-4A (A2R)
 Tiger - Game.com
+Tiger - Gizmondo
 Toshiba - Pasopia (BIN)
 Toshiba - Pasopia (WAV)
 Toshiba - Visicom
 VM Labs - NUON (Digital)
 VTech - CreatiVision
+VTech - Mobigo
 VTech - V.Smile
 Watara - Supervision
 Web - Humble Play
