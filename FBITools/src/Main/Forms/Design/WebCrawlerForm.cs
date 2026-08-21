@@ -138,7 +138,7 @@ namespace FBITools
             {
                 if (col.ValueType == typeof(DateTime))
                 {
-                    col.DefaultCellStyle.Format = "dd-MMM-yyyy HH:mm";
+                    col.DefaultCellStyle.Format = "dd-MMM-yyyy"; // HH:mm
                 }
             }
         }

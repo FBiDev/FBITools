@@ -438,6 +438,9 @@
     <Content Include="src\Main\Core\Data\lolroms_pages\Commodore - VIC-20.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="src\Main\Core\Data\lolroms_pages\Digital Media Cartridge - Firecore.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="src\Main\Core\Data\lolroms_pages\Emerson - Arcadia 2001.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -519,10 +522,16 @@
     <Content Include="src\Main\Core\Data\lolroms_pages\NEC - PC-98 %28Uncategorized%29.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="src\Main\Core\Data\lolroms_pages\Nichibutsu - My Vision %28Mame%29.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="src\Main\Core\Data\lolroms_pages\Nichibutsu - My Vision.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="src\Main\Core\Data\lolroms_pages\Nintendo - amiibo.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="src\Main\Core\Data\lolroms_pages\Nintendo - Famicom StudyBox.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="src\Main\Core\Data\lolroms_pages\Nintendo - Family BASIC %28Tapes%29.html">

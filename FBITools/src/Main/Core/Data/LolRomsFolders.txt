@@ -90,6 +90,7 @@ Nintendo - Famicom (Headered)
 Nintendo - Famicom Disk System (FDS)
 Nintendo - Famicom Disk System (QD)
 Nintendo - Famicom Network System
+Nintendo - Famicom StudyBox
 Nintendo - Family BASIC (Tapes)
 Nintendo - Game & Watch
 Nintendo - Game Boy

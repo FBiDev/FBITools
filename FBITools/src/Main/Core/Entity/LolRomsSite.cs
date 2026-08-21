@@ -37,12 +37,15 @@ namespace FBITools
 
         public override string GetItemSize(string html)
         {
-            return html.GetBetween("<div class='meta'><span>", "</span>");
+            var htmlName = html.GetBetween("<div class='meta'>", "</div>", true);
+            return htmlName.GetBetween("<span>", "</span>");
         }
 
         public override string GetItemDate(string html)
         {
-            return html.GetBetween("</span><span>", "</span></div>");
+            var htmlDate = html.GetBetween("<div class='meta'>", "</div>", true);
+            htmlDate = htmlDate.GetBetween("</span>", "</div>");
+            return htmlDate.GetBetween("<span>", "</span>");
         }
 
         public override string SufixItemName
@@ -65,7 +68,7 @@ namespace FBITools
         {
             Html = Archive.ReadAll("data/lol/" + path);
             HtmlTable = Html.GetBetween("<ul class=\"list\">", "</ul>", true);
-            HtmlItems = HtmlTable.GetBetweenList("<a class='file' href='", "</span></div>", true);
+            HtmlItems = HtmlTable.GetBetweenList("<li class='filei'>", "</li>", false);
 
             Files = new List<string>();
             return Task.CompletedTask;
