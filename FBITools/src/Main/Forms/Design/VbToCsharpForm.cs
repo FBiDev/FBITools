@@ -41,7 +41,7 @@ namespace FBITools
         #endregion
 
         #region UserEvents
-        private static async void ClearLabelText(object sender, EventArgs e)
+        private async void ClearLabelText(object sender, EventArgs e)
         {
             var label = (FlatLabel)sender;
             await label.ClearTextAfterDelay(4);

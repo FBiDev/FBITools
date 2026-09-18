@@ -57,7 +57,7 @@ namespace FBITools
         #endregion
 
         #region UserEvents
-        private static async void ClearLabelText(object sender, EventArgs e)
+        private async void ClearLabelText(object sender, EventArgs e)
         {
             var label = (FlatLabel)sender;
             await label.ClearTextAfterDelay(4);
@@ -73,7 +73,7 @@ namespace FBITools
             DestinationTextBox.Text = _controller.OutPath;
         }
 
-        private static void UpdatePictureBoxImage(FlatPictureBox pictureBox, Image image)
+        private void UpdatePictureBoxImage(FlatPictureBox pictureBox, Image image)
         {
             pictureBox.Image = image;
 

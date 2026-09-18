@@ -6,12 +6,12 @@ namespace FBITools
     public static class Session
     {
         public const bool SystemLock = true;
+
         public static readonly string SystemName = AppManager.Name;
+        public static readonly Options Options = new Options();
 
         private const CultureID Language = CultureID.UnitedStates_English;
         private const CultureID LanguageNumbers = CultureID.Brazil_Portuguese;
-
-        public static readonly Options Options = new Options();
 
         // MasterForm
         public static MainForm MainPage { get; set; }

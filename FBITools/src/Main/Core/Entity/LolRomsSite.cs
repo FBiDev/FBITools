@@ -9,19 +9,12 @@ namespace FBITools
 {
     public sealed class LolRomsSite : WebCrawlerSite
     {
+        private List<string> _files;
+
         public LolRomsSite()
         {
             LocalPath = Network.UseProxy ? @"C:\WGET\myrient.erista.me\files\No-Intro\" :
                             @"D:\Fazendo\wget-1.21.4-win64\myrient.erista.me\files\No-Intro\";
-        }
-
-        protected override string Host
-        {
-            get
-            {
-                return "";
-                //return "https://lolroms.com/";
-            }
         }
 
         public override string LocalPath { get; protected set; }
@@ -29,6 +22,23 @@ namespace FBITools
         public override string HtmlTable { get; protected set; }
 
         public override List<string> HtmlItems { get; protected set; }
+
+        public override string SufixItemName
+        {
+            get { return ".zip"; }
+        }
+
+        public override DataList<Rom> Items { get; set; }
+
+        protected override string Host
+        {
+            get
+            {
+                return string.Empty;
+
+                // return "https://lolroms.com/";
+            }
+        }
 
         public override string GetItemName(string html)
         {
@@ -48,14 +58,9 @@ namespace FBITools
             return htmlDate.GetBetween("<span>", "</span>");
         }
 
-        public override string SufixItemName
+        public override void RemoveItems()
         {
-            get { return ".zip"; }
         }
-
-        public override void RemoveItems() { }
-
-        public override DataList<Rom> Items { get; set; }
 
         public override Dictionary<string, string> GetUrls()
         {
@@ -68,39 +73,45 @@ namespace FBITools
         {
             Html = Archive.ReadAll("data/lol/" + path);
             HtmlTable = Html.GetBetween("<ul class=\"list\">", "</ul>", true);
-            HtmlItems = HtmlTable.GetBetweenList("<li class='filei'>", "</li>", false);
+            HtmlItems = HtmlTable.GetBetweenList("<li class='filei'>", "</li>");
 
-            Files = new List<string>();
+            _files = new List<string>();
             return Task.CompletedTask;
         }
 
-        private List<string> Files;
-
         public override bool FindFile(string path, string name)
         {
-            if (Files.Count == 0)
+            if (_files.Count != 0)
             {
-                var afterm = path + " (Aftermarket)";
-                var privat = path + " (Private)";
-
-                if (Directory.Exists(path))
-                {
-                    Files = Directory.GetFiles(path).ToList();
-                }
-
-                if (Directory.Exists(afterm))
-                {
-                    Files.AddRange(Directory.GetFiles(afterm).ToList());
-                }
-
-                if (Directory.Exists(privat))
-                {
-                    Files.AddRange(Directory.GetFiles(privat).ToList());
-                }
+                return FindFileName(name);
             }
 
-            //return Files.Select(file => Path.GetFileName(file.Trim('\'')).Replace("'", string.Empty)).Any(fileName => fileName == name);
-            return Files.Select(Path.GetFileName).Any(fileName => fileName == name);
+            var afterm = path + " (Aftermarket)";
+            var privat = path + " (Private)";
+
+            if (Directory.Exists(path))
+            {
+                _files = Directory.GetFiles(path).ToList();
+            }
+
+            if (Directory.Exists(afterm))
+            {
+                _files.AddRange(Directory.GetFiles(afterm).ToList());
+            }
+
+            if (Directory.Exists(privat))
+            {
+                _files.AddRange(Directory.GetFiles(privat).ToList());
+            }
+            
+            return FindFileName(name);
+        }
+
+        private bool FindFileName(string name)
+        {
+            return _files.Select(Path.GetFileName).Any(fileName => fileName == name);
+
+            // return Files.Select(file => Path.GetFileName(file.Trim('\'')).Replace("'", string.Empty)).Any(fileName => fileName == name);
         }
     }
 }

@@ -58,22 +58,22 @@ namespace FBITools
         #endregion
 
         #region UserEvents
-        private static void OnDarkModeCheckBoxChanged(object sender, EventArgs e)
+        private void OnDarkModeCheckBoxChanged(object sender, EventArgs e)
         {
             Session.Options.ToggleDarkMode();
         }
 
-        private static void OnWindowAutoCenterCheckBoxChanged(object sender, EventArgs e)
+        private void OnWindowAutoCenterCheckBoxChanged(object sender, EventArgs e)
         {
             Session.Options.ToggleAutoCenterWindow();
         }
 
-        private static void OnWindowAutoResizeCheckBoxChanged(object sender, EventArgs e)
+        private void OnWindowAutoResizeCheckBoxChanged(object sender, EventArgs e)
         {
             Session.Options.ToggleAutoResizeWindow();
         }
 
-        private static void OnDebugModeCheckBoxChanged(object sender, EventArgs e)
+        private void OnDebugModeCheckBoxChanged(object sender, EventArgs e)
         {
             Session.Options.ToggleDebugMode();
         }

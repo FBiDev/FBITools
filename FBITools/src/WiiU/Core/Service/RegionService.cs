@@ -4,28 +4,11 @@ using FBITools.WiiU.Repository;
 
 namespace FBITools.WiiU
 {
-    public class RegionService
+    public static class RegionService
     {
-        private readonly RegionRepository _repository;
-
-        public RegionService()
+        public static async Task<List<Region>> List()
         {
-            _repository = new RegionRepository();
-        }
-
-        public async Task<List<Region>> List()
-        {
-            return await _repository.List();
-        }
-
-        public async Task<List<Region>> Search(Region obj)
-        {
-            return await _repository.Search(obj);
-        }
-
-        public async Task<Region> Find(Region obj)
-        {
-            return await _repository.Find(obj);
+            return await RegionRepository.List();
         }
     }
 }

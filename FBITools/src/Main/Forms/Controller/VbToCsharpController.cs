@@ -73,15 +73,19 @@ namespace FBITools
 
             switch (condition)
             {
-                case ECondition.If: conditionPattern = @"\bif\((.*)\)\{"; break;
-                case ECondition.Iif: conditionPattern = @"\bIIf\s*\((.*),"; break;
-                default: conditionPattern = string.Empty; break;
+                case ECondition.If: conditionPattern = @"\bif\((.*)\)\{";
+                    break;
+                case ECondition.Iif: conditionPattern = @"\bIIf\s*\((.*),";
+                    break;
+                default: conditionPattern = string.Empty;
+                    break;
             }
 
             return Regex.Replace(vbNetCode, conditionPattern, match =>
             {
                 var original = match.Value;
                 var updated = Regex.Replace(original, assignmentPattern, replacement, RegexOptions.IgnoreCase | RegexOptions.Multiline);
+
                 return updated;
             }, RegexOptions.IgnoreCase | RegexOptions.Multiline | RegexOptions.Compiled);
         }

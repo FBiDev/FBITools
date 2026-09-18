@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
-using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using App.Core.Desktop;
@@ -71,7 +70,7 @@ namespace FBITools
         #endregion
 
         #region UserEvents
-        private static void Execute(string exeCmd)
+        private void Execute(string exeCmd)
         {
             Process.Start("wt", "--size 60,20 -w _q cmd /K " + exeCmd);
         }
@@ -127,7 +126,7 @@ namespace FBITools
             }
 
             // Form.UrlComboBox.SelectedValue.ToString()
-            command += "-m -np -c -e robots=off -R \"index.html*\" \"" + WebCrawlerController.TempUrl + "\"";
+            command += "-m -np -c -e robots=off -R \"index.html*\" \"" + WebCrawlerController.WgetUrl + "\"";
 
             Execute(command);
         }
@@ -152,30 +151,6 @@ namespace FBITools
 
             e.Value = Archive.FormatSize((long)e.Value);
             e.FormattingApplied = true;
-        }
-
-        private void OnResultGridSortCompare(object sender, DataGridViewSortCompareEventArgs e)
-        {
-            var valor1 = e.CellValue1 != null ? e.CellValue1.ToString() : string.Empty;
-            var valor2 = e.CellValue2 != null ? e.CellValue2.ToString() : string.Empty;
-
-            var v1Especial = valor1.Length == 0 || !char.IsLetterOrDigit(valor1[0]);
-            var v2Especial = valor2.Length == 0 || !char.IsLetterOrDigit(valor2[0]);
-
-            if (v1Especial && !v2Especial)
-            {
-                e.SortResult = 1;
-            }
-            else if (!v1Especial && v2Especial)
-            {
-                e.SortResult = -1;
-            }
-            else
-            {
-                e.SortResult = string.Compare(valor1, valor2, StringComparison.OrdinalIgnoreCase);
-            }
-
-            e.Handled = true;
         }
         #endregion
     }

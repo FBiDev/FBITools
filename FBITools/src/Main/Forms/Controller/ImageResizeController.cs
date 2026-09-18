@@ -8,16 +8,16 @@ namespace FBITools
 {
     public class ImageResizeController
     {
-        private readonly MagicScaler scaler;
+        private readonly MagicScaler _scaler;
 
         public ImageResizeController()
         {
-            scaler = new MagicScaler();
+            _scaler = new MagicScaler();
 
-            scaler.EncoderChanged += OnEncoderChanged;
-            scaler.EnableAnchor += OnResizeModeCrop;
-            scaler.InvalidFile += OnInvalidFile;
-            scaler.Resized += OnResized;
+            _scaler.EncoderChanged += OnEncoderChanged;
+            _scaler.EnableAnchor += OnResizeModeCrop;
+            _scaler.InvalidFile += OnInvalidFile;
+            _scaler.Resized += OnResized;
         }
 
         public event Action<LabelType, string> StatusChanged;
@@ -30,12 +30,12 @@ namespace FBITools
 
         public string ImgPath
         {
-            get { return scaler.ImgPath; }
+            get { return _scaler.ImgPath; }
         }
 
         public string OutPath
         {
-            get { return scaler.OutPath; }
+            get { return _scaler.OutPath; }
         }
 
         public void LoadComboBoxData(
@@ -54,35 +54,35 @@ namespace FBITools
             FlatComboBox pngFilterComboBox,
             FlatComboBox pngInterlaceComboBox)
         {
-            scaler.LoadEncoders(encoderComboBox);
-            scaler.LoadResizeModes(resizeModeComboBox);
-            scaler.LoadSizes(sizesComboBox);
+            _scaler.LoadEncoders(encoderComboBox);
+            _scaler.LoadResizeModes(resizeModeComboBox);
+            _scaler.LoadSizes(sizesComboBox);
 
-            scaler.LoadAnchors(anchorComboBox);
-            scaler.LoadInterpolations(interpolationComboBox);
+            _scaler.LoadAnchors(anchorComboBox);
+            _scaler.LoadInterpolations(interpolationComboBox);
 
-            scaler.LoadMatteColors(matteColorComboBox);
-            scaler.LoadColorProfiles(colorProfileComboBox);
+            _scaler.LoadMatteColors(matteColorComboBox);
+            _scaler.LoadColorProfiles(colorProfileComboBox);
 
-            scaler.LoadSharpen(sharpenComboBox);
-            scaler.LoadBlendingModes(blendingModeComboBox);
-            scaler.LoadHybridModes(hybridModeComboBox);
+            _scaler.LoadSharpen(sharpenComboBox);
+            _scaler.LoadBlendingModes(blendingModeComboBox);
+            _scaler.LoadHybridModes(hybridModeComboBox);
 
-            scaler.LoadJpgQuality(jpgQualityComboBox);
-            scaler.LoadJpgChromaSubsample(jpgChromaSubsampleComboBox);
+            _scaler.LoadJpgQuality(jpgQualityComboBox);
+            _scaler.LoadJpgChromaSubsample(jpgChromaSubsampleComboBox);
 
-            scaler.LoadPngFilters(pngFilterComboBox);
-            scaler.LoadPngInterlaces(pngInterlaceComboBox);
+            _scaler.LoadPngFilters(pngFilterComboBox);
+            _scaler.LoadPngInterlaces(pngInterlaceComboBox);
         }
 
         public bool PickImg()
         {
-            return scaler.PickImg();
+            return _scaler.PickImg();
         }
 
         public bool PickOut()
         {
-            return scaler.PickOut();
+            return _scaler.PickOut();
         }
 
         public Bitmap GetImgBitmap()
@@ -97,7 +97,7 @@ namespace FBITools
 
         public void Resize()
         {
-            scaler.Resize().TryAwait();
+            _scaler.Resize().TryAwait();
         }
 
         private void OnEncoderChanged()
@@ -112,14 +112,14 @@ namespace FBITools
 
         private void OnInvalidFile()
         {
-            StatusChanged.Run(LabelType.danger, scaler.ErrorMessage);
+            StatusChanged.Run(LabelType.danger, _scaler.ErrorMessage);
         }
 
         private void OnResized()
         {
             Resized.Run();
 
-            StatusChanged.Run(LabelType.success, scaler.SuccessMessage);
+            StatusChanged.Run(LabelType.success, _scaler.SuccessMessage);
         }
     }
 }

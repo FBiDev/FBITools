@@ -6,12 +6,12 @@ namespace FBITools.WiiU
     {
         public Title()
         {
-            ID = Name = Key = string.Empty;
+            Id = Name = Key = string.Empty;
         }
 
         [Style(Width = 120, FontName = "Courier New")]
         [Field("TitleID")]
-        public string ID { get; set; }
+        public string Id { get; set; }
 
         [Style(AutoSizeMode = ColumnAutoSizeMode.Fill)]
         [Field("Name")]

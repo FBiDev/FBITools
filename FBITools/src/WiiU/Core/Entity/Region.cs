@@ -10,10 +10,10 @@ namespace FBITools.WiiU
         }
 
         [Field("ID")]
-        public int ID { get; set; }
+        public int Id { get; set; }
 
         [Field("Name")]
-        public string Name { get; set; }
+        public string Name { private get; set; }
 
         public override string ToString()
         {

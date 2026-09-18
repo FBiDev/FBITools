@@ -6,31 +6,19 @@ using FBITools.Properties;
 
 namespace FBITools.WiiU.Repository
 {
-    public class CategoryRepository : DaoBase
+    public static class CategoryRepository
     {
         #region " _Select "
-        public async Task<List<Category>> List()
+        public static async Task<List<Category>> List()
         {
             return await Select();
-        }
-
-        public async Task<List<Category>> Search(Category obj)
-        {
-            return await Select(obj);
-        }
-
-        public async Task<Category> Find(Category obj)
-        {
-            return (await Select(obj)).First();
         }
         #endregion
 
         #region " _Load "
-        private static async Task<List<Category>> Select(Category obj = null)
+        private static async Task<List<Category>> Select()
         {
-            obj = obj ?? new Category();
-
-            var sql = new SqlQuery(Resources.sql_WiiUCategory_List, DatabaseAction.Select);
+            var sql = new SqlQuery(Resources.sql_WiiUCategory_List);
 
             return Load(await DatabaseWiiU.ExecutarSelect(sql));
         }
@@ -41,7 +29,7 @@ namespace FBITools.WiiU.Repository
             {
                 var entity = new Category
                 {
-                    ID = row.Value<int>("ID"),
+                    Id = row.Value<int>("ID"),
                     Name = row.Value<string>("Name"),
                 };
 

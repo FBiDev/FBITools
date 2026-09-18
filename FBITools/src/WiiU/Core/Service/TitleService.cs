@@ -10,29 +10,23 @@ namespace FBITools.WiiU
 {
     public class TitleService
     {
-        private readonly TitleRepository _repository;
-
         private DataList<Title> _allTitles;
         private DataList<Title> _filteredTitles;
 
-        public TitleService()
+        public static bool GenerateCetk(Title title)
         {
-            _repository = new TitleRepository();
-        }
+            try
+            {
+                var cetck = new HexFile(Cetk.BaseFile);
+                cetck.Replace(Cetk.CommonKey, title.Key);
+                cetck.Save(Cetk.FilePath);
 
-        public async Task<List<Title>> List()
-        {
-            return await _repository.List();
-        }
-
-        public async Task<List<Title>> Search(Title obj)
-        {
-            return await _repository.Search(obj);
-        }
-
-        public async Task<Title> Find(Title obj)
-        {
-            return await _repository.Find(obj);
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
         }
 
         public DataList<Title> GetFilteredTitles()
@@ -48,29 +42,18 @@ namespace FBITools.WiiU
             }
 
             _filteredTitles = new DataList<Title>(_allTitles.Where(obj =>
-                obj.ID.IsNotEmpty() &&
-                obj.ID.Length >= id.Length &&
-                obj.ID.Contains(id) &&
-                //obj.ID.Substring(0, id.Length) == id.ToUpper() &&
+                obj.Id.IsNotEmpty() &&
+                obj.Id.Length >= id.Length &&
+                obj.Id.Contains(id) &&
+                ////obj.Id.Substring(0, id.Length) == id.ToUpper() &&
                 obj.Name.ContainsExtend(name) &&
                 region(obj.Region) &&
                 category(obj.Category)).ToList());
         }
 
-        public bool GenerateCetk(Title title)
+        private static async Task<List<Title>> List()
         {
-            try
-            {
-                var cetck = new HexFile(Cetk.BaseFile);
-                cetck.Replace(Cetk.CommonKey, title.Key);
-                cetck.Save(Cetk.FilePath);
-
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
+            return await TitleRepository.List();
         }
 
         private async Task ListOrdered()

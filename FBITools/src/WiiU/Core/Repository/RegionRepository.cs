@@ -6,42 +6,30 @@ using FBITools.Properties;
 
 namespace FBITools.WiiU.Repository
 {
-    public class RegionRepository : DaoBase
+    public static class RegionRepository
     {
         #region " _Select "
-        public async Task<List<Region>> List()
+        public static async Task<List<Region>> List()
         {
             return await Select();
-        }
-
-        public async Task<List<Region>> Search(Region obj)
-        {
-            return await Select(obj);
-        }
-
-        public async Task<Region> Find(Region obj)
-        {
-            return (await Select(obj)).First();
         }
         #endregion
 
         #region " _Load "
-        public async Task<List<Region>> Select(Region obj = null)
+        private static async Task<List<Region>> Select()
         {
-            obj = obj ?? new Region();
-
-            var sql = new SqlQuery(Resources.sql_WiiURegion_List, DatabaseAction.Select);
+            var sql = new SqlQuery(Resources.sql_WiiURegion_List);
 
             return Load(await DatabaseWiiU.ExecutarSelect(sql));
         }
 
-        private List<Region> Load(DataTable table)
+        private static List<Region> Load(DataTable table)
         {
             return table.ProcessRows<Region>((row, lst) =>
             {
                 var entity = new Region
                 {
-                    ID = row.Value<int>("ID"),
+                    Id = row.Value<int>("ID"),
                     Name = row.Value<string>("Name"),
                 };
 

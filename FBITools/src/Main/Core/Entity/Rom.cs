@@ -5,10 +5,6 @@ namespace FBITools
 {
     public class Rom
     {
-        public Rom()
-        {
-        }
-
         [Display(IsBool = IsBool.Yes, AutoGenerateField = true)]
         public bool Found { get; set; }
 

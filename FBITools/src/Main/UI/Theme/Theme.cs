@@ -4,35 +4,23 @@ namespace FBITools
 {
     public static class Theme
     {
-        private static bool isDesignMode = true;
+        private static bool _isDesignMode = true;
 
         public static bool ToggleDarkTheme()
         {
-            if (isDesignMode)
-            {
-                return false;
-            }
-
-            return ThemeBase.ToggleDarkMode();
+            return !_isDesignMode && ThemeBase.ToggleDarkMode();
         }
 
         public static void SetTheme()
         {
-            isDesignMode = Session.MainPage.IsDesignMode;
+            _isDesignMode = Session.MainPage.IsDesignMode;
 
-            if (isDesignMode)
+            if (_isDesignMode)
             {
                 return;
             }
 
-            if (Session.Options.IsDarkMode)
-            {
-                ThemeBase.SetTheme(ThemeBase.ThemeNames.Dark);
-            }
-            else
-            {
-                ThemeBase.SetTheme(ThemeBase.ThemeNames.Light);
-            }
+            ThemeBase.SetTheme(Session.Options.IsDarkMode ? ThemeBase.ThemeNames.Dark : ThemeBase.ThemeNames.Light);
         }
     }
 }

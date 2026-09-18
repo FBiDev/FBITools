@@ -1,15 +1,18 @@
 ﻿using System;
 using System.Net;
-using App.Core.Desktop;
 using System.Threading.Tasks;
+using App.Core.Desktop;
 
 namespace FBITools
 {
     public static class Network
     {
-        private static WebClientExtend Client { get; set; }
+        public static bool UseProxy
+        {
+            get { return Browser.UseProxy; }
+        }
 
-        public static bool UseProxy { get { return Browser.UseProxy; } }
+        private static WebClientExtend Client { get; set; }
 
         public static void Load()
         {

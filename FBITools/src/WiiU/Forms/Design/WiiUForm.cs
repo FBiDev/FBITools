@@ -8,8 +8,6 @@ namespace FBITools.WiiU
     public partial class WiiUForm : ContentBaseForm
     {
         private readonly TitleService _titleService;
-        private readonly RegionService _regionService;
-        private readonly CategoryService _categoryService;
 
         #region InitializeForm
         public WiiUForm()
@@ -23,8 +21,6 @@ namespace FBITools.WiiU
             GotFocus += (s, e) => TitleIDTextBox.Focus();
 
             _titleService = new TitleService();
-            _regionService = new RegionService();
-            _categoryService = new CategoryService();
         }
 
         private void OnFormShown(object sender, EventArgs ev)
@@ -60,10 +56,10 @@ namespace FBITools.WiiU
         {
             TitleIDTextBox.CharacterCasing = CharacterCasing.Upper;
 
-            RegionCheckedList.DataSource = await _regionService.List();
+            RegionCheckedList.DataSource = await RegionService.List();
             RegionCheckedList.SetItemsChecked(true);
 
-            CategoryCheckedList.DataSource = await _categoryService.List();
+            CategoryCheckedList.DataSource = await CategoryService.List();
             CategoryCheckedList.SetItemsChecked(true);
         }
 
@@ -112,7 +108,7 @@ namespace FBITools.WiiU
 
             var currentTitle = TitlesGrid.GetCurrentRowObject<Title>();
 
-            if (_titleService.GenerateCetk(currentTitle))
+            if (TitleService.GenerateCetk(currentTitle))
             {
                 WarningLabel.Text = @"cetk " + currentTitle + @" Saved!";
             }

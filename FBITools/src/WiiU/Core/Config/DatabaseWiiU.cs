@@ -23,7 +23,7 @@ namespace FBITools.WiiU
         public static void Load()
         {
             IsLoaded = false;
-            Database = new DatabaseManager { };
+            Database = new DatabaseManager();
             Reload();
             IsLoaded = true;
         }
@@ -43,7 +43,10 @@ namespace FBITools.WiiU
 
         public static async Task<DataTable> ExecutarSelect(SqlQuery sql)
         {
-            if (!IsLoaded) { return EmptyDataTable; }
+            if (!IsLoaded)
+            {
+                return EmptyDataTable;
+            }
 
             try
             {
@@ -59,7 +62,10 @@ namespace FBITools.WiiU
 
         public static async Task<string> ExecutarSelectString(SqlQuery sql)
         {
-            if (!IsLoaded) { return string.Empty; }
+            if (!IsLoaded)
+            {
+                return string.Empty;
+            }
 
             try
             {
@@ -75,7 +81,10 @@ namespace FBITools.WiiU
 
         public static async Task<SqlResult> Executar(SqlQuery sql)
         {
-            if (!IsLoaded) { return EmptySqlResult; }
+            if (!IsLoaded)
+            {
+                return EmptySqlResult;
+            }
 
             try
             {
@@ -91,7 +100,10 @@ namespace FBITools.WiiU
 
         public static async Task<DateTime> DataServidor()
         {
-            if (!IsLoaded) { return DateTime.MinValue; }
+            if (!IsLoaded)
+            {
+                return DateTime.MinValue;
+            }
 
             try
             {

@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -11,10 +10,9 @@ namespace FBITools
 {
     public class WebCrawlerController
     {
-        public const string TempUrl = "https://lolroms.com/Atari/2600";
-        private const bool CountAftermarketPrivate = true;
-
+        public const string WgetUrl = "https://lolroms.com/Atari/2600";
         private static WebCrawlerSite _currentSite;
+        private bool _countAftermarketPrivate;
 
         public string LocalPath { get; private set; }
 
@@ -25,17 +23,27 @@ namespace FBITools
 
         public void ChangeSite(object sender)
         {
+            _countAftermarketPrivate = true;
+
             switch ((WebSite)((ComboBox)sender).SelectedValue)
             {
-                case WebSite.LoLRoms: _currentSite = new LolRomsSite(); break;
-                case WebSite.MyRient: _currentSite = new MyRientSite(); break;
+                case WebSite.LoLRoms: _currentSite = new LolRomsSite();
+                    break;
+                case WebSite.MyRient: _currentSite = new MyRientSite();
+                    break;
+                default: _currentSite = null;
+                    break;
             }
         }
 
         public void ChangeLocalPath(object sender)
         {
             var combo = (ComboBox)sender;
-            if (combo.SelectedItem == null) { return; }
+
+            if (combo.SelectedItem == null)
+            {
+                return;
+            }
 
             var folder = ((KeyValuePair<string, string>)combo.SelectedItem).Value;
             LocalPath = _currentSite.LocalPath + folder;
@@ -48,51 +56,59 @@ namespace FBITools
 
         public async Task<DataList<Rom>> GetItems(KeyValuePair<string, string> path)
         {
-            await _currentSite.SetHtml(path.Key);
-
-            _currentSite.Items = new DataList<Rom>();
-
-            try
+            await Task.Run(async () =>
             {
-                foreach (var rom in _currentSite.HtmlItems)
+                await _currentSite.SetHtml(path.Key);
+
+                _currentSite.Items = new DataList<Rom>();
+
+                try
                 {
-                    var name = _currentSite.GetItemName(rom);
-                    var size = _currentSite.GetItemSize(rom);
-                    var date = _currentSite.GetItemDate(rom);
-                    
-                    var currentRom = new Rom
+                    foreach (var rom in _currentSite.HtmlItems)
                     {
-                        Found = Archive.Exists(LocalPath, name),
-                        FileName = name,
-                        FileSize = Archive.CalculateSize(size),
-                        Date = Cast.ToDateTime(date)
-                    };
+                        var name = _currentSite.GetItemName(rom);
+                        var size = _currentSite.GetItemSize(rom);
+                        var date = _currentSite.GetItemDate(rom);
 
-                    if (CountAftermarketPrivate)
-                    {
-                        currentRom.Found = _currentSite.FindFile(LocalPath, name);
+                        var currentRom = new Rom
+                        {
+                            Found = Archive.Exists(LocalPath, name),
+                            FileName = name,
+                            FileSize = Archive.CalculateSize(size),
+                            Date = Cast.ToDateTime(date)
+                        };
+
+                        if (_countAftermarketPrivate)
+                        {
+                            currentRom.Found = _currentSite.FindFile(LocalPath, name);
+                        }
+
+                        _currentSite.Items.Add(currentRom);
                     }
-
-                    _currentSite.Items.Add(currentRom);
                 }
-            }
-            catch (Exception exception)
-            {
-                Console.WriteLine(exception);
-                throw;
-            }
+                catch (Exception exception)
+                {
+                    Console.WriteLine(exception);
+                    throw;
+                }
+            });
 
             return _currentSite.Items;
         }
 
         public string GetItemsReport()
         {
+            if (_currentSite.Items == null)
+            {
+                _currentSite.Items = new DataList<Rom>();
+            }
+
             var roms = _currentSite.Items;
             var totalFound = roms.Count(x => x.Found);
 
             var folderTotalFiles = Archive.GetFiles(LocalPath).Count();
 
-            if (CountAftermarketPrivate)
+            if (_countAftermarketPrivate)
             {
                 folderTotalFiles += Archive.GetFiles(LocalPath + " (Aftermarket)").Count();
                 folderTotalFiles += Archive.GetFiles(LocalPath + " (Private)").Count();
