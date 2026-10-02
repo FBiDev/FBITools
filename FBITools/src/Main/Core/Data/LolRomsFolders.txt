@@ -17,16 +17,9 @@ Atari - 8-bit Family
 Atari - 8-bit Family (Kryoflux)
 Atari - Atari 2600
 Atari - Atari 5200
-Atari - Atari 7800 (A78)
-Atari - Atari 7800 (BIN)
-Atari - Atari Jaguar (ABS) (Aftermarket)
-Atari - Atari Jaguar (COF) (Aftermarket)
-Atari - Atari Jaguar (J64)
-Atari - Atari Jaguar (JAG)
-Atari - Atari Jaguar (ROM)
-Atari - Atari Lynx (BLL)
-Atari - Atari Lynx (LNX)
-Atari - Atari Lynx (LYX)
+Atari - Atari 7800
+Atari - Atari Jaguar
+Atari - Atari Lynx
 Atari - Atari ST
 Atari - Atari ST (Flux)
 Bally - Astrocade
@@ -66,8 +59,6 @@ GCE - Vectrex
 Hartung - Game Master
 Hitachi - S1 (Waveform)
 Interton - VC 4000
-iQue - iQue (CDN)
-iQue - iQue (Decrypted)
 Konami - Picno
 Luxor - ABC 800 (Flux)
 Magnavox - Odyssey 2
@@ -89,9 +80,9 @@ Nintendo - amiibo
 Nintendo - Famicom (Headered)
 Nintendo - Famicom Disk System (FDS)
 Nintendo - Famicom Disk System (QD)
+Nintendo - Famicom Family BASIC (Tapes)
 Nintendo - Famicom Network System
 Nintendo - Famicom StudyBox
-Nintendo - Family BASIC (Tapes)
 Nintendo - Game & Watch
 Nintendo - Game Boy
 Nintendo - Game Boy Advance
@@ -100,14 +91,16 @@ Nintendo - Game Boy Advance (Multiboot)
 Nintendo - Game Boy Advance (Play-Yan)
 Nintendo - Game Boy Advance (Video)
 Nintendo - Game Boy Color
+Nintendo - iQue (CDN)
+Nintendo - iQue (Decrypted)
 Nintendo - Nintendo 64 (BigEndian)
 Nintendo - Nintendo 64 (Mario no Photopi SmartMedia)
 Nintendo - Nintendo 64DD
 Nintendo - Nintendo GameCube (Memory Card)
 Nintendo - Pokemon Mini
-Nintendo - Satellaview
-Nintendo - Sufami Turbo
-Nintendo - Super Nintendo
+Nintendo - Super Famicom
+Nintendo - Super Famicom Satellaview
+Nintendo - Super Famicom Sufami Turbo
 Nintendo - Virtual Boy
 Philips - Videopac+
 RCA - Studio II
@@ -130,8 +123,7 @@ TeleNova - Compis (Flux)
 Texas Instruments - TI-99-4A (A2R)
 Tiger - Game.com
 Tiger - Gizmondo
-Toshiba - Pasopia (BIN)
-Toshiba - Pasopia (WAV)
+Toshiba - Pasopia
 Toshiba - Visicom
 VM Labs - NUON (Digital)
 VTech - CreatiVision

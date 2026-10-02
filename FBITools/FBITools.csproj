@@ -110,7 +110,6 @@
     <Compile Include="src\Main\Forms\Design\WebCrawlerForm.Designer.cs">
       <DependentUpon>WebCrawlerForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="src\Main\Util.cs" />
     <Compile Include="src\WiiU\Core\Config\Options.cs" />
     <Compile Include="src\WiiU\Core\Repository\TitleRepository.cs" />
     <Compile Include="src\WiiU\Core\Repository\CategoryRepository.cs" />
@@ -262,10 +261,6 @@
       <TargetPath>data\MyRient_Redump_Folders.txt</TargetPath>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </ContentWithTargetPath>
-    <ContentWithTargetPath Include="src\Main\Core\Data\LolRomsFolders_old.txt">
-      <TargetPath>data\LolRomsFolders_old.txt</TargetPath>
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </ContentWithTargetPath>
     <ContentWithTargetPath Include="src\Main\Core\Data\LolRomsFolders.txt">
       <TargetPath>data\LolRomsFolders.txt</TargetPath>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -327,34 +322,13 @@
     <Content Include="src\Main\Core\Data\lolroms_pages\Atari - Atari 5200.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="src\Main\Core\Data\lolroms_pages\Atari - Atari 7800 %28A78%29.html">
+    <Content Include="src\Main\Core\Data\lolroms_pages\Atari - Atari 7800.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="src\Main\Core\Data\lolroms_pages\Atari - Atari 7800 %28BIN%29.html">
+    <Content Include="src\Main\Core\Data\lolroms_pages\Atari - Atari Jaguar.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="src\Main\Core\Data\lolroms_pages\Atari - Atari Jaguar %28ABS%29 %28Aftermarket%29.html">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="src\Main\Core\Data\lolroms_pages\Atari - Atari Jaguar %28COF%29 %28Aftermarket%29.html">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="src\Main\Core\Data\lolroms_pages\Atari - Atari Jaguar %28J64%29.html">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="src\Main\Core\Data\lolroms_pages\Atari - Atari Jaguar %28JAG%29.html">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="src\Main\Core\Data\lolroms_pages\Atari - Atari Jaguar %28ROM%29.html">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="src\Main\Core\Data\lolroms_pages\Atari - Atari Lynx %28BLL%29.html">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="src\Main\Core\Data\lolroms_pages\Atari - Atari Lynx %28LNX%29.html">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="src\Main\Core\Data\lolroms_pages\Atari - Atari Lynx %28LYX%29.html">
+    <Content Include="src\Main\Core\Data\lolroms_pages\Atari - Atari Lynx.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="src\Main\Core\Data\lolroms_pages\Atari - Atari ST %28Flux%29.html">
@@ -474,10 +448,10 @@
     <Content Include="src\Main\Core\Data\lolroms_pages\Interton - VC 4000.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="src\Main\Core\Data\lolroms_pages\iQue - iQue %28CDN%29.html">
+    <Content Include="src\Main\Core\Data\lolroms_pages\Nintendo - iQue %28CDN%29.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="src\Main\Core\Data\lolroms_pages\iQue - iQue %28Decrypted%29.html">
+    <Content Include="src\Main\Core\Data\lolroms_pages\Nintendo - iQue %28Decrypted%29.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="src\Main\Core\Data\lolroms_pages\Konami - Picno.html">
@@ -534,7 +508,7 @@
     <Content Include="src\Main\Core\Data\lolroms_pages\Nintendo - Famicom StudyBox.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="src\Main\Core\Data\lolroms_pages\Nintendo - Family BASIC %28Tapes%29.html">
+    <Content Include="src\Main\Core\Data\lolroms_pages\Nintendo - Famicom Family BASIC %28Tapes%29.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="src\Main\Core\Data\lolroms_pages\Nintendo - Famicom Disk System %28FDS%29.html">
@@ -585,13 +559,13 @@
     <Content Include="src\Main\Core\Data\lolroms_pages\Nintendo - Pokemon Mini.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="src\Main\Core\Data\lolroms_pages\Nintendo - Satellaview.html">
+    <Content Include="src\Main\Core\Data\lolroms_pages\Nintendo - Super Famicom Satellaview.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="src\Main\Core\Data\lolroms_pages\Nintendo - Sufami Turbo.html">
+    <Content Include="src\Main\Core\Data\lolroms_pages\Nintendo - Super Famicom Sufami Turbo.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="src\Main\Core\Data\lolroms_pages\Nintendo - Super Nintendo.html">
+    <Content Include="src\Main\Core\Data\lolroms_pages\Nintendo - Super Famicom.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="src\Main\Core\Data\lolroms_pages\Nintendo - Virtual Boy.html">
@@ -651,10 +625,7 @@
     <Content Include="src\Main\Core\Data\lolroms_pages\Texas Instruments - TI-99-4A %28A2R%29.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
-    <Content Include="src\Main\Core\Data\lolroms_pages\Toshiba - Pasopia %28BIN%29.html">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </Content>
-    <Content Include="src\Main\Core\Data\lolroms_pages\Toshiba - Pasopia %28WAV%29.html">
+    <Content Include="src\Main\Core\Data\lolroms_pages\Toshiba - Pasopia.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="src\Main\Core\Data\lolroms_pages\Toshiba - Visicom.html">

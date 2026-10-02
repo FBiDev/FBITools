@@ -96,6 +96,7 @@ namespace FBITools
             WarningLabel.Text = @"Executando...";
 
             var roms = await _controller.GetItems((KeyValuePair<string, string>)UrlComboBox.SelectedItem);
+            roms.SortOrdinal = true;
 
             ResultGrid.DataSource = roms;
             var sortColumn = ResultGrid.Columns["Found"];
@@ -149,7 +150,7 @@ namespace FBITools
                 return;
             }
 
-            e.Value = Archive.FormatSize((long)e.Value);
+            e.Value = Archive.FormatSize((long)e.Value, false, false);
             e.FormattingApplied = true;
         }
         #endregion

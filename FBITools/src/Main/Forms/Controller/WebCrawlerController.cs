@@ -12,19 +12,16 @@ namespace FBITools
     {
         public const string WgetUrl = "https://lolroms.com/Atari/2600";
         private static WebCrawlerSite _currentSite;
-        private bool _countAftermarketPrivate;
 
         public string LocalPath { get; private set; }
 
         public List<DropItem> GetSites()
         {
-            return Util.EnumToDropItems<WebSite>();
+            return Enums.ToDropItemsNumbered<WebSite>();
         }
 
         public void ChangeSite(object sender)
         {
-            _countAftermarketPrivate = true;
-
             switch ((WebSite)((ComboBox)sender).SelectedValue)
             {
                 case WebSite.LoLRoms: _currentSite = new LolRomsSite();
@@ -72,16 +69,13 @@ namespace FBITools
 
                         var currentRom = new Rom
                         {
-                            Found = Archive.Exists(LocalPath, name),
+                            //Found = Archive.Exists(LocalPath, name),
                             FileName = name,
                             FileSize = Archive.CalculateSize(size),
                             Date = Cast.ToDateTime(date)
                         };
 
-                        if (_countAftermarketPrivate)
-                        {
-                            currentRom.Found = _currentSite.FindFile(LocalPath, name);
-                        }
+                        currentRom.Found = _currentSite.FindFile(LocalPath, name);
 
                         _currentSite.Items.Add(currentRom);
                     }
@@ -103,24 +97,88 @@ namespace FBITools
                 _currentSite.Items = new DataList<Rom>();
             }
 
+            IEnumerable<string> folderFiles;
+
+            var pathname = LocalPath.Split('\\').Last();
+
+            switch (pathname)
+            {
+                case "Atari - Atari 7800":
+                    folderFiles = GetFolderFiles(LocalPath,
+                        new[] { " (A78)", " (BIN)" });
+                    break;
+                case "Atari - Atari Jaguar":
+                    folderFiles = GetFolderFiles(LocalPath,
+                        new[] { " (ABS)", " (COF)", " (J64)", " (JAG)", " (ROM)" });
+                    break;
+                case "Atari - Atari Lynx":
+                    folderFiles = GetFolderFiles(LocalPath,
+                        new[] { " (BLL)", " (LNX)", " (LYX)" });
+                    break;
+                case "Toshiba - Pasopia":
+                    folderFiles = GetFolderFiles(LocalPath,
+                        new[] { " (BIN)", " (WAV)" });
+                    break;
+                default:
+                    folderFiles = GetFolderFiles(LocalPath);
+                    break;
+            }
+
             var roms = _currentSite.Items;
             var totalFound = roms.Count(x => x.Found);
 
-            var folderTotalFiles = Archive.GetFiles(LocalPath).Count();
-
-            if (_countAftermarketPrivate)
-            {
-                folderTotalFiles += Archive.GetFiles(LocalPath + " (Aftermarket)").Count();
-                folderTotalFiles += Archive.GetFiles(LocalPath + " (Private)").Count();
-            }
-
             var totalSize = roms.Sum(x => x.FileSize);
-            var currentSize = roms.Where(x => x.Found).Sum(x => x.FileSize);
             var totalSizeConverted = Archive.FormatSize(totalSize);
+
+            var currentSize = roms.Where(x => x.Found).Sum(x => x.FileSize);
             var currentSizeConverted = Archive.FormatSize(currentSize);
 
-            var text = @"Folder: " + folderTotalFiles + @" - Good: " + totalFound + @" - Bad: " + (roms.Count - totalFound) + @" - TotalSize: " + currentSizeConverted + @" / " + totalSizeConverted;
+            var folderTotalFiles = folderFiles.DistinctFileNames().Count();
+
+            var notFound = roms.Count - totalFound;
+            var notFoundStr = string.Empty;
+            if (notFound > 0)
+            {
+                notFoundStr = "B(-" + notFound + ") ";
+            }
+
+            var extraFile = folderTotalFiles - totalFound;
+            var extraFileStr = string.Empty;
+            if (extraFile > 0)
+            {
+                extraFileStr = "X(+" + extraFile + ") ";
+            }
+
+            var text = extraFileStr + notFoundStr + @"Folder: " + folderTotalFiles + @" - Found: " + totalFound + @" - TotalSize: " + currentSizeConverted + @" / " + totalSizeConverted;
             return text;
+        }
+
+        private IEnumerable<string> GetFolderFiles(string basePath, IEnumerable<string> extraPath = null)
+        {
+            extraPath = extraPath ?? new List<string> { string.Empty };
+
+            var files = Archive.GetFiles(basePath);
+
+            foreach (var path in extraPath)
+            {
+                if (path.IsNotEmpty())
+                {
+                    files = files.Concat(Archive.GetFiles(basePath + path));
+                }
+
+                if (!_currentSite.CountAftermarketPrivate)
+                {
+                    continue;
+                }
+
+                var afterm = basePath + path + " (Aftermarket)";
+                var privat = basePath + path + " (Private)";
+
+                files = files.Concat(Archive.GetFiles(afterm));
+                files = files.Concat(Archive.GetFiles(privat));
+            }
+
+            return files;
         }
     }
 }

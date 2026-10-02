@@ -32,6 +32,8 @@ namespace FBITools
 
         public abstract DataList<Rom> Items { get; set; }
 
+        public bool CountAftermarketPrivate { get; protected set; }
+
         protected string Html { get; set; }
 
         protected abstract string Host { get; }

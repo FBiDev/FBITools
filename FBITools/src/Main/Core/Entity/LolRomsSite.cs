@@ -15,6 +15,8 @@ namespace FBITools
         {
             LocalPath = Network.UseProxy ? @"C:\WGET\myrient.erista.me\files\No-Intro\" :
                             @"D:\Fazendo\wget-1.21.4-win64\myrient.erista.me\files\No-Intro\";
+
+            CountAftermarketPrivate = true;
         }
 
         public override string LocalPath { get; protected set; }
@@ -42,7 +44,7 @@ namespace FBITools
 
         public override string GetItemName(string html)
         {
-            return html.GetBetween("class='fileicon'>", "</a>").Trim().HtmlDecode() + SufixItemName;
+            return html.GetBetween(".7z'>", "</a>").Trim().HtmlDecode() + SufixItemName;
         }
 
         public override string GetItemSize(string html)
@@ -72,8 +74,8 @@ namespace FBITools
         public override Task SetHtml(string path)
         {
             Html = Archive.ReadAll("data/lol/" + path);
-            HtmlTable = Html.GetBetween("<ul class=\"list\">", "</ul>", true);
-            HtmlItems = HtmlTable.GetBetweenList("<li class='filei'>", "</li>");
+            HtmlTable = Html.GetBetween("</ul>", "<script>", true);
+            HtmlItems = HtmlTable.GetBetweenList("<li class='info'>", "</li>");
 
             _files = new List<string>();
             return Task.CompletedTask;
@@ -86,25 +88,58 @@ namespace FBITools
                 return FindFileName(name);
             }
 
-            var afterm = path + " (Aftermarket)";
-            var privat = path + " (Private)";
+            var pathname = path.Split('\\').Last();
 
-            if (Directory.Exists(path))
+            switch (pathname)
             {
-                _files = Directory.GetFiles(path).ToList();
+                case "Atari - Atari 7800":
+                    FindFileExtra(path,
+                        new[] { " (A78)", " (BIN)" });
+                    break;
+                case "Atari - Atari Jaguar":
+                    FindFileExtra(path,
+                        new[] { " (ABS)", " (COF)", " (J64)", " (JAG)", " (ROM)" });
+                    break;
+                case "Atari - Atari Lynx":
+                    FindFileExtra(path,
+                        new[] { " (BLL)", " (LNX)", " (LYX)" });
+                    break;
+                case "Toshiba - Pasopia":
+                    FindFileExtra(path,
+                        new[] { " (BIN)", " (WAV)" });
+                    break;
+                default:
+                    FindFileExtra(path);
+                    break;
             }
 
-            if (Directory.Exists(afterm))
-            {
-                _files.AddRange(Directory.GetFiles(afterm).ToList());
-            }
-
-            if (Directory.Exists(privat))
-            {
-                _files.AddRange(Directory.GetFiles(privat).ToList());
-            }
-            
             return FindFileName(name);
+        }
+
+        private void FindFileExtra(string basePath, IEnumerable<string> extraPath = null)
+        {
+            extraPath = extraPath ?? new List<string> { string.Empty };
+
+            _files.AddRange(Archive.GetFiles(basePath));
+
+            foreach (var path in extraPath)
+            {
+                if (path.IsNotEmpty())
+                {
+                    _files.AddRange(Archive.GetFiles(basePath + path));
+                }
+
+                if (!CountAftermarketPrivate)
+                {
+                    continue;
+                }
+
+                var afterm = basePath + path + " (Aftermarket)";
+                var privat = basePath + path + " (Private)";
+
+                _files.AddRange(Archive.GetFiles(afterm));
+                _files.AddRange(Archive.GetFiles(privat));
+            }
         }
 
         private bool FindFileName(string name)
