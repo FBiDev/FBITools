@@ -35,6 +35,7 @@ namespace FBITools
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             this.MainContentTable = new FBITools.FlatTableA();
             this.InputTable = new FBITools.FlatTableA();
+            this.SitesComboBox = new FBITools.FlatComboBoxA();
             this.WgetNamesTextBox = new FBITools.FlatTextBoxA();
             this.TitleLabel = new FBITools.FlatLabelA();
             this.FolderTextBox = new FBITools.FlatTextBoxA();
@@ -50,7 +51,6 @@ namespace FBITools
             this.FileSize = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Date = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ResultStatusBar = new FBITools.FlatStatusBarA();
-            this.SitesComboBox = new FBITools.FlatComboBoxA();
             this.MainContentTable.SuspendLayout();
             this.InputTable.SuspendLayout();
             this.ResultTable.SuspendLayout();
@@ -102,8 +102,18 @@ namespace FBITools
             this.InputTable.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.InputTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.InputTable.Size = new System.Drawing.Size(702, 234);
-            this.InputTable.SizeOriginal = new System.Drawing.Size(702, 196);
+            this.InputTable.SizeOriginal = new System.Drawing.Size(702, 234);
             this.InputTable.TabIndex = 0;
+            // 
+            // SitesComboBox
+            // 
+            this.SitesComboBox.BackColor = System.Drawing.Color.White;
+            this.InputTable.SetColumnSpan(this.SitesComboBox, 3);
+            this.SitesComboBox.LabelText = "Site";
+            this.SitesComboBox.Location = new System.Drawing.Point(2, 38);
+            this.SitesComboBox.Name = "SitesComboBox";
+            this.SitesComboBox.Size = new System.Drawing.Size(698, 34);
+            this.SitesComboBox.TabIndex = 0;
             // 
             // WgetNamesTextBox
             // 
@@ -114,7 +124,7 @@ namespace FBITools
             this.WgetNamesTextBox.Name = "WgetNamesTextBox";
             this.WgetNamesTextBox.PreviousText = "";
             this.WgetNamesTextBox.Size = new System.Drawing.Size(172, 34);
-            this.WgetNamesTextBox.TabIndex = 0;
+            this.WgetNamesTextBox.TabIndex = 1;
             // 
             // TitleLabel
             // 
@@ -127,7 +137,7 @@ namespace FBITools
             this.TitleLabel.Margin = new System.Windows.Forms.Padding(0, 0, 0, 2);
             this.TitleLabel.Name = "TitleLabel";
             this.TitleLabel.Size = new System.Drawing.Size(702, 34);
-            this.TitleLabel.TabIndex = 1;
+            this.TitleLabel.TabIndex = 2;
             this.TitleLabel.Text = "WebCrawlerSite";
             this.TitleLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -141,7 +151,7 @@ namespace FBITools
             this.FolderTextBox.Name = "FolderTextBox";
             this.FolderTextBox.PreviousText = "";
             this.FolderTextBox.Size = new System.Drawing.Size(349, 34);
-            this.FolderTextBox.TabIndex = 2;
+            this.FolderTextBox.TabIndex = 3;
             // 
             // WgetURLTextBox
             // 
@@ -152,7 +162,7 @@ namespace FBITools
             this.WgetURLTextBox.Name = "WgetURLTextBox";
             this.WgetURLTextBox.PreviousText = "";
             this.WgetURLTextBox.Size = new System.Drawing.Size(171, 34);
-            this.WgetURLTextBox.TabIndex = 3;
+            this.WgetURLTextBox.TabIndex = 4;
             // 
             // WgetButton
             // 
@@ -165,7 +175,7 @@ namespace FBITools
             this.WgetButton.Margin = new System.Windows.Forms.Padding(2, 2, 0, 2);
             this.WgetButton.Name = "WgetButton";
             this.WgetButton.Size = new System.Drawing.Size(174, 34);
-            this.WgetButton.TabIndex = 4;
+            this.WgetButton.TabIndex = 5;
             this.WgetButton.Text = "Wget";
             // 
             // CrawlerButton
@@ -180,7 +190,7 @@ namespace FBITools
             this.CrawlerButton.Margin = new System.Windows.Forms.Padding(0, 2, 0, 2);
             this.CrawlerButton.Name = "CrawlerButton";
             this.CrawlerButton.Size = new System.Drawing.Size(702, 34);
-            this.CrawlerButton.TabIndex = 5;
+            this.CrawlerButton.TabIndex = 6;
             this.CrawlerButton.Text = "Craw";
             // 
             // WarningLabel
@@ -193,7 +203,7 @@ namespace FBITools
             this.WarningLabel.Margin = new System.Windows.Forms.Padding(0, 2, 0, 0);
             this.WarningLabel.Name = "WarningLabel";
             this.WarningLabel.Size = new System.Drawing.Size(702, 24);
-            this.WarningLabel.TabIndex = 6;
+            this.WarningLabel.TabIndex = 7;
             this.WarningLabel.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // UrlComboBox
@@ -204,7 +214,7 @@ namespace FBITools
             this.UrlComboBox.Location = new System.Drawing.Point(2, 76);
             this.UrlComboBox.Name = "UrlComboBox";
             this.UrlComboBox.Size = new System.Drawing.Size(522, 34);
-            this.UrlComboBox.TabIndex = 7;
+            this.UrlComboBox.TabIndex = 8;
             // 
             // ResultTable
             // 
@@ -219,7 +229,7 @@ namespace FBITools
             this.ResultTable.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.ResultTable.RowStyles.Add(new System.Windows.Forms.RowStyle());
             this.ResultTable.Size = new System.Drawing.Size(702, 388);
-            this.ResultTable.SizeOriginal = new System.Drawing.Size(702, 426);
+            this.ResultTable.SizeOriginal = new System.Drawing.Size(702, 388);
             this.ResultTable.TabIndex = 1;
             // 
             // ResultGrid
@@ -319,16 +329,6 @@ namespace FBITools
             this.ResultStatusBar.Size = new System.Drawing.Size(696, 23);
             this.ResultStatusBar.TabIndex = 1;
             // 
-            // SitesComboBox
-            // 
-            this.SitesComboBox.BackColor = System.Drawing.Color.White;
-            this.InputTable.SetColumnSpan(this.SitesComboBox, 3);
-            this.SitesComboBox.LabelText = "Site";
-            this.SitesComboBox.Location = new System.Drawing.Point(2, 38);
-            this.SitesComboBox.Name = "SitesComboBox";
-            this.SitesComboBox.Size = new System.Drawing.Size(698, 34);
-            this.SitesComboBox.TabIndex = 8;
-            // 
             // WebCrawlerForm
             // 
             this.ClientSize = new System.Drawing.Size(704, 624);
@@ -352,10 +352,6 @@ namespace FBITools
         private FlatTableA MainContentTable;
         private FlatTableA ResultTable;
         private FlatTableA InputTable;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Found;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FileName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn FileSize;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Date;
         private FlatButtonA CrawlerButton;
         private FlatLabelA WarningLabel;
         private FlatTextBoxA FolderTextBox;
@@ -366,5 +362,9 @@ namespace FBITools
         private FlatTextBoxA WgetNamesTextBox;
         private FlatComboBoxA UrlComboBox;
         private FlatComboBoxA SitesComboBox;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Found;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FileName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FileSize;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Date;
     }
 }

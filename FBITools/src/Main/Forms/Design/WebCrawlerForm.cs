@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Diagnostics;
+using System.Drawing;
 using System.Linq;
 using System.Windows.Forms;
 using App.Core.Desktop;
@@ -136,10 +137,13 @@ namespace FBITools
         {
             foreach (DataGridViewColumn col in ResultGrid.Columns)
             {
-                if (col.ValueType == typeof(DateTime))
+                if (col.ValueType != typeof(DateTime))
                 {
-                    col.DefaultCellStyle.Format = "dd-MMM-yyyy"; // HH:mm
+                    continue;
                 }
+
+                col.DefaultCellStyle.Format = "• dd-MM-yyyy"; // HH:mm
+                col.DefaultCellStyle.Font = new Font("Consolas", 9, FontStyle.Regular);
             }
         }
 

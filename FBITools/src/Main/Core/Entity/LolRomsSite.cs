@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -10,6 +11,7 @@ namespace FBITools
     public sealed class LolRomsSite : WebCrawlerSite
     {
         private List<string> _files;
+        private int htmlReadMethod;
 
         public LolRomsSite()
         {
@@ -44,20 +46,38 @@ namespace FBITools
 
         public override string GetItemName(string html)
         {
-            return html.GetBetween(".7z'>", "</a>").Trim().HtmlDecode() + SufixItemName;
+            switch (htmlReadMethod)
+            {
+                case 1:
+                    return html.GetBetween("📄 ", "</a>").Trim().HtmlDecode() + SufixItemName;
+                default:
+                    return html.GetBetween(".7z'>", "</a>").Trim().HtmlDecode() + SufixItemName;
+            }
         }
 
         public override string GetItemSize(string html)
         {
-            var htmlName = html.GetBetween("<div class='meta'>", "</div>", true);
-            return htmlName.GetBetween("<span>", "</span>");
+            switch (htmlReadMethod)
+            {
+                case 1:
+                    return html.GetBetween("• ", "</span>", false);
+                default:
+                    var htmlSize = html.GetBetween("<div class='meta'>", "</div>", true);
+                    return htmlSize.GetBetween("<span>", "</span>");
+            }
         }
 
         public override string GetItemDate(string html)
         {
-            var htmlDate = html.GetBetween("<div class='meta'>", "</div>", true);
-            htmlDate = htmlDate.GetBetween("</span>", "</div>");
-            return htmlDate.GetBetween("<span>", "</span>");
+            switch (htmlReadMethod)
+            {
+                case 1:
+                    return html.GetBetween("<span class=\"file-meta\">", " •");
+                default:
+                    var htmlDate = html.GetBetween("<div class='meta'>", "</div>", true);
+                    htmlDate = htmlDate.GetBetween("</span>", "</div>");
+                    return htmlDate.GetBetween("<span>", "</span>");
+            }
         }
 
         public override void RemoveItems()
@@ -73,9 +93,25 @@ namespace FBITools
 
         public override Task SetHtml(string path)
         {
-            Html = Archive.ReadAll("data/lol/" + path);
-            HtmlTable = Html.GetBetween("</ul>", "<script>", true);
-            HtmlItems = HtmlTable.GetBetweenList("<li class='info'>", "</li>");
+            var file = Path.Combine("data/lol/", path);
+
+            Html = Archive.ReadAll(file);
+
+            var htmlLastUpdate = Archive.LastUpdate(file);
+
+            htmlReadMethod = htmlLastUpdate < "14/10/2026".ToDateTime() ? 0 : 1;
+
+            switch (htmlReadMethod)
+            {
+                case 1:
+                    HtmlTable = Html.GetBetween("<div class=\"list\">", "</div></div>", true);
+                    HtmlItems = HtmlTable.GetBetweenList(".7z\">", "</div>");
+                    break;
+                default:
+                    HtmlTable = Html.GetBetween("</ul>", "<script", true);
+                    HtmlItems = HtmlTable.GetBetweenList("<li class='info'>", "</li>");
+                    break;
+            }
 
             _files = new List<string>();
             return Task.CompletedTask;

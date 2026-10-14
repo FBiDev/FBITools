@@ -544,6 +544,9 @@
     <Content Include="src\Main\Core\Data\lolroms_pages\Nintendo - Game Boy.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="src\Main\Core\Data\lolroms_pages\Nintendo - Nintendo 3DS %28Decrypted%29.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="src\Main\Core\Data\lolroms_pages\Nintendo - Nintendo 64 %28BigEndian%29.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
@@ -551,6 +554,15 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="src\Main\Core\Data\lolroms_pages\Nintendo - Famicom %28Headered%29.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="src\Main\Core\Data\lolroms_pages\Nintendo - Nintendo DS %28Decrypted%29.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="src\Main\Core\Data\lolroms_pages\Nintendo - Nintendo DSi %28Decrypted%29.html">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="src\Main\Core\Data\lolroms_pages\Nintendo - Nintendo DSi %28Digital%29 %28CDN%29 %28Decrypted%29.html">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="src\Main\Core\Data\lolroms_pages\Nintendo - Nintendo GameCube %28Memory Card%29.html">

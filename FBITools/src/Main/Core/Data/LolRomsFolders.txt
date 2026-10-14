@@ -97,6 +97,10 @@ Nintendo - Nintendo 64 (BigEndian)
 Nintendo - Nintendo 64 (Mario no Photopi SmartMedia)
 Nintendo - Nintendo 64DD
 Nintendo - Nintendo GameCube (Memory Card)
+Nintendo - Nintendo 3DS (Decrypted)
+Nintendo - Nintendo DS (Decrypted)
+Nintendo - Nintendo DSi (Decrypted)
+Nintendo - Nintendo DSi (Digital) (CDN) (Decrypted)
 Nintendo - Pokemon Mini
 Nintendo - Super Famicom
 Nintendo - Super Famicom Satellaview
